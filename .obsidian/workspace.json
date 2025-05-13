@@ -6,6 +6,7 @@
       {
         "id": "df0d4a756b0bec19",
         "type": "tabs",
+        "dimension": 69.6242171189979,
         "children": [
           {
             "id": "7d0d27397ef6215f",
@@ -19,7 +20,67 @@
               },
               "icon": "lucide-file",
               "title": "DeepLearning"
+            },
+            "group": "02e97089c68fc489"
+          },
+          {
+            "id": "4981b6b52d6e2339",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Generative AI with Large Language Models.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Generative AI with Large Language Models"
             }
+          }
+        ]
+      },
+      {
+        "id": "1ba833a9ba84ff59",
+        "type": "tabs",
+        "dimension": 30.37578288100209,
+        "children": [
+          {
+            "id": "e09fc2bf2094d1f4",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "DeepLearning.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": false
+                }
+              },
+              "icon": "lucide-git-fork",
+              "title": "Graph of DeepLearning"
+            },
+            "group": "02e97089c68fc489"
           }
         ]
       }
@@ -162,7 +223,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -179,10 +240,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7d0d27397ef6215f",
+  "active": "e09fc2bf2094d1f4",
   "lastOpenFiles": [
-    "MassiveActivations.md",
+    "Generative AI with Large Language Models.md",
     "DeepLearning.md",
+    "MassiveActivations.md",
     "Images/Pasted image 20250513121109.png",
     "Images/Pasted image 20250513110610.png",
     "Images/Pasted image 20250513110816.png",
