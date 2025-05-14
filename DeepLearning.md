@@ -25,7 +25,7 @@ Joint State Method: Optimal Control 1960s - Backpropgation
 - Tanh
     
     - tanh is superior than sigmoid in near all aspects, so don’t use sigmoid unless it is the output layer
-    - tanh’(x) = 1 - tanh^2(x)
+    - $tanh’(x) = 1 - tanh^2(x)$
 - ReLu
     
     - the most commonly used activation function, if not sure what to use, just use it; it is fast for learning since there is no gradient vanish as the output closes to 1
