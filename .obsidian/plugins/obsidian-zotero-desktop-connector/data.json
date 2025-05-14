@@ -8,9 +8,11 @@
   "exportFormats": [
     {
       "name": "Literature Source Note",
-      "outputPathTemplate": "References/Literatures/@{{citekey}}.md",
-      "imageOutputPathTemplate": "{{citekey}}/",
-      "imageBaseNameTemplate": "image"
+      "outputPathTemplate": "_references/_literatures/@{{citekey}}.md",
+      "imageOutputPathTemplate": "_references/_literatures/_attachments_{{citekey}}.md",
+      "imageBaseNameTemplate": "image",
+      "templatePath": "_templates/Zotero Integration Template.md",
+      "cslStyle": "machine learning"
     }
   ],
   "citeSuggestTemplate": "[[{{citekey}}]]",
