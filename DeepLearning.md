@@ -5,8 +5,9 @@ SIMD: single instruction multiple data → GPU are much better at SIMD computati
 ### Forward Propagation
 
 - Derivations of dL/dz
-    
+
     ![[Pasted image 20250513105438.png|500]]
+    
     [https://community.deeplearning.ai/t/derivation-of-dl-dz/165](https://community.deeplearning.ai/t/derivation-of-dl-dz/165)
     
 
@@ -47,7 +48,7 @@ Joint State Method: Optimal Control 1960s - Backpropgation
     
     - break the symmetry
         
-    - W ~ N(0, 1) or W ~ U(-0.1, 0.1)
+    - $W \sim N(0, 1)$ or $W \sim U(-0.1, 0.1)$
         
     - set the scaling factor to be 1 for each layer / set the
         
@@ -120,6 +121,7 @@ Joint State Method: Optimal Control 1960s - Backpropgation
     
     - bayesian models: forces the output probability distribution towards uniform distribution to reduce bias
     - applies in reinforcement learning
+    
 - Label Smoothing
     
     - inject randomness/softness to the output labels, especially in classification tasks
