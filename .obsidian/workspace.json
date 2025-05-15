@@ -60,7 +60,7 @@
                   "linkStrength": 1,
                   "linkDistance": 250,
                   "scale": 1,
-                  "close": false
+                  "close": true
                 }
               },
               "icon": "lucide-git-fork",
@@ -209,7 +209,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -226,7 +226,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7d0d27397ef6215f",
+  "active": "feb9ad2b5567d3d1",
   "lastOpenFiles": [
     "Generative AI with Large Language Models.md",
     "DeepLearning.md",
