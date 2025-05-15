@@ -5,8 +5,9 @@ SIMD: single instruction multiple data → GPU are much better at SIMD computati
 ### Forward Propagation
 
 - Derivations of dL/dz
-    
+
     ![[Pasted image 20250513105438.png|500]]
+    
     [https://community.deeplearning.ai/t/derivation-of-dl-dz/165](https://community.deeplearning.ai/t/derivation-of-dl-dz/165)
     
 
@@ -25,7 +26,7 @@ Joint State Method: Optimal Control 1960s - Backpropgation
 - Tanh
     
     - tanh is superior than sigmoid in near all aspects, so don’t use sigmoid unless it is the output layer
-    - tanh’(x) = 1 - tanh^2(x)
+    - $tanh’(x) = 1 - tanh^2(x)$
 - ReLu
     
     - the most commonly used activation function, if not sure what to use, just use it; it is fast for learning since there is no gradient vanish as the output closes to 1
@@ -47,7 +48,7 @@ Joint State Method: Optimal Control 1960s - Backpropgation
     
     - break the symmetry
         
-    - W ~ N(0, 1) or W ~ U(-0.1, 0.1)
+    - $W \sim N(0, 1)$ or $W \sim U(-0.1, 0.1)$
         
     - set the scaling factor to be 1 for each layer / set the
         
@@ -120,6 +121,7 @@ Joint State Method: Optimal Control 1960s - Backpropgation
     
     - bayesian models: forces the output probability distribution towards uniform distribution to reduce bias
     - applies in reinforcement learning
+    
 - Label Smoothing
     
     - inject randomness/softness to the output labels, especially in classification tasks
@@ -197,24 +199,25 @@ Local Optima & Saddle Point
         - Pooling Layer
             - f: filter size
             - s: stride size
-            - input size: $n_H \times n_W \times n_C$ →
-            - output size: [(nH-f)/s+1] * [(nW-f)/s+1] * nC
+            - input size: $n_H \times n_W \times n_C$ 
+            - output size: $[\frac{n_H-f}{s}+1] \times [\frac{n_W-f}{s}+1] \times n_C$
             - **Max pooling or average pooling**
             - No parameters to learn
+            
         - Fully-Connected Layer (Dense Layer)
-            - **1x1 convolutions:** [https://www.facebook.com/yann.lecun/posts/10152820758292143](https://www.facebook.com/yann.lecun/posts/10152820758292143)
+            - **$1 \times 1$ convolutions:** [https://www.facebook.com/yann.lecun/posts/10152820758292143](https://www.facebook.com/yann.lecun/posts/10152820758292143)
                 
-                Suppose we have a conv layer which outputs an (𝑁,𝐹,𝐻,𝑊) shaped tensor,
+                Suppose we have a conv layer which outputs an $(𝑁,𝐹,𝐻,𝑊)$ shaped tensor,
                 
-                and is fed into a conv layer with 𝐹1 1x1 filters, zero padding and stride 1
+                and is fed into a conv layer with $𝐹_1$ $1\times 1$ filters, zero padding and stride 1
                 
-                then the output of this 1x1 conv layer will have shape (𝑁,𝐹1,𝐻,𝑊)
+                then the output of this $1 \times 1$ conv layer will have shape $(𝑁,𝐹_1,𝐻,𝑊)$
                 
-                1x1 conv is used to change the dimensionality in the filter space.
+                $1 \times 1$ conv is used to change the dimensionality in the filter space.
                 
-                If 𝐹1>𝐹, then we are increasing dimensionality;
+                If $𝐹_1>𝐹$, then we are increasing dimensionality;
                 
-                if 𝐹1<𝐹, we are decreasing dimensionality, in the filter dimension.
+                if $𝐹_1<𝐹$, we are decreasing dimensionality, in the filter dimension.
                 
     - **Inductive Bias in CNN**
         
@@ -234,6 +237,7 @@ Local Optima & Saddle Point
     - ReLu activation function
     - training on multiple GPUs
     - Local Response Normalization (LRN)
+    
 - **Visualizing ConvNet (2013)**:
     
     [[Zeiler & Fergus., 2014](https://arxiv.org/abs/1311.2901), Visualizing and Understanding Convolutional Networks]
