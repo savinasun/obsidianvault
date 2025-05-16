@@ -1,4 +1,3 @@
-**
 
 ---
 
@@ -93,5 +92,3 @@ tags: 
 {% persist "notes" %}
 
 {% endpersist %}
-
-**
