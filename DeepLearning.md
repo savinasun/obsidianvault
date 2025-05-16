@@ -108,41 +108,35 @@ Joint State Method: Optimal Control 1960s - Backpropgation
 
 [Regularization techniques for training deep neural networks | AI Summer](https://theaisummer.com/regularization/)
 
-- Loss Function Modifications
-    
+- **Loss Function Modifications**
     - L2 regularization:
         - Weights end up smaller ("weight decay"):
             - Weights are pushed to smaller values.
     - L1 regularization
     - Elastic Net
-- Entropy Regularization
-    
+- **Entropy Regularization**
     - bayesian models: forces the output probability distribution towards uniform distribution to reduce bias
     - applies in reinforcement learning
-    
-- Label Smoothing
-    
+- **Label Smoothing**
     - inject randomness/softness to the output labels, especially in classification tasks
-- Dropout (Invert Dropout)
-    
-    [[Hinton et al., 2014](https://jmlr.org/papers/v15/srivastava14a.html), **Dropout: A Simple Way to Prevent Neural Networks from Overfitting]**
-    
+- **Dropout (Invert Dropout)**
+    + [[Hinton et al., 2014](https://jmlr.org/papers/v15/srivastava14a.html), **Dropout: A Simple Way to Prevent Neural Networks from Overfitting]**
     - A **common mistake** when using dropout is to use it both in training and testing. You should **use dropout** (randomly eliminate nodes) **only in training**.
     - Apply dropout both during forward and backward propagation.
     - During training time, divide each dropout layer by keep_prob to keep the same expected value for the activations.
     - By using a larger mini batch size, the regularization effect is reduced.
     - Inverted Dropout, Gaussian dropout, Dropout Connect, Variational Dropout, etc.
     
-- Stochastic Depth
+- **Stochastic Depth**
     
-- Data Augmentation
+- **Data Augmentation**
     
     - by applying transformations like rotation, flipping, cropping, or scaling to images (or similar manipulations in other data types), data augmentation creates a more diverse training set, forcing the model to learn robust features that are not specific to the original data orientation or appearance.
-- Early stopping / Orthogonalization
+- **Early stopping / Orthogonalization**
     
     ![[Pasted image 20250513110300.png]]
     
-- Batch Normalization
+- **Batch Normalization**
     
     ![[Pasted image 20250513110318.png]]
     
@@ -164,7 +158,8 @@ Joint State Method: Optimal Control 1960s - Backpropgation
 
 ### **Optimization Algorithms**
 
-- Momentum: Mini-batch gradient descent makes a parameter update after seeing just a subset of examples, the direction of the update has some variance, and so the path taken by mini-batch gradient descent will "oscillate" toward convergence. Using momentum can reduce these oscillations.
+- **Momentum**
+	- Mini-batch gradient descent makes a parameter update after seeing just a subset of examples, the direction of the update has some variance, and so the path taken by mini-batch gradient descent will "oscillate" toward convergence. Using momentum can reduce these oscillations.
     - exponential moving average
     - Bias correction
 - RMSprop: Jeffrey Hinton
@@ -185,7 +180,7 @@ Local Optima & Saddle Point
 
 - **LeNet-5 (1989)**:
     
-    [LeCun et al., 1998. Gradient-based learning applied to document recognition]
+    + [LeCun et al., 1998. Gradient-based learning applied to document recognition]
     
     - ~60k parameters
         
