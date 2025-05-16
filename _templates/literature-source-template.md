@@ -1,68 +1,67 @@
 ---
 title: "{{title}}"
-author: "{{author}}"
-year: {{date:YYYY}}
-type: "literature"
-tags: [literature, source, {{type}}]
+citekey: "{{citekey}}" 
+authors: "{{author}}"
+year: {{year}}
+venue: "{{publicationTitle}}"
+tags: [cs-paper, {{tags}}]
 status: unread/reading/completed
-priority: low/medium/high
 date-added: "{{date:YYYY-MM-DD}}"
-date-read: 
+zotero-link: "{{zoteroSelectURI}}"
+arxiv: ""
+code: ""
 ---
 
 # {{title}}
 
-## Metadata
-- **Author(s)**: {{author}}
-- **Year**: {{date:YYYY}}
-- **Publisher/Journal**: 
-- **DOI/URL**: 
-- **Citation**: 
+## Paper Info
+- **Authors**: {{author}}
+- **Year**: {{year}}
+- **Venue**: {{publicationTitle}}
+- **Links**: 
+  - [PDF]({{attachment}})
+  - [arXiv](<!-- Add arxiv link -->)
+  - [Code Repository](<!-- Add code repo link -->)
+  - [Zotero Entry]({{zoteroSelectURI}})
+
+## Abstract
+{{abstractNote}}
 
 ## Summary
-<!-- One paragraph summary of the main points -->
+<!-- One paragraph summary of the key contribution -->
 
-## Key Points
-- 
-- 
-- 
-
-## Concepts & Terminology
-- 
+## Key Methods & Techniques
 - 
 - 
 
-## Methodology
-<!-- If applicable, describe the research methodology -->
+## Main Results
+- 
+- 
 
-## Results
-<!-- If applicable, describe the key findings or results -->
+## Important Figures
+<!-- Screenshot and brief description of key figures -->
+![[<!-- Figure filename from Zotero attachment -->]]
+<!-- Brief description of what this figure shows -->
 
-## Quotes
-> 
-<!-- Include page number if available: (p. XX) -->
+## Zotero Annotations
+<!-- Auto-imported from Zotero -->
+{{annotations}}
+<!-- OR manually add as below format -->
+> "Quote from paper" (p. X)
+- My note about this quote
 
-> 
-<!-- Include page number if available: (p. XX) -->
+## Implementation Details
+<!-- Key implementation details, algorithms, hyperparameters -->
+- 
+- 
 
 ## Connections
-<!-- Links to other related literature or notes -->
+<!-- Links to related papers or notes -->
 - [[]]
 - [[]]
 
-## Critiques
-<!-- Personal or noted critiques of the work -->
+## Research Ideas
+<!-- Ideas for future work or improvements -->
 - 
 - 
-
-## Questions & Ideas
-<!-- Questions that arose while reading or ideas inspired by this source -->
-- 
-- 
-
-## Personal Rating
-<!-- ⭐⭐⭐⭐⭐ -->
-
-## Notes
-<!-- Extended notes and thoughts -->
 
