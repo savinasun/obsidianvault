@@ -120,6 +120,7 @@ Joint State Method: Optimal Control 1960s - Backpropgation
 - **Label Smoothing**
     - inject randomness/softness to the output labels, especially in classification tasks
 - **Dropout (Invert Dropout)**
+    + []
     + [[Hinton et al., 2014](https://jmlr.org/papers/v15/srivastava14a.html), **Dropout: A Simple Way to Prevent Neural Networks from Overfitting]**
     - A **common mistake** when using dropout is to use it both in training and testing. You should **use dropout** (randomly eliminate nodes) **only in training**.
     - Apply dropout both during forward and backward propagation.
