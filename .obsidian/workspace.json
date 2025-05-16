@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Vision Transformer.md",
-                "mode": "preview",
+                "file": "_templates/Zotero Integration Template.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Vision Transformer"
+              "title": "Zotero Integration Template"
             }
           }
         ]
@@ -182,8 +182,9 @@
   },
   "active": "12f792442dc81c02",
   "lastOpenFiles": [
-    "_references/_literatures/@dosovitskiy2021.md",
+    "_templates/literature-source-template.md",
     "Vision Transformer.md",
+    "_references/_literatures/@dosovitskiy2021.md",
     "Attention and Transformers.md",
     "MassiveActivations.md",
     "Generative AI with Large Language Models.md",

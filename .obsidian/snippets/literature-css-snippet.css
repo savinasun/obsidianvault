@@ -1,0 +1,135 @@
+/* literature-sources.css */
+/* Enhanced styling for literature notes in Obsidian */
+
+/* Title styling */
+.markdown-source-view.mod-cm6 .HyperMD-header-1,
+.markdown-rendered h1 {
+  color: #5d7fff;
+  border-bottom: 2px solid #5d7fff;
+  padding-bottom: 4px;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+/* Metadata section */
+.markdown-rendered h2:has(+ p:contains("Author")),
+.markdown-rendered h2:contains("Metadata") {
+  color: #888888;
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 3px;
+}
+
+/* Metadata fields styling */
+.markdown-rendered p:contains("Author"),
+.markdown-rendered p:contains("Year"),
+.markdown-rendered p:contains("Publisher"),
+.markdown-rendered p:contains("DOI"),
+.markdown-rendered p:contains("Citation") {
+  font-family: var(--font-monospace);
+  padding-left: 10px;
+  border-left: 3px solid #dddddd;
+  margin-bottom: 5px;
+}
+
+/* Section headings */
+.markdown-rendered h2 {
+  color: #50839e;
+  font-size: 1.3em;
+  margin-top: 25px;
+  border-bottom: 1px dashed #50839e;
+  display: inline-block;
+}
+
+/* Quotes styling */
+.markdown-rendered blockquote {
+  border-left: 3px solid #f1c40f !important;
+  background-color: rgba(241, 196, 15, 0.1);
+  padding: 12px 15px;
+  margin: 15px 0;
+  border-radius: 0 5px 5px 0;
+  font-style: italic;
+}
+
+/* Lists in Key Points, Concepts, etc. */
+.markdown-rendered h2:contains("Key Points") + ul li,
+.markdown-rendered h2:contains("Concepts") + ul li,
+.markdown-rendered h2:contains("Critiques") + ul li,
+.markdown-rendered h2:contains("Questions") + ul li {
+  margin-bottom: 5px;
+  padding-left: 5px;
+}
+
+/* Connections section - Link styling */
+.markdown-rendered h2:contains("Connections") + ul li a.internal-link {
+  color: #7f5de6;
+  font-weight: 500;
+  text-decoration: none;
+  background-color: rgba(127, 93, 230, 0.1);
+  padding: 2px 5px;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+.markdown-rendered h2:contains("Connections") + ul li a.internal-link:hover {
+  background-color: rgba(127, 93, 230, 0.2);
+}
+
+/* Personal Rating stars */
+.markdown-rendered h2:contains("Personal Rating") + p {
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  color: #f39c12;
+}
+
+/* Tags styling in YAML frontmatter */
+.cm-s-obsidian span.cm-tag {
+  color: #e17055 !important;
+}
+
+/* Status tag styling */
+.frontmatter-container .tag[href*="unread"] {
+  background-color: #e74c3c !important;
+  color: white !important;
+}
+
+.frontmatter-container .tag[href*="reading"] {
+  background-color: #f39c12 !important;
+  color: white !important;
+}
+
+.frontmatter-container .tag[href*="completed"] {
+  background-color: #27ae60 !important;
+  color: white !important;
+}
+
+/* Priority tag styling */
+.frontmatter-container .tag[href*="high"] {
+  background-color: #d63031 !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+.frontmatter-container .tag[href*="medium"] {
+  background-color: #fdcb6e !important;
+  color: #333 !important;
+}
+
+.frontmatter-container .tag[href*="low"] {
+  background-color: #81ecec !important;
+  color: #333 !important;
+}
+
+/* Print-friendly adjustments */
+@media print {
+  .markdown-rendered h1,
+  .markdown-rendered h2 {
+    break-after: avoid;
+  }
+  
+  .markdown-rendered blockquote {
+    background-color: #f9f9f9 !important;
+    border-left: 3px solid #777 !important;
+  }
+}
