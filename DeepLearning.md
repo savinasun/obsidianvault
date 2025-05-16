@@ -19,17 +19,15 @@ Joint State Method: Optimal Control 1960s - Backpropgation
 
 - Sigmoid
     
-- softmax: a function converts a set of numbers to a set of probabilities sum up to 1
+- Softmax: a function converts a set of numbers to a set of probabilities sum up to 1
     
-    softmax amplifies the variance of high variance vector
+    Softmax tends to amplify the variances of high variance vectors
     
 - Tanh
-    
-    - tanh is superior than sigmoid in near all aspects, so don’t use sigmoid unless it is the output layer
+    - Tanh is superior than Sigmoid in near all aspects, so don’t use sigmoid unless it is the output layer
     - $tanh’(x) = 1 - tanh^2(x)$
 - ReLu
-    
-    - the most commonly used activation function, if not sure what to use, just use it; it is fast for learning since there is no gradient vanish as the output closes to 1
+    - The most commonly used activation function, if not sure what to use, just use it; it is fast for learning since there is no gradient vanish as the output closes to 1
     - LeNet uses sigmoid, AlexNet uses ReLu
 
 ### Initialization Methods
@@ -135,7 +133,7 @@ Joint State Method: Optimal Control 1960s - Backpropgation
     - By using a larger mini batch size, the regularization effect is reduced.
     - Inverted Dropout, Gaussian dropout, Dropout Connect, Variational Dropout, etc.
     
-- ## Stochastic Depth
+- Stochastic Depth
     
 - Data Augmentation
     
