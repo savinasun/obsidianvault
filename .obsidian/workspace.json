@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "664d41c1a1cf9b38",
+        "id": "b6ecbe1968c1c817",
         "type": "tabs",
         "children": [
           {
-            "id": "a3b563097676c017",
+            "id": "454eb11a2aced0b8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "_references/_literatures/@vaswaniAttentionAllYou2023.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "@vaswaniAttentionAllYou2023"
             }
           }
         ]
@@ -201,8 +205,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "feb9ad2b5567d3d1",
+  "active": "454eb11a2aced0b8",
   "lastOpenFiles": [
+    "[Full.md",
     "_references/_literatures/@vaswaniAttentionAllYou2023.md",
     "_templates/literature-source-template.md",
     "<!-- Figure filename from Zotero attachment -->.md",
