@@ -19,17 +19,15 @@ Joint State Method: Optimal Control 1960s - Backpropgation
 
 - Sigmoid
     
-- softmax: a function converts a set of numbers to a set of probabilities sum up to 1
+- Softmax: a function converts a set of numbers to a set of probabilities sum up to 1
     
-    softmax amplifies the variance of high variance vector
+    Softmax tends to amplify the variances of high variance vectors
     
 - Tanh
-    
-    - tanh is superior than sigmoid in near all aspects, so don’t use sigmoid unless it is the output layer
+    - Tanh is superior than Sigmoid in near all aspects, so don’t use sigmoid unless it is the output layer
     - $tanh’(x) = 1 - tanh^2(x)$
 - ReLu
-    
-    - the most commonly used activation function, if not sure what to use, just use it; it is fast for learning since there is no gradient vanish as the output closes to 1
+    - The most commonly used activation function, if not sure what to use, just use it; it is fast for learning since there is no gradient vanish as the output closes to 1
     - LeNet uses sigmoid, AlexNet uses ReLu
 
 ### Initialization Methods
@@ -110,41 +108,36 @@ Joint State Method: Optimal Control 1960s - Backpropgation
 
 [Regularization techniques for training deep neural networks | AI Summer](https://theaisummer.com/regularization/)
 
-- Loss Function Modifications
-    
+- **Loss Function Modifications**
     - L2 regularization:
         - Weights end up smaller ("weight decay"):
             - Weights are pushed to smaller values.
     - L1 regularization
     - Elastic Net
-- Entropy Regularization
-    
+- **Entropy Regularization**
     - bayesian models: forces the output probability distribution towards uniform distribution to reduce bias
     - applies in reinforcement learning
-    
-- Label Smoothing
-    
+- **Label Smoothing**
     - inject randomness/softness to the output labels, especially in classification tasks
-- Dropout (Invert Dropout)
-    
-    [[Hinton et al., 2014](https://jmlr.org/papers/v15/srivastava14a.html), **Dropout: A Simple Way to Prevent Neural Networks from Overfitting]**
-    
+- **Dropout (Invert Dropout)**
+    + []
+    + [[Hinton et al., 2014](https://jmlr.org/papers/v15/srivastava14a.html), **Dropout: A Simple Way to Prevent Neural Networks from Overfitting]**
     - A **common mistake** when using dropout is to use it both in training and testing. You should **use dropout** (randomly eliminate nodes) **only in training**.
     - Apply dropout both during forward and backward propagation.
     - During training time, divide each dropout layer by keep_prob to keep the same expected value for the activations.
     - By using a larger mini batch size, the regularization effect is reduced.
     - Inverted Dropout, Gaussian dropout, Dropout Connect, Variational Dropout, etc.
     
-- ## Stochastic Depth
+- **Stochastic Depth**
     
-- Data Augmentation
+- **Data Augmentation**
     
     - by applying transformations like rotation, flipping, cropping, or scaling to images (or similar manipulations in other data types), data augmentation creates a more diverse training set, forcing the model to learn robust features that are not specific to the original data orientation or appearance.
-- Early stopping / Orthogonalization
+- **Early stopping / Orthogonalization**
     
     ![[Pasted image 20250513110300.png]]
     
-- Batch Normalization
+- **Batch Normalization**
     
     ![[Pasted image 20250513110318.png]]
     
@@ -166,7 +159,8 @@ Joint State Method: Optimal Control 1960s - Backpropgation
 
 ### **Optimization Algorithms**
 
-- Momentum: Mini-batch gradient descent makes a parameter update after seeing just a subset of examples, the direction of the update has some variance, and so the path taken by mini-batch gradient descent will "oscillate" toward convergence. Using momentum can reduce these oscillations.
+- **Momentum**
+	- Mini-batch gradient descent makes a parameter update after seeing just a subset of examples, the direction of the update has some variance, and so the path taken by mini-batch gradient descent will "oscillate" toward convergence. Using momentum can reduce these oscillations.
     - exponential moving average
     - Bias correction
 - RMSprop: Jeffrey Hinton
@@ -187,7 +181,7 @@ Local Optima & Saddle Point
 
 - **LeNet-5 (1989)**:
     
-    [LeCun et al., 1998. Gradient-based learning applied to document recognition]
+    + [LeCun et al., 1998. Gradient-based learning applied to document recognition]
     
     - ~60k parameters
         
@@ -623,197 +617,6 @@ Two sources of Knowledge
         
         ![Screenshot 2025-05-06 at 21.49.36.png](attachment:462a66a1-6393-4d7f-b299-a4e24e6dc241:Screenshot_2025-05-06_at_21.49.36.png)
         
-
-## Attention and Transformers
-
-### Transformer Network Architecture
-
-[[Vaswani, et al., 2017.](https://arxiv.org/abs/1706.03762) Attention is all you need.]
-
-- **Encoder-Decoder Architecture**
-    
-    weights are not necessarily shared across the encoder and decoder, when the input distribution are different from the output distribution, we should use an encoder-decoder architecture
-    
-    ![image.png](attachment:801a4205-304d-4501-a181-5834b5da1005:image.png)
-    
-    - encoder: train simple word embeddings to **context-aware embeddings**
-        - two sublayers: a multi-head attention layer + a dense layer
-        - residual connection for each sublayer + post-LN → evolve to pre-LN nowadays
-    - decoder:
-        - three sublayers: masked multi-head attention layer (solve the problem of data-leakage) + a multi-head cross-attention layer + a dense layer
-    - parallel training + sequential inferencing (auto-regressive)
-    - pre-train phase + fine-tune phase
-- **Self-Attention (Scaled Dot-Product Attention)**
-    
-    ![image.png](attachment:66f3c95f-5509-47df-9c8a-915273966418:image.png)
-    
-    - QKV attention function
-        
-        → calculate the scaled dot-product similarities among each input tokens
-        
-        → convert these similarities into percentages by softmax function
-        
-        → calculate the self-attention score by using these percentages to weight the values embedding
-        
-    - scale factor: d_k represents the dimension of matrix K, **note that for logits to be input into softmax function, its variance should be approx to 1**
-        
-    - scaled dot-product attention V.S. additive attention
-        
-- **Masked Self-Attention**
-    
-    ![Screenshot 2025-05-08 at 16.32.22.png](attachment:9c407e2d-8307-40a9-ac9a-94b24f272878:Screenshot_2025-05-08_at_16.32.22.png)
-    
-- **Cross-Attention (Encoder-Decoder Attention):**
-    
-    K,V from encoder
-    
-    Q from decoder
-    
-    → calculate encoder-decoder attention scores to generate text (these are from the Seq2Seq models)
-    
-    - **Multi-Modal Models**: encoder trained on images, speech → context aware embeddings → text based decoder to generate captions or audio-prompt responses
-    
-- **Multi-Head Attention**
-    
-    - d_model: dimension of the embedding vector
-    - n_head * d_k = d_model
-    
-    ![[Pasted image 20250513121109.png]]
-
-- **Layer Normalization**
-    
-    [[Ba et al., 2016](http://arxiv.org/pdf/1607.06450v1), Layer Normalization]
-    
-    - Layer Normalization V.S. Batch Normalization:
-        
-        notice that for sequence models, it is more common to use LN, since there could be a varying sequence size
-        
-    - modern transformer architecture → pre-layer normalization
-        
-        Post-LN requires a **LR warm-up stage** for the optimizer to perform well
-        
-        Pre-LN: requires a final layer normalization right before prediction
-        
-	    ![[Pasted image 20250513120914.png]]
-    
-    - according to [[Xiong et al., 2020](https://arxiv.org/pdf/1908.03265), On Layer Normalization in the Transformer Architecture], the scale of the activations in the post-LN transformer keeps to be the same in activations
-
-in post-LN transformer, the expected gradients of the parameters near the output layer are large at initialization → unstable training using large LR
-
-- _If_ X ∈ R^d _is a Gaussian vector,_ X ∼ N(0, σ^2 I^d)_, then_ E(||_ReLU_(X)||^2) = 1/2 σ^2 d*.*
-    
-- **Positional Encoding**
-    
-- Computation complexity + Long Range Dependencies
-    
-    ![[Pasted image 20250513121037.png]]
-    
-    - n << d: self-attention outperforms
-- Interpretability:
-    
-    - different heads perform different tasks
-- Examples:
-    
-    - GPT-3: 175 billion parameters, 350 GB, 96 heads
-    - GPT-4: 1.8 trillion parameters, 3.6 TB
-    - LLaMA
-        - 7B to 65B parameters
-        - main differences from original transformer architecture
-            - RMSNorm normalizing function is used to improve the training stability, by normalizing the input of each transformer sub-layer, instead of normalizing the output.
-            - The ReLU non-linearity is replaced by the SwiGLU activation function to improve performance.
-            - Absolute positional embeddings are removed and instead rotary positional embeddings (RoPE) are added at each layer of the network.
-- Local/Restricted Attention???
-    
-- Making inference less sequential
-    
-
-### Vision Transformer (ViT)
-
-[[Dosovitskiy, et al., 2021](https://arxiv.org/abs/2010.11929) An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]
-
-![[Pasted image 20250513120824.png]]
-
-- Image Patch Tokenization
-    
-    - effective sequence length: N = HW / P^2
-    - resolution of each image patch (P,P)
-    - model dimension: D
-- Pre-train on large image dataset (JFT300M), fine-tune to smaller downstream tasks
-    
-    - for mid-sized image dataset, inductive bias plays an important role, it is not the same case on large training datasets
-    - better fine-tune on higher resolution than pre-training:
-        - same patch size, larger effective sequence length
-            
-        - 2D interpolation of the pre-trained position embeddings, according to original position in image
-            
-            **← the only inductive bias injected in ViT**
-            
-- Learnable 1d position embeddings
-    
-    - not observe significant gains from using 2D-aware position embeddings
-
-## Generative AI with Large Language Models
-
--  **Generative Pre-Training Transformer Models**
-	
-	- GPT
-	    
-	    [[Radford et al., 2018](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf), [Improving Language Understanding by Generative Pre-Training](https://paperswithcode.com/paper/improving-language-understanding-by)]
-	    
-	    - a multi-layer transformer decoder
-	        
-	    - pre-train on large unlabeled data (SSL) + supervised fine-tune on task-specific data
-	        
-	    - self-supervised learning + next-token prediction
-	        
-	        ![[Pasted image 20250513120752.png]]
-	        
-	    - ~110M parameters
-	        
-	- **BERT (Bidirectional Encoder Representations from Transformers)**
-	    
-	    [[Devlin et al., 2018](https://arxiv.org/abs/1810.04805), [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://paperswithcode.com/paper/bert-pre-training-of-deep-bidirectional)]
-	    
-	    - bidirectional encoder → an encoder-only transformer model
-	    - pre-train on large unlabeled data + supervised fine-tune on task-specific data
-	        - randomly masks some of the tokens from the input;
-	        - pre-train a deep bidirectional transformer
-	        - next-sentence prediction task
-	    - BERT-Base: ~110M parameters
-	    - BERT-Large: ~340M parameters
-	    
-	- **GPT-2:**
-	    
-	    [[Radford et al., 2019](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf), [Language Models are Unsupervised Multitask Learners](https://paperswithcode.com/paper/language-models-are-unsupervised-multitask)]
-	    
-	    - ~1.5 billion parameters
-	    - a **zero-shot** learner
-	    
-	- **GPT-3:**
-	    
-	    [[Brown et al., 2020](https://arxiv.org/abs/2005.14165v4), [Language Models are Few-Shot Learners](https://paperswithcode.com/paper/language-models-are-few-shot-learners)]
-	    
-	    - ~175 billion parameters
-	    - no fine-tuning + no gradient update in few-shot learning
-	    - as you increase the layers, the width per layer should also be increased
-	    - for smaller models, batch size should not be too big to prevent overfitting
-	    
-	- **InstructGPT**
-	    
-	- **GPT-3.5 (`text-davinci-003`)**
-	    
-	- **ChatGPT**
-	    
-	    - a GPT-3.5 fine-tuned on human instructions by RLHF → a decoder-only transformer model
-
-In-Context Learning (ICL) - Zero shot inference
-
-
-Zero-Shot Learning V.S. One-Shot Learning V.S. Few-Shot Learning
-
-- One-shot learning example: face-recognition task
-
-[https://www.geeksforgeeks.org/zero-shot-vs-one-shot-vs-few-shot-learning/](https://www.geeksforgeeks.org/zero-shot-vs-one-shot-vs-few-shot-learning/)
 
 
 Manifold Hypothesis

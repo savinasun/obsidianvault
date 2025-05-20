@@ -4,21 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "9406a08e1f4e0092",
+        "id": "0442c664cafe0465",
         "type": "tabs",
         "children": [
           {
-            "id": "e9df1041d8050b80",
+            "id": "c143d52c7795a3c7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "DeepLearning.md",
-                "mode": "source",
-                "source": false
+                "aFile": "_templates/Zotero Integration Template.md",
+                "bFile": "_templates/Zotero Integration Template.md",
+                "aRef": "HEAD",
+                "bRef": ""
               },
-              "icon": "lucide-file",
-              "title": "DeepLearning"
+              "icon": "diff",
+              "title": "Diff: Zotero Integration Template"
             }
           }
         ]
@@ -180,10 +181,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e9df1041d8050b80",
+  "active": "c143d52c7795a3c7",
   "lastOpenFiles": [
-    "DeepLearning.md",
+    "_templates/literature-source-template.md",
     "conflict-files-obsidian-git.md",
+    "Attention and Transformers.md",
+    "DeepLearning.md",
+    "Vision Transformer.md",
+    "Generative AI with Large Language Models.md",
     "_templates/Zotero Integration Template.md",
     "_templates",
     "_images/Pasted image 20250513121109.png",
@@ -197,7 +202,6 @@
     "_images/Pasted image 20250513110707.png",
     "_images/Pasted image 20250513110615.png",
     "_images",
-    "Generative AI with Large Language Models.md",
     "MassiveActivations.md",
     "Images"
   ]
