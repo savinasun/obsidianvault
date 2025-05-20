@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "05b0777537400a78",
+        "id": "ceea05e2323b3f5e",
         "type": "tabs",
         "children": [
           {
-            "id": "0f7b0cf4546aef70",
+            "id": "6161a070d1b9e693",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -37,6 +37,7 @@
           {
             "id": "b8e2a895956801b3",
             "type": "tabs",
+            "dimension": 43.66812227074236,
             "children": [
               {
                 "id": "31f305f0b8239a5f",
@@ -83,6 +84,7 @@
           {
             "id": "3e79e39400c98437",
             "type": "tabs",
+            "dimension": 56.33187772925764,
             "children": [
               {
                 "id": "3845b597dd0b9cdf",
@@ -101,7 +103,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 549.5
+    "width": 598.5
   },
   "right": {
     "id": "c823ba97a1de4d3e",
@@ -203,16 +205,18 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "0f7b0cf4546aef70",
+  "active": "6161a070d1b9e693",
   "lastOpenFiles": [
-    "_templates/literature-source-template.md",
-    "_templates/literature-source-template 1.md",
     "_references/_literatures/@vaswaniAttentionAllYou2023.md",
+    "_templates/literature-source-template.md",
+    "<!-- Figure filename from Zotero attachment -->.md",
+    "!-- Add arxiv link --.md",
     "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-6-x104-y597.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-5-x104-y560.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-4-x206-y296.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-3-x173-y371.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md",
+    "_templates/literature-source-template 1.md",
     "_images/Pasted image 20250513105559.png",
     "_images/Pasted image 20250513105622.png",
     "_images/Pasted image 20250513110154.png",
@@ -220,7 +224,6 @@
     "_images/Pasted image 20250513110442.png",
     "_images/Pasted image 20250513110544.png",
     "Attention and Transformers.md",
-    "!-- Add arxiv link --.md",
     "Vision Transformer.md",
     "README.md",
     "Generative AI with Large Language Models.md",

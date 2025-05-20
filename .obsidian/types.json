@@ -3,7 +3,8 @@
     "aliases": "aliases",
     "cssclasses": "multitext",
     "tags": "tags",
-    "year": "datetime",
-    "date-added": "date"
+    "year": "text",
+    "date-added": "text",
+    "status": "checkbox"
   }
 }

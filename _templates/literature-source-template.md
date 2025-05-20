@@ -2,41 +2,24 @@
 title: "{{title}}"
 citekey: "{{citekey}}"
 authors: "{{authors}}"
-year:
-  "{ year }": 
-venue: "{{publicationTitle}}"
-tags:
-  - cs-paper
-status: unread
-date-added:
-  "{ date }": 
-zotero-link: "{{zoteroSelectURI}}"
-arxiv: ""
-code: ""
+year: '{{date | format("YYYY")}}'
+tags: []
+status: false
+zotero-link: "{{pdfZoteroLink}}"
+arxiv: "{{url}}"
+version: "{{version}}"
 ---
 
 # {{title}}
 
-## Paper Info
-- **Authors**: {{authors}}
-- **Year**: {{year}}
-- **Venue**: {{publicationTitle}}
-- **Links**: 
+> [!LINK]
+
   - [PDF]({{pdfZoteroLink}})
-  - [arXiv](<!-- Add arxiv link -->)
-  - [Code Repository](<!-- Add code repo link -->)
-  - [Zotero Entry]({{zoteroSelectURI}})
-- **Citation**: {{bibliography}}
+  - [Attachment]({{firstAttachmentLink}})
+  - [Code Repository]({{repository}})
 
 ## Abstract
-{{abstractNote}}
-
-## Summary
-<!-- One paragraph summary of the key contribution -->
-
-## Key Methods & Techniques
-- 
-- 
+{{abstractNote}} 
 
 ## Main Results
 - 
@@ -65,3 +48,4 @@ code: ""
 - 
 - 
 
+### Imported: {{importDate | format("YYYY-MM-DD h:mm a")}}

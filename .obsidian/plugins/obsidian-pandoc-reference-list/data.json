@@ -4,7 +4,8 @@
   "zoteroGroups": [
     {
       "id": 1,
-      "name": "My Library"
+      "name": "My Library",
+      "lastUpdate": 1747711700274
     }
   ],
   "renderCitations": true,

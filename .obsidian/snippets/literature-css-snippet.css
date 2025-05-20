@@ -1,5 +1,5 @@
 /* cs-papers-zotero.css */
-/* Styling for CS conference papers with Zotero integration */
+/* Simplified styling for CS conference papers with Zotero integration */
 
 /* Paper Title styling */
 .markdown-source-view.mod-cm6 .HyperMD-header-1,
@@ -20,11 +20,10 @@
   border-bottom: 1px solid #ecf0f1;
 }
 
-/* Paper Info fields styling */
+/* Paper Info list items */
 .markdown-rendered h2:contains("Paper Info") + ul li {
-  font-family: var(--font-monospace);
-  padding-left: 10px;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
+  line-height: 1.5;
 }
 
 /* Links in Paper Info */
@@ -34,8 +33,6 @@
   border-radius: 3px;
   color: #3498db;
   text-decoration: none;
-  font-family: var(--font-interface);
-  font-size: 0.9em;
   transition: background-color 0.2s ease;
 }
 
@@ -67,7 +64,7 @@
 .markdown-rendered h2:contains("Main Results") + ul li,
 .markdown-rendered h2:contains("Implementation") + ul li {
   margin-bottom: 8px;
-  padding-left: 5px;
+  line-height: 1.5;
 }
 
 /* Important Figures section */
@@ -81,20 +78,14 @@
 }
 
 /* Zotero Annotations styling */
-.markdown-rendered h2:contains("Zotero Annotations") + blockquote {
+.markdown-rendered h2:contains("Zotero Annotations") + blockquote,
+.markdown-rendered h2:contains("Zotero Annotations") + p + blockquote {
   border-left: 3px solid #9b59b6 !important;
   background-color: rgba(155, 89, 182, 0.08);
   padding: 10px 15px;
   margin: 10px 0;
   border-radius: 0 5px 5px 0;
   font-style: italic;
-}
-
-/* Annotation notes (following blockquotes) */
-.markdown-rendered h2:contains("Zotero Annotations") + blockquote + ul li {
-  margin-left: 20px;
-  margin-bottom: 18px;
-  color: #444;
 }
 
 /* Connections section with link styling */
@@ -139,6 +130,11 @@
 .tag[href*="completed"] {
   background-color: #2ecc71 !important;
   color: white !important;
+}
+
+/* YAML properties in edit mode */
+.cm-s-obsidian .cm-hmd-frontmatter {
+  color: #7f8c8d;
 }
 
 /* Print-friendly adjustments */
