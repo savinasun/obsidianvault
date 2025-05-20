@@ -11,7 +11,8 @@
       "outputPathTemplate": "_references/_literatures/@{{citekey}}.md",
       "imageOutputPathTemplate": "_references/_literatures/_attachments_{{citekey}}.md",
       "imageBaseNameTemplate": "image",
-      "templatePath": "_templates/Zotero Integration Template.md"
+      "templatePath": "_templates/Zotero Integration Template.md",
+      "cslStyle": "journal-of-universal-computer-science"
     }
   ],
   "citeSuggestTemplate": "[[{{citekey}}]]",
