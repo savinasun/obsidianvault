@@ -1,9 +1,15 @@
 {
   "pathToPandoc": "",
   "tooltipDelay": 400,
-  "zoteroGroups": [],
+  "zoteroGroups": [
+    {
+      "id": 1,
+      "name": "My Library"
+    }
+  ],
   "renderCitations": true,
   "renderCitationsReadingMode": true,
   "renderLinkCitations": true,
-  "cslStylePath": "./.obsidian/snippets/journal-of-machine-learning-for-modeling-and-computing-of-machine-learning-for-modeling-and-computing.csl"
+  "cslStylePath": "./.obsidian/snippets/journal-of-machine-learning-for-modeling-and-computing-of-machine-learning-for-modeling-and-computing.csl",
+  "pullFromZotero": true
 }

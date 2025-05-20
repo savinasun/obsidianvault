@@ -1,12 +1,15 @@
 ---
 title: "{{title}}"
-citekey: "{{citekey}}" 
-authors: "{{author}}"
-year: {{year}}
+citekey: "{{citekey}}"
+authors: "{{authors}}"
+year:
+  "{ year }": 
 venue: "{{publicationTitle}}"
-tags: [cs-paper, {{tags}}]
-status: unread/reading/completed
-date-added: "{{date:YYYY-MM-DD}}"
+tags:
+  - cs-paper
+status: unread
+date-added:
+  "{ date }": 
 zotero-link: "{{zoteroSelectURI}}"
 arxiv: ""
 code: ""
@@ -15,14 +18,15 @@ code: ""
 # {{title}}
 
 ## Paper Info
-- **Authors**: {{author}}
+- **Authors**: {{authors}}
 - **Year**: {{year}}
 - **Venue**: {{publicationTitle}}
 - **Links**: 
-  - [PDF]({{attachment}})
+  - [PDF]({{pdfZoteroLink}})
   - [arXiv](<!-- Add arxiv link -->)
   - [Code Repository](<!-- Add code repo link -->)
   - [Zotero Entry]({{zoteroSelectURI}})
+- **Citation**: {{bibliography}}
 
 ## Abstract
 {{abstractNote}}
@@ -44,11 +48,7 @@ code: ""
 <!-- Brief description of what this figure shows -->
 
 ## Zotero Annotations
-<!-- Auto-imported from Zotero -->
-{{annotations}}
-<!-- OR manually add as below format -->
-> "Quote from paper" (p. X)
-- My note about this quote
+{{notes}}
 
 ## Implementation Details
 <!-- Key implementation details, algorithms, hyperparameters -->
