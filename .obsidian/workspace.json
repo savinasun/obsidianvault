@@ -4,22 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "0442c664cafe0465",
+        "id": "d8262ff73043bb48",
         "type": "tabs",
         "children": [
           {
-            "id": "c143d52c7795a3c7",
+            "id": "6ef289707dda42b2",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "_templates/Zotero Integration Template.md",
-                "bFile": "_templates/Zotero Integration Template.md",
-                "aRef": "HEAD",
-                "bRef": ""
+                "file": "Vision Transformer.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: Zotero Integration Template"
+              "icon": "lucide-file",
+              "title": "Vision Transformer"
             }
           }
         ]
@@ -181,12 +180,20 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c143d52c7795a3c7",
+  "active": "6ef289707dda42b2",
   "lastOpenFiles": [
-    "_templates/literature-source-template.md",
-    "conflict-files-obsidian-git.md",
+    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-6-x104-y597.png",
+    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-5-x104-y560.png",
+    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-4-x206-y296.png",
+    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-3-x173-y371.png",
+    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md",
+    "_references/_literatures",
+    "_references",
+    "README.md",
     "Attention and Transformers.md",
     "DeepLearning.md",
+    "_templates/literature-source-template.md",
+    "conflict-files-obsidian-git.md",
     "Vision Transformer.md",
     "Generative AI with Large Language Models.md",
     "_templates/Zotero Integration Template.md",
@@ -198,9 +205,6 @@
     "_images/Pasted image 20250513120752.png",
     "_images/Pasted image 20250513110833.png",
     "_images/Pasted image 20250513110816.png",
-    "_images/Pasted image 20250513110720.png",
-    "_images/Pasted image 20250513110707.png",
-    "_images/Pasted image 20250513110615.png",
     "_images",
     "MassiveActivations.md",
     "Images"
