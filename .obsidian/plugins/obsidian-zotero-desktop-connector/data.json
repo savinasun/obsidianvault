@@ -4,7 +4,13 @@
   "pdfExportImageDPI": 120,
   "pdfExportImageFormat": "jpg",
   "pdfExportImageQuality": 90,
-  "citeFormats": [],
+  "citeFormats": [
+    {
+      "name": "Journal of Machine Learning",
+      "format": "formatted-citation",
+      "cslStyle": "journal-of-universal-computer-science"
+    }
+  ],
   "exportFormats": [
     {
       "name": "Literature Source Note",
@@ -12,7 +18,7 @@
       "imageOutputPathTemplate": "_references/_literatures/_attachments_{{citekey}}.md",
       "imageBaseNameTemplate": "image",
       "templatePath": "_templates/literature-source-template.md",
-      "cslStyle": "Journal of Machine Learning for Modeling and Computing"
+      "cslStyle": "journal-of-universal-computer-science"
     }
   ],
   "citeSuggestTemplate": "[[{{citekey}}]]",
