@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "0280bd3d0626a18d",
+        "id": "05b0777537400a78",
         "type": "tabs",
         "children": [
           {
-            "id": "4f72816f38100870",
+            "id": "fe401c1ac0e65d33",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "_templates/literature-source-template.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "literature-source-template"
             }
           }
         ]
@@ -27,54 +31,77 @@
     "type": "split",
     "children": [
       {
-        "id": "b8e2a895956801b3",
-        "type": "tabs",
+        "id": "d6c6e0755fd1c88b",
+        "type": "split",
         "children": [
           {
-            "id": "31f305f0b8239a5f",
-            "type": "leaf",
-            "state": {
-              "type": "file-explorer",
-              "state": {
-                "sortOrder": "alphabetical",
-                "autoReveal": false
+            "id": "b8e2a895956801b3",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "31f305f0b8239a5f",
+                "type": "leaf",
+                "state": {
+                  "type": "file-explorer",
+                  "state": {
+                    "sortOrder": "alphabetical",
+                    "autoReveal": false
+                  },
+                  "icon": "lucide-folder-closed",
+                  "title": "Files"
+                }
               },
-              "icon": "lucide-folder-closed",
-              "title": "Files"
-            }
+              {
+                "id": "f4bdddf87b272eb0",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  },
+                  "icon": "lucide-search",
+                  "title": "Search"
+                }
+              },
+              {
+                "id": "278f5a01f600e4d2",
+                "type": "leaf",
+                "state": {
+                  "type": "bookmarks",
+                  "state": {},
+                  "icon": "lucide-bookmark",
+                  "title": "Bookmarks"
+                }
+              }
+            ]
           },
           {
-            "id": "f4bdddf87b272eb0",
-            "type": "leaf",
-            "state": {
-              "type": "search",
-              "state": {
-                "query": "",
-                "matchingCase": false,
-                "explainSearch": false,
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical"
-              },
-              "icon": "lucide-search",
-              "title": "Search"
-            }
-          },
-          {
-            "id": "278f5a01f600e4d2",
-            "type": "leaf",
-            "state": {
-              "type": "bookmarks",
-              "state": {},
-              "icon": "lucide-bookmark",
-              "title": "Bookmarks"
-            }
+            "id": "3e79e39400c98437",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "3845b597dd0b9cdf",
+                "type": "leaf",
+                "state": {
+                  "type": "zdc-debug",
+                  "state": {},
+                  "icon": "gear",
+                  "title": "Zotero Data Explorer"
+                }
+              }
+            ]
           }
-        ]
+        ],
+        "direction": "vertical"
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 766.5
   },
   "right": {
     "id": "c823ba97a1de4d3e",
@@ -176,36 +203,39 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "feb9ad2b5567d3d1",
+  "active": "fe401c1ac0e65d33",
   "lastOpenFiles": [
-    "conflict-files-obsidian-git.md",
-    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-6-x104-y597.png",
-    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-5-x104-y560.png",
-    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-4-x206-y296.png",
-    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-3-x173-y371.png",
+    "_images/Pasted image 20250513105559.png",
+    "_images/Pasted image 20250513105622.png",
+    "_images/Pasted image 20250513110154.png",
+    "_images/Pasted image 20250513110318.png",
+    "_images/Pasted image 20250513110442.png",
+    "_images/Pasted image 20250513110544.png",
+    "_images/Pasted image 20250513110707.png",
+    "_images/Pasted image 20250513110816.png",
+    "_images/Pasted image 20250513110833.png",
+    "_images/Pasted image 20250513120824.png",
+    "_images/Pasted image 20250513120914.png",
     "_templates/literature-source-template.md",
+    "Attention and Transformers.md",
+    "!-- Add arxiv link --.md",
+    "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md",
+    "Vision Transformer.md",
+    "README.md",
+    "Generative AI with Large Language Models.md",
+    "MassiveActivations.md",
+    "conflict-files-obsidian-git.md",
     "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md",
     "_references/_literatures/@dosovitskiy2021.md",
     "_templates/Zotero Integration Template.md",
-    "Vision Transformer.md",
-    "Attention and Transformers.md",
-    "MassiveActivations.md",
-    "Generative AI with Large Language Models.md",
     "DeepLearning.md",
     "_references/_literatures/@srivastavaDropoutSimpleWaya.md",
-    "README.md",
     "_templates/Zotero Integration Template 1.md",
     "_references/_literatures/_attachments",
     "_templates",
     "Templates",
     "_references/_literatures",
     "_references",
-    "_images/Pasted image 20250513121109.png",
-    "_images/Pasted image 20250513110610.png",
-    "_images/Pasted image 20250513110816.png",
-    "_images/Pasted image 20250513121037.png",
-    "_images/Pasted image 20250513120914.png",
-    "_images/Pasted image 20250513110707.png",
     "_images"
   ]
 }
