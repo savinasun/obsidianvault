@@ -26,6 +26,9 @@ version: "{{version}}"
 - 
 
 ## Important Figures
+> {%- for attachment in attachments | filterby("path", "endswith", ".png") %}
+> [===={{attachment.title}}====](====file://{{attachment.path | replace(" ", "%20"====)}}) {%- endfor -%}.
+
 <!-- Screenshot and brief description of key figures -->
 ![[<!-- Figure filename from Zotero attachment -->]]
 <!-- Brief description of what this figure shows -->
