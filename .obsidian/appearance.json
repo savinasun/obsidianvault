@@ -1,5 +1,7 @@
 {
   "enabledCssSnippets": [
     "literature-css-snippet"
-  ]
+  ],
+  "cssTheme": "Things",
+  "theme": "obsidian"
 }

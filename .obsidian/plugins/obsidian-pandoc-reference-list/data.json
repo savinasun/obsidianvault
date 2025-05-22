@@ -1,16 +1,16 @@
 {
-  "pathToPandoc": "",
+  "pathToPandoc": "/opt/homebrew/bin/pandoc",
   "tooltipDelay": 400,
   "zoteroGroups": [
     {
       "id": 1,
-      "name": "My Library",
-      "lastUpdate": 1747711700274
+      "name": "My Library"
     }
   ],
   "renderCitations": true,
   "renderCitationsReadingMode": true,
   "renderLinkCitations": true,
-  "cslStylePath": "./.obsidian/snippets/journal-of-machine-learning-for-modeling-and-computing-of-machine-learning-for-modeling-and-computing.csl",
+  "pathToBibliography": "/Users/shangwen/Library/Mobile Documents/com~apple~CloudDocs/Zotero Sync/My Library.bib",
+  "showCitekeyTooltips": true,
   "pullFromZotero": true
 }
