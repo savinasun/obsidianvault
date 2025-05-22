@@ -182,9 +182,12 @@
   },
   "active": "e602f138475d065b",
   "lastOpenFiles": [
+    "Attention and Transformers.md",
+    "MassiveActivations.md",
+    "_images/llama12_params.png",
+    "_images/Screenshot 2025-05-22 at 17.19.32.png",
     "_images/llama_encoder_architecture.png",
     "Generative AI and LLMs.md",
-    "Attention and Transformers.md",
     "Vision Transformer.md",
     "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-6-x104-y597.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-5-x104-y560.png",
@@ -195,7 +198,6 @@
     "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-6-x104-y597.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-5-x104-y560.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-4-x206-y296.png",
-    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-3-x173-y371.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md",
     "_references/_literatures",
     "_references",
@@ -205,9 +207,7 @@
     "conflict-files-obsidian-git.md",
     "_templates/Zotero Integration Template.md",
     "_templates",
-    "_images/Pasted image 20250513121109.png",
     "_images",
-    "MassiveActivations.md",
     "Images"
   ]
 }

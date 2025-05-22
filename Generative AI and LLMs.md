@@ -64,3 +64,5 @@
 	+ Self-Attention with KV Cache
 	+ Grouped Multi-Query Attention
 	+ SwissGLU in FFC
++ LLaMA 1 & 2 Params
+	![[llama12_params.png]]
