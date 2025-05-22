@@ -55,3 +55,12 @@
 
 [https://www.geeksforgeeks.org/zero-shot-vs-one-shot-vs-few-shot-learning/](https://www.geeksforgeeks.org/zero-shot-vs-one-shot-vs-few-shot-learning/)
 
+
+
++ LLaMA Architecture 
+	![[llama_encoder_architecture.png | 500]]
+	+ RMS Norm & Pre-Norm
+	+ Rotary Positional Encodings
+	+ Self-Attention with KV Cache
+	+ Grouped Multi-Query Attention
+	+ SwissGLU in FFC

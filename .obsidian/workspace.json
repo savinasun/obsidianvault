@@ -4,35 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "b6ecbe1968c1c817",
+        "id": "cf04c9f633afe91d",
         "type": "tabs",
         "children": [
           {
-            "id": "454eb11a2aced0b8",
+            "id": "e602f138475d065b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_templates/literature-source-template.md",
+                "file": "Generative AI and LLMs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "literature-source-template"
-            }
-          },
-          {
-            "id": "d39df86b646f1d6a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_references/_literatures/@vaswaniAttentionAllYou2023.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "@vaswaniAttentionAllYou2023"
+              "title": "Generative AI and LLMs"
             }
           }
         ]
@@ -45,79 +31,54 @@
     "type": "split",
     "children": [
       {
-        "id": "d6c6e0755fd1c88b",
-        "type": "split",
+        "id": "b8e2a895956801b3",
+        "type": "tabs",
         "children": [
           {
-            "id": "b8e2a895956801b3",
-            "type": "tabs",
-            "dimension": 43.66812227074236,
-            "children": [
-              {
-                "id": "31f305f0b8239a5f",
-                "type": "leaf",
-                "state": {
-                  "type": "file-explorer",
-                  "state": {
-                    "sortOrder": "alphabetical",
-                    "autoReveal": false
-                  },
-                  "icon": "lucide-folder-closed",
-                  "title": "Files"
-                }
+            "id": "31f305f0b8239a5f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
-              {
-                "id": "f4bdddf87b272eb0",
-                "type": "leaf",
-                "state": {
-                  "type": "search",
-                  "state": {
-                    "query": "",
-                    "matchingCase": false,
-                    "explainSearch": false,
-                    "collapseAll": false,
-                    "extraContext": false,
-                    "sortOrder": "alphabetical"
-                  },
-                  "icon": "lucide-search",
-                  "title": "Search"
-                }
-              },
-              {
-                "id": "278f5a01f600e4d2",
-                "type": "leaf",
-                "state": {
-                  "type": "bookmarks",
-                  "state": {},
-                  "icon": "lucide-bookmark",
-                  "title": "Bookmarks"
-                }
-              }
-            ]
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
           },
           {
-            "id": "3e79e39400c98437",
-            "type": "tabs",
-            "dimension": 56.33187772925764,
-            "children": [
-              {
-                "id": "3845b597dd0b9cdf",
-                "type": "leaf",
-                "state": {
-                  "type": "zdc-debug",
-                  "state": {},
-                  "icon": "gear",
-                  "title": "Zotero Data Explorer"
-                }
-              }
-            ]
+            "id": "f4bdddf87b272eb0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "278f5a01f600e4d2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
           }
-        ],
-        "direction": "vertical"
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 675.5
+    "width": 300
   },
   "right": {
     "id": "c823ba97a1de4d3e",
@@ -133,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_templates/Zotero Integration Template.md",
+                "file": "DeepLearning.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Zotero Integration Template"
+              "title": "Backlinks for DeepLearning"
             }
           },
           {
@@ -152,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_templates/Zotero Integration Template.md",
+                "file": "DeepLearning.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Zotero Integration Template"
+              "title": "Outgoing links from DeepLearning"
             }
           },
           {
@@ -181,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_templates/Zotero Integration Template.md",
+                "file": "DeepLearning.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Zotero Integration Template"
+              "title": "Outline of DeepLearning"
             }
           },
           {
@@ -205,56 +166,48 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
+      "templater-obsidian:Templater": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "obsidian-git:Open Git source control": false,
-      "templater-obsidian:Templater": false
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "454eb11a2aced0b8",
+  "active": "e602f138475d065b",
   "lastOpenFiles": [
-    "_references/_literatures/@vaswaniAttentionAllYou2023.md",
-    "_templates/literature-source-template.md",
-    "[Full.md",
-    "<!-- Figure filename from Zotero attachment -->.md",
-    "!-- Add arxiv link --.md",
+    "_images/llama_encoder_architecture.png",
+    "Generative AI and LLMs.md",
+    "Attention and Transformers.md",
+    "Vision Transformer.md",
     "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-6-x104-y597.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-5-x104-y560.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-4-x206-y296.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-3-x173-y371.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md",
-    "_templates/literature-source-template 1.md",
-    "_images/Pasted image 20250513105559.png",
-    "_images/Pasted image 20250513105622.png",
-    "_images/Pasted image 20250513110154.png",
-    "_images/Pasted image 20250513110318.png",
-    "_images/Pasted image 20250513110442.png",
-    "_images/Pasted image 20250513110544.png",
-    "Attention and Transformers.md",
-    "Vision Transformer.md",
-    "README.md",
-    "Generative AI with Large Language Models.md",
-    "MassiveActivations.md",
-    "conflict-files-obsidian-git.md",
+    "_references/_literatures/@vaswaniAttentionAllYou2023.md",
+    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-6-x104-y597.png",
+    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-5-x104-y560.png",
+    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-4-x206-y296.png",
+    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-3-x173-y371.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md",
-    "_references/_literatures/@dosovitskiy2021.md",
-    "_templates/Zotero Integration Template.md",
-    "DeepLearning.md",
-    "_references/_literatures/@srivastavaDropoutSimpleWaya.md",
-    "_templates/Zotero Integration Template 1.md",
-    "_references/_literatures/_attachments",
-    "_templates",
-    "Templates",
     "_references/_literatures",
     "_references",
-    "_images"
+    "README.md",
+    "DeepLearning.md",
+    "_templates/literature-source-template.md",
+    "conflict-files-obsidian-git.md",
+    "_templates/Zotero Integration Template.md",
+    "_templates",
+    "_images/Pasted image 20250513121109.png",
+    "_images",
+    "MassiveActivations.md",
+    "Images"
   ]
 }
