@@ -1,5 +1,5 @@
+**Tags**:: #architecture, #transformer
 
-    
 [[Ba et al., 2016](http://arxiv.org/pdf/1607.06450v1), Layer Normalization]
 + Notice that for sequence models, it is more common to use LN, since there could be a varying sequence size
 - modern transformer architecture → pre-layer normalization

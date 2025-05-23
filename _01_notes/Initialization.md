@@ -1,3 +1,5 @@
+**Tags**:: #architecture 
+
 - Cons of Zero Initialization
     
     - [**Symmetry Breaking versus Zero Initialization**](https://community.deeplearning.ai/t/symmetry-breaking-versus-zero-initialization/16061)
