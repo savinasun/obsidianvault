@@ -20,4 +20,5 @@
 
 + Batch Normalization
 - [[Layer Normalization]]
+- [[Root Mean Square Layer Normalization]]
 

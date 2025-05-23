@@ -11,3 +11,5 @@
 	![[Pasted image 20250513120914.png]]
 
 - according to [[Xiong et al., 2020](https://arxiv.org/pdf/1908.03265), On Layer Normalization in the Transformer Architecture], the scale of the activations in the post-LN transformer keeps to be the same in activations
+
++ ![[Screenshot 2025-05-22 at 22.20.15.png]]
