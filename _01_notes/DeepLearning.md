@@ -30,54 +30,7 @@ Joint State Method: Optimal Control 1960s - Backpropgation
     - The most commonly used activation function, if not sure what to use, just use it; it is fast for learning since there is no gradient vanish as the output closes to 1
     - LeNet uses sigmoid, AlexNet uses ReLu
 
-### Initialization Methods
-
-- Cons of Zero Initialization
-    
-    - [**Symmetry Breaking versus Zero Initialization**](https://community.deeplearning.ai/t/symmetry-breaking-versus-zero-initialization/16061)
-        
-    - Gradient vanishing/explosion → a problem for deep neural network
-        
-        ![[Pasted image 20250513105524.png]]
-        
-        gradient explosion: gradient clipping ??
-        
-- Random Initialization
-    
-    - break the symmetry
-        
-    - $W \sim N(0, 1)$ or $W \sim U(-0.1, 0.1)$
-        
-    - set the scaling factor to be 1 for each layer / set the
-        
-        → solve the vanishing gradient problem
-        
-- **Xavier Initialization**: torch::nn::init::xavier_normal_
-    
-    ![[Pasted image 20250513105549.png]]
-    ![[Pasted image 20250513105559.png]]
-    
-- **Kaiming Initialization**: torch::nn::init::kaiming_normal_
-    
-    ![[Pasted image 20250513105622.png]]
-    helps VGG nets train from scratch without stage-wise training
-    
-
-### Normalizations
-
-- Data Normalization
-    
-    - Speed up training process
-    - elongate cost function
-    
-    Normalization for Image Data
-    
-    [https://stats.stackexchange.com/questions/211436/why-normalize-images-by-subtracting-datasets-image-mean-instead-of-the-current](https://stats.stackexchange.com/questions/211436/why-normalize-images-by-subtracting-datasets-image-mean-instead-of-the-current)
-    
-- Internal Covariate Shift
-    
-- Has slight regularization effect due to noise in mini-batches
-    
+### [[Initialization]]
 
 
 ## Improve Deep Neural Network

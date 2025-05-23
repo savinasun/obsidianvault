@@ -1,0 +1,2 @@
+- If the output of the previous layer is changed drastically because of gradient spikes, the input of the next layer would also change drastically, in which way we are forced to re-adjust the weights of the next layer as well. The phenomenon by which the distributions of internal nodes of a neural network change is called internal covariate shift.
+- It is something we want to avoid because it would make training process slower.

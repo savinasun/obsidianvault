@@ -4,5 +4,6 @@
   "templater-obsidian",
   "obsidian-pandoc-reference-list",
   "file-explorer-plus",
-  "obsidian-citation-plugin"
+  "obsidian-citation-plugin",
+  "dataview"
 ]
