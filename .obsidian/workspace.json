@@ -216,17 +216,17 @@
                   "hideUnresolved": false,
                   "collapse-color-groups": true,
                   "colorGroups": [],
-                  "collapse-display": false,
+                  "collapse-display": true,
                   "showArrow": false,
-                  "textFadeMultiplier": 0,
-                  "nodeSizeMultiplier": 1,
+                  "textFadeMultiplier": -1.5,
+                  "nodeSizeMultiplier": 1.17586263020833,
                   "lineSizeMultiplier": 1,
                   "collapse-forces": true,
                   "centerStrength": 0.518713248970312,
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 0.3301864943844556,
+                  "scale": 0.4455117049074887,
                   "close": true
                 }
               },
@@ -238,7 +238,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 311.5
+    "width": 368.5
   },
   "left-ribbon": {
     "hiddenItems": {
