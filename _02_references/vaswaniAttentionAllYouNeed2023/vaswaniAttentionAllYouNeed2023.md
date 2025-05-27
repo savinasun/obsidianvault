@@ -1,27 +1,18 @@
 ---
-title: Attention Is All You Need
-citekey: vaswaniAttentionAllYouNeed2023
-authors: Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin
-year: "2023"
-tags:
-  - transformer
-status: true
-zotero-link: "[Full Text PDF](zotero://select/library/items/T2KSBNDR)"
-arxiv: http://arxiv.org/abs/1706.03762
-version: "149"
+title: "Attention Is All You Need"
+citekey: "vaswaniAttentionAllYouNeed2023"
+authors: "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin"
+year: '2017'
+tags: 
+status: false
+arxiv: "http://arxiv.org/abs/1706.03762"
+version: "315"
 ---
 
 # Attention Is All You Need
 
-> [!LINK]
-
-  - [PDF]([Full Text PDF](zotero://select/library/items/T2KSBNDR))
-  - [Attachment]([Full Text PDF](file:///Users/shangwen/Zotero/storage/T2KSBNDR/Vaswani%20et%20al.%20-%202023%20-%20Attention%20Is%20All%20You%20Need.pdf))
-  - [Code Repository](arXiv)
-
-
 > [!Cite]
-> Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. “Attention Is All You Need.” arXiv, August 2, 2023. [https://doi.org/10.48550/arXiv.1706.03762](https://doi.org/10.48550/arXiv.1706.03762).
+> Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. “Attention Is All You Need.” arXiv, January 1, 2017. [https://doi.org/10.48550/arXiv.1706.03762](https://doi.org/10.48550/arXiv.1706.03762).
 
 >[!Synthesis]
 >**Contribution**:: 
@@ -31,7 +22,7 @@ version: "149"
 
 > [!Link] 
 >
->  [Full Text PDF](file:///Users/shangwen/Zotero/storage/T2KSBNDR/Vaswani%20et%20al.%20-%202023%20-%20Attention%20Is%20All%20You%20Need.pdf).
+>  [Full Text PDF](file:///Users/sunshangwen/Library/Mobile%20Documents/com~apple~CloudDocs/Zotero%20Sync/storage/T2KSBNDR/Vaswani%20et%20al.%20-%202023%20-%20Attention%20Is%20All%20You%20Need.pdf).
 
 > [!Abstract]-
 >
@@ -85,10 +76,10 @@ version: "149"
 > **Author**:: Polosukhin, Illia  
 ~    
 > **Title**:: Attention Is All You Need  
-> **Year**:: 2023   
+> **Year**:: 2017   
 > **Citekey**:: vaswaniAttentionAllYouNeed2023  
 > **itemType**:: preprint  
 > **DOI**:: 10.48550/arXiv.1706.03762    
 
 
-%% Import Date: 2025-05-26T21:43:45.129-04:00 %%
+%% Import Date: 2025-05-27T10:37:30.931-04:00 %%

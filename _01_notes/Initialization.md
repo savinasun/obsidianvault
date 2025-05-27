@@ -1,4 +1,7 @@
+### [[dl_moc]]  
+### **Neural Network Initialization**
 **Tags**:: #architecture 
+**Links**::
 
 - **Cons of Zero Initialization**
     

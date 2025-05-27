@@ -1,13 +1,13 @@
-### Basics
+### Architecture
 ```dataview
 table tags as "Tags"
 from "_01_notes"
-WHERE contains(tags, "optimisation")
+WHERE contains(tags, "architecture")
 SORT file.name ASC
 ```
 
 
-### Transformers
+### Transformer
 ```dataview
 table tags as "Tags"
 from "_01_notes"
@@ -17,11 +17,11 @@ SORT file.name ASC
 
 
 
-### VAE
+### Activation
 ```dataview
 table tags as "Tags"
 from "_01_notes"
-WHERE contains(tags, "vae")
+WHERE contains(tags, "activation")
 SORT file.name ASC
 ```
 

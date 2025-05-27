@@ -59,11 +59,13 @@ in post-LN transformer, the expected gradients of the parameters near the output
 - **Positional Encoding**
     
 - Computation complexity + Long Range Dependencies
+
 	![[image-6-x104-y597.png]]
     - n << d: self-attention outperforms
-- Interpretability:
     
+- Interpretability:
     - different heads perform different tasks
+    
 - Examples:
     
     - GPT-3: 175 billion parameters, 350 GB, 96 heads

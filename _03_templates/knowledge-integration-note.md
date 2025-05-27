@@ -1,4 +1,4 @@
 ### [[YOUR MOC]]  
-## The Title of Your Note  
+## **The Title of Your Note**
 **Tags**::  
 **Links**::

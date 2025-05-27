@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "2bffde954ffad473",
+        "id": "f6044f87fafa6859",
         "type": "tabs",
         "children": [
           {
-            "id": "a00e6c2c68cc345c",
+            "id": "3dfdfb8a5f9233f0",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "_02_references/xiao2024/image-2-x100-y575.png"
+                "file": "_03_templates/literature-source-template.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "image-2-x100-y575"
+              "icon": "lucide-file",
+              "title": "literature-source-template"
             }
           }
         ]
@@ -51,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#transformer",
+                "query": "tag:#architecture",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -172,7 +174,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_02_references/xiao2024/image-2-x100-y575.png",
+                "file": "_03_templates/literature-source-template.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -200,7 +202,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of image-2-x100-y575"
+              "title": "Graph of literature-source-template"
             }
           }
         ]
@@ -221,38 +223,39 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "31f305f0b8239a5f",
+  "active": "3dfdfb8a5f9233f0",
   "lastOpenFiles": [
-    "_01_notes/RoPE.md",
-    "_02_references/xiao2024/xiao2024.md",
-    "_02_references/xiao2024/image-2-x100-y575.png",
-    "_02_references/xiao2024",
-    "_01_notes/Internal Covariate Shift.md",
     "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023.md",
-    "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023",
-    "_01_notes/GPT.md",
+    "_01_notes/Layer Normalization.md",
+    "_01_notes/Internal Covariate Shift.md",
     "_01_notes/Initialization.md",
-    "_01_notes/Normalization.md",
+    "_01_notes/Massive Activation.md",
+    "_01_notes/RoPE.md",
     "_01_notes/Transformers.md",
     "_01_notes/ViT.md",
     "_01_notes/RMS Norm.md",
+    "_01_notes/Normalization.md",
+    "YOUR MOC.md",
     "_01_notes/LlaMA.md",
-    "_01_notes/Layer Normalization.md",
+    "_01_notes/GPT.md",
     "_01_notes/Deep Learning.md",
+    "_03_templates/knowledge-integration-note.md",
+    "_03_templates/literature-source-template.md",
+    "_00_maps_of_contents/dl_moc.md",
+    "_02_references/xiao2024/image-2-x100-y575.png",
+    "_02_references/xiao2024/xiao2024.md",
+    "_02_references/xiao2024",
+    "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-3-x173-y371.png",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-4-x206-y296.png",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-5-x104-y560.png",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-6-x104-y597.png",
-    "_03_templates/knowledge-integration-note.md",
-    "_00_maps_of_contents/dl_moc.md",
     "README.md",
-    "YOUR MOC.md",
     "_01_notes/Untitled",
     "_04_images/D94UXMBU.png",
     "_04_images/8STM5CBF.png",
     "_04_images/Z4A5KRM5.png",
     "_04_images/X66DSGU6.png",
-    "_03_templates/literature-source-template.md",
     "_02_references/vaswaniAttentionAllYouNeed2023/vaswaniAttentionAllYouNeed2023.md",
     "_02_references/vaswaniAttentionAllYouNeed2023/Untitled.md",
     "_02_references/vaswaniAttentionAllYouNeed2023",
@@ -265,7 +268,6 @@
     "_01_notes",
     "MassiveActivations.md",
     "_02_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md",
-    "_02_references/_literatures/@vaswaniAttentionAllYou2023.md",
     "_02_references/_literatures",
     "_02_references",
     "_03_templates"

@@ -1,7 +1,6 @@
 ### [[dl_moc]]  
 
-## **Generative Pre-Training Transformer Models**
-
+### **Generative Pre-Training Transformer Models**
 **Tags**::  #transformer 
 **Links**::
 
