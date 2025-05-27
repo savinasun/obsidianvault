@@ -11,14 +11,12 @@
             "id": "a00e6c2c68cc345c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "_01_notes/RoPE.md",
-                "mode": "source",
-                "source": false
+                "file": "_02_references/xiao2024/image-2-x100-y575.png"
               },
-              "icon": "lucide-file",
-              "title": "RoPE"
+              "icon": "lucide-image",
+              "title": "image-2-x100-y575"
             }
           }
         ]
@@ -174,7 +172,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/RoPE.md",
+                "file": "_02_references/xiao2024/image-2-x100-y575.png",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -202,7 +200,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of RoPE"
+              "title": "Graph of image-2-x100-y575"
             }
           }
         ]
@@ -223,13 +221,13 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "a00e6c2c68cc345c",
+  "active": "31f305f0b8239a5f",
   "lastOpenFiles": [
+    "_01_notes/RoPE.md",
     "_02_references/xiao2024/xiao2024.md",
     "_02_references/xiao2024/image-2-x100-y575.png",
     "_02_references/xiao2024",
     "_01_notes/Internal Covariate Shift.md",
-    "_01_notes/RoPE.md",
     "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023.md",
     "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023",
     "_01_notes/GPT.md",
