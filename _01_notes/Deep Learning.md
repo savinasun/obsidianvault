@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 ## Basics of Neural Network
-**Tags**::  
-**Links**::
+**Tags**:: 
+**Links**:: 
 
 
 SIMD: single instruction multiple data → GPU are much better at SIMD computations than CPU

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/DeepLearning.md",
+                "file": "_01_notes/GPT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DeepLearning"
+              "title": "GPT"
             }
           }
         ]
@@ -174,7 +174,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/DeepLearning.md",
+                "file": "_01_notes/GPT.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -202,7 +202,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of DeepLearning"
+              "title": "Graph of GPT"
             }
           }
         ]
@@ -225,12 +225,12 @@
   },
   "active": "a00e6c2c68cc345c",
   "lastOpenFiles": [
+    "_01_notes/Deep Learning.md",
     "_01_notes/Normalization.md",
     "_01_notes/LlaMA.md",
     "_01_notes/Internal Covariate Shift.md",
     "_01_notes/Layer Normalization.md",
     "_01_notes/GPT.md",
-    "_01_notes/DeepLearning.md",
     "_03_templates/knowledge-integration-note.md",
     "_00_maps_of_contents/dl_moc.md",
     "README.md",
