@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_03_templates/literature-source-template.md",
+                "file": "_02_references/xiao2024/xiao2024.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "literature-source-template"
+              "title": "xiao2024"
             }
           }
         ]
@@ -174,7 +174,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_03_templates/literature-source-template.md",
+                "file": "_02_references/xiao2024/xiao2024.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -202,7 +202,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of literature-source-template"
+              "title": "Graph of xiao2024"
             }
           }
         ]
@@ -225,7 +225,9 @@
   },
   "active": "3dfdfb8a5f9233f0",
   "lastOpenFiles": [
+    "_02_references/xiao2024/image-2-x100-y575.png",
     "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023.md",
+    "_03_templates/literature-source-template.md",
     "_01_notes/Layer Normalization.md",
     "_01_notes/Internal Covariate Shift.md",
     "_01_notes/Initialization.md",
@@ -240,9 +242,7 @@
     "_01_notes/GPT.md",
     "_01_notes/Deep Learning.md",
     "_03_templates/knowledge-integration-note.md",
-    "_03_templates/literature-source-template.md",
     "_00_maps_of_contents/dl_moc.md",
-    "_02_references/xiao2024/image-2-x100-y575.png",
     "_02_references/xiao2024/xiao2024.md",
     "_02_references/xiao2024",
     "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023",
@@ -267,7 +267,6 @@
     "C.md",
     "_01_notes",
     "MassiveActivations.md",
-    "_02_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md",
     "_02_references/_literatures",
     "_02_references",
     "_03_templates"
