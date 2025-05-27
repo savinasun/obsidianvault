@@ -209,7 +209,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 368.5
+    "width": 279.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -223,7 +223,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "a00e6c2c68cc345c",
+  "active": "31f305f0b8239a5f",
   "lastOpenFiles": [
     "_01_notes/Internal Covariate Shift.md",
     "_01_notes/RoPE.md",
