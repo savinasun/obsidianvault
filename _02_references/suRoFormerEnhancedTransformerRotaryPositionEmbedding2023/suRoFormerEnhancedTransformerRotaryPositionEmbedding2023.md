@@ -1,0 +1,64 @@
+---
+title: "RoFormer: Enhanced Transformer with Rotary Position Embedding"
+citekey: "suRoFormerEnhancedTransformerRotaryPositionEmbedding2023"
+authors: "Jianlin Su, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, Yunfeng Liu"
+year: '2023'
+tags: 
+status: false
+arxiv: "http://arxiv.org/abs/2104.09864"
+version: "316"
+---
+
+# RoFormer: Enhanced Transformer with Rotary Position Embedding
+
+> [!Cite]
+> Su, Jianlin, Yu Lu, Shengfeng Pan, Ahmed Murtadha, Bo Wen, and Yunfeng Liu. “RoFormer: Enhanced Transformer with Rotary Position Embedding.” arXiv, November 8, 2023. [https://doi.org/10.48550/arXiv.2104.09864](https://doi.org/10.48550/arXiv.2104.09864).
+
+>[!Synthesis]
+>**Contribution**:: 
+>
+>**Related**:: 
+>
+
+> [!Link] 
+>
+>  [Full Text PDF](file:///Users/shangwen/Zotero/storage/L48UGR98/Su%20et%20al.%20-%202023%20-%20RoFormer%20Enhanced%20Transformer%20with%20Rotary%20Position%20Embedding.pdf).
+
+> [!Abstract]-
+>
+> Position encoding recently has shown effective in the transformer architecture. It enables valuable supervision for dependency modeling between elements at different positions of the sequence. In this paper, we first investigate various methods to integrate positional information into the learning process of transformer-based language models. Then, we propose a novel method named Rotary Position Embedding(RoPE) to effectively leverage the positional information. Specifically, the proposed RoPE encodes the absolute position with a rotation matrix and meanwhile incorporates the explicit relative position dependency in self-attention formulation. Notably, RoPE enables valuable properties, including the flexibility of sequence length, decaying inter-token dependency with increasing relative distances, and the capability of equipping the linear self-attention with relative position encoding. Finally, we evaluate the enhanced transformer with rotary position embedding, also called RoFormer, on various long text classification benchmark datasets. Our experiments show that it consistently overcomes its alternatives. Furthermore, we provide a theoretical analysis to explain some experimental results. RoFormer is already integrated into Huggingface: \url{https://huggingface.co/docs/transformers/model_doc/roformer}.
+>.
+
+
+## Annotations
+
+%% begin annotations %%
+
+### Imported: 2025-05-26 11:52 pm
+
+#### Relevant / important
+
+> [!quote|#ffd400] Highlight
+> Moreover, RoPE naturally incorporates relative position information through rotation matrix product instead of altering terms in the expanded formulation of additive position encoding when applied with self-attention
+>
+> [Page 5](zotero://open-pdf/library/items/L48UGR98?page=5) [2025-05-26#11:44 pm]
+
+
+%% end annotations %%
+
+>[!metadata]-
+> **FirstAuthor**:: Su, Jianlin  
+> **Author**:: Lu, Yu  
+> **Author**:: Pan, Shengfeng  
+> **Author**:: Murtadha, Ahmed  
+> **Author**:: Wen, Bo  
+> **Author**:: Liu, Yunfeng  
+~    
+> **Title**:: RoFormer: Enhanced Transformer with Rotary Position Embedding  
+> **Year**:: 2023   
+> **Citekey**:: suRoFormerEnhancedTransformerRotaryPositionEmbedding2023  
+> **itemType**:: preprint  
+> **DOI**:: 10.48550/arXiv.2104.09864    
+
+
+%% Import Date: 2025-05-26T23:52:35.200-04:00 %%

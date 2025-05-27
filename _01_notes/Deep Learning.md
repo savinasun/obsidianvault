@@ -1,6 +1,6 @@
 ### [[dl_moc]]  
-## Basics of Neural Network
-**Tags**:: 
+## **Basics of Neural Network**
+**Tags**:: #architecture 
 **Links**:: 
 
 

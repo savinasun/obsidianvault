@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Transformers.md",
+                "file": "_01_notes/RoPE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Transformers"
+              "title": "RoPE"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#transformer",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -174,7 +174,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Transformers.md",
+                "file": "_01_notes/RoPE.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -202,7 +202,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Transformers"
+              "title": "Graph of RoPE"
             }
           }
         ]
@@ -225,20 +225,23 @@
   },
   "active": "a00e6c2c68cc345c",
   "lastOpenFiles": [
+    "_01_notes/Internal Covariate Shift.md",
+    "_01_notes/RoPE.md",
+    "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023.md",
+    "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023",
+    "_01_notes/GPT.md",
+    "_01_notes/Initialization.md",
+    "_01_notes/Normalization.md",
+    "_01_notes/Transformers.md",
+    "_01_notes/ViT.md",
+    "_01_notes/RMS Norm.md",
+    "_01_notes/LlaMA.md",
+    "_01_notes/Layer Normalization.md",
+    "_01_notes/Deep Learning.md",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-3-x173-y371.png",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-4-x206-y296.png",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-5-x104-y560.png",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-6-x104-y597.png",
-    "_01_notes/Transformers.md",
-    "_01_notes/Normalization.md",
-    "_01_notes/LlaMA.md",
-    "_01_notes/Initialization.md",
-    "_01_notes/Internal Covariate Shift.md",
-    "_01_notes/Layer Normalization.md",
-    "_01_notes/Vision Transformer.md",
-    "_01_notes/Root Mean Square Layer Normalization.md",
-    "_01_notes/GPT.md",
-    "_01_notes/Deep Learning.md",
     "_03_templates/knowledge-integration-note.md",
     "_00_maps_of_contents/dl_moc.md",
     "README.md",
@@ -266,9 +269,7 @@
     "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md",
     "_02_references/_literatures",
     "_02_references",
-    "conflict-files-obsidian-git.md",
     "_03_templates",
-    "_04_images",
-    "Images"
+    "_04_images"
   ]
 }

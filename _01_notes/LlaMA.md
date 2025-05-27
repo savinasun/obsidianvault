@@ -1,6 +1,6 @@
 ### [[dl_moc]]  
-## LLAMA
-**Tags**::  transformer
+### LLAMA
+**Tags**::  #transformer 
 **Links**::
 
 ### LlaMa Architecture

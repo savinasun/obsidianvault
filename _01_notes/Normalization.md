@@ -1,4 +1,8 @@
-## Normalizations
+### [[dl_moc]]  
+### Normalization
+**Tags**::  #architecture
+**Links**::
+
 
 ### Data Normalization
 
@@ -20,5 +24,5 @@
 
 + Batch Normalization
 - [[Layer Normalization]]
-- [[Root Mean Square Layer Normalization]]
+- [[RMS Norm]]
 
