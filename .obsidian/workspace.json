@@ -14,8 +14,8 @@
               "type": "markdown",
               "state": {
                 "file": "_02_references/xiao2024/xiao2024.md",
-                "mode": "source",
-                "source": false
+                "mode": "preview",
+                "source": true
               },
               "icon": "lucide-file",
               "title": "xiao2024"
@@ -225,9 +225,10 @@
   },
   "active": "3dfdfb8a5f9233f0",
   "lastOpenFiles": [
+    "_03_templates/literature-source-template.md",
+    "_02_references/xiao2024/xiao2024.md",
     "_02_references/xiao2024/image-2-x100-y575.png",
     "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023.md",
-    "_03_templates/literature-source-template.md",
     "_01_notes/Layer Normalization.md",
     "_01_notes/Internal Covariate Shift.md",
     "_01_notes/Initialization.md",
@@ -243,7 +244,6 @@
     "_01_notes/Deep Learning.md",
     "_03_templates/knowledge-integration-note.md",
     "_00_maps_of_contents/dl_moc.md",
-    "_02_references/xiao2024/xiao2024.md",
     "_02_references/xiao2024",
     "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-3-x173-y371.png",

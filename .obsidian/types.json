@@ -5,6 +5,7 @@
     "tags": "tags",
     "year": "text",
     "date-added": "text",
-    "status": "checkbox"
+    "status": "checkbox",
+    "tag": "text"
   }
 }
