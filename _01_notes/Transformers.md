@@ -7,9 +7,7 @@
 - **Encoder-Decoder Architecture**
     
     weights are not necessarily shared across the encoder and decoder, when the input distribution are different from the output distribution, we should use an encoder-decoder architecture
-    
-    ![image.png](attachment:801a4205-304d-4501-a181-5834b5da1005:image.png)
-    
+	    ![[image-3-x173-y371.png|300]]
     - encoder: train simple word embeddings to **context-aware embeddings**
         - two sublayers: a multi-head attention layer + a dense layer
         - residual connection for each sublayer + post-LN → evolve to pre-LN nowadays
@@ -19,7 +17,7 @@
     - pre-train phase + fine-tune phase
 - **Self-Attention (Scaled Dot-Product Attention)**
     
-    ![image.png](attachment:66f3c95f-5509-47df-9c8a-915273966418:image.png)
+    ![[image-4-x206-y296.png|400]]
     
     - QKV attention function
         
@@ -34,9 +32,7 @@
     - scaled dot-product attention V.S. additive attention
         
 - **Masked Self-Attention**
-    
-    ![Screenshot 2025-05-08 at 16.32.22.png](attachment:9c407e2d-8307-40a9-ac9a-94b24f272878:Screenshot_2025-05-08_at_16.32.22.png)
-    
+	
 - **Cross-Attention (Encoder-Decoder Attention):**
     
     K,V from encoder
@@ -48,12 +44,10 @@
     - **Multi-Modal Models**: encoder trained on images, speech → context aware embeddings → text based decoder to generate captions or audio-prompt responses
     
 - **Multi-Head Attention**
-    
     - d_model: dimension of the embedding vector
     - n_head * d_k = d_model
     
-    ![[Pasted image 20250513121109.png]]
-
+	![[image-5-x104-y560.png]]
 
 in post-LN transformer, the expected gradients of the parameters near the output layer are large at initialization → unstable training using large LR
 
@@ -62,9 +56,7 @@ in post-LN transformer, the expected gradients of the parameters near the output
 - **Positional Encoding**
     
 - Computation complexity + Long Range Dependencies
-    
-    ![[Pasted image 20250513121037.png]]
-    
+	![[image-6-x104-y597.png]]
     - n << d: self-attention outperforms
 - Interpretability:
     

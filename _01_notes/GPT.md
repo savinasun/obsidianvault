@@ -5,8 +5,7 @@
 **Tags**::  
 **Links**::
 
-	
-- GPT
+- **GPT**
 	
 	- [[Radford et al., 2018](https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf), [Improving Language Understanding by Generative Pre-Training](https://paperswithcode.com/paper/improving-language-understanding-by)]
 	

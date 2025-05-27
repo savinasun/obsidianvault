@@ -1,6 +1,6 @@
 **Tags**:: #architecture 
 
-- Cons of Zero Initialization
+- **Cons of Zero Initialization**
     
     - [**Symmetry Breaking versus Zero Initialization**](https://community.deeplearning.ai/t/symmetry-breaking-versus-zero-initialization/16061)
         
@@ -10,7 +10,7 @@
         
         gradient explosion: gradient clipping ??
         
-- Random Initialization
+- **Random Initialization**
     
     - break the symmetry
         
@@ -19,7 +19,7 @@
     - set the scaling factor to be 1 for each layer / set the
         
         → solve the vanishing gradient problem
-        
+    
 - **Xavier Initialization**: torch::nn::init::xavier_normal_
     
     ![[Pasted image 20250513105549.png]]
