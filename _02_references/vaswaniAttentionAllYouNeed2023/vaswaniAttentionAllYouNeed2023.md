@@ -3,10 +3,11 @@ title: "Attention Is All You Need"
 citekey: "vaswaniAttentionAllYouNeed2023"
 authors: "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin"
 year: '2017'
-tags: 
+tags:  
+ - subject/transformer
 status: false
 arxiv: "http://arxiv.org/abs/1706.03762"
-version: "315"
+version: "347"
 ---
 
 # Attention Is All You Need
@@ -82,4 +83,4 @@ version: "315"
 > **DOI**:: 10.48550/arXiv.1706.03762    
 
 
-%% Import Date: 2025-05-27T10:37:30.931-04:00 %%
+%% Import Date: 2025-05-27T11:45:29.633-04:00 %%

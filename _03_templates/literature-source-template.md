@@ -3,10 +3,10 @@ title: "{{title}}"
 citekey: "{{citekey}}"
 authors: "{{authors}}"
 year: '{{date | format("YYYY")}}'
+tags: {% if tags.length > 0 -%} {%- for t in tags -%} {%- set replaced_tag = t.tag %} {%- if t.tag == "secondary" %} {%- set replaced_tag = "source/secondary" %} {%- elif t.tag == "primary" %} {%- set replaced_tag = "source/primary" %} {%- elif "-project" in t.tag %} {%- set replaced_tag = "project/" ~ t.tag | lower | replace(" ", "-") | replace("-project", "") %} {%- else %} {%- set replaced_tag = "subject/" ~ t.tag | lower | replace(" ", "-") %} {%- endif %} {{ "\n - " ~ replaced_tag }} {%- endfor %} {%- endif %}
 status: false
 arxiv: "{{url}}"
 version: "{{version}}"
-tags: {% if tags.length > 0 -%} {%- for t in tags -%} {%- set replaced_tag = t.tag %} {%- if t.tag == "secondary" %} {%- set replaced_tag = "source/secondary" %} {%- elif t.tag == "primary" %} {%- set replaced_tag = "source/primary" %} {%- elif "-project" in t.tag %} {%- set replaced_tag = "project/" ~ t.tag | lower | replace(" ", "-") | replace("-project", "") %} {%- else %} {%- set replaced_tag = "subject/" ~ t.tag | lower | replace(" ", "-") %} {%- endif %} {{ "\n - " ~ replaced_tag }} {%- endfor %} {%- endif %}
 ---
 
 # {{title}}
