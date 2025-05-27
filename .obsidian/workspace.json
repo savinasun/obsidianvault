@@ -4,53 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "8bb1ec612b641f95",
+        "id": "939523f8e930d5c1",
         "type": "tabs",
         "children": [
           {
-            "id": "09532c631e903858",
+            "id": "065e18973cdc0d02",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Layer Normalization.md",
+                "file": "_02_references/vaswaniAttentionAllYouNeed2023/vaswaniAttentionAllYouNeed2023.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Layer Normalization"
-            }
-          },
-          {
-            "id": "b0f6bf03c5ec38d5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_01_notes/Normalization.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Normalization"
-            }
-          },
-          {
-            "id": "cf85897cd781ea7f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_01_notes/Transformers.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Transformers"
+              "title": "vaswaniAttentionAllYouNeed2023"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -203,7 +174,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Normalization.md",
+                "file": "_02_references/vaswaniAttentionAllYouNeed2023/vaswaniAttentionAllYouNeed2023.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -231,7 +202,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Normalization"
+              "title": "Graph of vaswaniAttentionAllYouNeed2023"
             }
           }
         ]
@@ -252,16 +223,30 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "b0f6bf03c5ec38d5",
+  "active": "065e18973cdc0d02",
   "lastOpenFiles": [
-    "_01_notes/Layer Normalization.md",
+    "_02_references/vaswaniAttentionAllYouNeed2023/image-3-x173-y371.png",
+    "_02_references/vaswaniAttentionAllYouNeed2023/image-5-x104-y560.png",
+    "_02_references/vaswaniAttentionAllYouNeed2023/image-6-x104-y597.png",
+    "_02_references/vaswaniAttentionAllYouNeed2023/image-4-x206-y296.png",
+    "_02_references/vaswaniAttentionAllYouNeed2023/vaswaniAttentionAllYouNeed2023.md",
+    "_03_templates/literature-source-template.md",
+    "_02_references/vaswaniAttentionAllYouNeed2023/Untitled.md",
+    "_01_notes/Transformers.md",
+    "_02_references/vaswaniAttentionAllYouNeed2023",
+    "_02_references/vaswaniAttentionAllYouNeed2023.md",
+    "_03_templates/zotero-literature-note.md",
+    "_04_images/D94UXMBU.png",
+    "_04_images/Z4A5KRM5.png",
+    "_04_images/8STM5CBF.png",
+    "_04_images/X66DSGU6.png",
     "_01_notes/Normalization.md",
+    "_01_notes/Layer Normalization.md",
     "_01_notes/Root Mean Square Layer Normalization.md",
     "_images/Screenshot 2025-05-22 at 22.20.15.png",
     "_images",
     "_00_maps_of_contents/MOC.md",
     "_01_notes/DeepLearning.md",
-    "_01_notes/Transformers.md",
     "_01_notes/Internal Covariate Shift.md",
     "_01_notes/Initialization.md",
     "_01_notes/Generative AI and LLMs.md",
@@ -272,20 +257,11 @@
     "README.md",
     "MassiveActivations.md",
     "_04_images/llama12_params.png",
-    "_images/Screenshot 2025-05-22 at 17.19.32.png",
-    "_04_images/llama_encoder_architecture.png",
-    "_02_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-6-x104-y597.png",
-    "_02_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-5-x104-y560.png",
-    "_02_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-4-x206-y296.png",
-    "_02_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md/image-3-x173-y371.png",
     "_02_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md",
     "_02_references/_literatures/@vaswaniAttentionAllYou2023.md",
-    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-6-x104-y597.png",
-    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md/image-5-x104-y560.png",
     "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md",
     "_02_references/_literatures",
     "_02_references",
-    "_03_templates/literature-source-template.md",
     "conflict-files-obsidian-git.md",
     "_templates/Zotero Integration Template.md",
     "_03_templates",

@@ -1,31 +1,20 @@
 {
   "database": "Zotero",
-  "noteImportFolder": "",
+  "noteImportFolder": "_02_references",
   "pdfExportImageDPI": 120,
   "pdfExportImageFormat": "jpg",
   "pdfExportImageQuality": 90,
-  "citeFormats": [
-    {
-      "name": "Journal of Machine Learning",
-      "format": "formatted-citation",
-      "cslStyle": "journal-of-universal-computer-science"
-    }
-  ],
+  "citeFormats": [],
   "exportFormats": [
     {
       "name": "Literature Source Note",
-      "outputPathTemplate": "_references/_literatures/@{{citekey}}.md",
-      "imageOutputPathTemplate": "_references/_literatures/_attachments_{{citekey}}.md",
+      "outputPathTemplate": "_02_references/{{citekey}}/{{citekey}}.md",
+      "imageOutputPathTemplate": "_02_references/{{citekey}}/",
       "imageBaseNameTemplate": "image",
-<<<<<<< HEAD
-      "templatePath": "_templates/literature-source-template.md",
-=======
-      "templatePath": "_templates/Zotero Integration Template.md",
->>>>>>> origin/main
-      "cslStyle": "journal-of-universal-computer-science"
+      "templatePath": "_03_templates/literature-source-template.md"
     }
   ],
   "citeSuggestTemplate": "[[{{citekey}}]]",
-  "openNoteAfterImport": true,
+  "openNoteAfterImport": false,
   "whichNotesToOpenAfterImport": "first-imported-note"
 }
