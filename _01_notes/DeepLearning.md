@@ -1,7 +1,10 @@
+### [[dl_moc]]  
 ## Basics of Neural Network
+**Tags**::  
+**Links**::
+
 
 SIMD: single instruction multiple data → GPU are much better at SIMD computations than CPU
-
 ### Forward Propagation
 
 - Derivations of dL/dz
@@ -30,8 +33,7 @@ Joint State Method: Optimal Control 1960s - Backpropgation
     - The most commonly used activation function, if not sure what to use, just use it; it is fast for learning since there is no gradient vanish as the output closes to 1
     - LeNet uses sigmoid, AlexNet uses ReLu
 
-### [[Initialization]]
-
+## [[Initialization]] of Neural Network
 
 ## Improve Deep Neural Network
 

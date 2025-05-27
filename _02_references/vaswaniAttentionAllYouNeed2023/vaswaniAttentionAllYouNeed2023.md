@@ -3,7 +3,8 @@ title: Attention Is All You Need
 citekey: vaswaniAttentionAllYouNeed2023
 authors: Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin
 year: "2023"
-tags: 
+tags:
+  - transformer
 status: true
 zotero-link: "[Full Text PDF](zotero://select/library/items/T2KSBNDR)"
 arxiv: http://arxiv.org/abs/1706.03762

@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "939523f8e930d5c1",
+        "id": "2bffde954ffad473",
         "type": "tabs",
         "children": [
           {
-            "id": "065e18973cdc0d02",
+            "id": "a00e6c2c68cc345c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_02_references/vaswaniAttentionAllYouNeed2023/vaswaniAttentionAllYouNeed2023.md",
+                "file": "_01_notes/DeepLearning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "vaswaniAttentionAllYouNeed2023"
+              "title": "DeepLearning"
             }
           }
         ]
@@ -174,7 +174,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_02_references/vaswaniAttentionAllYouNeed2023/vaswaniAttentionAllYouNeed2023.md",
+                "file": "_01_notes/DeepLearning.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -202,7 +202,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of vaswaniAttentionAllYouNeed2023"
+              "title": "Graph of DeepLearning"
             }
           }
         ]
@@ -223,38 +223,42 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "065e18973cdc0d02",
+  "active": "a00e6c2c68cc345c",
   "lastOpenFiles": [
+    "_01_notes/Normalization.md",
+    "_01_notes/LlaMA.md",
+    "_01_notes/Internal Covariate Shift.md",
+    "_01_notes/Layer Normalization.md",
+    "_01_notes/GPT.md",
+    "_01_notes/DeepLearning.md",
+    "_03_templates/knowledge-integration-note.md",
+    "_00_maps_of_contents/dl_moc.md",
+    "README.md",
+    "YOUR MOC.md",
+    "_01_notes/Untitled",
+    "_04_images/D94UXMBU.png",
+    "_04_images/8STM5CBF.png",
+    "_04_images/Z4A5KRM5.png",
+    "_04_images/X66DSGU6.png",
+    "_03_templates/literature-source-template.md",
+    "_02_references/vaswaniAttentionAllYouNeed2023/vaswaniAttentionAllYouNeed2023.md",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-3-x173-y371.png",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-5-x104-y560.png",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-6-x104-y597.png",
     "_02_references/vaswaniAttentionAllYouNeed2023/image-4-x206-y296.png",
-    "_02_references/vaswaniAttentionAllYouNeed2023/vaswaniAttentionAllYouNeed2023.md",
-    "_03_templates/literature-source-template.md",
     "_02_references/vaswaniAttentionAllYouNeed2023/Untitled.md",
     "_01_notes/Transformers.md",
     "_02_references/vaswaniAttentionAllYouNeed2023",
     "_02_references/vaswaniAttentionAllYouNeed2023.md",
     "_03_templates/zotero-literature-note.md",
-    "_04_images/D94UXMBU.png",
-    "_04_images/Z4A5KRM5.png",
-    "_04_images/8STM5CBF.png",
-    "_04_images/X66DSGU6.png",
-    "_01_notes/Normalization.md",
-    "_01_notes/Layer Normalization.md",
     "_01_notes/Root Mean Square Layer Normalization.md",
     "_images/Screenshot 2025-05-22 at 22.20.15.png",
     "_images",
-    "_00_maps_of_contents/MOC.md",
-    "_01_notes/DeepLearning.md",
-    "_01_notes/Internal Covariate Shift.md",
     "_01_notes/Initialization.md",
-    "_01_notes/Generative AI and LLMs.md",
     "_00_maps_of_contents",
     "C.md",
     "_01_notes/Vision Transformer.md",
     "_01_notes",
-    "README.md",
     "MassiveActivations.md",
     "_04_images/llama12_params.png",
     "_02_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md",
@@ -263,7 +267,6 @@
     "_02_references/_literatures",
     "_02_references",
     "conflict-files-obsidian-git.md",
-    "_templates/Zotero Integration Template.md",
     "_03_templates",
     "_04_images",
     "Images"

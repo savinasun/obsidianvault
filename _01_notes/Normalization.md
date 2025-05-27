@@ -1,4 +1,4 @@
-### Normalizations
+## Normalizations
 
 ### Data Normalization
 
