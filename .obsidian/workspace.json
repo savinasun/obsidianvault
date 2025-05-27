@@ -223,8 +223,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "31f305f0b8239a5f",
+  "active": "a00e6c2c68cc345c",
   "lastOpenFiles": [
+    "_02_references/xiao2024/xiao2024.md",
+    "_02_references/xiao2024/image-2-x100-y575.png",
+    "_02_references/xiao2024",
     "_01_notes/Internal Covariate Shift.md",
     "_01_notes/RoPE.md",
     "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023.md",
@@ -263,13 +266,10 @@
     "C.md",
     "_01_notes",
     "MassiveActivations.md",
-    "_04_images/llama12_params.png",
     "_02_references/_literatures/_attachments_vaswaniAttentionAllYou2023.md",
     "_02_references/_literatures/@vaswaniAttentionAllYou2023.md",
-    "_references/_literatures/_attachments_vaswaniAttentionAllYouNeed2023.md",
     "_02_references/_literatures",
     "_02_references",
-    "_03_templates",
-    "_04_images"
+    "_03_templates"
   ]
 }
