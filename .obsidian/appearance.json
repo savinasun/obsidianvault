@@ -1,0 +1,9 @@
+{
+  "enabledCssSnippets": [
+    "callouts",
+    "literature-css-snippet"
+  ],
+  "cssTheme": "Things",
+  "theme": "obsidian",
+  "showRibbon": true
+}
