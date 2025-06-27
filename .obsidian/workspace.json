@@ -33,7 +33,7 @@
       {
         "id": "b8e2a895956801b3",
         "type": "tabs",
-        "dimension": 52.435064935064936,
+        "dimension": 52.51623376623377,
         "children": [
           {
             "id": "31f305f0b8239a5f",
@@ -63,7 +63,7 @@
       {
         "id": "a9a455c0b9c6b057",
         "type": "tabs",
-        "dimension": 18.58766233766234,
+        "dimension": 31.25,
         "children": [
           {
             "id": "f4bdddf87b272eb0",
@@ -87,7 +87,7 @@
       {
         "id": "a1144893fcc3c039",
         "type": "tabs",
-        "dimension": 28.97727272727273,
+        "dimension": 16.233766233766232,
         "children": [
           {
             "id": "feb9ad2b5567d3d1",
@@ -244,12 +244,12 @@
   "active": "08853d1087256c03",
   "lastOpenFiles": [
     "_01_notes/Cross Entropy.md",
+    "_01_notes/KL Divergence.md",
     "_01_notes/CoT Prompting.md",
     "_01_notes/Curse of Dimensionality.md",
     "_01_notes/Deep Learning.md",
     "_01_notes/Double Descent.md",
     "_03_templates/knowledge-integration-note.md",
-    "_01_notes/KL Divergence.md",
     "_01_notes/Bias-Variance Tradeoff.md",
     "_00_maps_of_contents/dl_moc.md",
     "_01_notes/Neural Network Initialization.md",
