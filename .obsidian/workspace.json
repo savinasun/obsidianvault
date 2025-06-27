@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/KL Divergence.md",
+                "file": "_01_notes/RMSNorm.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "KL Divergence"
+              "title": "RMSNorm"
             }
           }
         ]
@@ -105,13 +105,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_01_notes/KL Divergence.md",
+                "file": "_01_notes/RMSNorm.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of KL Divergence"
+              "title": "Outline of RMSNorm"
             }
           }
         ]
@@ -168,7 +168,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/KL Divergence.md",
+                "file": "_01_notes/RMSNorm.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -196,11 +196,21 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of KL Divergence"
+              "title": "Graph of RMSNorm"
+            }
+          },
+          {
+            "id": "ebb3c322c89363f3",
+            "type": "leaf",
+            "state": {
+              "type": "ReferenceListView",
+              "state": {},
+              "icon": "quote-glyph",
+              "title": "References"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       },
       {
         "id": "78471ff1961b5744",
@@ -226,8 +236,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 433.5,
-    "collapsed": true
+    "width": 433.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -243,39 +252,39 @@
   },
   "active": "08853d1087256c03",
   "lastOpenFiles": [
-    "_01_notes/Cross Entropy.md",
-    "_01_notes/KL Divergence.md",
-    "_01_notes/CoT Prompting.md",
     "_01_notes/Curse of Dimensionality.md",
     "_01_notes/Deep Learning.md",
     "_01_notes/Double Descent.md",
+    "_01_notes/DPO.md",
     "_03_templates/knowledge-integration-note.md",
+    "_01_notes/Cross Entropy.md",
+    "_01_notes/CoT Prompting.md",
     "_01_notes/Bias-Variance Tradeoff.md",
+    "_01_notes/Activation Functions.md",
+    "_01_notes/GQA.md",
+    "_01_notes/GPT.md",
+    "_01_notes/GPRO.md",
+    "_02_references/@deepseek-ai2025.md",
+    "_01_notes/FSL.md",
+    "_01_notes/Layer Normalization.md",
+    "_01_notes/RMSNorm.md",
+    "_01_notes/KL Divergence.md",
     "_00_maps_of_contents/dl_moc.md",
     "_01_notes/Neural Network Initialization.md",
     "_01_notes/Massive Activation.md",
     "_01_notes/LlaMA.md",
     "_01_notes/Low Rank Matrix.md",
-    "_01_notes/Layer Normalization.md",
-    "_01_notes/GQA.md",
     "_01_notes/IFEval.md",
     "_01_notes/ICL.md",
     "_01_notes/Hellaswag.md",
     "_01_notes/GSM-8K.md",
-    "_01_notes/GPRO.md",
-    "_01_notes/DPO.md",
-    "Policy Gradient Methods.md",
     "_04_images/KL_Divergence_forward_vs_backward.png",
     "_04_images/X66DSGU6.png",
     "_04_images/Z4A5KRM5.png",
-    "_01_notes/GPT.md",
     "_04_images/Pasted image 20250623160931.png",
     "Untitled",
-    "_01_notes/SFT.md",
     "_04_images/GRPO_kl_divergence.png",
     "_04_images/Screenshot 2025-06-25 at 00.18.20 1.png",
-    "DPO.md",
-    "DDPM.md",
     "_02_references/deepseek-ai2025/image-5-x65-y74.png",
     "_02_references/deepseek-ai2025",
     "_04_images/Pasted image 20250623160610.png",

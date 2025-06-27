@@ -24,5 +24,5 @@
 
 + Batch Normalization
 - [[Layer Normalization]]
-- [[RMS Norm]]
+- [[RMSNorm]]
 

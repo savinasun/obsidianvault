@@ -1,9 +1,10 @@
 ### [[dl_moc]]  
 ## **Basics of Neural Network**
+
 **Tags**:: #architecture 
 **Links**:: 
 
-
+---
 SIMD: single instruction multiple data → GPU are much better at SIMD computations than CPU
 ### Forward Propagation
 
@@ -18,26 +19,13 @@ SIMD: single instruction multiple data → GPU are much better at SIMD computati
 
 Joint State Method: Optimal Control 1960s - Backpropgation
 
-### Activation Functions
+### [[Activation Functions]]
 
-- Sigmoid
-    
-- Softmax: a function converts a set of numbers to a set of probabilities sum up to 1
-    
-    Softmax tends to amplify the variances of high variance vectors
-    
-- Tanh
-    - Tanh is superior than Sigmoid in near all aspects, so don’t use sigmoid unless it is the output layer
-    - $tanh’(x) = 1 - tanh^2(x)$
-- ReLu
-    - The most commonly used activation function, if not sure what to use, just use it; it is fast for learning since there is no gradient vanish as the output closes to 1
-    - LeNet uses sigmoid, AlexNet uses ReLu
+### [[Neural Network Initialization]]
 
-## [[Neural Network Initialization]]
+### Improve Deep Neural Network
 
-## Improve Deep Neural Network
-
-### [[Double Descent]]
+#### [[Double Descent]]
 
 
 ### **Regularization Techniques**

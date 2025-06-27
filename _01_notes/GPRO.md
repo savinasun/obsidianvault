@@ -1,7 +1,10 @@
 ### [[dl_moc]]  
 ## **Group Relative Policy Optimization**
+
 **Tags**::  
-**Links**:: [[deepseek-ai2025]]
+**Links**:: [@deepseek-ai2025][deepseek-ai2025]
+
+---
 
 ![[Pasted image 20250623160931.png]]
 

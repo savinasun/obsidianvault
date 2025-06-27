@@ -5,7 +5,7 @@
 ### LlaMa Architecture
 LLaMA Architecture 
 	![[llama_encoder_architecture.png | 500]]
-	+ [[RMS Norm]] & Pre-Norm
+	+ [[RMSNorm]] & Pre-Norm
 	+ [[RoPE|Rotary Positional Encodings]]
 	+ Self-Attention with KV Cache
 	+ Grouped Multi-Query Attention

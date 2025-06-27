@@ -17,5 +17,3 @@ $$H(p,q)=H(p)+D_{KL}(p,q)$$
 
 The amount of bits that differ cross entropy from entropy is called [[KL Divergence|KL divergence]].
 
----
-## References
