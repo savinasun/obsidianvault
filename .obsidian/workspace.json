@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/GPRO.md",
+                "file": "_01_notes/Spectral Analysis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "GPRO"
+              "title": "Spectral Analysis"
             }
           }
         ]
@@ -105,13 +105,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_01_notes/GPRO.md",
+                "file": "_01_notes/Spectral Analysis.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of GPRO"
+              "title": "Outline of Spectral Analysis"
             }
           }
         ]
@@ -168,7 +168,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/GPRO.md",
+                "file": "_01_notes/Spectral Analysis.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -196,7 +196,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of GPRO"
+              "title": "Graph of Spectral Analysis"
             }
           },
           {
@@ -252,9 +252,12 @@
   },
   "active": "39c3ffae38cdfba8",
   "lastOpenFiles": [
+    "_04_images/spectral_analysis_svd.png",
+    "_01_notes/Spectral Analysis.md",
+    "_01_notes/Low Rank Matrix.md",
+    "_01_notes/GPRO.md",
     "_04_images/grpo_algorithm.png",
     "_04_images/X66DSGU6.png",
-    "_01_notes/GPRO.md",
     "_02_references/deepseek-ai2025/grpo_loss_function.png",
     "_02_references/deepseek-ai2025/deepseek-ai2025.md",
     "_02_references/@deepseek-ai2025.md",
@@ -272,7 +275,6 @@
     "_01_notes/Activation Functions.md",
     "_04_images/Pasted image 20250604152837.png",
     "_04_images/Pasted image 20250530224146.png",
-    "_04_images/Pasted image 20250513121109.png",
     "_01_notes/KL Divergence.md",
     "_01_notes/FSL.md",
     "_01_notes/RMSNorm.md",
@@ -284,9 +286,7 @@
     "_01_notes/Neural Network Initialization.md",
     "_01_notes/Massive Activation.md",
     "_01_notes/LlaMA.md",
-    "_01_notes/Low Rank Matrix.md",
     "_01_notes/IFEval.md",
-    "_01_notes/ICL.md",
     "Untitled",
     "_02_references/deepseek-ai2025",
     "_02_references/grattafiori2024",
