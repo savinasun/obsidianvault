@@ -12,6 +12,7 @@ KL divergence (or relative entropy) is a measure of how one probability distribu
 $$D_{KL}(q||p)=-\mathbb{E}_{q}\left[\log\frac{p(X)}{q(X)}\right] = -\int q(x)\left[\log\frac{p(x)}{q(x)}\right]$$
 
 ### Properties
+
 1. **Asymmetry**: KL divergence is not a distance metric since it is asymmetric.$$D_{KL}(q||p) \neq D_{KL}(p||q)$$
 2. **Relationship with Entropy / [[Cross Entropy]]**: $$H(p,q)=H(p)+D_{KL}(p,q)$$
 3. **Relationship with Information Gain**: KL divergence of $p$ relative to $q$, i.e. $D_{KL} (p||q)$, could be deemed as information gain achieved changing from $q$ to $p$.
@@ -31,6 +32,3 @@ $$D_{KL}(q||p)=-\mathbb{E}_{q}\left[\log\frac{p(X)}{q(X)}\right] = -\int q(x)\le
 ### Relationships to Entropy and Cross-Entropy
 
 Minimizing KL divergence between two distributions corresponds to minimizing the [[Cross Entropy]] between the distributions, and can be used equivalently when the entropy one distribution is stationary i.e. training data.
-
----
-## References

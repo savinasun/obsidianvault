@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/RMSNorm.md",
+                "file": "_01_notes/Activation Functions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "RMSNorm"
+              "title": "Activation Functions"
             }
           }
         ]
@@ -105,13 +105,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_01_notes/RMSNorm.md",
+                "file": "_01_notes/Activation Functions.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of RMSNorm"
+              "title": "Outline of Activation Functions"
             }
           }
         ]
@@ -168,7 +168,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/RMSNorm.md",
+                "file": "_01_notes/Activation Functions.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -196,7 +196,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of RMSNorm"
+              "title": "Graph of Activation Functions"
             }
           },
           {
@@ -252,23 +252,24 @@
   },
   "active": "08853d1087256c03",
   "lastOpenFiles": [
-    "_01_notes/Curse of Dimensionality.md",
-    "_01_notes/Deep Learning.md",
-    "_01_notes/Double Descent.md",
+    "_01_notes/KL Divergence.md",
+    "_01_notes/GPRO.md",
+    "_01_notes/FSL.md",
     "_01_notes/DPO.md",
-    "_03_templates/knowledge-integration-note.md",
+    "_01_notes/Double Descent.md",
+    "_01_notes/Curse of Dimensionality.md",
     "_01_notes/Cross Entropy.md",
+    "_01_notes/Activation Functions.md",
+    "_04_images/Pasted image 20250628001017.png",
+    "_01_notes/RMSNorm.md",
+    "_01_notes/Deep Learning.md",
+    "_03_templates/knowledge-integration-note.md",
     "_01_notes/CoT Prompting.md",
     "_01_notes/Bias-Variance Tradeoff.md",
-    "_01_notes/Activation Functions.md",
     "_01_notes/GQA.md",
     "_01_notes/GPT.md",
-    "_01_notes/GPRO.md",
     "_02_references/@deepseek-ai2025.md",
-    "_01_notes/FSL.md",
     "_01_notes/Layer Normalization.md",
-    "_01_notes/RMSNorm.md",
-    "_01_notes/KL Divergence.md",
     "_00_maps_of_contents/dl_moc.md",
     "_01_notes/Neural Network Initialization.md",
     "_01_notes/Massive Activation.md",
@@ -277,7 +278,6 @@
     "_01_notes/IFEval.md",
     "_01_notes/ICL.md",
     "_01_notes/Hellaswag.md",
-    "_01_notes/GSM-8K.md",
     "_04_images/KL_Divergence_forward_vs_backward.png",
     "_04_images/X66DSGU6.png",
     "_04_images/Z4A5KRM5.png",
@@ -289,7 +289,6 @@
     "_02_references/deepseek-ai2025",
     "_04_images/Pasted image 20250623160610.png",
     "_04_images/Pasted image 20250623160350.png",
-    "_04_images/Pasted image 20250623160129.png",
     "_02_references/grattafiori2024",
     "_02_references/wei2023",
     "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023",

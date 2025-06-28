@@ -8,8 +8,14 @@
 
 Activation functions are used to introduce non-linearities in models. Without non-linearities, models can only map linear relationships in data, which severely limits their the expressive powers.
 
-1. Sigmoid
-    
+### Sigmoid
+$$h(x) = \sigma (x) = \frac{1}{1+e^{-x}}$$
++ $\sigma'(x) = \sigma(x)(1-\sigma(x))$
++ $\sigma(x) = 1-\sigma(-x)$
+
+	 ![[Pasted image 20250628001017.png]]
+
+
 2. Softmax: a function converts a set of numbers to a set of probabilities sum up to 1
     
     Softmax tends to amplify the variances of high variance vectors
