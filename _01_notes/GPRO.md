@@ -1,30 +1,28 @@
 ### [[dl_moc]]  
 ## **Group Relative Policy Optimization**
 
-**Tags**::  
+**Tags**:: 
 **Links**:: [@deepseek-ai2025][deepseek-ai2025]
 
 ---
+### Loss Function of GRPO Algorithm
 
-![[Pasted image 20250623160931.png]]
-
++ **Goal**: to maximize rewards for agents received over time
++ **Requires**: Diversity in responses and diversity of rewards
++ **Algorithm**:
+	![[grpo_algorithm.png]]
 + **An on-policy algorithm**: this means the agent learns from its own experiences, updating the policy it uses to act based on the outcomes of those actions.
-+ Reward Function: 
-+ Agent Goal: to maximize rewards received over time
-+ Requires: Diversity in responses and diversity of rewards
++ **Loss Function**: ![[grpo_loss_function.png]]
 + **Advantage**: Normalized rewards scores
 $$A_i = \frac{r_i - mean(r_1, r_2, \dots, r_G)}{std(r_1, r_2, \dots, r_G)}, $$
 	where $A_i$ is the advantage of the $i$-th completion and $r_i$ is the reward assigned to $i$-th completion
-
- 
-
-### Loss Function of GRPO Algorithm
-![[_02_references/deepseek-ai2025/image-5-x65-y74.png]]
-
++ **Components**:
 	1. Ratio of Token Probability Distributions of Reference Model (no adapter) and Updated Model (with adapter)
 	2. Advantages
 	3. Ratio Clipping
-	4. KL-Divergence: make sure the new model does not deviate too much from the baseline model during update
+	4. [[KL Divergence]]: make sure the new model does not deviate too much from the baseline model during update
+		![[GRPO_kl_divergence.png]]
 
 
-![[_04_images/GRPO_kl_divergence.png|500]]
+
+

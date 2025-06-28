@@ -25,7 +25,7 @@
     
 - **Xavier Initialization**: torch::nn::init::xavier_normal_
     
-    ![[Pasted image 20250513105549.png]]
+    ![[xavier_initialization.png]]
     ![[Pasted image 20250513105559.png]]
     
 - **Kaiming Initialization**: torch::nn::init::kaiming_normal_

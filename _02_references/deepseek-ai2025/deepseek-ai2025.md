@@ -41,7 +41,7 @@ version: "650"
 #### Relevant / important
 
 > [!quote|#ffd400] Image
-> ![[_02_references/deepseek-ai2025/image-5-x65-y74.png]]
+> ![[grpo_loss_function.png]]
 >
 >> GRPO Algorithm
 >
