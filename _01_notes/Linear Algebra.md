@@ -63,7 +63,7 @@ The singular values {$σ_k$} of a square matrix $A$ are the square roots of 
 $$
 \sigma_k = \max \min\limits_{x\in S^k, \|x\|=1} (A^T Ax, x)^{\frac 1 2} = \max \min \|Ax\|.
 $$
-
+![[Screenshot 2025-06-28 at 23.45.06.png]]
 ## Matrix Factorizations 
 ---
 The following are known as the big six matrix factorizations:
