@@ -1,9 +1,11 @@
 ### [[dl_moc]]  
 
 ## **Generative Pre-Training Transformer Models**
+
 **Tags**::  #llm/gpt
 **Links**:: 
 
+---
 - **GPT**
 	+ [Improving Language Understanding by Generative Pre-Training | GPT](https://paperswithcode.com/paper/improving-language-understanding-by)
 	- a multi-layer transformer decoder

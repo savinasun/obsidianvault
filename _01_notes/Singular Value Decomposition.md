@@ -23,23 +23,24 @@ $$
 
 ### SVD of Real Matrices
 
-If $A\in\mathbb{R}^{m\times n}$, then $U$ and $V$ are guaranteed to be real orthogonal matrices and $$A = U\Sigma V^T \in \mathbb{R}^{m\times n}$$![[svd1.png]]
+If $A\in\mathbb{R}^{m\times n}$, then $U$ and $V$ are guaranteed to be real orthogonal matrices and $$A = U\Sigma V^T \in \mathbb{R}^{m\times n}$$![[SVD_01.png]]
 + $U \in \mathbb{R}^{m\times m}$: orthogonal matrix
 + $V \in \mathbb{R}^{n\times n}$: orthogonal matrix
 + $\Sigma \in \mathbb{R}^{m\times n}$: rectangle diagonal matrix whose diagonal entries are non-negative
 
 
-### Geometric Interpretation of the largest singular value (C. Jordan)
+### Geometric Interpretation
 
 ![[Pasted image 20250628182448.png]]
 
 
 **Theorem**. Let $A\in\mathbb{R}^{m\times n}$, then the largest singular value of $A$ is given by
 $$
-\sigma_1 = max{\|Ax\|}
+\sigma_1 = \max\limits_{x\in \mathbb{R}^{n\times 1}, \|x\|=1}{\|Ax\|}
 $$
+Proof. Based on [[Linear Algebra#Min-Max Theorem|min-max theorem]].
 
-Proof. Based on [[Linear Algebra#Min-Max Theorem|min-max theorem]]
+
 ### Applications of SVD
 
 1. Computation of bases of the four fundamental subspaces of A. 

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Singular Value Decomposition.md",
+                "file": "_01_notes/LlaMA.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Singular Value Decomposition"
+              "title": "LlaMA"
             }
           }
         ]
@@ -71,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": ".git/index",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -105,13 +105,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_01_notes/Singular Value Decomposition.md",
+                "file": "_01_notes/LlaMA.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Singular Value Decomposition"
+              "title": "Outline of LlaMA"
             }
           }
         ]
@@ -135,7 +135,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_01_notes/Singular Value Decomposition.md",
+                "file": "_01_notes/LlaMA.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +145,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Singular Value Decomposition"
+              "title": "Backlinks for LlaMA"
             }
           },
           {
@@ -154,12 +154,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_01_notes/Singular Value Decomposition.md",
+                "file": "_01_notes/LlaMA.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Singular Value Decomposition"
+              "title": "Outgoing links from LlaMA"
             }
           },
           {
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Singular Value Decomposition.md",
+                "file": "_01_notes/LlaMA.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Singular Value Decomposition"
+              "title": "Graph of LlaMA"
             }
           }
         ]
@@ -257,43 +257,44 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "39c3ffae38cdfba8",
+  "active": "feb9ad2b5567d3d1",
   "lastOpenFiles": [
     "_01_notes/Linear Algebra.md",
-    "_01_notes/Singular Value Decomposition.md",
-    "_04_images/Pasted image 20250628213712.png",
+    "_01_notes/LlaMA.md",
+    "_01_notes/Layer Normalization.md",
+    "_01_notes/GPRO.md",
+    "_01_notes/KL Divergence.md",
+    "_01_notes/Internal Covariate Shift.md",
+    "_01_notes/IFEval.md",
+    "_01_notes/ICL.md",
+    "_01_notes/Hellaswag.md",
+    "_01_notes/GSM-8K.md",
+    "_01_notes/GQA.md",
+    "_01_notes/GPT.md",
+    "_01_notes/Eigenvalue Decomposition.md",
+    "_01_notes/DPO.md",
+    "_01_notes/Deep Learning.md",
+    "_01_notes/Curse of Dimensionality.md",
     "_01_notes/Cross Entropy.md",
     "_01_notes/CoT Prompting.md",
     "_01_notes/Bias-Variance Tradeoff.md",
     "_01_notes/Activation Functions.md",
-    "_01_notes/Curse of Dimensionality.md",
-    "_01_notes/Eigenvalue Decomposition.md",
-    "_04_images/svd1.png",
-    "_04_images/grpo_algorithm.png",
-    "_04_images/D94UXMBU.png",
-    "_04_images/8STM5CBF.png",
-    "_04_images/Pasted image 20250628182448.png",
     "_01_notes/Double Descent.md",
-    "_01_notes/Deep Learning.md",
+    "_01_notes/MBPP.md",
+    "_04_images/Pasted image 20250513105559.png",
+    "_04_images/Pasted image 20250513105524.png",
+    "_04_images/Pasted image 20250513105438.png",
+    "_04_images/llama12_params.png",
+    "_04_images/llama_encoder_architecture.png",
+    "_04_images/KL_Divergence_forward_vs_backward.png",
+    "_04_images/GRPO_algorithm.png",
+    "_04_images/DPO.png",
+    "_04_images/D94UXMBU.png",
+    "_04_images/activation_functions_sigmoid.png",
+    "_01_notes/SFT.md",
+    "_01_notes/Singular Value Decomposition.md",
     "_01_notes/Low Rank Matrix.md",
-    "_01_notes/GPRO.md",
-    "_04_images/X66DSGU6.png",
-    "_02_references/deepseek-ai2025/grpo_loss_function.png",
     "_02_references/deepseek-ai2025/deepseek-ai2025.md",
-    "_02_references/@deepseek-ai2025.md",
-    "_04_images/Pasted image 20250623160129.png",
-    "_04_images/Pasted image 20250623160350.png",
-    "_01_notes/DPO.md",
-    "_01_notes/KL Divergence.md",
-    "_01_notes/FSL.md",
-    "_01_notes/RMSNorm.md",
-    "_03_templates/knowledge-integration-note.md",
-    "_01_notes/GQA.md",
-    "_01_notes/GPT.md",
-    "_01_notes/Layer Normalization.md",
-    "_00_maps_of_contents/dl_moc.md",
-    "_01_notes/Neural Network Initialization.md",
-    "_01_notes/Massive Activation.md",
     "Untitled",
     "_02_references/deepseek-ai2025",
     "_02_references/grattafiori2024",

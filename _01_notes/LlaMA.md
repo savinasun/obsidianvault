@@ -1,9 +1,12 @@
 ### [[dl_moc]]  
 ## **LLAMA**
+
 **Tags**:: #llm/llama
 **Links**:: [[grattafiori2024]]
+
+---
 ### LlaMa Architecture
-LLaMA Architecture 
+
 	![[llama_encoder_architecture.png | 500]]
 	+ [[RMSNorm]] & Pre-Norm
 	+ [[RoPE|Rotary Positional Encodings]]

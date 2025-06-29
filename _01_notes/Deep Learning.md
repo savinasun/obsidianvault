@@ -274,7 +274,7 @@ Local Optima & Saddle Point
         
         [Ronneberger et al., 2015, U-Net: Convolutional Networks for Biomedical Image Segmentation]
         
-        ![[Pasted image 20250513110816.png]]
+        ![[UNet.png]]
         
     - Transpose convolution
         

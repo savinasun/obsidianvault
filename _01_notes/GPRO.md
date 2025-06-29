@@ -12,7 +12,7 @@
 + **Requires**: Diversity in responses and diversity of rewards
 
 + **Algorithm**:
-	![[grpo_algorithm.png]]
+	![[GRPO_algorithm.png]]
 	
 + **An on-policy algorithm**: this means the agent learns from its own experiences, updating the policy it uses to act based on the outcomes of those actions.
 
