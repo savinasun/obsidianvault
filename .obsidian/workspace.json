@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Linear Algebra.md",
+                "file": "_01_notes/Eigenvalue Decomposition.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Linear Algebra"
+              "title": "Eigenvalue Decomposition"
             }
           }
         ]
@@ -105,13 +105,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_01_notes/Linear Algebra.md",
+                "file": "_01_notes/Eigenvalue Decomposition.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Linear Algebra"
+              "title": "Outline of Eigenvalue Decomposition"
             }
           }
         ]
@@ -135,7 +135,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_01_notes/Linear Algebra.md",
+                "file": "_01_notes/Eigenvalue Decomposition.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +145,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Linear Algebra"
+              "title": "Backlinks for Eigenvalue Decomposition"
             }
           },
           {
@@ -154,12 +154,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_01_notes/Linear Algebra.md",
+                "file": "_01_notes/Eigenvalue Decomposition.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Linear Algebra"
+              "title": "Outgoing links from Eigenvalue Decomposition"
             }
           },
           {
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Linear Algebra.md",
+                "file": "_01_notes/Eigenvalue Decomposition.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Linear Algebra"
+              "title": "Graph of Eigenvalue Decomposition"
             }
           }
         ]
@@ -243,7 +243,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 433.5
+    "width": 433.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -259,6 +260,8 @@
   },
   "active": "39c3ffae38cdfba8",
   "lastOpenFiles": [
+    "_01_notes/Singular Value Decomposition.md",
+    "_01_notes/Linear Algebra.md",
     "_04_images/Screenshot 2025-06-28 at 23.45.06.png",
     "_01_notes/Eigenvalue Decomposition.md",
     "_01_notes/Deep Learning.md",
@@ -274,7 +277,6 @@
     "_01_notes/DPO.md",
     "_01_notes/Llama.md",
     "_01_notes/LlaMA.md",
-    "_01_notes/Linear Algebra.md",
     "_01_notes/Layer Normalization.md",
     "_01_notes/GPRO.md",
     "_01_notes/KL Divergence.md",
@@ -294,7 +296,6 @@
     "_04_images/KL_Divergence_forward_vs_backward.png",
     "_04_images/GRPO_algorithm.png",
     "_04_images/DPO.png",
-    "_04_images/D94UXMBU.png",
     "Untitled",
     "_02_references/deepseek-ai2025",
     "_02_references/grattafiori2024",

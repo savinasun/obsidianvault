@@ -9,14 +9,14 @@
 $$
 A = U\Sigma V^{\star} \in \mathbb{C}^{m\times n}
 $$
-+ $U:=(u_1, \dots, u_m) \in\mathbb{C}^{m\times m}$: complex unitary matrix whose columns are left singular vectors 
++ $U:=(u_1, \dots, u_m) \in\mathbb{C}^{m\times m}$: a complex unitary matrix whose columns are left singular vectors 
 	+ $u_1, \dots, u_m$ form an orthonormal basis of $\mathbb{C}^m$
-+ $V:=(v_1, \dots, v_n)\in\mathbb{C}^{n\times n}$: complex unitary matrix whose columns are right singular vectors
++ $V:=(v_1, \dots, v_n)\in\mathbb{C}^{n\times n}$: a complex unitary matrix whose columns are right singular vectors
 	+ $v_1, \dots, v_m$ form an orthonormal basis of $\mathbb{C}^n$
-+ $\Sigma\in\mathbb{R}^{m\times n}$: rectangle diagonal matrix whose diagonal entries are non-negative and are called the **singular values** of $A$
++ $\Sigma\in\mathbb{R}^{m\times n}$: a rectangle diagonal matrix whose diagonal entries are non-negative and are called the **singular values** of $A$
 + $V^{\star}$ is the conjugate transpose of $V$
 + The number of non-negative singular values is equal to the rank of $A$
-+ **Existence and Uniqueness**: 
++ **Existence**: 
 	A SVD **always exists for any real or complex matrix** though it is **not unique**.
 	It is always possible to choose the decomposition such that the singular values $\Sigma_{ii}$ are in descending order. In this case, $\Sigma$ is uniquely determined by ⁠$A$.
 
@@ -26,13 +26,14 @@ $$
 If $A\in\mathbb{R}^{m\times n}$, then $U$ and $V$ are guaranteed to be real orthogonal matrices and $$A = U\Sigma V^T \in \mathbb{R}^{m\times n}$$![[SVD_01.png]]
 + $U \in \mathbb{R}^{m\times m}$: orthogonal matrix
 + $V \in \mathbb{R}^{n\times n}$: orthogonal matrix
-+ $\Sigma \in \mathbb{R}^{m\times n}$: rectangle diagonal matrix whose diagonal entries are non-negative
-
-
++ $\Sigma \in \mathbb{R}^{m\times n}$: a rectangle diagonal matrix whose diagonal entries are non-negative
++ $V$ is given by the eigen-decomposition of $A^T A$$$A^TA = V\Sigma^2 V^T,$$ and $v_1, \dots, v_n$ are the eigenvectors of $A^T A$.
++ $U$ is given by the eigen-decomposition of $AA^T$$$AA^T = U\Sigma^2 U^T,$$ and $u_1, \dots, u_m$ are the eigenvectors of $AA^T$.
++ We also proved that the eigenvalues of $AA^T$ and $A^T A$ are equal.
 ### Geometric Interpretation
 
 ![[Pasted image 20250628182448.png]]
-
+SVD finds the direction which stretches a unit vector the most
 
 **Theorem**. Let $A\in\mathbb{R}^{m\times n}$, then the largest singular value of $A$ is given by
 $$
