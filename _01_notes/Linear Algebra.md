@@ -2,11 +2,11 @@
 ## **Linear Algebra**
 
 **Tags**::  
-**Links**::
+**Links**:: [Gilbert Strung Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
 
 ## Basic Concepts
 ---
-### Eigenvalues and eigenvectors 
+### Eigenvalues and Eigenvectors 
 
 An **eigenvector** $\mathbf{v}$ (or **characteristic vector**) is a vector that has its direction unchanged (or reversed) by a given linear transformation $A$, i.e. $\exists \lambda\in\mathbb{R}$ s.t.
 $$ A\mathbf{v} = \lambda \mathbf{v}$$
@@ -17,6 +17,10 @@ where $p(\lambda)$ is the **characteristic polynomial** of matrix $A$
 
 This equation will have $N_\lambda$ distinct solutions, where $1 \leq N_\lambda \leq N$. The set of solutions, that is, the eigenvalues, is called the **spectrum** of $A$.
 
+![[Pasted image 20250628213712.png|600]]
+
+
+
 ## Special Matrices
 ---
 ### Symmetric Matrices 
@@ -25,6 +29,10 @@ A matrix is called symmetric if $A=A^T$.
 
 ### Normal Matrices
 
+
+### Orthogonal Matrices
+
+A real $n \times n$ matrix $Q$ is called orthogonal if $Q^T Q = I$, i.e. $Q^{-1}=Q^T$.
 
 ### Diagonalizable Matrices 
 
