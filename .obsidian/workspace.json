@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/LlaMA.md",
+                "file": "_01_notes/Linear Algebra.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LlaMA"
+              "title": "Linear Algebra"
             }
           }
         ]
@@ -105,13 +105,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_01_notes/LlaMA.md",
+                "file": "_01_notes/Linear Algebra.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of LlaMA"
+              "title": "Outline of Linear Algebra"
             }
           }
         ]
@@ -135,7 +135,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_01_notes/LlaMA.md",
+                "file": "_01_notes/Linear Algebra.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +145,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for LlaMA"
+              "title": "Backlinks for Linear Algebra"
             }
           },
           {
@@ -154,12 +154,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_01_notes/LlaMA.md",
+                "file": "_01_notes/Linear Algebra.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from LlaMA"
+              "title": "Outgoing links from Linear Algebra"
             }
           },
           {
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/LlaMA.md",
+                "file": "_01_notes/Linear Algebra.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of LlaMA"
+              "title": "Graph of Linear Algebra"
             }
           }
         ]
@@ -257,10 +257,23 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "feb9ad2b5567d3d1",
+  "active": "39c3ffae38cdfba8",
   "lastOpenFiles": [
-    "_01_notes/Linear Algebra.md",
+    "_01_notes/Eigenvalue Decomposition.md",
+    "_01_notes/Deep Learning.md",
+    "BLEU Score.md",
+    "PPL Score.md",
+    "_01_notes/Double Descent.md",
+    "_01_notes/Curse of Dimensionality.md",
+    "_01_notes/Cross Entropy.md",
+    "_01_notes/CoT Prompting.md",
+    "_01_notes/Bias-Variance Tradeoff.md",
+    "_01_notes/Activation Functions.md",
+    "_04_images/Pasted image 20250628231848.png",
+    "_01_notes/DPO.md",
+    "_01_notes/Llama.md",
     "_01_notes/LlaMA.md",
+    "_01_notes/Linear Algebra.md",
     "_01_notes/Layer Normalization.md",
     "_01_notes/GPRO.md",
     "_01_notes/KL Divergence.md",
@@ -271,15 +284,6 @@
     "_01_notes/GSM-8K.md",
     "_01_notes/GQA.md",
     "_01_notes/GPT.md",
-    "_01_notes/Eigenvalue Decomposition.md",
-    "_01_notes/DPO.md",
-    "_01_notes/Deep Learning.md",
-    "_01_notes/Curse of Dimensionality.md",
-    "_01_notes/Cross Entropy.md",
-    "_01_notes/CoT Prompting.md",
-    "_01_notes/Bias-Variance Tradeoff.md",
-    "_01_notes/Activation Functions.md",
-    "_01_notes/Double Descent.md",
     "_01_notes/MBPP.md",
     "_04_images/Pasted image 20250513105559.png",
     "_04_images/Pasted image 20250513105524.png",
@@ -290,11 +294,7 @@
     "_04_images/GRPO_algorithm.png",
     "_04_images/DPO.png",
     "_04_images/D94UXMBU.png",
-    "_04_images/activation_functions_sigmoid.png",
     "_01_notes/SFT.md",
-    "_01_notes/Singular Value Decomposition.md",
-    "_01_notes/Low Rank Matrix.md",
-    "_02_references/deepseek-ai2025/deepseek-ai2025.md",
     "Untitled",
     "_02_references/deepseek-ai2025",
     "_02_references/grattafiori2024",

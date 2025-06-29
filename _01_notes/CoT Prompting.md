@@ -9,7 +9,7 @@ CoT Prompting = [[FSL|Few-Shot Learning]] + Reasoning
 
 Chain-Of-Thought: Intermediate steps of reasoning that link the input (question) to the output (answer).
 
-Let's think step by step.
+"Let's think step by step."
 
 ![[_02_references/wei2023/image-undefined-x102-y117.png]]
 

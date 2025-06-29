@@ -58,16 +58,11 @@ An n×n matrix A is said to be orthogonally diagonalizable when an orthogona
 
 ### Min-Max Theorem
 
-The singular values {$σ_k$} of a square matrix $A$ are the square roots of the eigenvalues of $A^T A$. An immediate consequence of the first equality in the min-max theorem is:
+The singular values {$σ_k$} of a square matrix $A$ are the square roots of the eigenvalues of $A^T A$. Denote $\sigma_k$ the $k$-th entry in the decreasing sequence of the singular values, then
 
-σk↓=maxS:dim⁡(S)=kminx∈S,‖x‖=1(M∗Mx,x)12=maxS:dim⁡(S)=kminx∈S,‖x‖=1‖Mx‖.![{\displaystyle \sigma _{k}^{\downarrow }=\max _{S:\dim(S)=k}\min _{x\in S,\|x\|=1}(M^{*}Mx,x)^{\frac {1}{2}}=\max _{S:\dim(S)=k}\min _{x\in S,\|x\|=1}\|Mx\|.}](https://wikimedia.org/api/rest_v1/media/math/render/svg/1d42895c98a7513fc5091061debfade994e2591d)
-
-Similarly,
-
-σk↓=minS:dim⁡(S)=n−k+1maxx∈S,‖x‖=1‖Mx‖.![{\displaystyle \sigma _{k}^{\downarrow }=\min _{S:\dim(S)=n-k+1}\max _{x\in S,\|x\|=1}\|Mx\|.}](https://wikimedia.org/api/rest_v1/media/math/render/svg/6bef0c507f13beccbf3a0d8dc0f7860a145f66f9)
-
-Here σk↓![{\displaystyle \sigma _{k}^{\downarrow }}](https://wikimedia.org/api/rest_v1/media/math/render/svg/a09c2a2ee7f6ce9e88ff7be991b6dc1f32c725c0) denotes the _k_th entry in the decreasing sequence of the singular values, so that σ1↓≥σ2↓≥⋯![{\displaystyle \sigma _{1}^{\downarrow }\geq \sigma _{2}^{\downarrow }\geq \cdots }](https://wikimedia.org/api/rest_v1/media/math/render/svg/e773352c547e7b24d7d3e0e94650a679abe2afed).
-
+$$
+\sigma_k = \max \min\limits_{x\in S^k, \|x\|=1} (A^T Ax, x)^{\frac 1 2} = \max \min \|Ax\|.
+$$
 
 ## Matrix Factorizations 
 ---
