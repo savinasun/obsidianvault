@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Eigenvalue Decomposition.md",
+                "file": "_01_notes/Activation Functions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Eigenvalue Decomposition"
+              "title": "Activation Functions"
             }
           }
         ]
@@ -105,13 +105,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_01_notes/Eigenvalue Decomposition.md",
+                "file": "_01_notes/Activation Functions.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Eigenvalue Decomposition"
+              "title": "Outline of Activation Functions"
             }
           }
         ]
@@ -168,7 +168,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Eigenvalue Decomposition.md",
+                "file": "_01_notes/Activation Functions.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -196,7 +196,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Eigenvalue Decomposition"
+              "title": "Graph of Activation Functions"
             }
           },
           {
@@ -210,7 +210,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       },
       {
         "id": "78471ff1961b5744",
@@ -252,9 +252,12 @@
   },
   "active": "39c3ffae38cdfba8",
   "lastOpenFiles": [
-    "_01_notes/Activation Functions.md",
+    "_01_notes/Bias-Variance Tradeoff.md",
+    "_01_notes/Cross Entropy.md",
+    "_01_notes/Curse of Dimensionality.md",
     "_01_notes/Linear Algebra.md",
     "_01_notes/Eigenvalue Decomposition.md",
+    "_01_notes/Activation Functions.md",
     "_01_notes/Singular Value Decomposition.md",
     "_04_images/svd1.png",
     "_04_images/grpo_algorithm.png",
@@ -263,10 +266,7 @@
     "_04_images/Pasted image 20250628182448.png",
     "_01_notes/Double Descent.md",
     "_01_notes/Deep Learning.md",
-    "_01_notes/Curse of Dimensionality.md",
-    "_01_notes/Cross Entropy.md",
     "_01_notes/CoT Prompting.md",
-    "_01_notes/Bias-Variance Tradeoff.md",
     "_01_notes/Low Rank Matrix.md",
     "_01_notes/GPRO.md",
     "_04_images/X66DSGU6.png",
