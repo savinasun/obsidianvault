@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Eigenvalue Decomposition.md",
+                "file": "_01_notes/Eigen Decomposition.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Eigenvalue Decomposition"
+              "title": "Eigen Decomposition"
             }
           }
         ]
@@ -105,13 +105,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_01_notes/Eigenvalue Decomposition.md",
+                "file": "_01_notes/Eigen Decomposition.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Eigenvalue Decomposition"
+              "title": "Outline of Eigen Decomposition"
             }
           }
         ]
@@ -135,7 +135,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_01_notes/Eigenvalue Decomposition.md",
+                "file": "_01_notes/Eigen Decomposition.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +145,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Eigenvalue Decomposition"
+              "title": "Backlinks for Eigen Decomposition"
             }
           },
           {
@@ -154,12 +154,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_01_notes/Eigenvalue Decomposition.md",
+                "file": "_01_notes/Eigen Decomposition.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Eigenvalue Decomposition"
+              "title": "Outgoing links from Eigen Decomposition"
             }
           },
           {
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Eigenvalue Decomposition.md",
+                "file": "_01_notes/Eigen Decomposition.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Eigenvalue Decomposition"
+              "title": "Graph of Eigen Decomposition"
             }
           }
         ]
@@ -263,7 +263,7 @@
     "_01_notes/Singular Value Decomposition.md",
     "_01_notes/Linear Algebra.md",
     "_04_images/Screenshot 2025-06-28 at 23.45.06.png",
-    "_01_notes/Eigenvalue Decomposition.md",
+    "_01_notes/Eigen Decomposition.md",
     "_01_notes/Deep Learning.md",
     "BLEU Score.md",
     "PPL Score.md",

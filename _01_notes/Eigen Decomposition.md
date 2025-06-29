@@ -1,11 +1,11 @@
 ### [[dl_moc]]  
-## **Eigenvalue Decomposition**
+## **Eigen Decomposition**
 
 **Tags**::  
 **Links**::
 
 ---
-### Eigenvalue Decomposition
+### Eigen Decomposition
 
 An orthogonally diagonalizable matrix $A$ can be decomposed as
 $$

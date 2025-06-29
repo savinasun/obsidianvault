@@ -72,5 +72,5 @@ The following are known as the big six matrix factorizations:
 2. LU Factorization
 3. QR Factorization
 4. Schur Decomposition
-5. [[Eigenvalue Decomposition]]
+5. [[Eigen Decomposition]]
 6. [[Singular Value Decomposition]]
