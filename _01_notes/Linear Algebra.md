@@ -8,6 +8,174 @@
 
 ## Basic Concepts
 ---
+### Basis Vectors
+A **basis** of a vector space $V$ is a set of vectors ${v_1, \dots, v_k}$ that is:
+- Linearly independent
+- Spans $V$
+**Properties:**
+- Every vector $v\in V$ has a unique representation as a linear combination of the basis vectors $v = \sum \alpha_i v_i$ .
+- The number of basis vectors equals the **dimension** of $V$.
+**Geometric interpretation:** In $\mathbb{R}^n$, basis vectors define the coordinate axes.
+
+### Span of Vectors
+The **span** of vectors ${v_1, \dots, v_k}$ is: $\text{Span}({v_1, \dots, v_k}) = \left\{\sum_{i=1}^{k} \alpha_i v_i \mid \alpha_i \in \mathbb{R}\right\}$
+**Geometric interpretation:** The smallest subspace containing all linear combinations of the given vectors.
+
+### Rank
+The **rank** of a matrix $A \in \mathbb{R}^{m \times n}$ is the dimension of the column space: rank(A)=dim⁡(Col(A))\text{rank}(A) = \dim(\text{Col}(A))
+Rank equals the maximal number of linearly independent columns/rows.
+
+### Eigenvalues and Eigenvectors
+
+- For $A \in \mathbb{R}^{n \times n}$, $Av = \lambda v$ means:
+    
+    - $v \ne 0$ is an **eigenvector**
+        
+    - $\lambda \in \mathbb{C}$ is the corresponding **eigenvalue**
+        
+- $\lambda$ solves the **characteristic equation**: det⁡(A−λI)=0\det(A - \lambda I) = 0
+    
+
+### Determinant
+
+- A scalar value that encodes volume scaling and invertibility: det⁡(A)=0  ⟺  A is singular (not invertible)\det(A) = 0 \iff A \text{ is singular (not invertible)}
+    
+- Geometric interpretation: $|\det(A)|$ is the volume of the parallelepiped defined by columns of $A$
+    
+
+### Linear Independence
+
+- Vectors ${v_1, \dots, v_k}$ are linearly independent if: ∑i=1kαivi=0⇒αi=0  ∀i\sum_{i=1}^{k} \alpha_i v_i = 0 \Rightarrow \alpha_i = 0 \; \forall i
+    
+
+## 2. Special Matrices
+
+### Symmetric Matrices
+
+- $A^\top = A$
+    
+- Real symmetric matrices have real eigenvalues and are diagonalizable
+    
+
+### Orthogonal Matrices
+
+- $Q^\top Q = QQ^\top = I$
+    
+- Preserves inner products: $|Qx| = |x|$
+    
+
+### Diagonalizable Matrices
+
+- $A = PDP^{-1}$ where $D$ is diagonal, $P$ is invertible
+    
+- Implies a full set of linearly independent eigenvectors
+    
+
+### Orthogonally Diagonalizable
+
+- $A = QDQ^\top$ where $Q$ is orthogonal
+    
+- Only possible if $A$ is symmetric
+    
+
+### Positive Definite / Semidefinite
+
+- **Positive definite**: $x^\top A x > 0 ; \forall x \ne 0$
+    
+- **Positive semidefinite**: $x^\top A x \geq 0 ; \forall x$
+    
+- All eigenvalues are > 0 (PD) or $\geq 0$ (PSD)
+    
+
+## 3. Matrix Factorizations
+
+### Cholesky Decomposition
+
+- For symmetric, positive-definite $A$: $A = LL^\top$, where $L$ is lower triangular
+    
+
+### LU Factorization
+
+- $A = LU$, where $L$ is lower-triangular, $U$ is upper-triangular
+    
+- May require row permutations: $PA = LU$
+    
+
+### QR Factorization
+
+- $A = QR$, where $Q$ is orthogonal, $R$ is upper-triangular
+    
+- Used in least squares problems
+    
+
+### Schur Decomposition
+
+- $A = Q T Q^\top$, where $T$ is upper triangular, $Q$ is orthogonal
+    
+- All square matrices have a Schur decomposition
+    
+
+### Eigen Decomposition
+
+- $A = V \Lambda V^{-1}$ if $A$ has $n$ independent eigenvectors
+    
+- $\Lambda$: diagonal matrix of eigenvalues
+    
+
+### Singular Value Decomposition (SVD)
+
+- $A = U\Sigma V^\top$ where:
+    
+    - $U, V$ are orthogonal
+        
+    - $\Sigma$ is diagonal with non-negative singular values $\sigma_i$
+        
+    - $\sigma_i = \sqrt{\lambda_i}$ of $A^\top A$
+        
+- Works for any $m \times n$ matrix
+    
+
+## 4. Theorems
+
+### Spectral Theorem
+
+- A real symmetric matrix $A$ can be diagonalized by an orthogonal matrix: A=QΛQ⊤A = Q \Lambda Q^\top
+    
+- Eigenvalues are real, eigenvectors are orthonormal
+    
+
+### Min-Max Theorem (Courant-Fischer)
+
+- For symmetric $A$ with eigenvalues $\lambda_1 \le \cdots \le \lambda_n$: λk=min⁡dim⁡(V)=kmax⁡x∈V,∥x∥=1x⊤Ax\lambda_k = \min_{\dim(V)=k} \max_{x \in V, \|x\|=1} x^\top A x
+    
+- Provides variational characterization of eigenvalues
+    
+
+---
+
+### Additional Concepts
+
+- **Null Space**: $\text{Null}(A) = {x \mid Ax = 0}$
+    
+- **Column Space**: Span of the columns of $A$
+    
+- **Row Space**: Span of the rows of $A$
+    
+- **Rank-Nullity Theorem**: rank(A)+dim⁡(Null(A))=n\text{rank}(A) + \dim(\text{Null}(A)) = n where $A \in \mathbb{R}^{m \times n}$
+    
+- **Pseudoinverse**: For $A \in \mathbb{R}^{m\times n}$, $A^+ = V\Sigma^+ U^\top$
+    
+
+---
+
+References:
+
+- Gilbert Strang, "Introduction to Linear Algebra", 5th Edition: [https://math.mit.edu/~gs/linearalgebra/](https://math.mit.edu/~gs/linearalgebra/)
+    
+- Horn & Johnson, "Matrix Analysis"
+    
+- Trefethen & Bau, "Numerical Linear Algebra"
+
 ### Eigenvalues and Eigenvectors 
 
 An **eigenvector** $\mathbf{v}$ (or **characteristic vector**) is a vector that has its direction unchanged (or reversed) by a given linear transformation $A$, i.e. $\exists \lambda\in\mathbb{R}$ s.t.
