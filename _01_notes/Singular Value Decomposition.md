@@ -39,6 +39,7 @@ $$
 \sigma_1 = max{\|Ax\|}
 $$
 
+Proof. Based on [[Linear Algebra#Min-Max Theorem|min-max theorem]]
 ### Applications of SVD
 
 1. Computation of bases of the four fundamental subspaces of A. 

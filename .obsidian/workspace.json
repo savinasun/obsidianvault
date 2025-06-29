@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Linear Algebra.md",
+                "file": "_01_notes/Singular Value Decomposition.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Linear Algebra"
+              "title": "Singular Value Decomposition"
             }
           }
         ]
@@ -105,13 +105,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_01_notes/Linear Algebra.md",
+                "file": "_01_notes/Singular Value Decomposition.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Linear Algebra"
+              "title": "Outline of Singular Value Decomposition"
             }
           }
         ]
@@ -135,7 +135,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_01_notes/Linear Algebra.md",
+                "file": "_01_notes/Singular Value Decomposition.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +145,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Linear Algebra"
+              "title": "Backlinks for Singular Value Decomposition"
             }
           },
           {
@@ -154,12 +154,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_01_notes/Linear Algebra.md",
+                "file": "_01_notes/Singular Value Decomposition.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Linear Algebra"
+              "title": "Outgoing links from Singular Value Decomposition"
             }
           },
           {
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Linear Algebra.md",
+                "file": "_01_notes/Singular Value Decomposition.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Linear Algebra"
+              "title": "Graph of Singular Value Decomposition"
             }
           }
         ]
@@ -257,10 +257,10 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "9b3d2436593f39b9",
+  "active": "39c3ffae38cdfba8",
   "lastOpenFiles": [
-    "_01_notes/Singular Value Decomposition.md",
     "_01_notes/Linear Algebra.md",
+    "_01_notes/Singular Value Decomposition.md",
     "_04_images/Pasted image 20250628213712.png",
     "_01_notes/Cross Entropy.md",
     "_01_notes/CoT Prompting.md",
