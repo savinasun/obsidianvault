@@ -56,7 +56,7 @@ An n×n matrix A is said to be orthogonally diagonalizable when an orthogona
 
 ### Min-Max Theorem
 
-The singular values {$σ_k$} of a square matrix $A$ are the square roots of the eigenvalues of $A^T A$. An immediate consequence[_[citation needed](https://en.wikipedia.org/wiki/Wikipedia:Citation_needed "Wikipedia:Citation needed")_] of the first equality in the min-max theorem is:
+The singular values {$σ_k$} of a square matrix $A$ are the square roots of the eigenvalues of $A^T A$. An immediate consequence of the first equality in the min-max theorem is:
 
 σk↓=maxS:dim⁡(S)=kminx∈S,‖x‖=1(M∗Mx,x)12=maxS:dim⁡(S)=kminx∈S,‖x‖=1‖Mx‖.![{\displaystyle \sigma _{k}^{\downarrow }=\max _{S:\dim(S)=k}\min _{x\in S,\|x\|=1}(M^{*}Mx,x)^{\frac {1}{2}}=\max _{S:\dim(S)=k}\min _{x\in S,\|x\|=1}\|Mx\|.}](https://wikimedia.org/api/rest_v1/media/math/render/svg/1d42895c98a7513fc5091061debfade994e2591d)
 
