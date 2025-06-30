@@ -26,6 +26,10 @@ $$\text{Span}({v_1, \dots, v_k}) = \left\{\sum_{i=1}^{k} \alpha_i v_i \mid \alph
 Span is the smallest subspace containing all linear combinations of the given vectors.
 
 
+### Null Space
+the **kernel** of a [linear map](https://en.wikipedia.org/wiki/Linear_map "Linear map"), also known as the **null space** or **nullspace**, is the part of the [domain](https://en.wikipedia.org/wiki/Domain_of_a_function "Domain of a function") which is mapped to the [zero vector](https://en.wikipedia.org/wiki/Zero_element#Additive_identities "Zero element") of the [co-domain](https://en.wikipedia.org/wiki/Codomain "Codomain"); the kernel is always a [linear subspace](https://en.wikipedia.org/wiki/Linear_subspace "Linear subspace") of the domain.
+
+
 ### Rank
 The **rank** of a matrix $A \in \mathbb{R}^{m \times n}$ is the dimension of the column space: $\text{rank}(A) = \dim(\text{Col}(A))$
 #### Properties
@@ -38,7 +42,12 @@ $$\text{rank}(A) + \dim(\text{Null}(A)) = n$$
 
 **Null Space**: $\text{Null}(A) = \{x \mid Ax = 0\}$
 **Column Space**: Span of the columns of $A$, usually denoted as $\textrm{Col}(A)$
-**Row Space**: Span of the rows of $A$, usually denoted as $\textrm{Rol}(A)$
+**Row Space**: Span of the rows of $A$, usually denoted as $\textrm{Col}(A^T)$
+
+
+### Gram Matrix
+$G = AA^T$
+$$rank(AA^T) = rank(A^TA)=rank(A)=rank(A^T)$$
 
 
 ### Inverse of Matrix
