@@ -36,7 +36,7 @@ The **rank** of a matrix $A \in \mathbb{R}^{m \times n}$ is the dimension of the
 
 ### Eigenvalues and Eigenvectors
 
-An **eigenvector** $\mathbf{v}$ (or **characteristic vector**) is a non-zero vector that has its direction unchanged (or reversed) by a given linear transformation $A\in \mathbb{R}^{n\times n}$, i.e. $\exists \lambda\in\mathbb{R}$ s.t.
+An **eigenvector** $\mathbf{v}\in\mathbb{C}^n$ (or **characteristic vector**) is a non-zero vector that has its direction unchanged (or reversed) by a given linear transformation $A\in \mathbb{R}^{n\times n}$, i.e. $\exists \lambda\in\mathbb{C}$ s.t.
 $$ A\mathbf{v} = \lambda \mathbf{v}$$
 Here scalar $\lambda$ is the **eigenvalue** of $A$ and could be solved through equation
 $$p(\lambda) := \det(A−\lambda I)=0$$
@@ -48,6 +48,18 @@ This equation will have $N_\lambda$ distinct solutions, where $1 \leq N_\lam
 
 
 ### Determinant
+- For square matrix \$A\$: \(\det(A) = 0 \iff A \text{ is not invertible}\)
+
+- **Properties:**
+
+- \$\det(AB) = \det(A)\det(B)\$
+
+- \$\det(A^\top) = \det(A)\$
+
+- \$\det(Q) = \pm 1\$ for orthogonal \$Q\$
+
+- **Geometric interpretation:** Volume of the parallelepiped formed by the columns of \$A\$.
+
 
 - A scalar value that encodes volume scaling and invertibility: det⁡(A)=0  ⟺  A is singular (not invertible)\det(A) = 0 \iff A \text{ is singular (not invertible)}
     
