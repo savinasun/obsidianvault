@@ -127,7 +127,7 @@
       {
         "id": "80a199af214437f2",
         "type": "tabs",
-        "dimension": 36.73851921274602,
+        "dimension": 36.73851921274601,
         "children": [
           {
             "id": "c023f0525c0a2705",
@@ -178,7 +178,7 @@
       {
         "id": "8c4f97153975b77e",
         "type": "tabs",
-        "dimension": 32.61480787253983,
+        "dimension": 32.61480787253982,
         "children": [
           {
             "id": "9b3d2436593f39b9",
@@ -222,7 +222,7 @@
       {
         "id": "78471ff1961b5744",
         "type": "tabs",
-        "dimension": 30.646672914714152,
+        "dimension": 30.64667291471415,
         "children": [
           {
             "id": "0f71df546e72ebfe",
@@ -257,15 +257,15 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "39c3ffae38cdfba8",
+  "active": "31f305f0b8239a5f",
   "lastOpenFiles": [
     "_01_notes/Eigen Decomposition.md",
     "_01_notes/Linear Algebra.md",
     "_01_notes/Singular Value Decomposition.md",
     "_04_images/Screenshot 2025-06-28 at 23.45.06.png",
     "_01_notes/Deep Learning.md",
-    "BLEU Score.md",
-    "PPL Score.md",
+    "_01_notes/BLEU Score.md",
+    "_01_notes/PPL Score.md",
     "_01_notes/Double Descent.md",
     "_01_notes/Curse of Dimensionality.md",
     "_01_notes/Cross Entropy.md",
