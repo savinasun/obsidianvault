@@ -35,7 +35,8 @@ The **rank** of a matrix $A \in \mathbb{R}^{m \times n}$ is the dimension of the
 #### Rank-Nullity Theorem
 $$\text{rank}(A) + \dim(\text{Null}(A)) = n$$
 ![[Pasted image 20250628213712.png|300]]
-**Null Space**: $\text{Null}(A) = {x \mid Ax = 0}$
+
+**Null Space**: $\text{Null}(A) = \{x \mid Ax = 0\}$
 **Column Space**: Span of the columns of $A$, usually denoted as $\textrm{Col}(A)$
 **Row Space**: Span of the rows of $A$, usually denoted as $\textrm{Rol}(A)$
 
@@ -54,7 +55,7 @@ The **inverse** of a square matrix $A$ is a matrix $A^{-1}$ such that $$A A^{-1}
 #### Geometric interpretation
 - The inverse undoes the linear transformation defined by $A$
 - If $A$ scales and rotates a space, $A^{-1}$ reverses this operation
-#### Pseudoinverse
+#### Moore–Penrose Pseudoinverse
 - If $A$ is not square or not invertible, its **Moore–Penrose pseudoinverse** $A^+$ generalizes the inverse: from the SVD $A = U\Sigma V^\top$
 
 
