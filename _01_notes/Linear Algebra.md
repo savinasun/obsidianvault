@@ -15,15 +15,17 @@ A **basis** of a vector space $V$ is a set of vectors ${v_1, \dots, v_k}$ that i
 #### Properties
 - Every vector $v\in V$ has a unique representation as a linear combination of the basis vectors $v = \sum \alpha_i v_i$ .
 - The number of basis vectors equals the **dimension** of $V$.
-#### Geometric interpretation
-In $\mathbb{R}^n$, basis vectors define the coordinate axes.
 
 
 ### Span of Vectors
 The **span** of vectors ${v_1, \dots, v_k}$ is: 
 $$\text{Span}({v_1, \dots, v_k}) = \left\{\sum_{i=1}^{k} \alpha_i v_i \mid \alpha_i \in \mathbb{R}\right\}$$
-#### Geometric interpretation
 Span is the smallest subspace containing all linear combinations of the given vectors.
+
+
+### Linear Independence
+Vectors ${v_1, \dots, v_k}$ are independent if $\sum\limits_{i=1}^{k} \alpha_i v_i = 0 \Rightarrow \alpha_i = 0 \; \forall i$
+It also implies that no vector lies in the span of the combinations of others.
 
 
 ### Null Space
@@ -82,6 +84,9 @@ $$A = V\Lambda V^{-1}$$
 
 
 ### Determinant
+When a matrix applies transformation to a space, how much is the area scaled by this transformation is given by the determinant.
+If determinant of matrix is 0, it squishes the space into a smaller dimension than the input dimension.
+Negative determinant mean the orientation of the transformed space is inverted.
 #### Properties
 + For square matrix $A$: $\det(A) = 0 \iff A \text{ is not invertible}$
 - $\det(AB) = \det(A)\det(B)$
@@ -90,11 +95,6 @@ $$A = V\Lambda V^{-1}$$
 #### Geometric interpretation
 Volume of the parallelepiped formed by the columns of $A$.
 
-
-### Linear Independence
-Vectors ${v_1, \dots, v_k}$ are independent if $\sum\limits_{i=1}^{k} \alpha_i v_i = 0 \Rightarrow \alpha_i = 0 \; \forall i$
-#### Geometric interpretation
-No vector lies in the span of the others.
 
 
 
