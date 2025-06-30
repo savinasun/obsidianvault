@@ -12,29 +12,40 @@
 A **basis** of a vector space $V$ is a set of vectors ${v_1, \dots, v_k}$ that is:
 - Linearly independent
 - Spans $V$
+
 **Properties:**
 - Every vector $v\in V$ has a unique representation as a linear combination of the basis vectors $v = \sum \alpha_i v_i$ .
 - The number of basis vectors equals the **dimension** of $V$.
+
 **Geometric interpretation:** In $\mathbb{R}^n$, basis vectors define the coordinate axes.
 
 ### Span of Vectors
 The **span** of vectors ${v_1, \dots, v_k}$ is: $\text{Span}({v_1, \dots, v_k}) = \left\{\sum_{i=1}^{k} \alpha_i v_i \mid \alpha_i \in \mathbb{R}\right\}$
-**Geometric interpretation:** The smallest subspace containing all linear combinations of the given vectors.
+
+**Geometric interpretation:** Span is the smallest subspace containing all linear combinations of the given vectors.
 
 ### Rank
-The **rank** of a matrix $A \in \mathbb{R}^{m \times n}$ is the dimension of the column space: rank(A)=dim⁡(Col(A))\text{rank}(A) = \dim(\text{Col}(A))
-Rank equals the maximal number of linearly independent columns/rows.
+The **rank** of a matrix $A \in \mathbb{R}^{m \times n}$ is the dimension of the column space: $\text{rank}(A) = \dim(\text{Col}(A))$
+
+**Properties:**
+- $\text{rank}(A) = \text{rank}(A^\top)$
+- $\text{rank}(A) \le \min(m,n)$
+- Rank is the maximal number of linearly independent rows or columns
+
+**Rank-Nullity Theorem**: $$\text{rank}(A) + \dim(\text{Null}(A)) = n$$
 
 ### Eigenvalues and Eigenvectors
 
-- For $A \in \mathbb{R}^{n \times n}$, $Av = \lambda v$ means:
-    
-    - $v \ne 0$ is an **eigenvector**
-        
-    - $\lambda \in \mathbb{C}$ is the corresponding **eigenvalue**
-        
-- $\lambda$ solves the **characteristic equation**: det⁡(A−λI)=0\det(A - \lambda I) = 0
-    
+An **eigenvector** $\mathbf{v}$ (or **characteristic vector**) is a non-zero vector that has its direction unchanged (or reversed) by a given linear transformation $A\in \mathbb{R}^{n\times n}$, i.e. $\exists \lambda\in\mathbb{R}$ s.t.
+$$ A\mathbf{v} = \lambda \mathbf{v}$$
+Here scalar $\lambda$ is the **eigenvalue** of $A$ and could be solved through equation
+$$p(\lambda) := \det(A−\lambda I)=0$$
+where $p(\lambda)$ is the **characteristic polynomial** of matrix $A$
+
+This equation will have $N_\lambda$ distinct solutions, where $1 \leq N_\lambda \leq n$. The set of solutions, that is, the eigenvalues, is called the **spectrum** of $A$ and $\rho(A) = \max |\lambda_i|$ is called the **spectral radius** of $A$.
+
+**Diagonalization:** If $A$ has $n$ linearly independent eigenvectors, it can be diagonalized: $A = V\Lambda V^{-1}$
+
 
 ### Determinant
 
@@ -178,14 +189,7 @@ References:
 
 ### Eigenvalues and Eigenvectors 
 
-An **eigenvector** $\mathbf{v}$ (or **characteristic vector**) is a vector that has its direction unchanged (or reversed) by a given linear transformation $A$, i.e. $\exists \lambda\in\mathbb{R}$ s.t.
-$$ A\mathbf{v} = \lambda \mathbf{v}$$
 
-Here scalar $\lambda$ is the **eigenvalue** of $A$ and could be solved through equation
-$$p(\lambda) := \det(A−\lambda I)=0$$
-where $p(\lambda)$ is the **characteristic polynomial** of matrix $A$
-
-This equation will have $N_\lambda$ distinct solutions, where $1 \leq N_\lambda \leq N$. The set of solutions, that is, the eigenvalues, is called the **spectrum** of $A$.
 
 ![[Pasted image 20250628213712.png|600]]
 
