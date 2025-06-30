@@ -35,7 +35,6 @@ The **rank** of a matrix $A \in \mathbb{R}^{m \times n}$ is the dimension of the
 **Rank-Nullity Theorem**: $$\text{rank}(A) + \dim(\text{Null}(A)) = n$$
 
 ### Eigenvalues and Eigenvectors
-
 An **eigenvector** $\mathbf{v}\in\mathbb{C}^n$ (or **characteristic vector**) is a non-zero vector that has its direction unchanged (or reversed) by a given linear transformation $A\in \mathbb{R}^{n\times n}$, i.e. $\exists \lambda\in\mathbb{C}$ s.t.
 $$ A\mathbf{v} = \lambda \mathbf{v}$$
 Here scalar $\lambda$ is the **eigenvalue** of $A$ and could be solved through equation
@@ -46,32 +45,19 @@ This equation will have $N_\lambda$ distinct solutions, where $1 \leq N_\lam
 
 **Diagonalization:** If $A$ has $n$ linearly independent eigenvectors, it can be diagonalized: $A = V\Lambda V^{-1}$
 
-
 ### Determinant
-- For square matrix \$A\$: \(\det(A) = 0 \iff A \text{ is not invertible}\)
-
-- **Properties:**
-
-- \$\det(AB) = \det(A)\det(B)\$
-
-- \$\det(A^\top) = \det(A)\$
-
-- \$\det(Q) = \pm 1\$ for orthogonal \$Q\$
-
-- **Geometric interpretation:** Volume of the parallelepiped formed by the columns of \$A\$.
-
-
-- A scalar value that encodes volume scaling and invertibility: det⁡(A)=0  ⟺  A is singular (not invertible)\det(A) = 0 \iff A \text{ is singular (not invertible)}
-    
-- Geometric interpretation: $|\det(A)|$ is the volume of the parallelepiped defined by columns of $A$
-    
+**Properties:**
++ For square matrix $A$: $\det(A) = 0 \iff A \text{ is not invertible}$
+- $\det(AB) = \det(A)\det(B)$
+- $\det(A^\top) = \det(A)$
+- $\det(Q) = \pm 1$ for orthogonal $Q$
+**Geometric interpretation:** Volume of the parallelepiped formed by the columns of $A$.
 
 ### Linear Independence
+Vectors ${v_1, \dots, v_k}$ are independent if $\sum\limits_{i=1}^{k} \alpha_i v_i = 0 \Rightarrow \alpha_i = 0 \; \forall i$
+**Geometric interpretation:** No vector lies in the span of the others.
 
-- Vectors ${v_1, \dots, v_k}$ are linearly independent if: ∑i=1kαivi=0⇒αi=0  ∀i\sum_{i=1}^{k} \alpha_i v_i = 0 \Rightarrow \alpha_i = 0 \; \forall i
-    
-
-## 2. Special Matrices
+## Special Matrices
 
 ### Symmetric Matrices
 
@@ -161,11 +147,11 @@ This equation will have $N_\lambda$ distinct solutions, where $1 \leq N_\lam
 ## 4. Theorems
 
 ### Spectral Theorem
+A matrix is called symmetric if $A=A^T$.
 
 - A real symmetric matrix $A$ can be diagonalized by an orthogonal matrix: A=QΛQ⊤A = Q \Lambda Q^\top
     
 - Eigenvalues are real, eigenvectors are orthonormal
-    
 
 ### Min-Max Theorem (Courant-Fischer)
 
