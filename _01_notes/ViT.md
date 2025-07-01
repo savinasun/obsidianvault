@@ -1,7 +1,10 @@
 ### [[dl_moc]]  
-## **Vision Transformer**
+## **Vision Transformer (ViT)**
+
 **Tags**::  #transformer 
 **Links**::
+
+---
 
 - [[Dosovitskiy, et al., 2021](https://arxiv.org/abs/2010.11929) An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale]
 

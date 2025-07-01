@@ -1,9 +1,10 @@
 ### [[dl_moc]]  
 ## **Normalization**
+
 **Tags**::  #architecture
 **Links**::
 
-
+---
 ### Data Normalization
 
 - Speed up training process

@@ -1,7 +1,10 @@
 ### [[dl_moc]]  
 ## **Transformer Network Architecture**
+
 **Tags**::  #architecture/transformer 
 **Links**:: [[Vaswani, et al., 2017.](https://arxiv.org/abs/1706.03762) Attention is all you need.]
+
+---
 
 - **Encoder-Decoder Architecture**
     

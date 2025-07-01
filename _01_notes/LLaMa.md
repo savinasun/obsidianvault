@@ -1,5 +1,5 @@
 ### [[dl_moc]]  
-## **LLaMa**
+## **LLaMa (Large Language Model Meta AI)**
 
 **Tags**::  
 **Links**::

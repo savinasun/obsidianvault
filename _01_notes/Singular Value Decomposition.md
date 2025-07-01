@@ -1,5 +1,5 @@
 ### [[dl_moc]]  
-## **Singular Value Decomposition**
+## **Singular Value Decomposition (SVD)**
 
 **Tags**::  #dl_theo
 **Links**::
