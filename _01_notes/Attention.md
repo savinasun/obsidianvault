@@ -37,50 +37,13 @@ h_i = \textrm{Attention}(QW_i^Q, KW_i)
 $$
 ![[attention_multihead.png]]
 
-- $d_\textrm{model}$: dimension of the embedding vector
-- $d_k=d_v$: dimension of each head
-- $H= d_{\textrm{model}} / d_k$ is number of heads
-
-```python
-query_states = self.q_proj(hidden_states)
-key_states = self.k_proj(hidden_states)
-value_states = self.v_proj(hidden_states)
-
-query_states = query_states.view(bsz, q_len, self.num_heads, self.head_dim).transpose(1, 2)
-key_states = key_states.view(bsz, q_len, self.num_key_value_heads, self.head_dim).transpose(1, 2)
-value_states = value_states.view(bsz, q_len, self.num_key_value_heads, self.head_dim).transpose(1, 2)
-
-# apply rotary positional embedding
-kv_seq_len = key_states.shape[-2]
-cos, sin = self.rotary_emb(value_states, seq_len=kv_seq_len)
-query_states, key_states = apply_rotary_pos_emb(query_states, key_states, cos, sin, position_ids)
-
-
-def repeat_kv(hidden_states: torch.Tensor, n_rep: int) -> torch.Tensor:
-    """
-    This is the equivalent of torch.repeat_interleave(x, dim=1, repeats=n_rep). The hidden states go from (batch,
-    num_key_value_heads, seqlen, head_dim) to (batch, num_attention_heads, seqlen, head_dim)
-    """
-    batch, num_key_value_heads, slen, head_dim = hidden_states.shape
-    if n_rep == 1:
-        return hidden_states
-    hidden_states = hidden_states[:, :, None, :, :].expand(batch, num_key_value_heads, n_rep, slen, head_dim)
-    return hidden_states.reshape(batch, num_key_value_heads * n_rep, slen, head_dim)
-
-# repeat k/v heads if n_kv_heads < n_heads
-key_states = repeat_kv(key_states, self.num_key_value_groups)
-value_states = repeat_kv(value_states, self.num_key_value_groups)
-
-attn_weights = torch.matmul(query_states, key_states.transpose(2, 3)) / math.sqrt(self.head_dim)
-
-attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(query_states.dtype)
-attn_output = torch.matmul(attn_weights, value_states)
-
-attn_output = attn_output.transpose(1, 2).contiguous()
-attn_output = attn_output.reshape(bsz, q_len, self.hidden_size)
-
-attn_output = self.o_proj(attn_output)
-
-```
-
+- $D$: dimension of the hidden states (or embedding vector), or $d_{\mathrm{model}}$
+- $d$: dimension of each head
+- $H= D / d$ is number of heads
+- $q$: sequence length
+$$
+X = X+ \Sigma_i A_j \cdot X \cdot (W_V)_j \cdot (W_O^T)_j^T
+$$
++ $X \in \mathbb{R}^{q\times D}$: hidden states
++ $A_j$: $j$-th column of attention matrix $A\in\mathbb{R}^{q\times q}$
 ### Grouped-Query Attention
