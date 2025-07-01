@@ -1,9 +1,0 @@
-{
-  "citationExportFormat": "biblatex",
-  "literatureNoteTitleTemplate": "@{{citekey}}",
-  "literatureNoteFolder": "_02_references",
-  "literatureNoteContentTemplate": "---\nciteKey: \"[@{{citekey}}]\"\nauthor: \"{{authorString}}\"\nyear: \"{{year}}\"\ntags: \n  - '#paper'\nurl: \"{{URL}}\"\nlinks: \n  - \n---\n# {{title}}\n#### ({{year}}) - {{authorString}}\n\n## Abstract\n\n```\n{{abstract}}\n```\n\n## Notes\n{{note}}\n",
-  "markdownCitationTemplate": "[@{{citekey}}]",
-  "alternativeMarkdownCitationTemplate": "@{{citekey}}",
-  "citationExportPath": "/Users/sunshangwen/Library/Mobile Documents/com~apple~CloudDocs/Zotero Sync/bibfile.bib"
-}
