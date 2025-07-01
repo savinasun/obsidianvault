@@ -1,10 +1,10 @@
 ### [[dl_moc]]  
-## **Neural Network Initialization**
+# **Neural Network Initialization**
 
 **Tags**:: #architecture 
 **Links**::
 
----
+
 - **Cons of Zero Initialization**
     
     - [**Symmetry Breaking versus Zero Initialization**](https://community.deeplearning.ai/t/symmetry-breaking-versus-zero-initialization/16061)
@@ -27,7 +27,7 @@
     
 - **Xavier Initialization**: torch::nn::init::xavier_normal_
     
-    ![[xavier_initialization.png]]
+    ![[initialization_02.png]]
     ![[Pasted image 20250513105559.png]]
     
 - **Kaiming Initialization**: torch::nn::init::kaiming_normal_

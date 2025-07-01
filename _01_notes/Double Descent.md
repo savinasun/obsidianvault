@@ -1,10 +1,9 @@
 ### [[dl_moc]]  
-## **Double Descent**
+# **Double Descent**
 
 **Tags**::  #dl_theo
 **Links**::
 
----
 - [[Curse of Dimensionality]]
     
 - Traditional ML V.S. Modern ML:

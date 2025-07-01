@@ -1,10 +1,10 @@
 ### [[dl_moc]]  
-## **Basics of Neural Network**
+# **Basics of Neural Network**
 
 **Tags**:: #architecture 
 **Links**:: 
 
----
+
 SIMD: single instruction multiple data → GPU are much better at SIMD computations than CPU
 ### Forward Propagation
 

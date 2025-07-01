@@ -1,9 +1,5 @@
 ### [[dl_moc]]  
 ## **Group Relative Policy Optimization**
-
-**Tags**:: 
-**Links**:: [@deepseek-ai2025][deepseek-ai2025]
-
 ---
 ### Loss Function of GRPO Algorithm
 
@@ -12,7 +8,7 @@
 + **Requires**: Diversity in responses and diversity of rewards
 
 + **Algorithm**:
-	![[GRPO_algorithm.png]]
+	![[policy_gradient_methods_02.png]]
 	
 + **An on-policy algorithm**: this means the agent learns from its own experiences, updating the policy it uses to act based on the outcomes of those actions.
 
@@ -28,7 +24,7 @@ $$A_i = \frac{r_i - mean(r_1, r_2, \dots, r_G)}{std(r_1, r_2, \dots, r_G)}, $$
 	2. Advantages
 	3. Ratio Clipping
 	4. [[KL Divergence]]: make sure the new model does not deviate too much from the baseline model during update
-		![[GRPO_kl_divergence.png]]
+		![[policy_gradient_methods_03.png]]
 
 
 

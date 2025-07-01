@@ -1,14 +1,12 @@
 ### [[dl_moc]]  
-## **Root Mean Square Layer Normalization**
+# **Root Mean Square Layer Normalization**
 
 **Tags**::  #architecture/llama 
 **Links**::
 
----
 ### Definition
-
+---
 From [@zhang], we know that RMS Norm applies Root Mean Square Layer Normalization over a mini-batch of inputs.
-
 $$
 y_i = \frac{x_i}{RMS(x)}\cdot \gamma_i
 $$
@@ -18,14 +16,14 @@ RMS(x) = \sqrt{\epsilon + \frac{1}{n} \sum\limits_{i=1}^n x_i^2}.
 $$
 
 ### Parameters
-
+---
 1. Just like [[Layer Normalization]], we also have a **learnable scaling parameter** $\gamma_i$, which is multiplied with the normalized input here in RMSNorm, it allows the network to learn the optimal scaling for the activations, adding flexibility to the normalization process.
 
 2. It also helps with stabilizing training and accelerating convergence, similar to LayerNorm.
 
 
 ### Implementation
-
+---
 From [@zotero-item-191], a small constant value of $\epsilon=1e-6$ is used for numerical stability.
 
 ```python

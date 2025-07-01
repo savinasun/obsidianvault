@@ -1,10 +1,8 @@
 ### [[dl_moc]]  
-## **Benchmark Datasets**
+# **Benchmark Datasets**
 
 **Tags**::  
 **Links**::
-
----
 
 ### Grade School Math 8K Benchmark (GSM-8K)
 + Focus on multi-step mathematical reasoning

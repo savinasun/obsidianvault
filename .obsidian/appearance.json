@@ -3,7 +3,8 @@
     "callouts",
     "literature-css-snippet"
   ],
-  "cssTheme": "Things",
-  "theme": "obsidian",
-  "showRibbon": true
+  "cssTheme": "",
+  "theme": "moonstone",
+  "showRibbon": true,
+  "accentColor": "#5cb2f5"
 }

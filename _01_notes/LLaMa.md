@@ -1,14 +1,13 @@
 ### [[dl_moc]]  
-## **LLaMa (Large Language Model Meta AI)**
+# **LLaMa (Large Language Model Meta AI)**
 
 **Tags**::  
 **Links**::
 
+## Architecture
 ---
-
-### LLaMa Architecture
-
-![[llama_encoder_architecture.png | 500]]
+LLaMA architecture
+![[llama_01.png| 500]]
 + [[RMSNorm]] & Pre-Norm
 + [[RoPE|Rotary Positional Encodings]]
 + Self-Attention with KV Cache
@@ -17,7 +16,7 @@
 
 
  Llama 1 & 2 Params
-	![[llama12_params.png]]
+	![[llama_02.png]]
 
 There are four submodules forming the blocks of LLaMa decoding layer:
 ![5552e5181b504239b9ffcefe2da0bf39](https://docs.nvidia.com/deeplearning/transformer-engine/user-guide/_images/llamadecoderlayer.svg)

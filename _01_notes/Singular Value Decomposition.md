@@ -1,11 +1,11 @@
 ### [[dl_moc]]  
-## **Singular Value Decomposition (SVD)**
+# **Singular Value Decomposition (SVD)**
 
 **Tags**::  #dl_theo
 **Links**::
 
+## Definition
 ---
-### Singular Value Decomposition
 $$
 A = U\Sigma V^{\star} \in \mathbb{C}^{m\times n}
 $$
@@ -22,7 +22,6 @@ $$
 
 
 ### SVD of Real Matrices
-
 If $A\in\mathbb{R}^{m\times n}$, then $U$ and $V$ are guaranteed to be real orthogonal matrices and $$A = U\Sigma V^T \in \mathbb{R}^{m\times n}$$![[SVD_01.png]]
 + $U \in \mathbb{R}^{m\times m}$: orthogonal matrix
 + $V \in \mathbb{R}^{n\times n}$: orthogonal matrix
@@ -32,8 +31,8 @@ If $A\in\mathbb{R}^{m\times n}$, then $U$ and $V$ are guaranteed to be real orth
 + We also proved that the eigenvalues of $AA^T$ and $A^T A$ are equal.
 
 
-### Geometric Interpretation
-
+## Geometric Interpretation
+---
 ![[Pasted image 20250628182448.png]]
 SVD finds the direction which stretches a unit vector the most
 
@@ -45,7 +44,7 @@ Proof. Based on [[Linear Algebra#Min-Max Theorem|min-max theorem]].
 
 
 ### Applications of SVD
-
+---
 1. Computation of bases of the four fundamental subspaces of A. 
 2. Polar decomposition of square matrices 
 3. Least squares approximation of vectors and data fitting 
