@@ -18,6 +18,36 @@ A **basis** of a vector space $V$ is a set of vectors ${v_1, \dots, v_k}$ that i
 
 **Orthonormal Basis:** An orthonormal basis is a set of mutually perpendicular (orthogonal) vectors in a vector space, where each vector is also a unit vector.
 
+### Four Types Matrix Multiplication
+
+There are four types of interpretations for matrix multiplication.
+Denote $A\in\mathbb{R}^{m\times n}$, $B\in\mathbb{R}^{n\times r}$ and $C = AB$.
+#### 1. Matrix-Vector Multiplication (Column Perspective)
+ If $A \in \mathbb{R}^{m \times n}$ and $x \in \mathbb{R}^n$, then: where $A_i$ are the columns of $A$
+    
+- **Interpretation:** Linear combination of columns of $A$ weighted by $x_i$
+    
+
+#### 2. Row-Vector Multiplication (Row Perspective)
+
+- $Ax$ can also be seen as: where $a_i^\top$ are rows of $A$
+    
+- **Interpretation:** Each entry is the dot product of a row of $A$ with the vector $x$
+    
+
+#### 3. Matrix-Matrix Multiplication (Column Perspective)
+
+- If $B = [b_1, \dots, b_k] \in \mathbb{R}^{n \times k}$, then:
+    
+- **Interpretation:** Each column of $B$ is multiplied individually as a vector
+    
+
+#### 4. Element-Element Multiplication (Row Perspective)
+
+- Each row of $AB$ is a linear combination of rows of $B$ weighted by the corresponding row of $A$
+    
+- Often seen in the formula:
+
 ### Span of Vectors
 The **span** of vectors ${v_1, \dots, v_k}$ is: 
 $$\text{Span}({v_1, \dots, v_k}) = \left\{\sum_{i=1}^{k} \alpha_i v_i \mid \alpha_i \in \mathbb{R}\right\}$$
