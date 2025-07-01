@@ -31,6 +31,7 @@ The columns in $C$ could be represented as the linear combination of columns in
 $$
 C_j = \sum_{k=1}^n A_k b_{kj}, \quad j=1, \dots, r
 $$
+The following figure from [@zotero-item-192] shows how it works
 ![[linear_algebra_mat_mul_01.png]]
 #### 3. Vector-Matrix Multiplication
 The row in matrix $C$ could be represented as the linear combination of rows in $B$,
@@ -43,13 +44,14 @@ $$
  $$
  C = \sum_{k=1}^n A_k B_k^T
 $$
-![[Pasted image 20250701113323.png]]
+![[linear_algebra_mat_mul_03.png]]
 #### 5. Block-Block Multiplication
 The fifth way is to chop matrices in blocks and multiply blocks by any of the previous methods.
 For example, $$
 C_1 = A_1 B_1 + A_2 B_3
 $$
-![[Pasted image 20250701113427.png]]
+![[linear_algebra_mat_mul_04.png]]
+
 
 ### Span of Vectors
 The **span** of vectors ${v_1, \dots, v_k}$ is: 
@@ -206,6 +208,7 @@ $A = U\Sigma V^\top$ where:
 - $\sigma_i = \sqrt{\lambda_i}$ of $A^\top A$
 
 Works for any $m \times n$ matrix.
+
 
 ## Theorems
 ---
