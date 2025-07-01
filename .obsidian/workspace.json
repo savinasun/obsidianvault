@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Evaluation Metrics.md",
+                "file": "_01_notes/Curse of Dimensionality.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Evaluation Metrics"
+              "title": "Curse of Dimensionality"
             }
           }
         ]
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Evaluation Metrics.md",
+                "file": "_01_notes/Curse of Dimensionality.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Evaluation Metrics"
+              "title": "Graph of Curse of Dimensionality"
             }
           }
         ]
@@ -259,32 +259,20 @@
   },
   "active": "0509f6351add686e",
   "lastOpenFiles": [
-    "_01_notes/GPT.md",
-    "_01_notes/BPE.md",
-    "_01_notes/Attention.md",
-    "_01_notes/Activation Functions.md",
-    "_01_notes/Benchmark Datasets.md",
-    "_01_notes/Bias-Variance Tradeoff.md",
-    "_01_notes/CoT Prompting.md",
-    "_01_notes/Cross Entropy.md",
-    "_01_notes/Curse of Dimensionality.md",
-    "_01_notes/Deep Learning.md",
-    "_01_notes/Double Descent.md",
     "_01_notes/DPO.md",
-    "_01_notes/Eigen Decomposition.md",
+    "_01_notes/Double Descent.md",
+    "_01_notes/Deep Learning.md",
+    "_01_notes/Curse of Dimensionality.md",
+    "_01_notes/Cross Entropy.md",
+    "_01_notes/CoT Prompting.md",
+    "_01_notes/Bias-Variance Tradeoff.md",
+    "_01_notes/Benchmark Datasets.md",
+    "_01_notes/Attention.md",
     "_01_notes/Evaluation Metrics.md",
-    "_01_notes/FSL.md",
-    "_01_notes/GPRO.md",
-    "_01_notes/Internal Covariate Shift.md",
-    "_01_notes/KL Divergence.md",
-    "_01_notes/Layer Normalization.md",
-    "_01_notes/Linear Algebra.md",
-    "_01_notes/LLaMa.md",
-    "_01_notes/Low Rank Matrix.md",
-    "_01_notes/MoE.md",
-    "_01_notes/Neural Network Initialization.md",
-    "_01_notes/Normalization.md",
-    "_01_notes/PPO.md",
+    "Evaluation Metrics.md",
+    "Evaluation Metric.md",
+    "Untitled.md",
+    "Benchmark Datasets.md",
     "_04_images/linear_algebra_mat_mul_04.png",
     "_04_images/linear_algebra_mat_mul_03.png",
     "_04_images/linear_algebra_mat_mul_02.png",
@@ -294,7 +282,19 @@
     "_04_images/Pasted image 20250701111059.png",
     "_04_images/Pasted image 20250701111044.png",
     "_04_images/attention_grouped_query.png",
+    "_01_notes/GQA.md",
+    "_01_notes/GPRO.md",
     "_04_images/Pasted image 20250530224146.png",
+    "_01_notes/Transformers.md",
+    "_01_notes/LLaMa.md",
+    "_01_notes/Linear Algebra.md",
+    "_01_notes/Activation Functions.md",
+    "SwiGLU.md",
+    "_01_notes/Eigen Decomposition.md",
+    "_01_notes/Singular Value Decomposition.md",
+    "_01_notes/BLEU Score.md",
+    "_01_notes/PPL Score.md",
+    "_01_notes/LlaMA.md",
     "Untitled",
     "_02_references/deepseek-ai2025",
     "_02_references/grattafiori2024",
