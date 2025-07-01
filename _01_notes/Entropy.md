@@ -44,6 +44,7 @@ There are a few important properties about KL divergence:
 1. **Asymmetry**: KL divergence is not a distance metric since it is asymmetric.$$D_{KL}(q||p) \neq D_{KL}(p||q)$$
 2. **Relationship with Entropy / [[Cross Entropy]]**: $$H(p,q)=H(p)+D_{KL}(p,q)$$
 3. **Relationship with Information Gain**: KL divergence of $p$ relative to $q$, i.e. $D_{KL} (p||q)$, could be deemed as information gain achieved changing from $q$ to $p$.
+
 ### Forward and Backward KL
 
 ![[entropy_01.png]]
