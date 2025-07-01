@@ -15,39 +15,7 @@
     - parallel training + sequential inferencing (auto-regressive)
     - pre-train phase + fine-tune phase
     
-- **Self-Attention (Scaled Dot-Product Attention)**
-    
-    ![[image-4-x206-y296.png|400]]
-    
-    - QKV attention function
-        
-        → calculate the scaled dot-product similarities among each input tokens
-        
-        → convert these similarities into percentages by softmax function
-        
-        → calculate the self-attention score by using these percentages to weight the values embedding
-        
-    - scale factor: d_k represents the dimension of matrix K, **note that for logits to be input into softmax function, its variance should be approx to 1**
-        
-    - scaled dot-product attention V.S. additive attention
-        
-- **Masked Self-Attention**
-	
-- **Cross-Attention (Encoder-Decoder Attention):**
-    
-    K,V from encoder
-    
-    Q from decoder
-    
-    → calculate encoder-decoder attention scores to generate text (these are from the Seq2Seq models)
-    
-    - **Multi-Modal Models**: encoder trained on images, speech → context aware embeddings → text based decoder to generate captions or audio-prompt responses
-    
-- **Multi-Head Attention**
-    - d_model: dimension of the embedding vector
-    - n_head * d_k = d_model
-    
-	![[image-5-x104-y560.png]]
+- 
 
 in post-LN transformer, the expected gradients of the parameters near the output layer are large at initialization → unstable training using large LR
 
