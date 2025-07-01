@@ -43,7 +43,7 @@ $$
 h_i = \textrm{Attention}\left(XW_i^Q, XW_i^K, XW_i^V\right),
 $$
 + $X\in\mathbb{R}^{q\times D}$: hidden states (or outputs from previous module)
-+ 
++                              
 ![[attention_03.png]]
 
 $$
