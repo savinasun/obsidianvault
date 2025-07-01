@@ -16,6 +16,7 @@ A **basis** of a vector space $V$ is a set of vectors ${v_1, \dots, v_k}$ that i
 - Every vector $v\in V$ has a unique representation as a linear combination of the basis vectors $v = \sum \alpha_i v_i$ .
 - The number of basis vectors equals the **dimension** of $V$.
 
+**Orthonormal Basis:** An orthonormal basis is a set of mutually perpendicular (orthogonal) vectors in a vector space, where each vector is also a unit vector.
 
 ### Span of Vectors
 The **span** of vectors ${v_1, \dots, v_k}$ is: 
@@ -63,9 +64,6 @@ The **inverse** of a square matrix $A$ is a matrix $A^{-1}$ such that $$A A^{-1}
 - **Gaussian elimination** (row reduction to identity)
 - **LU decomposition** (solve $Ax = b$ for each column of $I$)
 - **Adjugate formula**: (not practical for large $n$)
-#### Geometric interpretation
-- The inverse undoes the linear transformation defined by $A$
-- If $A$ scales and rotates a space, $A^{-1}$ reverses this operation
 #### Moore–Penrose Pseudoinverse
 - If $A$ is not square or not invertible, its **Moore–Penrose pseudoinverse** $A^+$ generalizes the inverse: from the SVD $A = U\Sigma V^\top$
 
@@ -116,12 +114,11 @@ Normal matrices include symmetric, Hermitian, unitary, and orthogonal matrices.
 
 ### Orthogonal Matrices
 A real $n \times n$ matrix $Q$ is called orthogonal if $Q^T Q = I$, i.e. $Q^{-1}=Q^T$.
+In geometric interpretation, the orthogonal matrix represents rotations and reflections
 #### Properties
 - $Q^{-1} = Q^\top$
 - Preserves length and angles
 - Preserves inner products: $|Q| = \pm1$, $|Qx|=|x|$
-#### Geometric interpretation
-Represents rotations and reflections
 
 
 ### Diagonalizable Matrices

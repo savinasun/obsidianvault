@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Activation Functions.md",
+                "file": "_01_notes/LLaMa.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Activation Functions"
+              "title": "LLaMa"
             }
           }
         ]
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Activation Functions.md",
+                "file": "_01_notes/LLaMa.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Activation Functions"
+              "title": "Graph of LLaMa"
             }
           }
         ]
@@ -259,10 +259,10 @@
   },
   "active": "0509f6351add686e",
   "lastOpenFiles": [
+    "_01_notes/Linear Algebra.md",
+    "_01_notes/Activation Functions.md",
     "_01_notes/LLaMa.md",
     "SwiGLU.md",
-    "_01_notes/Activation Functions.md",
-    "_01_notes/Linear Algebra.md",
     "_01_notes/Eigen Decomposition.md",
     "_01_notes/Singular Value Decomposition.md",
     "_04_images/Screenshot 2025-06-28 at 23.45.06.png",
