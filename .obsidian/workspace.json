@@ -259,8 +259,9 @@
   },
   "active": "0509f6351add686e",
   "lastOpenFiles": [
-    "_01_notes/Entropy.md",
+    "conflict-files-obsidian-git.md",
     "FLOPs.md",
+    "_01_notes/Entropy.md",
     "_01_notes/Attention.md",
     "_04_images/attention_03.png",
     "_01_notes/Activation Functions.md",
@@ -289,7 +290,6 @@
     "_01_notes/LLaMa.md",
     "_01_notes/RMSNorm.md",
     "_01_notes/SFT.md",
-    "_01_notes/Transformers.md",
     "_04_images/llama_02.png",
     "_04_images/llama_01.png",
     "_04_images/policy_gradient_methods_03.png",
