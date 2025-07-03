@@ -11,14 +11,10 @@
             "id": "0509f6351add686e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_01_notes/FLOPs.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "FLOPs"
+              "title": "New tab"
             }
           }
         ]
@@ -186,7 +182,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/FLOPs.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +209,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of FLOPs"
+              "title": "Graph view"
             }
           }
         ]
@@ -257,9 +252,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "31f305f0b8239a5f",
+  "active": "0509f6351add686e",
   "lastOpenFiles": [
-    "conflict-files-obsidian-git.md",
+    "FLOPs.md",
     "_01_notes/FLOPs.md",
     "_01_notes/Entropy.md",
     "_01_notes/Attention.md",
