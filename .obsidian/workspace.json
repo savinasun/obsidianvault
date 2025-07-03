@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "FLOPs.md",
+                "file": "_01_notes/FLOPs.md",
                 "mode": "source",
                 "source": false
               },
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "FLOPs.md",
+                "file": "_01_notes/FLOPs.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -257,10 +257,10 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "0509f6351add686e",
+  "active": "31f305f0b8239a5f",
   "lastOpenFiles": [
     "conflict-files-obsidian-git.md",
-    "FLOPs.md",
+    "_01_notes/FLOPs.md",
     "_01_notes/Entropy.md",
     "_01_notes/Attention.md",
     "_04_images/attention_03.png",
