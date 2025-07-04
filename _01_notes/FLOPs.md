@@ -16,7 +16,7 @@ Examples:
 + H100 has a peak performance of 1979 teraFLOP/s with sparsity, 50% without
 
 
-+ 
+
 + How long does it take to train a 70B parameter model on 15T tokens on 1024 H100?
 + total flops = $6\times 70e9 \times 15e12$
-	
+
