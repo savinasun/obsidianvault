@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "cab054a8b50c0355",
+        "id": "c48fbf2a852f10e3",
         "type": "tabs",
         "children": [
           {
-            "id": "0509f6351add686e",
+            "id": "5b0571c590536992",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -257,22 +257,23 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "0509f6351add686e",
+  "active": "5b0571c590536992",
   "lastOpenFiles": [
+    "_01_notes/RMSNorm.md",
+    "_01_notes/Layer Normalization.md",
+    "_01_notes/LLMs.md",
+    "_04_images/llms_05.png",
+    "_04_images/Screenshot 2025-06-28 at 23.45.06.png",
+    "_04_images/llms_04.png",
     "_04_images/llms_03.png",
     "_04_images/llms_01.png",
     "_04_images/llms_02.png",
-    "_01_notes/LLMs.md",
     "_04_images/llms_02.png",
     "_02_references/xiong2020.md",
     "_04_images/llms_01.png",
-    "_01_notes/Layer Normalization.md",
     "_01_notes/Transformer.md",
-    "_04_images/Screenshot 2025-06-28 at 23.45.06.png",
     "_04_images/Pasted image 20250513121037.png",
     "_04_images/Pasted image 20250530224146.png",
-    "_04_images/policy_gradient_methods_01.png",
-    "_04_images/Pasted image 20250513121109.png",
     "_01_notes/FLOPs.md",
     "_01_notes/Evaluation Metrics.md",
     "_01_notes/FSL.md",
