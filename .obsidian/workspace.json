@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/LLaMa.md",
+                "file": "_01_notes/LLMs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LLaMa"
+              "title": "LLMs"
             }
           }
         ]
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/LLaMa.md",
+                "file": "_01_notes/LLMs.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of LLaMa"
+              "title": "Graph of LLMs"
             }
           }
         ]
@@ -259,6 +259,7 @@
   },
   "active": "5b0571c590536992",
   "lastOpenFiles": [
+    "_01_notes/LLaMa.md",
     "_01_notes/LLMs.md",
     "_01_notes/GPT.md",
     "_04_images/llms_06.png",
