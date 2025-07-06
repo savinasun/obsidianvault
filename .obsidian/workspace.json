@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "7c5bc65d3d34f492",
+        "id": "cab054a8b50c0355",
         "type": "tabs",
         "children": [
           {
-            "id": "ac33d319cc1bdfb2",
+            "id": "0509f6351add686e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DDPM.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "DDPM"
+              "title": "New tab"
             }
           }
         ]
@@ -33,7 +29,7 @@
       {
         "id": "b8e2a895956801b3",
         "type": "tabs",
-        "dimension": 50.78125,
+        "dimension": 61.051606621226874,
         "children": [
           {
             "id": "31f305f0b8239a5f",
@@ -63,7 +59,7 @@
       {
         "id": "a9a455c0b9c6b057",
         "type": "tabs",
-        "dimension": 29.6875,
+        "dimension": 19.474196689386563,
         "children": [
           {
             "id": "f4bdddf87b272eb0",
@@ -87,7 +83,7 @@
       {
         "id": "a1144893fcc3c039",
         "type": "tabs",
-        "dimension": 19.53125,
+        "dimension": 19.474196689386563,
         "children": [
           {
             "id": "feb9ad2b5567d3d1",
@@ -135,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DDPM.md",
+                "file": "_01_notes/Linear Algebra.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +141,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for DDPM"
+              "title": "Backlinks for Linear Algebra"
             }
           },
           {
@@ -154,12 +150,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DDPM.md",
+                "file": "_01_notes/Linear Algebra.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from DDPM"
+              "title": "Outgoing links from Linear Algebra"
             }
           },
           {
@@ -186,7 +182,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "DDPM.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -201,8 +196,8 @@
                   "colorGroups": [],
                   "collapse-display": true,
                   "showArrow": false,
-                  "textFadeMultiplier": 0,
-                  "nodeSizeMultiplier": 1,
+                  "textFadeMultiplier": -1.5,
+                  "nodeSizeMultiplier": 1.17586263020833,
                   "lineSizeMultiplier": 1,
                   "collapse-forces": true,
                   "centerStrength": 0.518713248970312,
@@ -214,7 +209,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of DDPM"
+              "title": "Graph view"
             }
           }
         ]
@@ -243,7 +238,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 359.5
+    "width": 261.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -257,43 +252,44 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "31f305f0b8239a5f",
+  "active": "0509f6351add686e",
   "lastOpenFiles": [
-    "_01_notes/RoPE.md",
-    "_01_notes/LLMs.md",
-    "_02_references/su2023/rope_02.png",
-    "_02_references/su2023/rope_01.png",
-    "_02_references/su2023/rope_01.png",
-    "_01_notes/RMSNorm.md",
-    "_01_notes/Policy Gradient Methods.md",
-    "_01_notes/GPRO.md",
-    "_01_notes/GPTs.md",
-    "_02_references/su2023/su2023.md",
-    "_01_notes/LLaMa.md",
-    "_01_notes/FSL.md",
-    "_01_notes/FLOPs.md",
-    "_01_notes/Evaluation Metrics.md",
-    "_01_notes/Entropy.md",
-    "_01_notes/Eigen Decomposition.md",
-    "_01_notes/Double Descent.md",
-    "_01_notes/Deep Learning.md",
     "DDPM.md",
-    "_01_notes/CoT Prompting.md",
-    "_01_notes/BPE.md",
-    "_01_notes/Benchmark Datasets.md",
-    "_01_notes/Attention.md",
-    "_01_notes/Activation Functions.md",
-    "_01_notes/Linear Algebra.md",
-    "_01_notes/Normalization.md",
-    "_01_notes/MoE.md",
-    "_01_notes/Low Rank Matrix.md",
+    "_02_references/su2023/rope_02.png",
+    "_01_notes/RoPE.md",
+    "_02_references/su2023/rope_01.png",
+    "RoPE.md",
     "_04_images/llms_07.png",
-    "_04_images/Screenshot 2025-06-28 at 23.45.06.png",
-    "_04_images/Pasted image 20250530224146.png",
     "_04_images/activation_functions_06.png",
-    "_04_images/policy_gradient_methods_03.png",
+    "_01_notes/GPTs.md",
     "_04_images/llms_06.png",
     "_04_images/llms_05.png",
+    "_04_images/llms_04.png",
+    "_04_images/Pasted image 20250705180210.png",
+    "_04_images/llms_03.png",
+    "_02_references/xiong2020.md",
+    "_04_images/llms_02.png",
+    "_01_notes/Transformer.md",
+    "_01_notes/LLMs.md",
+    "LLM.md",
+    "FLOPs.md",
+    "_01_notes/FLOPs.md",
+    "_01_notes/Entropy.md",
+    "_01_notes/Attention.md",
+    "_01_notes/Activation Functions.md",
+    "_01_notes/Singular Value Decomposition.md",
+    "_01_notes/Eigen Decomposition.md",
+    "_01_notes/Double Descent.md",
+    "_01_notes/DDPM.md",
+    "_01_notes/CoT Prompting.md",
+    "_01_notes/Deep Learning.md",
+    "_01_notes/Evaluation Metrics.md",
+    "_01_notes/Cross Entropy.md",
+    "_01_notes/KL Divergence.md",
+    "_01_notes/BPE.md",
+    "_01_notes/Benchmark Datasets.md",
+    "_03_templates/knowledge-integration-note.md",
+    "_03_templates/literature-source-template.md",
     "Untitled",
     "_02_references/deepseek-ai2025",
     "_02_references/grattafiori2024",
