@@ -32,9 +32,17 @@ x_{l+1} = x_l + f_l (\textrm{LN}(x_l))
 
 ### LayerNorm V.S. RMSNorm
 
-+ The original transformer uses LayerNorm proposed in [@ba2016],
++ The original transformer uses **LayerNorm** proposed in [@ba2016],
 $$
 y = \frac{x-\mathbb{E}[x]}{\sqrt{Var[x]+\epsilon}}\times\gamma + \beta
 $$
-+ Notable 
-+ However, in many modern LMs: [[RMSNorm]] 
+where $\gamma$ and $\beta$ are learnable parameters.
++ Notable models uses LayerNorm: GPT-1, GPT-2, GPT-3, GPT-J, BLOOM
++ However, in most modern LMs, [[RMSNorm]] is used due to fewer parameters to move around and being memory efficient. The runtime (and surprisingly, perf) gains have been seen in papers
+![[llms_06.png]]
++ Notable models uses RMSNorm: LLaMA, PaLM, Chinchilla
+
+
+### Dropping Bias Terms
+
+
