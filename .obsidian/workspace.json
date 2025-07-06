@@ -254,6 +254,7 @@
   },
   "active": "0509f6351add686e",
   "lastOpenFiles": [
+    "_04_images/llms_07.png",
     "_04_images/activation_functions_06.png",
     "_01_notes/GPTs.md",
     "_04_images/llms_06.png",
@@ -280,7 +281,6 @@
     "_01_notes/CoT Prompting.md",
     "_01_notes/Deep Learning.md",
     "_04_images/SVD_01.png",
-    "_04_images/initialization_02.png",
     "_01_notes/Evaluation Metrics.md",
     "_01_notes/Cross Entropy.md",
     "_01_notes/KL Divergence.md",

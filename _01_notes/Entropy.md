@@ -34,9 +34,9 @@ $$H(p,q)=H(p)+D_{KL}(p,q)$$
 The amount of bits that differ cross entropy from entropy is called KL divergence.
 
 
-## Kullback–Leibler Divergence (Relative Entropy)
+## Kullback–Leibler Divergence
 ---
-KL divergence (or relative entropy) is a measure of how one probability distribution $q(x)$ is different from a reference probability distribution $p(x)$.
+**KL divergence** (or **relative entropy**) is a measure of how one probability distribution $q(x)$ is different from a reference probability distribution $p(x)$.
 
 $$D_{KL}(q||p)=-\mathbb{E}_{q}\left[\log\frac{p(X)}{q(X)}\right] = -\int q(x)\left[\log\frac{p(x)}{q(x)}\right]$$
 

@@ -8,7 +8,7 @@
 ---
 ### Pre-Layer Normalization V.S. Post-Layer Normalization
 ![[llms_01.png|550]]
-- In the **original-designed Post-LN** [[Transformer|transformer]], [[Layer Normalization|layer normalization]] is placed between the residual blocks, this architecture has achieved state-of-the-art performance in many tasks. The very early pre-trained large language models like [[GPT]] and [[BERT]] also uses Post-LN. 
+- In the **original-designed Post-LN** [[Transformer|transformer]], [[Layer Normalization|layer normalization]] is placed between the residual blocks, this architecture has achieved state-of-the-art performance in many tasks. The very early pre-trained large language models like [[GPTs]] and [[BERT]] also uses Post-LN. 
  + The function of post-LN could be expressed as$$
 	x_{l+1} = \textrm{LN}(x_{l}+f_l(x_l)),
 	$$where $f_l(\cdot)$ represents FFN or attention function in the $l$-th layer.
@@ -38,11 +38,27 @@ y = \frac{x-\mathbb{E}[x]}{\sqrt{Var[x]+\epsilon}}\times\gamma + \beta
 $$
 where $\gamma$ and $\beta$ are learnable parameters.
 + Notable models uses LayerNorm: GPT-1, GPT-2, GPT-3, GPT-J, BLOOM
-+ However, in most modern LMs, [[RMSNorm]] is used due to fewer parameters to move around and being memory efficient. The runtime (and surprisingly, perf) gains have been seen in papers
++ However, in most modern LMs, [[RMSNorm]] is more often used due to its fewer parameters to move around and being memory efficient. It also works as well as LayerNorm. The runtime (and surprisingly, perf) gains have been seen in papers (it shows the results of ablation studies)
 ![[llms_06.png]]
 + Notable models uses RMSNorm: LLaMA, PaLM, Chinchilla
 
 
 ### Dropping Bias Terms
 
++ **Most modern transformers don’t have bias terms.**
++ Original Transformer:$$
+	\textrm{FFN}(x) = max(0, xW_1+b_1)W_2+b2
+	$$
++ Modern Transformer (if not gated):$$
+	\textrm{FFN}(x) = \sigma(xW_1)W_2
+	$$
++ The reason for the change is also due to memory efficiency and training stability.
 
+
+### Parallel Layers V.S. Serial Layers
+
++ Normal transformer blocks are serial – they compute attention, then the MLP
++ A few models (GPTJ, PaLM, GPT-NeoX) do parallel layers. Originally in GPT-J!
++ ![[llms_07.png]]
++ If implemented correctly, LayerNorm can be shared, and matrix multiplies can be fused
++ Recent Models: Cohere Command A, Falcon 2 11B, Command R+

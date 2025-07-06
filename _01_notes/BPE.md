@@ -6,7 +6,7 @@
 
 ## Overview
 ---
-**Byte Pair Encoding (BPE)** is a subword tokenization algorithm that balances the trade-off between word-level and character-level tokenization. Originally introduced for data compression by Philip Gage in 1994, BPE was adapted to NLP for neural machine translation by [Sennrich et al., 2016](https://aclanthology.org/P16-1162/), BPE was then used by [[GPT#GPT-2|GPT-2]] [@radford].
+**Byte Pair Encoding (BPE)** is a subword tokenization algorithm that balances the trade-off between word-level and character-level tokenization. Originally introduced for data compression by Philip Gage in 1994, BPE was adapted to NLP for neural machine translation by [Sennrich et al., 2016](https://aclanthology.org/P16-1162/), BPE was then used by [[GPTs#GPT-2|GPT-2]] [@radford].
 
 
 ## Motivation

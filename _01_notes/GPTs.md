@@ -1,12 +1,14 @@
 ### [[dl_moc]]  
 
-## **Generative Pre-Training Transformer Models**
+# **Generative Pre-Training Transformer Models**
 
 **Tags**::  #llm/gpt
 **Links**:: 
 
+
+## GPT Families
 ---
-### GPT
+### GPT-1
 + [Improving Language Understanding by Generative Pre-Training | GPT](https://paperswithcode.com/paper/improving-language-understanding-by)
 - a multi-layer transformer decoder
 	
@@ -18,7 +20,7 @@
 	
 - ~110M parameters
 
-### **BERT (Bidirectional Encoder Representations from Transformers)**
+### BERT (Bidirectional Encoder Representations from Transformers)
 	
 - [[Devlin et al., 2018](https://arxiv.org/abs/1810.04805), [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://paperswithcode.com/paper/bert-pre-training-of-deep-bidirectional)]
 - bidirectional encoder → an encoder-only transformer model
