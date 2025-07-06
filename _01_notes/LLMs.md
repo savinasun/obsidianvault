@@ -91,3 +91,9 @@ $$𝑑_{𝑓𝑓} = \frac 8 3 d_{model}.$$This is mostly what happens. Some nota
 
 
 ### Aspect Ratio
+
+
+
+## Weight Decay
+---
+

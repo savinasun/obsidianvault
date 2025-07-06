@@ -1,37 +1,36 @@
 ### [[dl_moc]]  
-# Evaluation Metrics
+# Perplexity Score
 
 **Tags**::  
 **Links**::
 
 ## Perplexity (PPL) in Language Modelling
-
+---
 ### Overview
 
 **Perplexity** is a standard metric used to evaluate the performance of probabilistic models, especially in **language modeling**. It measures how well a model predicts a sample and can be interpreted as the average branching factor of the language model — i.e., how "confused" the model is when predicting the next token.
 
----
 
 ## Definition and Formula
 
 For a language model assigning probabilities $P(w_1, w_2, \dots, w_N)$ to a sequence of $N$ words:
 
-\[
+$$
 \text{Perplexity} = \exp\left( -\frac{1}{N} \sum_{i=1}^N \log P(w_i \mid w_1, \dots, w_{i-1}) \right)
-\]
+$$
 
-Alternatively, if the average **cross-entropy loss** \( H(P) \) is known (usually in nats or bits), then:
+Alternatively, if the average **cross-entropy loss** $H(P)$ is known (usually in nats or bits), then:
 
-\[
+$$
 \text{Perplexity} = \exp(H(P)) \quad \text{(when using natural log)}
-\]
-\[
+$$
+$$
 \text{Perplexity} = 2^{H(P)} \quad \text{(when using log base 2)}
-\]
+$$
 
 ---
 
-## Relationship with Cross-Entropy
+## Relationship with [[Entropy#Cross Entropy|Cross Entropy]]
 
 - **Cross-entropy** measures the expected number of bits/nats needed to encode a token using the predicted probability distribution.
 - **Perplexity** is simply the **exponential of cross-entropy**, translating the log-scale loss into a more intuitive scale.
