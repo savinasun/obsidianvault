@@ -17,7 +17,7 @@ $$
 
 ### Parameters
 ---
-1. Just like [[Layer Normalization]], we also have a **learnable scaling parameter** $\gamma_i$, which is multiplied with the normalized input here in RMSNorm, it allows the network to learn the optimal scaling for the activations, adding flexibility to the normalization process.
+1. Just like LayerNorm, we also have a **learnable scaling parameter** $\gamma_i$, which is multiplied with the normalized input here in RMSNorm, it allows the network to learn the optimal scaling for the activations, adding flexibility to the normalization process.
 
 2. It also helps with stabilizing training and accelerating convergence, similar to LayerNorm.
 
