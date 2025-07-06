@@ -62,3 +62,32 @@ where $\gamma$ and $\beta$ are learnable parameters.
 + ![[llms_07.png]]
 + If implemented correctly, LayerNorm can be shared, and matrix multiplies can be fused
 + Recent Models: Cohere Command A, Falcon 2 11B, Command R+
+
+
+## Hyperparamters
+---
+### Feed-Forward Ratio
+The feed-forward ratio is referring to the ratio between the feed-forward dimension $d_{ff}$ and the model dimension $d_{model}$. It controls the up projection dimension in MLP layer
+There are two types of default feed-forward ratios that are commonly used. For those ReLU architecture-typed models, it almost always be true that
+$$
+d_{ff} = 4 d_{model}.
+$$
+For those GLU variants-typed models, since GLU variants scale down by 2/3rd, it is by default that people would use
+$$𝑑_{𝑓𝑓} = \frac 8 3 d_{model}.$$This is mostly what happens. Some notable such example models are roughly in this range, though PaLM, LLaMA2 and Mistral are slightly larger.
+
+| Model        | $d_{ff}/d_{model}$ |
+| ------------ | ------------------ |
+| PaLM         | 4                  |
+| Mistral 7B   | 3.5                |
+| LLaMA-2 70B  | 3.5                |
+| LLaMA 70B    | 2.68               |
+| Qwen 14B     | 2.67               |
+| DeepSeek 67B | 2.68               |
+| Yi 34B       | 2.85               |
+| T5 v1.1      | 2.5                |
+
+
+### $d_{head}\times n_{heads} / d_{model}$
+
+
+### Aspect Ratio
