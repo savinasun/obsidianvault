@@ -38,12 +38,12 @@ y = \frac{x-\mathbb{E}[x]}{\sqrt{Var[x]+\epsilon}}\times\gamma + \beta
 $$
 where $\gamma$ and $\beta$ are learnable parameters.
 + Notable models uses LayerNorm: GPT-1, GPT-2, GPT-3, GPT-J, BLOOM
-+ However, in most modern LMs, [[RMSNorm]] is used due to fewer parameters to move around and being memory efficient. The runtime (and surprisingly, perf) gains have been seen in papers (it shows the results of ablation studies)
++ However, in most modern LMs, [[RMSNorm]] is more often used due to its fewer parameters to move around and being memory efficient. It also works as well as LayerNorm. The runtime (and surprisingly, perf) gains have been seen in papers (it shows the results of ablation studies)
 ![[llms_06.png]]
 + Notable models uses RMSNorm: LLaMA, PaLM, Chinchilla
 
+### Dropping Bias Terms
 
-### Bias Terms
 + **Most modern transformers don’t have bias terms.**
 + Original Transformer:$$
 	\textrm{FFN}(x) = max(0, xW_1+b_1)W_2+b2
