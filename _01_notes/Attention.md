@@ -93,9 +93,9 @@ where $W^O \in \mathbb{R}^{hd_v \times d_{\text{model}}}$ is the output projecti
 
 Denote the attention weights matrix of head $i$ as $A_i$, based on the tricks in [[Linear Algebra#Four Types of Matrix Multiplication|matrix multiplication]], we may rewrite the outputs of attention block as
 $$
-X = X+ \Sigma_i A_j \cdot X \cdot (W^V)_j \cdot ({W^O}^T)_j^T
+X = X+ \Sigma_i A_j \cdot X \cdot (W_i^V)_j \cdot ({W_i^O}^T)_j^T
 $$
-where $A_j$ is the $j$-th column of attention matrix $A\in\mathbb{R}^{q\times q}$.
+where $A_j$ is the $j$-th column of attention matrix $A\in\mathbb{R}^{n\times n}$.
 
 ### Benefits
 

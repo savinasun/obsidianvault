@@ -30,6 +30,8 @@ $$
 The following figure, which is quoted from [@zotero-item-132], shows the SwiGLU architecture in the FFN layer,
 ![fabef926d9d446079bd05a7619455342|500](https://docs.nvidia.com/deeplearning/transformer-engine/user-guide/_images/swiglu.svg)
 
+The following is quoted from [@zotero-item-184],
+
 ```python
 class LlamaMLP(nn.Module):
     def __init__(self, config):
@@ -46,3 +48,4 @@ class LlamaMLP(nn.Module):
         down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
         return down_proj
 ```
+
