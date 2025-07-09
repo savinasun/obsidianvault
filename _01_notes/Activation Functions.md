@@ -44,7 +44,6 @@ $$\textrm{FF}(x) = \max(0, xW_1)W_2$$
 + Notable models using ReLU: [[Transformer|original transformer]], T5, Chinchilla, Gopher
 + **Swish**:  A derived modification from SiLU$$\textrm{Swish}_{\beta}(x) = x\cdot \sigma(\beta x) = \frac{x}{1+e^{-\beta x}}$$
 
-
 ## Gaussian Error Linear Unit (GELU)
 ---
 $$
@@ -57,6 +56,7 @@ $$where $\Phi(x)$ is the c.d.f. of standard Gaussian distribution.
 + **GELU has a significantly smoother gradient transition than the sharp and abrupt ReLU.**
 + For negative values, GELU function is not monotonic, instead, it decreases at first then increases as it becomes close to zero.
 ![[activation_functions_06.png|800]]
+
 
 ## Swish Gated Linear Unit (SwiGLU)
 ---
