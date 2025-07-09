@@ -157,7 +157,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_01_notes/LLaMA.md",
+                "file": "_01_notes/Attention.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,7 +167,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for LLaMA"
+              "title": "Backlinks for Attention"
             }
           },
           {
@@ -176,12 +176,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_01_notes/LLaMA.md",
+                "file": "_01_notes/Attention.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from LLaMA"
+              "title": "Outgoing links from Attention"
             }
           },
           {
@@ -208,7 +208,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/LLaMA.md",
+                "file": "_01_notes/Attention.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -236,7 +236,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of LLaMA"
+              "title": "Graph of Attention"
             }
           }
         ]
@@ -279,10 +279,10 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "e3319e49115adfaf",
+  "active": "902414fb84531857",
   "lastOpenFiles": [
-    "_01_notes/Attention.md",
     "_01_notes/LLaMA.md",
+    "_01_notes/Attention.md",
     "_01_notes/Activation Functions.md",
     "_01_notes/LLMs.md",
     "_01_notes/MoE.md",
