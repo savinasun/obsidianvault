@@ -13,16 +13,18 @@
 + [[Attention#Grouped-Query Attention|Grouped Multi-Query Attention]]
 + [[Activation Functions#Swish Gated Linear Unit (SwiGLU)|SwiGLU]] in FFC
 
+There are four submodules forming the blocks of LLaMa decoding layer:
+![5552e5181b504239b9ffcefe2da0bf39](https://docs.nvidia.com/deeplearning/transformer-engine/user-guide/_images/llamadecoderlayer.svg)
+
 
 ## Hyperparameters
 ---
  Llama 1 & 2 Params
 	![[llama_02.png]]
 
-There are four submodules forming the blocks of LLaMa decoding layer:
-![5552e5181b504239b9ffcefe2da0bf39](https://docs.nvidia.com/deeplearning/transformer-engine/user-guide/_images/llamadecoderlayer.svg)
 
-### Feed Forward Layer
+## Feed Forward Layer
+---
 The MLP layer in LLaMa uses [[Activation Functions#Swish Gated Linear Unit (SwiGLU)|SwiGLU]] activation functions
 $$
 FFN_{SwiGLU}(x, W_1, W_2, W_3) = (Swish_1(xW_1)\otimes xW_3)W_2
