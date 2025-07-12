@@ -5,18 +5,8 @@
 **Links**:: [Gilbert Strung Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
 
 ![[linear_algebra_01.png]]
-<<<<<<< HEAD
+
 The above figure from [@zotero-item-237] captures a central idea of linear algebra.
-=======
-The front cover of [@zotero-item-237] captures a central idea of linear algebra.
-
-$Ax = b$ is solvable when $b$ is in the (red) column space of $A$.
-One particular solution $y$ is in the (yellow) row space: $Ay = b$.
-Add any vector $z$ from the (green) null space of $A: Az = 0$.
-The complete solution is $x = y + z$. Then $Ax = Ay + Az = b$.
-
-The cover design was the inspiration of Lois Sellers and Gail Corbett.
->>>>>>> origin/main
 
 ## Basic Concepts
 ---
