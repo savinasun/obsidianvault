@@ -118,11 +118,7 @@
       }
     ],
     "direction": "horizontal",
-<<<<<<< HEAD
     "width": 319.5
-=======
-    "width": 200
->>>>>>> origin/main
   },
   "right": {
     "id": "c823ba97a1de4d3e",
@@ -263,15 +259,11 @@
   },
   "active": "0509f6351add686e",
   "lastOpenFiles": [
-<<<<<<< HEAD
+    "conflict-files-obsidian-git.md",
+    "_01_notes/Linear Algebra.md",
     "_01_notes/Attention.md",
     "_04_images/linear_algebra_01.png",
-    "_01_notes/Linear Algebra.md",
     "_04_images/linear_algebra_02.png",
-=======
-    "_04_images/linear_algebra_02.png",
-    "_04_images/linear_algebra_01.png",
->>>>>>> origin/main
     "_04_images/linear_algebra_06.png",
     "_04_images/linear_algebra_05.png",
     "_04_images/Screenshot 2025-07-10 at 16.14.01.png",
@@ -279,10 +271,6 @@
     "_01_notes/LLaMA.md",
     "_01_notes/SVD.md",
     "_01_notes/Activation Functions.md",
-<<<<<<< HEAD
-=======
-    "_01_notes/Attention.md",
->>>>>>> origin/main
     "_01_notes/Benchmark Datasets.md",
     "_01_notes/CoT Prompting.md",
     "_01_notes/BPE.md",
@@ -300,21 +288,12 @@
     "_04_images/llms_07.png",
     "_04_images/activation_functions_06.png",
     "_01_notes/GPTs.md",
-<<<<<<< HEAD
-=======
-    "_04_images/llms_06.png",
-    "_04_images/llms_05.png",
->>>>>>> origin/main
     "_02_references/xiong2020.md",
     "LLM.md",
     "FLOPs.md",
     "_01_notes/FLOPs.md",
     "_01_notes/Singular Value Decomposition.md",
     "_01_notes/Eigen Decomposition.md",
-<<<<<<< HEAD
-=======
-    "_01_notes/DDPM.md",
->>>>>>> origin/main
     "Untitled",
     "_02_references/deepseek-ai2025",
     "_02_references/grattafiori2024",
