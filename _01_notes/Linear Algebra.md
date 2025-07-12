@@ -15,6 +15,11 @@ Vectors ${v_1, \dots, v_k}$ are independent if $\sum\limits_{i=1}^{k} \alpha_i v
 It also implies that no vector lies in the span of the combinations of others.
 
 
+### Span of Vectors
+The **span** of vectors ${v_1, \dots, v_k}$ in $\mathbb{R}^n$ is the smallest subspace containing all linear combinations of the given vectors:
+$$\text{Span}({v_1, \dots, v_k}) = \left\{\sum_{i=1}^{k} \alpha_i v_i \mid \alpha_i \in \mathbb{R}\right\}$$
+
+
 ### Basis Vectors
 A **basis** of a vector space $V$ is a set of vectors ${v_1, \dots, v_k}$ that is **linearly independent** and **spans $V$**. 
 
@@ -23,12 +28,6 @@ We have the following could be proved,
 - The number of basis vectors equals the **dimension** of $V$.
 
 **Orthonormal Basis:** An orthonormal basis is a set of mutually perpendicular (orthogonal) vectors in a vector space, where each vector is also a unit vector.
-
-
-### Span of Vectors
-The **span** of vectors ${v_1, \dots, v_k}$ in $\mathbb{R}^n$ is: 
-$$\text{Span}({v_1, \dots, v_k}) = \left\{\sum_{i=1}^{k} \alpha_i v_i \mid \alpha_i \in \mathbb{R}\right\}$$
-Span is the smallest subspace containing all linear combinations of the given vectors.
 
 
 ### Four Fundamental Subspaces
