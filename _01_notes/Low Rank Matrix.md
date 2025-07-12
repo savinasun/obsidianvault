@@ -1,22 +1,23 @@
-- - A matrix is “numerically low-rank” if its singular values drop off very quickly.
-        
-    - For example, if  
-        $σ_1≥σ_2≥⋯≥σ_k≫σ_{k+1}≈0$,
-        then truncating at $k$ introduces little error $(∥A−A_k∥2=σ_{k+1})$.
-        
-    - In some applications (e.g.\ image compression, PCA), one inspects the singular‐value “elbow” to pick $k$.
+### [[dl_moc]]  
+# **Low Rank Matrix**
 
+**Tags**::  
+**Links**::
+
+
+A matrix is “numerically low-rank” if its singular values drop off very quickly. For example, if  $σ_1≥σ_2≥⋯≥σ_k≫σ_{k+1}≈0$, then truncating at $k$ introduces little error $(∥A−A_k∥^2=σ_{k+1})$.
+
+In some applications (e.g. image compression, PCA), one inspects the singular‐value “elbow” to pick $k$.
 
 Below is a more in‐depth look at **why** the “elbow method” (or “scree‐plot elbow”) is commonly used to decide whether a matrix is numerically low‐rank. We cover both the **theoretical rationale** (via the Eckart–Young theorem and perturbation considerations) and the **practical/statistical viewpoint** (variance explained, noise floor, and diminishing returns). Citations are provided from recent pedagogical sources.
 
+
+## Eckart–Young Theorem and Best Low‐Rank Approximation
 ---
-
-## 1. Recall: The Eckart–Young Theorem and Best Low‐Rank Approximation
-
 1. **Eckart–Young (Frobenius‐norm) Optimality**  
     Suppose
     
-    A  ∈  Rm×n,A=U Σ VT  =  ∑i=1rσi ui viT, A \;\in\; \mathbb{R}^{m\times n},\quad A = U\,\Sigma\,V^T \;=\; \sum_{i=1}^{r} \sigma_i\,u_i\,v_i^T,
+    $$A \in \mathbb{R}^{m\times n},\ A=U \Sigma V^T  =\sum_{i=1}^r \sigma_i u_i v_i^T,\ A \;\in\; \mathbb{R}^{m\times n},\quad A = U\,\Sigma\,V^T \;=\; \sum_{i=1}^{r} \sigma_i\,u_i\,v_i^T$$,
     
     where σ1≥σ2≥⋯≥σr>0\sigma_1 \ge \sigma_2 \ge \cdots \ge \sigma_r>0. If one wants a **rank-kk** approximation AkA_k (with k<rk < r) that minimizes the Frobenius norm ∥A−B∥F\|A - B\|_F over all rank-kk matrices BB, then
     
