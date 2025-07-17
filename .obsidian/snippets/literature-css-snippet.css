@@ -1,0 +1,151 @@
+/* cs-papers-zotero.css */
+/* Simplified styling for CS conference papers with Zotero integration */
+
+/* Paper Title styling */
+.markdown-source-view.mod-cm6 .HyperMD-header-1,
+.markdown-rendered h1 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+  font-size: 1.7em;
+}
+
+/* Paper Info section */
+.markdown-rendered h2:contains("Paper Info") {
+  color: #7f8c8d;
+  font-size: 1.2em;
+  margin-bottom: 8px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+/* Paper Info list items */
+.markdown-rendered h2:contains("Paper Info") + ul li {
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+/* Links in Paper Info */
+.markdown-rendered h2:contains("Paper Info") + ul li a {
+  background-color: rgba(52, 152, 219, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #3498db;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.markdown-rendered h2:contains("Paper Info") + ul li a:hover {
+  background-color: rgba(52, 152, 219, 0.2);
+}
+
+/* Abstract styling */
+.markdown-rendered h2:contains("Abstract") + p {
+  background-color: #f8f9fa;
+  padding: 12px 15px;
+  border-left: 3px solid #95a5a6;
+  border-radius: 0 3px 3px 0;
+  font-style: italic;
+  color: #555;
+}
+
+/* Section headings */
+.markdown-rendered h2 {
+  color: #2980b9;
+  font-size: 1.2em;
+  margin-top: 25px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Method & Results lists */
+.markdown-rendered h2:contains("Key Methods") + ul li,
+.markdown-rendered h2:contains("Main Results") + ul li,
+.markdown-rendered h2:contains("Implementation") + ul li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Important Figures section */
+.markdown-rendered h2:contains("Important Figures") + p img {
+  display: block;
+  max-width: 85%; 
+  margin: 15px auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Zotero Annotations styling */
+.markdown-rendered h2:contains("Zotero Annotations") + blockquote,
+.markdown-rendered h2:contains("Zotero Annotations") + p + blockquote {
+  border-left: 3px solid #9b59b6 !important;
+  background-color: rgba(155, 89, 182, 0.08);
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 0 5px 5px 0;
+  font-style: italic;
+}
+
+/* Connections section with link styling */
+.markdown-rendered h2:contains("Connections") + ul li a.internal-link {
+  color: #1abc9c;
+  font-weight: 500;
+  background-color: rgba(26, 188, 156, 0.08);
+  padding: 2px 5px;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+.markdown-rendered h2:contains("Connections") + ul li a.internal-link:hover {
+  background-color: rgba(26, 188, 156, 0.15);
+}
+
+/* Research Ideas section */
+.markdown-rendered h2:contains("Research Ideas") + ul li {
+  border-left: 2px solid #e74c3c;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(231, 76, 60, 0.05);
+}
+
+/* CS paper tag styling */
+.tag[href*="cs-paper"] {
+  background-color: #3498db !important;
+  color: white !important;
+}
+
+/* Status tag styling */
+.tag[href*="unread"] {
+  background-color: #e74c3c !important;
+  color: white !important;
+}
+
+.tag[href*="reading"] {
+  background-color: #f39c12 !important;
+  color: white !important;
+}
+
+.tag[href*="completed"] {
+  background-color: #2ecc71 !important;
+  color: white !important;
+}
+
+/* YAML properties in edit mode */
+.cm-s-obsidian .cm-hmd-frontmatter {
+  color: #7f8c8d;
+}
+
+/* Print-friendly adjustments */
+@media print {
+  .markdown-rendered h1,
+  .markdown-rendered h2 {
+    break-after: avoid;
+  }
+  
+  .markdown-rendered blockquote {
+    background-color: #f9f9f9 !important;
+    border-left: 3px solid #777 !important;
+  }
+}

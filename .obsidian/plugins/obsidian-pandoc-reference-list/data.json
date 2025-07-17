@@ -1,0 +1,23 @@
+{
+  "pathToPandoc": "/opt/homebrew/bin/pandoc",
+  "tooltipDelay": 400,
+  "zoteroGroups": [
+    {
+      "id": 1,
+      "name": "My Library",
+<<<<<<< HEAD
+      "lastUpdate": 1752311768295
+=======
+      "lastUpdate": 1752178640633
+>>>>>>> origin/main
+    }
+  ],
+  "renderCitations": true,
+  "renderCitationsReadingMode": true,
+  "renderLinkCitations": true,
+  "pathToBibliography": "/Users/shangwen/Library/Mobile Documents/com~apple~CloudDocs/Zotero Sync/My Library.bib",
+  "showCitekeyTooltips": true,
+  "pullFromZotero": true,
+  "enableCiteKeyCompletion": true,
+  "cslStyleURL": "https://raw.githubusercontent.com/citation-style-language/styles/master/journal-of-computer-information-systems.csl"
+}
