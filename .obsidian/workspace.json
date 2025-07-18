@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Linear Algebra.md",
+                "file": "_01_notes/Deep Learning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Linear Algebra"
+              "title": "Deep Learning"
             }
           }
         ]
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Linear Algebra.md",
+                "file": "_01_notes/Deep Learning.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Linear Algebra"
+              "title": "Graph of Deep Learning"
             }
           }
         ]
@@ -261,9 +261,9 @@
   "lastOpenFiles": [
     "Attention Sink.md",
     "_01_notes/Attention.md",
+    "_01_notes/Linear Algebra.md",
     "Layer Normalization.md",
     "_01_notes/RMSNorm.md",
-    "_01_notes/Linear Algebra.md",
     "_01_notes/RoPE.md",
     "_01_notes/Policy Gradient Methods.md",
     "_01_notes/Neural Network Initialization.md",
