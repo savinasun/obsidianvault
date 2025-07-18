@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Deep Learning.md",
+                "file": "_01_notes/Attention.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Deep Learning"
+              "title": "Attention"
             }
           }
         ]
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Deep Learning.md",
+                "file": "_01_notes/Attention.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Deep Learning"
+              "title": "Graph of Attention"
             }
           }
         ]
@@ -259,9 +259,10 @@
   },
   "active": "0509f6351add686e",
   "lastOpenFiles": [
-    "Attention Sink.md",
-    "_01_notes/Attention.md",
     "_01_notes/Linear Algebra.md",
+    "_01_notes/Attention.md",
+    "_01_notes/Deep Learning.md",
+    "Attention Sink.md",
     "Layer Normalization.md",
     "_01_notes/RMSNorm.md",
     "_01_notes/RoPE.md",
@@ -278,7 +279,6 @@
     "_01_notes/ViT.md",
     "_01_notes/Activation Functions.md",
     "_01_notes/BPE.md",
-    "_01_notes/Deep Learning.md",
     "_01_notes/Double Descent.md",
     "_01_notes/FSL.md",
     "_04_images/Pasted image 20250712070303.png",

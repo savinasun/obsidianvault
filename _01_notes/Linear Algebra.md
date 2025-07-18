@@ -253,6 +253,17 @@ $$
 $$
 
 
+### Sylvester's Rank Inequality
+For any matrices $A\in\mathbb{R}^{m\times n}$, $B\in\mathbb{R}^{n\times r}$,
+$$
+\text{rank}(AB) \ge \text{rank}(A) + \text{rank}(B) - n
+$$
+
+$$
+\text{rank}(AB) \le \min\left(\text{rank}(A), \text{rank}(B)\right)
+$$
+
+
 ### Spectral Theorem
 A matrix is called symmetric if $A=A^T$.
 
