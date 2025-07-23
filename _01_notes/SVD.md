@@ -6,7 +6,7 @@
 
 ## Definition
 ---
-If $A\in\mathbb{R}^{m\times n}$, then $U$ and $V$ are guaranteed to be real orthogonal matrices and $$A = U\Sigma V^T \in \mathbb{R}^{m\times n}$$![[SVD_01.png]]
+If $A\in\mathbb{R}^{m\times n}$, then $U$ and $V$ are guaranteed to be real orthogonal matrices and $$A = U\Sigma V^T \in \mathbb{R}^{m\times n}$$![[SVD_01.png|500]]
 + $U \in \mathbb{R}^{m\times m}$: orthogonal matrix
 + $V \in \mathbb{R}^{n\times n}$: orthogonal matrix
 + $\Sigma \in \mathbb{R}^{m\times n}$: a rectangle diagonal matrix whose diagonal entries are non-negative
