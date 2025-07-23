@@ -35,7 +35,7 @@ $$
 ## Geometric Interpretation
 ---
 SVD finds the direction which stretches a unit vector the most
-
+![[SVD_02.png|500]]
 **Theorem**. Let $A\in\mathbb{R}^{m\times n}$, then the largest singular value of $A$ is given by
 $$
 \sigma_1 = \max\limits_{x\in \mathbb{R}^{n\times 1}, \|x\|=1}{\|Ax\|}
