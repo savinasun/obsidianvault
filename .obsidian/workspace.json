@@ -33,7 +33,7 @@
       {
         "id": "b8e2a895956801b3",
         "type": "tabs",
-        "dimension": 61.051606621226874,
+        "dimension": 47.506561679790025,
         "children": [
           {
             "id": "31f305f0b8239a5f",
@@ -63,7 +63,7 @@
       {
         "id": "a9a455c0b9c6b057",
         "type": "tabs",
-        "dimension": 19.474196689386563,
+        "dimension": 26.246719160104988,
         "children": [
           {
             "id": "f4bdddf87b272eb0",
@@ -87,7 +87,7 @@
       {
         "id": "a1144893fcc3c039",
         "type": "tabs",
-        "dimension": 19.474196689386563,
+        "dimension": 26.246719160104988,
         "children": [
           {
             "id": "feb9ad2b5567d3d1",
@@ -257,7 +257,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "0509f6351add686e",
+  "active": "feb9ad2b5567d3d1",
   "lastOpenFiles": [
     "_01_notes/Linear Algebra.md",
     "_01_notes/Attention.md",
