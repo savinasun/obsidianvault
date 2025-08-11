@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/LLaMA.md",
+                "file": "Reinforcement Learning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LLaMA"
+              "title": "Reinforcement Learning"
             }
           }
         ]
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/LLaMA.md",
+                "file": "Reinforcement Learning.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of LLaMA"
+              "title": "Graph of Reinforcement Learning"
             }
           }
         ]
@@ -259,6 +259,8 @@
   },
   "active": "0509f6351add686e",
   "lastOpenFiles": [
+    "_01_notes/LLaMA.md",
+    "Reinforcement Learning.md",
     "_01_notes/Linear Algebra.md",
     "_01_notes/Activation Functions.md",
     "_01_notes/FLOPs.md",
@@ -280,13 +282,11 @@
     "Layer Normalization.md",
     "_01_notes/RMSNorm.md",
     "_01_notes/LLMs.md",
-    "_01_notes/LLaMA.md",
     "_01_notes/PPL.md",
     "_01_notes/SVD.md",
     "_01_notes/ViT.md",
     "_01_notes/FSL.md",
     "_04_images/Pasted image 20250712070303.png",
-    "conflict-files-obsidian-git.md",
     "_04_images/linear_algebra_01.png",
     "_04_images/linear_algebra_02.png",
     "_04_images/linear_algebra_06.png",
