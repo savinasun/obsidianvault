@@ -16,24 +16,30 @@ DINO is a specific SSL method that uses a form of knowledge distillation, but wi
 ## Framework
 ---
 The core idea of DINO is to train a **student network** ($g_{\theta_s}$) to match the output of a **teacher network** ($g_{\theta_t}$). The key is that both networks have the same architecture, but the teacher's weights are an exponential moving average (EMA) of the student's weights.
+![[DINO_01.png|450]]
 ### Student-Teacher Architecture
 + **Teacher Network ($g_{\theta_t}$):** 
 	Vit-Large, it is already trained, strong and slow.
-	This network is not trained directly. Its weights ($\theta_t$) are updated using an EMA of the student's weights ($\theta_s$). This provides a more stable target for the student to learn from. The update rule is: $\theta_t \leftarrow \lambda \theta_t + (1 - \lambda) \theta_s$, where $\lambda$ is a momentum parameter that is slowly increased during training.
+	This network is not trained directly. Its weights ($\theta_t$) are updated using an EMA of the student's weights ($\theta_s$). This provides a more stable target for the student to learn from. 
 + **Student Network ($g_{\theta_s}$):** 
 	Vit-Base, it doesn't have as many parameters as the teacher, not as strong but it is faster
 	This network is trained with standard back-propagation.
 
-### Multi-Crop Augmentation
-+ From a single image, multiple crops (views) are generated. These include two larger "global" crops and several smaller "local" crops.
-* All crops are passed through the student network.
-* Only the global crops are passed through the teacher network.
-* This encourages the model to learn features that are consistent across different scales and views of the same object (**"local-to-global"** correspondence).
-* **Loss Function:**
-    * The model aims to minimize the cross-entropy loss between the softmax-normalized outputs of the student and teacher for the same image. The teacher's output is sharpened using a temperature parameter to prevent the model from collapsing to a uniform distribution.
-    * The probability distribution for a view $x$ is $P_s(x) = \text{softmax}(g_{\theta_s}(x) / \tau_s)$ for the student and $P_t(x) = \text{softmax}(g_{\theta_t}(x) / \tau_t)$ for the teacher.
-    * The loss function is:$$\mathcal{L} = - \sum_{x \in \{x_{global}^1, x_{global}^2\}} \sum_{x' \in \mathcal{V}, x' \neq x} P_t(x) \log P_s(x')$$where $\mathcal{V}$ is the set of all crops from the image, $\tau_s$ and $\tau_t$ are the temperature parameters for the student and teacher, respectively.
+### Multi-Crop Training 
+From a single image, multiple crops (views) are generated. These include two larger "global" crops and several smaller "local" crops.
 
+**Global Views**: crops that are more than 50% of the image
+**Local Views**: crops that are less than 50% of the image
+**Local-to-Global Correspondence**：student uses both local and global views and teacher uses only global views, which encourages the model to learn features that are consistent across different scales and views of the same object.
+
+**Loss Function:**
+The model aims to minimize the cross-entropy loss between the softmax-normalized outputs of the student and teacher for the same image. To prevent the model from **collapsing** to a uniform distribution, the author sharpens the teacher's output by using a **temperature parameter** and to prevent being dominated by a single dimension by adding a **center operation**.
+
+* The probability distribution for a view $x$ is $P_s(x) = \text{softmax}(g_{\theta_s}(x) / \tau_s)$ for the student and $P_t(x) = \text{softmax}(g_{\theta_t}(x) / \tau_t)$ for the teacher.
+* The loss function is:$$\mathcal{L} = - \sum_{x \in \{x_{global}^1, x_{global}^2\}} \sum_{x' \in \mathcal{V}, x' \neq x} P_t(x) \log P_s(x')$$where $\mathcal{V}$ is the set of all crops from the image, $\tau_s$ and $\tau_t$ are the temperature parameters for the student and teacher, respectively.
+
+**Update Rules:**
+The update rule for the **teacher** is: $\theta_t \leftarrow \lambda \theta_t + (1 - \lambda) \theta_s$, where $\lambda$ is a momentum parameter that is slowly increased during training.
 
 ## Emergent Properties in Vision Transformers
 ---
@@ -41,6 +47,8 @@ The most remarkable finding of the DINO paper was the set of properties that eme
 
 * **High-Quality Semantic Segmentation:** The self-attention maps from the final layer of the ViT model naturally segment objects from the background. By visualizing the attention of the `[CLS]` token, one can produce object masks of surprising quality.
 * **Feature Re-use:** DINO-trained ViTs learn features that are highly effective for downstream tasks like image classification, even when using a simple k-NN classifier on the frozen features.
+
+
 
 
 ## DINO-v2
