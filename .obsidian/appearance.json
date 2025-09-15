@@ -1,0 +1,10 @@
+{
+  "enabledCssSnippets": [
+    "callouts",
+    "literature-css-snippet"
+  ],
+  "cssTheme": "",
+  "theme": "moonstone",
+  "showRibbon": true,
+  "accentColor": "#5cb2f5"
+}
