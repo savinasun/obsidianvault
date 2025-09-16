@@ -1,9 +1,10 @@
 ### [[dl_moc]]  
-## **Few-Shot Learning**
+# **Few-Shot Learning**
 
-**Tags**::  #llm
+**Tags**:: 
 **Links**:: 
 
+## Definitions
 ---
 
 | ****Aspect****                      | ****Zero-Shot Learning (ZSL)****                                              | ****One-Shot Learning (OSL)****                           | ****Few-Shot Learning (FSL)****                                         |
@@ -14,6 +15,3 @@
 | ****Applications****                | Useful when examples for new classes are impractical                          | Ideal for scenarios with only one example available       | Effective when a few examples can be collected                          |
 | ****Challenges****                  | Depends on quality of semantic information; struggles with dissimilar classes | Performance relies on the quality of the single example   | Risk of overfitting; sensitive to quality and diversity of few examples |
 | ****Methodologies****               | Semantic embedding models, attribute-based methods                            | Similarity-based networks, metric learning                | Meta-learning approaches like MAML                                      |
-
----
-### References

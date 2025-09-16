@@ -1,8 +1,15 @@
 {
   "pathToPandoc": "/opt/homebrew/bin/pandoc",
   "tooltipDelay": 400,
-  "zoteroGroups": [],
+  "zoteroGroups": [
+    {
+      "id": 1,
+      "name": "My Library",
+      "lastUpdate": 1757980465962
+    }
+  ],
   "renderCitations": true,
   "renderCitationsReadingMode": true,
-  "renderLinkCitations": true
+  "renderLinkCitations": true,
+  "pullFromZotero": true
 }

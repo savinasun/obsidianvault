@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/DINO.md",
+                "file": "_01_notes/VLM.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DINO"
+              "title": "VLM"
             }
           }
         ]
@@ -154,12 +154,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_01_notes/DINO.md",
+                "file": "_01_notes/VLM.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from DINO"
+              "title": "Outgoing links from VLM"
             }
           },
           {
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/DINO.md",
+                "file": "_01_notes/VLM.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of DINO"
+              "title": "Graph of VLM"
             }
           }
         ]
@@ -260,8 +260,13 @@
   },
   "active": "f752623a3d252844",
   "lastOpenFiles": [
-    "_04_images/DINO_01.png",
+    "DDPM.md",
+    "CLIP.md",
+    "_01_notes/Layer Normalization.md",
+    "_01_notes/FSL.md",
+    "_01_notes/FLOPs.md",
     "_01_notes/DINO.md",
+    "_04_images/DINO_01.png",
     "_01_notes/ViT.md",
     "_01_notes/Deep Learning.md",
     "_02_references/@caron2021.md",
@@ -270,7 +275,6 @@
     "_01_notes/LLaMA.md",
     "_01_notes/LLMs.md",
     "Attention Sink.md",
-    "CLIP.md",
     "_04_images/Pasted image 20250908215509.png",
     "_04_images/Pasted image 20250908214412.png",
     "_04_images/llama_02.png",
@@ -279,8 +283,6 @@
     "_01_notes/Linear Algebra.md",
     "_01_notes/Internal Covariate Shift.md",
     "_01_notes/GPTs.md",
-    "_01_notes/FSL.md",
-    "_01_notes/FLOPs.md",
     "_01_notes/Entropy.md",
     "_01_notes/Double Descent.md",
     "_01_notes/CoT Prompting.md",
@@ -289,7 +291,6 @@
     "_01_notes/Transformer.md",
     "_01_notes/UMAP.md",
     "_01_notes/t-SNE.md",
-    "_01_notes/PPL.md",
     "_04_images/SVD_02.png",
     "_04_images/Pasted image 20250712070303.png",
     "_04_images/linear_algebra_01.png",

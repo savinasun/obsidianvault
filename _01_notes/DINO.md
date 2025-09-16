@@ -53,7 +53,7 @@ The most remarkable finding of the DINO paper was the set of properties that eme
 
 ## DINO-v2
 ---
-The success of DINO leads to DINO-v2, which scales up the core ideas to create a powerful vision "foundation model."
+The success of DINO leads to DINO-v2 [@oquab2024], which scales up the core ideas to create a powerful vision "foundation model."
 
 * **Massive, Curated Dataset:** DINO-v2 was trained on a new, curated dataset of 142 million images, carefully selected from a larger pool to remove low-quality or irrelevant images.
 * **Architectural Improvements:** It incorporated techniques like SwiGLU activations and Nested Dropout for better performance and stability during training at scale.
