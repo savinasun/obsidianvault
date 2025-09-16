@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/VLM.md",
+                "file": "_01_notes/DINO.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "VLM"
+              "title": "DINO"
             }
           }
         ]
@@ -154,12 +154,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_01_notes/VLM.md",
+                "file": "_01_notes/DINO.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from VLM"
+              "title": "Outgoing links from DINO"
             }
           },
           {
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/VLM.md",
+                "file": "_01_notes/DINO.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of VLM"
+              "title": "Graph of DINO"
             }
           }
         ]
@@ -260,6 +260,7 @@
   },
   "active": "f752623a3d252844",
   "lastOpenFiles": [
+    "_01_notes/VLM.md",
     "DDPM.md",
     "CLIP.md",
     "_01_notes/Layer Normalization.md",
@@ -270,7 +271,6 @@
     "_01_notes/ViT.md",
     "_01_notes/Deep Learning.md",
     "_02_references/@caron2021.md",
-    "_01_notes/VLM.md",
     "_01_notes/Attention.md",
     "_01_notes/LLaMA.md",
     "_01_notes/LLMs.md",

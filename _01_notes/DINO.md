@@ -58,3 +58,8 @@ The success of DINO leads to DINO-v2 [@oquab2024], which scales up the core idea
 * **Massive, Curated Dataset:** DINO-v2 was trained on a new, curated dataset of 142 million images, carefully selected from a larger pool to remove low-quality or irrelevant images.
 * **Architectural Improvements:** It incorporated techniques like SwiGLU activations and Nested Dropout for better performance and stability during training at scale.
 * **State-of-the-Art Performance:** DINO-v2 established itself as a leading general-purpose vision backbone, achieving excellent results on tasks like depth estimation, semantic segmentation, and image classification.
+
+
+## Remarks 
+---
+**Dense prediction task**: In computer vision, unlike image classification, tasks such as **semantic segmentation**, **instance segmentation**, etc. are considered as dense prediction task because label for each pixel is predicted.
