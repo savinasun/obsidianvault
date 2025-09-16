@@ -6,7 +6,7 @@
 
 ## Introduction
 ---
-DINO (self-**DI**stillation with **NO** labels) is a groundbreaking self-supervised learning method for computer vision which is prompted in the paper [@caron2021] -- "Emerging Properties in Self-Supervised Vision Transformers" by Caron et al., and touch upon its influential successor, DINO-v2. Note that it is not a contrastive learning method.
+DINO (self-**DI**stillation with **NO** labels) is a groundbreaking self-supervised learning method for computer vision which is prompted in the paper [@caron2021] -- "Emerging Properties in Self-Supervised Vision Transformers" by Caron et al., and touch upon its influential successor, DINOv2. Note that it is not a contrastive learning method.
 
 **Self-Supervised Learning (SSL)** is a paradigm in machine learning where a model learns representations from unlabeled data. Instead of relying on human-provided labels (like "cat" or "dog"), the model generates its own supervision from the data itself. A common technique is to create a "pretext task," such as predicting a missing part of an image, which forces the model to learn meaningful features about the world.
 
@@ -16,7 +16,7 @@ DINO is a specific SSL method that uses a form of knowledge distillation, but wi
 ## Framework
 ---
 The core idea of DINO is to train a **student network** ($g_{\theta_s}$) to match the output of a **teacher network** ($g_{\theta_t}$). The key is that both networks have the same architecture, but the teacher's weights are an exponential moving average (EMA) of the student's weights.
-![[DINO_01.png|450]]
+![[DINO_01.png|350]]
 ### Student-Teacher Architecture
 + **Teacher Network ($g_{\theta_t}$):** 
 	Vit-Large, it is already trained, strong and slow.
@@ -41,25 +41,59 @@ The model aims to minimize the cross-entropy loss between the softmax-normalized
 **Update Rules:**
 The update rule for the **teacher** is: $\theta_t \leftarrow \lambda \theta_t + (1 - \lambda) \theta_s$, where $\lambda$ is a momentum parameter that is slowly increased during training.
 
+
 ## Emergent Properties in Vision Transformers
 ---
 The most remarkable finding of the DINO paper was the set of properties that emerged in the [[ViT|Vision Transformer]] (ViT) architecture when trained with this method, without any explicit supervision for these tasks.
 
-* **High-Quality Semantic Segmentation:** The self-attention maps from the final layer of the ViT model naturally segment objects from the background. By visualizing the attention of the `[CLS]` token, one can produce object masks of surprising quality.
+* **High-Quality Semantic Segmentation:** The **self-attention maps from the final layer** of the ViT model naturally segment objects from the background. By visualizing the attention of the `[CLS]` token, one can produce object masks of surprising quality.
+![[DINO_02.png|350]]
 * **Feature Re-use:** DINO-trained ViTs learn features that are highly effective for downstream tasks like image classification, even when using a simple k-NN classifier on the frozen features.
+![[DINO_03.png]]
 
 
-
-
-## DINO-v2
+## DINOv2: Scaling Self-Supervision for Foundation Models
 ---
-The success of DINO leads to DINO-v2 [@oquab2024], which scales up the core ideas to create a powerful vision "foundation model."
+The success of DINO leads to DINOv2 [@oquab2024], which scales up the core ideas to create a powerful vision "foundation model", achieving state-of-the-art performance across a wide range of tasks without fine-tuning.
 
-* **Massive, Curated Dataset:** DINO-v2 was trained on a new, curated dataset of 142 million images, carefully selected from a larger pool to remove low-quality or irrelevant images.
+The goal of DINOv2 was to overcome the limitations of existing pre-trained models, which often required fine-tuning on large, labeled datasets to perform well. The hypothesis was that by scaling up the pre-training data and refining the training algorithm, it would be possible to create a single, general-purpose vision backbone that excels at many tasks with only a simple linear head.
+
+* **Massive, Curated Dataset:** DINOv2 was trained on a new, curated dataset of 142 million images, carefully selected from a larger pool to remove low-quality or irrelevant images.
 * **Architectural Improvements:** It incorporated techniques like SwiGLU activations and Nested Dropout for better performance and stability during training at scale.
-* **State-of-the-Art Performance:** DINO-v2 established itself as a leading general-purpose vision backbone, achieving excellent results on tasks like depth estimation, semantic segmentation, and image classification.
+* **State-of-the-Art Performance:** DINOv2 established itself as a leading general-purpose vision backbone, achieving excellent results on tasks like depth estimation, semantic segmentation, and image classification.
 
 
-## Remarks 
+### Key Innovations
+
+DINOv2 introduced several crucial improvements over the original DINO.
+#### A. Data Curation at Scale (The LVD-142M Dataset)
+
+Instead of using an existing, off-the-shelf dataset, the DINOv2 authors built their own: **LVD-142M**. This involved a massive data-sourcing and curation pipeline:
+
+1.  **Sourcing:** An initial, un-curated dataset of 1.2 billion unique images was sourced from the web.
+2.  **Deduplication & Similarity Search:** Self-supervised models (like DINO) were used to compute image embeddings. These embeddings helped identify and remove near-duplicate images.
+3.  **Curation:** The remaining images were clustered. Clusters that were too close to ImageNet or other standard benchmarks were removed to ensure the pre-training data was sufficiently different from evaluation datasets. This process resulted in a final, high-quality dataset of **142 million images**.
+
+#### B. Algorithmic and Architectural Improvements
+
+To make training stable and effective at this new scale, several changes were made:
+
+* **Image-Text Foundation Model Filtering:** [[CLIP]] was used to filter the web-scale dataset to ensure a good alignment between images and their alt-text, improving the quality of the image source.
+* **Combined Loss Function:** DINOv2 incorporates the **iBOT loss**, which adds a masked image modeling objective. This forces the model to learn not just global features (from the `[CLS]` token) but also dense, patch-level features.
+* **KoLeo Regularizer:** A regularization term was added to the loss to encourage batch-wise feature diversity, preventing the model from collapsing and ensuring a broader representation space.
+* **Architectural Tweaks:** The ViT architecture was updated with modern components like SwiGLU activations and Nested Dropout for improved performance and stability.
+
+#### C. Efficient Implementation
+
+Training on over 100 million images is computationally expensive. The team made significant engineering efforts to make it feasible:
+
+* **PyTorch 2.0 Compilation:** The model was compiled with `torch.compile` for significant speedups.
+* **Fully Sharded Data Parallel (FSDP):** This technique was used to distribute the model and optimizer states across GPUs, enabling training of the largest ViT models.
+* **Mixed-Precision Training:** Using `bfloat16` precision reduced memory usage and further accelerated training.
+
+
+
+
+## Remark
 ---
-**Dense prediction task**: In computer vision, unlike image classification, tasks such as **semantic segmentation**, **instance segmentation**, etc. are considered as dense prediction task because label for each pixel is predicted.
+**Dense Prediction Task**: In computer vision, unlike image classification, tasks such as **semantic segmentation**, **instance segmentation**, etc. are considered as dense prediction task because label for each pixel is predicted.
