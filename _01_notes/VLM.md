@@ -6,6 +6,12 @@
 
 ## Architecture
 --- 
+The model has three components:
+
+- **Large Language Model**
+- **Vision Encoder**
+- **MLP-based Vision Language Merger**
++ 
 + Visual encoder
 + Cross-Modal Projector
 + LLM
