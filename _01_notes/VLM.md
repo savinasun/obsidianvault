@@ -6,12 +6,16 @@
 
 ## Architecture
 --- 
-The model has three components:
+The Qwen2.5-VL model [@bai2025] builds upon the foundation laid by the Qwen series. The model has three components:
+![[vlm_qwen_01.png]]
+- **Large Language Model:** the 1D ROPE is replaced with **MROPE(Multimodal Rotary Position Embedding)** aligned to absolute time.
+- **Vision Encoder:** redesigned ViT with 2D-RoPE and window attention to support variable input resolutions and improve computational efficiency. During the training and inference the height and width of the images are resized to multiples of 28, and the image patches are generated with a stride of 14.
+- **MLP-based Vision Language Merger:** compresses the feature sequences before feeding them into the LLM by grouping spatially adjacent sets of patch features, concatenating them, and projecting them into a dimension aligned with the LLM’s text embeddings using a two-layer MLP.
 
-- **Large Language Model**
-- **Vision Encoder**
-- **MLP-based Vision Language Merger**
-+ 
+
+
+
+
 + Visual encoder
 + Cross-Modal Projector
 + LLM
@@ -19,10 +23,20 @@ The model has three components:
 + Fine-grained perception models
 + Resolution scaling
 
-![[Pasted image 20250908214412.png]]
 
 
-![[Pasted image 20250908215509.png]]
+
+![[vlm_qwen_02.png]]
+
+
+
+## Architecture Innovations
+---
+**Window Attention:** A primary enhancement is the implementation of window attention in the visual encoder, optimizing inference efficiency by linearly scaling computational costs with the number of patches rather than quadratically. While Qwen2 VL used full attention, Qwen2.5-VL uses a combination of full attention and window attention, leading to better performance and efficiency.
+
+**Dynamic FPS Sampling:** Qwen2.5-VL extends dynamic resolution to the temporal dimension with dynamic FPS sampling. This enables comprehensive video understanding across varying sampling rates by aligning MROPE IDs directly with timestamps, thus understanding temporal dynamics without additional computational overhead. The former model lacked dynamic FPS sampling and did not handle videos as efficiently.
+
+**Multimodal Rotary Position Embedding (MROPE) Alignment:** The multimodal rotary position embedding (MROPE) is also aligned to the absolute time with the help of a novel strategy that allows the model to better comprehend temporal dynamics without additional computational overhead.
 
 
 ## Downstream Tasks
