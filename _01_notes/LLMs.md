@@ -4,9 +4,19 @@
 **Tags**::  
 **Links**::
 
-## Architecture Variations
+
+**Architecture Variations**
++ Pre-LN vs. Post-LN
++ LayerNorm vs. RMSNorm
++ [[RoPE|Rotary Positional Encodings]]
++ No Bias Terms
++ Parallel Layers vs. Serial Layers
++ KV Cache
++ 
+
+
+## Pre-Layer Normalization vs. Post-Layer Normalization
 ---
-### Pre-Layer Normalization V.S. Post-Layer Normalization
 ![[llms_01.png|550]]
 - In the **original-designed Post-LN** [[Transformer|transformer]], [[Layer Normalization|layer normalization]] is placed between the residual blocks, this architecture has achieved state-of-the-art performance in many tasks. The very early pre-trained large language models like [[GPTs]] and [[BERT]] also uses Post-LN. 
  + The function of post-LN could be expressed as$$
@@ -30,8 +40,8 @@ x_{l+1} = x_l + f_l (\textrm{LN}(x_l))
 	![[llms_05.png|200]]
 
 
-### LayerNorm V.S. RMSNorm
-
+## LayerNorm vs. RMSNorm
+---
 + The original transformer uses **LayerNorm** proposed in [@ba2016],
 $$
 y = \frac{x-\mathbb{E}[x]}{\sqrt{Var[x]+\epsilon}}\times\gamma + \beta
@@ -43,8 +53,8 @@ where $\gamma$ and $\beta$ are learnable parameters.
 + Notable models uses RMSNorm: LLaMA, PaLM, Chinchilla
 
 
-### Dropping Bias Terms
-
+## Dropping Bias Terms
+---
 + **Most modern transformers don’t have bias terms.**
 + Original Transformer:$$
 	\textrm{FFN}(x) = max(0, xW_1+b_1)W_2+b2
@@ -55,13 +65,43 @@ where $\gamma$ and $\beta$ are learnable parameters.
 + The reason for the change is also due to memory efficiency and training stability.
 
 
-### Parallel Layers V.S. Serial Layers
-
+## Parallel Layers vs. Serial Layers
+---
 + Normal transformer blocks are serial – they compute attention, then the MLP
 + A few models (GPTJ, PaLM, GPT-NeoX) do parallel layers. Originally in GPT-J!
 + ![[llms_07.png]]
 + If implemented correctly, LayerNorm can be shared, and matrix multiplies can be fused
 + Recent Models: Cohere Command A, Falcon 2 11B, Command R+
+
+
+## KV Cache
+---
+![[llama_03.png|500]]
++ Number of entries in caching: 
+$$
+2\cdot n\cdot d_h \cdot n_h \cdot \ell,
+$$
++ $n$ is the number of tokens in the input sequence
++ $d_h$ is dimension of key/value matrices
++ $n_h$ is number of attention heads per layer
++ $\ell$ is number of layers
+
+For DeepSeek R1-V3 architecture, 
+$$d_h=128, n_h=128, \ell=61, n=10000$$
+the caching size is around $4MB$ per token
+
+
+
+
+## MHA vs. MQA vs. GQA vs. MLA
+---
+
+![[llms_08.png|center|500]]
+
+
+
+
+
 
 
 ## Hyperparamters

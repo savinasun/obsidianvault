@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "e17bbf9f093c02ab",
+        "id": "d86dd7f1662587e6",
         "type": "tabs",
         "children": [
           {
-            "id": "2a2caf479acd5999",
+            "id": "a16f2a760aac493e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/VLM.md",
+                "file": "_01_notes/LLMs.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "VLM"
+              "title": "LLMs"
             }
           }
         ]
@@ -71,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "KV cache",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/VLM.md",
+                "file": "_01_notes/LLMs.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of VLM"
+              "title": "Graph of LLMs"
             }
           }
         ]
@@ -258,17 +258,21 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "2a2caf479acd5999",
+  "active": "a16f2a760aac493e",
   "lastOpenFiles": [
+    "_04_images/llms_08.png",
+    "_01_notes/LLMs.md",
+    "_01_notes/LLaMA.md",
+    "_04_images/Pasted image 20251002004238.png",
+    "_04_images/llama_04.png",
+    "_01_notes/Attention.md",
+    "_04_images/llama_03.png",
+    "_01_notes/VLM.md",
     "_04_images/vlm_qwen_02.png",
     "_04_images/Pasted image 20250915173722.png",
     "_04_images/vlm_qwen_01.png",
-    "_01_notes/VLM.md",
     "_01_notes/ViT.md",
-    "_01_notes/Attention.md",
     "_01_notes/MoE.md",
-    "_01_notes/LLMs.md",
-    "_01_notes/LLaMA.md",
     "_01_notes/CLIP.md",
     "_01_notes/DINO.md",
     "_04_images/DINO_03.png",
@@ -285,16 +289,12 @@
     "_01_notes/Deep Learning.md",
     "_02_references/@caron2021.md",
     "Attention Sink.md",
-    "_04_images/llama_02.png",
-    "_04_images/llama_01.png",
     "_01_notes/Activation Functions.md",
     "_01_notes/Linear Algebra.md",
     "_01_notes/Internal Covariate Shift.md",
     "_01_notes/GPTs.md",
     "_01_notes/Entropy.md",
     "_01_notes/Double Descent.md",
-    "_04_images/SVD_02.png",
-    "_04_images/Pasted image 20250712070303.png",
     "Untitled",
     "_02_references/deepseek-ai2025",
     "_02_references/grattafiori2024",

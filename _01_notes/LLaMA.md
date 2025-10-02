@@ -9,7 +9,7 @@
 
 + [[RMSNorm]] & [[LLMs#Pre-Layer Normalization V.S. Post-Layer Normalization|Pre-Layer Normalization]]
 + [[RoPE|Rotary Positional Encodings]]
-+ [[Attention#Multi-Head Attention (MHA)|MHA]] with KV Cache
++ [[Attention#Multi-Head Attention (MHA)|MHA]] with [[LLaMA#KV Cache|KV Cache]]
 + [[Attention#Grouped-Query Attention|Grouped Multi-Query Attention]]
 + [[Activation Functions#Swish Gated Linear Unit|SwiGLU]] in FFC
 
@@ -57,3 +57,25 @@ class LlamaMLP(nn.Module):
 
 ## KV Cache
 ---
+![[llama_03.png|500]]
++ Number of entries in caching: 
+$$
+2\cdot n\cdot d_h \cdot n_h \cdot \ell,
+$$
++ $n$ is the number of tokens in the input sequence
++ $d_h$ is dimension of key/value matrices
++ $n_h$ is number of attention heads per layer
++ $\ell$ is number of layers
+
+For DeepSeek R1-V3 architecture, 
+$$d_h=128, n_h=128, \ell=61, n=10000$$
+the caching size is around $4MB$ per token
+
+
+## Grouped-Query Attention (GQA)
+---
+![[Pasted image 20251002004238.png]]
+
+
+
+DeepSeek R1 uses Multi-Head Latent Attention (MLA)
