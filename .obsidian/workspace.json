@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Deep Reinforcement Learning.md",
+                "file": "_01_notes/LLaMA.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Deep Reinforcement Learning"
+              "title": "LLaMA"
             }
           }
         ]
@@ -71,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "rope",
+                "query": "GQA",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Deep Reinforcement Learning.md",
+                "file": "_01_notes/LLaMA.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -214,7 +214,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Deep Reinforcement Learning"
+              "title": "Graph of LLaMA"
             }
           }
         ]
@@ -260,9 +260,11 @@
   },
   "active": "91f17078ed3f3540",
   "lastOpenFiles": [
+    "_04_images/Pasted image 20251008001324.png",
+    "_01_notes/VLM.md",
+    "_01_notes/Deep Reinforcement Learning.md",
     "_01_notes/Benchmark Datasets.md",
     "_01_notes/Attention.md",
-    "_01_notes/Deep Reinforcement Learning.md",
     "\"The Bitter Lesson\".md",
     "_01_notes/Deep Learning.md",
     "_01_notes/LLaMA.md",
@@ -274,7 +276,6 @@
     "_04_images/Pasted image 20251002004238.png",
     "_04_images/llama_04.png",
     "_04_images/llama_03.png",
-    "_01_notes/VLM.md",
     "_04_images/vlm_qwen_02.png",
     "_04_images/Pasted image 20250915173722.png",
     "_04_images/vlm_qwen_01.png",
@@ -295,7 +296,6 @@
     "_04_images/DINO_01.png",
     "_02_references/@caron2021.md",
     "Attention Sink.md",
-    "_01_notes/Activation Functions.md",
     "Untitled",
     "_02_references/deepseek-ai2025",
     "_02_references/grattafiori2024",
