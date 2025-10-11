@@ -57,6 +57,7 @@ $$
 $$
 This ensures that token $i$ only uses information from tokens $\le i$.
 
+Q could only see K before it, K could be seen by all Qs after it.
 
 ## Cross-Attention
 ---
