@@ -143,3 +143,7 @@ This reduces the memory/computation cost for storing and computing large key/val
 - Enables scaling up query resolution while keeping KV costs manageable
 nb
 
+
+## Attention Heads are Independent and Additive
+----
+https://transformer-circuits.pub/2021/framework/index.html
