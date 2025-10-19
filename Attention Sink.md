@@ -11,12 +11,14 @@ Attention sinks An attention sink or sink token is a token that, despite **limit
 + QK angles contribute to attention sink.
 
 ## Related Work
-
+---
 The internal mechanisms governing the behavior of large Transformer-based models, including Large Language Models (LLMs) and Vision Language Models (VLMs), remain an active area of investigation. Recent research has highlighted several intriguing and seemingly paradoxical phenomena, notably **attention sinks** and **massive activations (MAs)**, which occur within the hidden states and attention layers of these models. Understanding the origins and functions of these phenomena is crucial for improving model efficiency, stability, interpretability, and performance, particularly in long-context scenarios relevant to both language and vision tasks.
 
 ### Attention Sinks
 
-The tendency for attention heads in auto-regressive LLMs to allocate a significant portion of their attention scores to specific, often semantically uninformative tokens—typically the initial token(s) like the beginning-of-sequence (BOS) token—has been termed the **"attention sink" phenomenon**. Initial observations noted this behavior under different names, such as 'null attention' or 'no-ops' in earlier Transformer models like BERT2222. Xiao et al. 33333 demonstrated the practical importance of preserving these sink tokens for maintaining performance in streaming applications and efficient KV caching. Gu et al. 4444conducted empirical studies showing that sinks emerge reliably during pre-training under various conditions and are present even in smaller models5555.
+Consistent phenomenon of "attention sink", where attention heads allocate significant portion of weights to specific tokens despite limited semantic information, has been observed across various Transformer-architectured models, both large and small models (Xiao). It is also observed during pre-training periods (Gu), yet no work has attend to the real formation of such behaviors.
+
+Gu found that cosine similarity instead of norm product contributes to attention sinks in Llama series models. 
 
 Several hypotheses have been proposed to explain the emergence and utility of attention sinks. One line of reasoning suggests they act as a mechanism to **prevent over-mixing** of information in deep networks, effectively slowing down information propagation and countering representational or rank collapse, phenomena related to over-smoothing in graph networks666666666666666666. Barbero et al. 777connect sinks to theoretical concepts like over-squashing and representational collapse, arguing their necessity increases with model depth and context length 888888888, a finding empirically supported by training ablations999999999. Another perspective links sinks to **positional biases** learned during pre-training101010101010101010. Gu et al. further suggest that sinks may arise partly due to the **softmax normalization** constraint, forcing attention scores to sum to one, thus requiring a default location to "dump" excess attention111111111111111111. Pre-training LMs with alternative attention mechanisms lacking this normalization, such as sigmoid attention, has been shown to prevent sink emergence121212121212121212. Sinks have also been connected to spectral properties of the network 13131313and the formation of approximate "no-op" mechanisms within specific heads14141414.
 
@@ -35,4 +37,6 @@ Similar phenomena have been observed in vision models. Sun et al. 39393939report
 ### Gap and Our Contribution
 
 Previous work has independently characterized attention sinks 454545454545454545and massive activations 46464646, proposed various functional roles (over-mixing prevention 47, implicit biases 48, stream anchoring 49), linked them empirically 505050505050505050, and explored their training dynamics51515151. Some works have begun unifying sinks, MAs, and representational properties like compression52525252. However, a definitive, mechanistic explanation connecting the _fundamental cause_ of MAs to their _manifestations_ as attention sinks and their role in information processing across both LLMs and VLMs remains elusive. This paper aims to fill this gap by proposing and validating an ultimate underlying mechanism that comprehensively explains the origin, function, and interplay of these critical phenomena in Transformer-based architectures across modalities.
+
+
 
