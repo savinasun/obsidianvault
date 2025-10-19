@@ -16,7 +16,7 @@ The internal mechanisms governing the behavior of large Transformer-based models
 
 ### Attention Sinks
 
-Consistent phenomenon of "attention sink", where attention heads allocate significant portion of weights to specific tokens despite limited semantic information, has been observed across various Transformer-architectured models, both large and small models (Xiao). It is also observed during pre-training periods (Gu), yet no work has attend to the real formation of such behaviors.
+Consistent phenomenon of "attention sink", where attention heads allocate significant portion of weights to specific tokens despite limited semantic information, has been observed across various Transformer-architectured models, both large and small models (Xiao). It is also observed that attention sink develops during pre-training, and instruction-tuning does not change its prevalence (Gu, Guo), yet no work has attend to the real formation of such behaviors.
 
 Gu found that cosine similarity instead of norm product contributes to attention sinks in Llama series models. 
 
