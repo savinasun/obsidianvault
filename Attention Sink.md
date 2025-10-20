@@ -4,11 +4,30 @@
 **Tags**::  
 **Links**::
 
-+ Formation of Massive Activation -> mlp layer
++ From Attention Sink of Massive Activation: why attention sink? for sink head, key of sink token has larger inner product with query of all tokens
+	+ observation 1: examples, two senarios: llama and qwen, cite Gu
+	+ observation 2: almost all Qs are at the same space, Q/K space dimensional collapse
+	+ It's easy to orthogonal to the space, for sink token, <- contributed by massive activations, + RMS  one-hot vector
++ From Massive Activation to Attention Sink
+	+ observation 1:	first token almost definitely lead to massive activation, only rare tokens does not have massive activation, how many?? and it does not interplay with attention sink since it is a 1\times 1 matrix
+		 explain why mlp layer -> massive activation
+		 explain why the second token does not have massive activation
+	+ observation 2: why 2 token no massive activation/attention sink?
+			Hello: cache QKV
+			Hello You: cache QKV
+			analyze why the internal representation changed
+			mlp cannot differentiate position
+			the output of attention is always superposition of v
+			token 0: w1=1, w2=0
+			token 1: w1=0.99, w2=0.01
+			if all heads in the layer are sink heads, then the output of token0 and token1 suppose to be close
+			what about the norms of value states of the two tokens
+			why early layers does not have sink??? -> if so, it might loss a lot of representation power
 + How Massive Activations Associated with Attention Sink
 	+ Norm suppresion of Q/K/V at sink tokens
 	+ Representation collapse of query space, the relationship between query space and key space
-+ Attention Sink identifies dormant head
++ Wq \cdot Wk \cdot one-hot: what happened to the norm
++ 
 + 
 
 ## Related Work
@@ -17,8 +36,9 @@ The internal mechanisms governing the behavior of large Transformer-based models
 
 ### Attention Sinks
 
-Consistent phenomenon of "attention sink", where attention heads allocate significant portion of weights to specific tokens despite limited semantic information, has been observed across various Transformer-architectured models, both large and small models (Xiao). It is also observed that attention sink develops during pre-training, and instruction-tuning does not change its prevalence (Gu, Guo), yet no work has attend to the real formation of such behaviors.
+Consistent phenomenon of "attention sink", where attention heads allocate significant portion of weights to specific tokens despite limited semantic information, has been observed across various Transformer-architectured models, both large and small models (Xiao). It is also observed that attention sink develops during pre-training, and instruction-tuning does not change its prevalence (Gu, Guo).
 
+Several hypotheses have been proposed to explain the emergence and utility of attention sinks. 
 Gu found that cosine similarity instead of norm product contributes to attention sinks in Llama series models. 
 
 Several hypotheses have been proposed to explain the emergence and utility of attention sinks. One line of reasoning suggests they act as a mechanism to **prevent over-mixing** of information in deep networks, effectively slowing down information propagation and countering representational or rank collapse, phenomena related to over-smoothing in graph networks666666666666666666. Barbero et al. 777connect sinks to theoretical concepts like over-squashing and representational collapse, arguing their necessity increases with model depth and context length 888888888, a finding empirically supported by training ablations999999999. Another perspective links sinks to **positional biases** learned during pre-training101010101010101010. Gu et al. further suggest that sinks may arise partly due to the **softmax normalization** constraint, forcing attention scores to sum to one, thus requiring a default location to "dump" excess attention111111111111111111. Pre-training LMs with alternative attention mechanisms lacking this normalization, such as sigmoid attention, has been shown to prevent sink emergence121212121212121212. Sinks have also been connected to spectral properties of the network 13131313and the formation of approximate "no-op" mechanisms within specific heads14141414.
