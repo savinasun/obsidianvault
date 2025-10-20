@@ -4,11 +4,12 @@
 **Tags**::  
 **Links**::
 
-## Existing Findings
----
-Attention sinks An attention sink or sink token is a token that, despite **limited semantic importance**, disproportionally receives **high attention weight** from other tokens in a sequence. They tend to occur either at the first position of the input sequence, at certain word tokens, or delimiter tokens.
-
-+ QK angles contribute to attention sink.
++ Formation of Massive Activation -> mlp layer
++ How Massive Activations Associated with Attention Sink
+	+ Norm suppresion of Q/K/V at sink tokens
+	+ Representation collapse of query space, the relationship between query space and key space
++ Attention Sink identifies dormant head
++ 
 
 ## Related Work
 ---
@@ -37,6 +38,5 @@ Similar phenomena have been observed in vision models. Sun et al. 39393939report
 ### Gap and Our Contribution
 
 Previous work has independently characterized attention sinks 454545454545454545and massive activations 46464646, proposed various functional roles (over-mixing prevention 47, implicit biases 48, stream anchoring 49), linked them empirically 505050505050505050, and explored their training dynamics51515151. Some works have begun unifying sinks, MAs, and representational properties like compression52525252. However, a definitive, mechanistic explanation connecting the _fundamental cause_ of MAs to their _manifestations_ as attention sinks and their role in information processing across both LLMs and VLMs remains elusive. This paper aims to fill this gap by proposing and validating an ultimate underlying mechanism that comprehensively explains the origin, function, and interplay of these critical phenomena in Transformer-based architectures across modalities.
-
 
 
