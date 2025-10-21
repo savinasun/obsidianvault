@@ -4,6 +4,11 @@
 **Tags**::  
 **Links**::
 
++ Queipo-de-Llano 2025 (Attention Sinks and Compression Valleys in LLMs are Two Sides of the Same Coin): 
+
+
+
+
 + From Attention Sink to Massive Activation: why attention sink? for sink head, key of sink token has larger inner product with query of all tokens
 	+ observation 1: examples, two senarios: llama and qwen, cite Gu
 	+ observation 2: almost all Qs are at the same space, Q/K space dimensional collapse
