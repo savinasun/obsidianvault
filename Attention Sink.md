@@ -5,6 +5,8 @@
 **Links**::
 
 + Queipo-de-Llano 2025 (Attention Sinks and Compression Valleys in LLMs are Two Sides of the Same Coin): 
+	+ massive activations mathematically require compression
+	+ removing massive activations eliminates both compression and reduces attention sinks.
 
 
 
