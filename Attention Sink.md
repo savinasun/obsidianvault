@@ -4,7 +4,7 @@
 **Tags**::  
 **Links**::
 
-+ From Attention Sink of Massive Activation: why attention sink? for sink head, key of sink token has larger inner product with query of all tokens
++ From Attention Sink to Massive Activation: why attention sink? for sink head, key of sink token has larger inner product with query of all tokens
 	+ observation 1: examples, two senarios: llama and qwen, cite Gu
 	+ observation 2: almost all Qs are at the same space, Q/K space dimensional collapse
 	+ It's easy to orthogonal to the space, for sink token, <- contributed by massive activations, + RMS  one-hot vector
