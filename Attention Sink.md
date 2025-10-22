@@ -7,7 +7,7 @@
 + Queipo-de-Llano 2025 (Attention Sinks and Compression Valleys in LLMs are Two Sides of the Same Coin): 
 	+ massive activations mathematically require compression
 	+ removing massive activations eliminates both compression and reduces attention sinks.
-
+	+ proved theoretically that when BOS token norms exceed others, they necessarily create a dominant singular value, causing compression and coinciding with attention sinks
 
 
 
