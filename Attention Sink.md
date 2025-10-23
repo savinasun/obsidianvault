@@ -14,7 +14,7 @@
 + From Attention Sink to Massive Activation: why attention sink? for sink head, key of sink token has larger inner product with query of all tokens
 	+ observation 1: examples, two senarios: llama and qwen, cite Gu
 	+ observation 2: almost all Qs are at the same space, Q/K space dimensional collapse
-	+ It's easy to orthogonal to the space, for sink token, <- contributed by massive activations, + RMS  one-hot vector
+	+ It's easy to orthogonal to the space, for sink token, <- contributed by massive activations, + RMS one-hot vector
 + From Massive Activation to Attention Sink
 	+ observation 1:	first token almost definitely lead to massive activation, only rare tokens does not have massive activation, how many?? and it does not interplay with attention sink since it is a 1\times 1 matrix
 		 explain why mlp layer -> massive activation
