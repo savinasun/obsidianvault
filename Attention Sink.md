@@ -8,10 +8,15 @@
 	+ massive activations mathematically require compression
 	+ removing massive activations eliminates both compression and reduces attention sinks.
 	+ proved theoretically that when BOS token norms exceed others, they necessarily create a dominant singular value, causing compression and coinciding with attention sinks
++ Gu 2025 (When Attention Sink Emerges in Language Models: An Emperical View): 
+	+ the first token acts as biases: the angles between the first key and queries of other tokens are typically small, leading to attention sink.
 
 
-
-+ From Attention Sink to Massive Activation: why attention sink? for sink head, key of sink token has larger inner product with query of all tokens
++ From Attention Sink to Massive Activation: 
+	+ In this section, we try to answer the question that why attention sinks develop during intermediate layers and disappears in the final stages? 
+	+ Gu showed that the first token acts as biases: the angles between the first key and queries of other tokens are typically small, leading to attention sink.
+	+ We find that for sink heads, the key states from sink tokens almost always has larger inner product with query states from all the tokens than the non-sink tokens. (Please rephrase the conclusion based on mathematical notations and visualizations)
+	+ This phenomenon has been seen both in Llama and Qwen models, though with slight different 
 	+ observation 1: examples, two senarios: llama and qwen, cite Gu
 	+ observation 2: almost all Qs are at the same space, Q/K space dimensional collapse
 	+ It's easy to orthogonal to the space, for sink token, <- contributed by massive activations, + RMS one-hot vector
