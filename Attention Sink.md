@@ -19,8 +19,7 @@
 	+ This leads to attention sinks in two scenarios:
 		+ For Llama models, almost all queries live in the same space, and the spaces of query/key space are necessarily to have representational collapse in the middle stages, though there are norm suppressions of Q/K/V states of the sink tokens, it won't affect the relationships of the inner products which leads to attention sinks after softmax
 		+ For Qwen models, there are heads show same pattern as llama sink heads, whereas there is another scenario where sink heads do not show norm suppressions in Q/K, and the angles between the first key and queries of other tokens are smaller than the angle between keys and queries of other tokens.
-	+ 
-	+ It's easy to orthogonal to the space, for sink token, <- contributed by massive activations, + RMS one-hot vector
+	+ The explanation to the observations is: the existence of massive activations in the input of transformer lead to norm suppression after RMS normalization, then lead to representational collapse of the Q/K space, therefore it is easy for key values of the first token orthogonal to the query space which yield to attention sink.
 + Section 3: From Massive Activation to Attention Sink
 	+ observation 1:	first token almost definitely lead to massive activation, only rare tokens does not have massive activation, how many?? and it does not interplay with attention sink since it is a 1\times 1 matrix
 		 explain why mlp layer -> massive activation
