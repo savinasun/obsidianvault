@@ -12,15 +12,18 @@
 	+ the first token acts as biases: the angles between the first key and queries of other tokens are typically small, leading to attention sink.
 
 
-+ From Attention Sink to Massive Activation: 
-	+ In this section, we try to answer the question that why attention sinks develop during intermediate layers and disappears in the final stages? 
++ Section 2: From Attention Sink to Massive Activation: 
+	+ In this section, we try to answer the question that why attention sinks develop during intermediate layers and disappears suddenly in the final stage? 
 	+ Gu showed that the first token acts as biases: the angles between the first key and queries of other tokens are typically small, leading to attention sink.
 	+ We find that for sink heads, the key states from sink tokens almost always has larger inner product with query states from all the tokens than the non-sink tokens. (Please rephrase the conclusion based on mathematical notations and visualizations)
-	+ This phenomenon has been seen both in Llama and Qwen models, though with slight different 
+	+ This leads to attention sinks in two scenarios:
+		+ For Llama models, almost all queries live in the same space, and the spaces of query/key space are necessary to have representational collapse in the middle stages, though there are norm suppressions of Q/K/V states of the sink tokens, it won't affect the relationships of the inner products which leads to attention sinks after softmax
+		+ For Qwen models,  
+	+ has been seen both in Llama and Qwen models, though with slight different 
 	+ observation 1: examples, two senarios: llama and qwen, cite Gu
 	+ observation 2: almost all Qs are at the same space, Q/K space dimensional collapse
 	+ It's easy to orthogonal to the space, for sink token, <- contributed by massive activations, + RMS one-hot vector
-+ From Massive Activation to Attention Sink
++ Section 3: From Massive Activation to Attention Sink
 	+ observation 1:	first token almost definitely lead to massive activation, only rare tokens does not have massive activation, how many?? and it does not interplay with attention sink since it is a 1\times 1 matrix
 		 explain why mlp layer -> massive activation
 		 explain why the second token does not have massive activation
