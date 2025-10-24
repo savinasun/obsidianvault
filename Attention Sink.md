@@ -15,13 +15,11 @@
 + Section 2: From Attention Sink to Massive Activation: 
 	+ In this section, we try to answer the question that why attention sinks develop during intermediate layers and disappears suddenly in the final stage? 
 	+ Gu showed that the first token acts as biases: the angles between the first key and queries of other tokens are typically small, leading to attention sink.
-	+ We find that for sink heads, the key states from sink tokens almost always has larger inner product with query states from all the tokens than the non-sink tokens. (Please rephrase the conclusion based on mathematical notations and visualizations)
+	+ We find that for sink heads, the key states of sink tokens always has positive cosine similarities with all query states whereas the key states of non-sink tokens always has negative cosine similarities with all query states. (Please rephrase the conclusion based on mathematical notations and visualizations)
 	+ This leads to attention sinks in two scenarios:
-		+ For Llama models, almost all queries live in the same space, and the spaces of query/key space are necessary to have representational collapse in the middle stages, though there are norm suppressions of Q/K/V states of the sink tokens, it won't affect the relationships of the inner products which leads to attention sinks after softmax
-		+ For Qwen models,  
-	+ has been seen both in Llama and Qwen models, though with slight different 
-	+ observation 1: examples, two senarios: llama and qwen, cite Gu
-	+ observation 2: almost all Qs are at the same space, Q/K space dimensional collapse
+		+ For Llama models, almost all queries live in the same space, and the spaces of query/key space are necessarily to have representational collapse in the middle stages, though there are norm suppressions of Q/K/V states of the sink tokens, it won't affect the relationships of the inner products which leads to attention sinks after softmax
+		+ For Qwen models, there are heads show same pattern as llama sink heads, whereas there is another scenario where sink heads do not show norm suppressions in Q/K, and the angles between the first key and queries of other tokens are smaller than the angle between keys and queries of other tokens.
+	+ 
 	+ It's easy to orthogonal to the space, for sink token, <- contributed by massive activations, + RMS one-hot vector
 + Section 3: From Massive Activation to Attention Sink
 	+ observation 1:	first token almost definitely lead to massive activation, only rare tokens does not have massive activation, how many?? and it does not interplay with attention sink since it is a 1\times 1 matrix
@@ -38,12 +36,7 @@
 			if all heads in the layer are sink heads, then the output of token0 and token1 suppose to be close
 			what about the norms of value states of the two tokens
 			why early layers does not have sink??? -> if so, it might loss a lot of representation power
-+ How Massive Activations Associated with Attention Sink
-	+ Norm suppresion of Q/K/V at sink tokens
-	+ Representation collapse of query space, the relationship between query space and key space
-+ Wq \cdot Wk \cdot one-hot: what happened to the norm
-+ 
-+ 
+
 
 ## Related Work
 ---
