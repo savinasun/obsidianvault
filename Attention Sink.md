@@ -29,7 +29,7 @@
 			Hello You: cache QKV
 			analyze why the internal representation changed
 			mlp cannot differentiate position
-			the output of attention is always superposition of v
+			the output of attention module is always superposition of v
 			token 0: w1=1, w2=0
 			token 1: w1=0.99, w2=0.01
 			if all heads in the layer are sink heads, then the output of token0 and token1 suppose to be close
