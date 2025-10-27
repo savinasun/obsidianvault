@@ -2,5 +2,7 @@
   "attachmentFolderPath": "_04_images",
   "promptDelete": false,
   "alwaysUpdateLinks": true,
-  "showInlineTitle": false
+  "showInlineTitle": false,
+  "showLineNumber": true,
+  "readableLineLength": false
 }

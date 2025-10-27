@@ -10,4 +10,4 @@ MetaMorph
 	+ We found most attention sinks are cosine induced, experiments show that llama attention sinks are introduced and norm alleviate the effect, qwen has two types of sinks, one is the same as llama, the other one is 
 		+ the main cause of attention sink is from the angle
 	+ the reason behind it is the sink token key states live in a different space than the query space of all tokens
-	+ representational collapse: is the reason behind the key space and query space are very different0008i8i
+	+ representational collapse: is the reason behind the key space and query space are very different
