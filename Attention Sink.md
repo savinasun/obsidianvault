@@ -4,6 +4,12 @@
 **Tags**::  
 **Links**::
 
+
+
+
+
+
+
 + Queipo-de-Llano 2025 (Attention Sinks and Compression Valleys in LLMs are Two Sides of the Same Coin): 
 	+ massive activations mathematically require compression
 	+ removing massive activations eliminates both compression and reduces attention sinks.
@@ -12,7 +18,15 @@
 	+ the first token acts as biases: the angles between the first key and queries of other tokens are typically small, leading to attention sink.
 
 
-+ Section 2: From Attention Sink to Massive Activation: 
+
+
+
+
+
+
+
+
++ **From Attention Sink to Massive Activation:** 
 	+ In this section, we try to answer the question that why attention sinks develop during intermediate layers and disappears suddenly in the final stage? 
 	+ Gu showed that the first token acts as biases: the angles between the first key and queries of other tokens are typically small, leading to attention sink.
 	+ We find that for sink heads, the key states of sink tokens always has positive cosine similarities with all query states whereas the key states of non-sink tokens always has negative cosine similarities with all query states. (Please rephrase the conclusion based on mathematical notations and visualizations)
