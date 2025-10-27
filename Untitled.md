@@ -7,7 +7,9 @@ MetaMorph
 		+ cosine similarities between the key states of sink token and query states of other tokens are large 
 		+ the norm of sink token key states is very large among all tokens
 	    we now define two types of attention sink based on the above mathematical analysis
-	+ from experimental perspective show that attention sinks are only possibly to be cosine similarities induced
+	+ from experimental perspective show that attention sinks could only possibly to be cosine similarities induced, based on observations on llama and qwen models, we found two types of patterns:
+		+ the key states of sink tokens always has positive cosine similarities with all query states whereas the key states of non-sink tokens always has negative cosine similarities with all query states.
+	
 	+ We found most attention sinks are cosine induced, experiments show that llama attention sinks are introduced and norm alleviate the effect, qwen has two types of sinks, one is the same as llama, the other one is 
 		+ the main cause of attention sink is from the angle
 	+ the reason behind it is the sink token key states live in a different space than the query space of all tokens
