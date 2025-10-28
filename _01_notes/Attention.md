@@ -32,8 +32,7 @@ where
 - $\sqrt{d_k}$: scaling factor to prevent large dot products (see below)
 - Output: $\in \mathbb{R}^{n \times d_v}$
 
-### Why Scale by $\sqrt{d_k}$?
-
+**Why Scale by $\sqrt{d_k}$?**
 - Dot products $Q \cdot K$ can grow large in magnitude as $d_k$ increases.
 - Large values push softmax into extreme regions → vanishing gradients.
 - Scaling by $\sqrt{d_k}$ stabilizes the gradient and learning dynamics.
