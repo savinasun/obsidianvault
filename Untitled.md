@@ -13,3 +13,9 @@ MetaMorph
 		we may conclude that the main cause of attention sinks is from the q/k angles based on experimental results
 	+ through further analysis, we may derive the conclusion that the reason behind the experimental behavior is that the key states of sink tokens live in a different space with other tokens
 	+ we develop a hypothesis that there is representational collapse for key space and query space, and sink token lives differently with other tokens, so it is easily for its key/query states to be orthogonal with other tokens' K/Q
+
+
+
+- Why no matter what token being input to the first position, it all show massive activations after MLP layer?
+- Why the same token being input to a different location, the massive activation disappeared.
+- first token -> linear transformation -> a special vector -> same vector before MLP -> massive activation
