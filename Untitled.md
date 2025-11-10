@@ -22,3 +22,5 @@ MetaMorph
 
 + If the first token does not have massive activations, are the predicted perplexity normal?
 + If the first token has massive activation, are the predicted distributions the same or not? -> check top5
++ check if the non-MA tokens as the first token / following tokens which does not show MA have positive cosine similarity with MLP block weights
++ if the first token does not have MA, why does the second token have MA????
