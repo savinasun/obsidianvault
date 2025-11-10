@@ -19,3 +19,6 @@ MetaMorph
 - Why no matter what token being input to the first position, it all show massive activations after MLP layer?
 - Why the same token being input to a different location, the massive activation disappeared.
 - first token -> linear transformation -> a special vector -> same vector before MLP -> massive activation
+
++ If the first token does not have massive activations, are the predicted perplexity normal?
++ If the first token has massive activation, are the predicted distributions the same or not? -> check top5
