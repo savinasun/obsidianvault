@@ -28,3 +28,4 @@ MetaMorph
 
 + multiple sink tokens -> is it the same MLP contributes -> why intermediary tokens ???
 + will clipping MA affect the perplexity of following predictions
++ max activation / min activation: what is the range of this ratio
