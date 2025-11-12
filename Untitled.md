@@ -25,3 +25,6 @@ MetaMorph
 + check if the non-MA tokens as the first token / following tokens which does not show MA have positive cosine similarity with MLP block weights
 + if the first token does not have MA, why does the second token have MA????
 + "Hello" / "You" -> change MA magnitude -> will it affect the predictions???
+
++ multiple sink tokens -> is it the same MLP contributes -> why intermediary tokens ???
++ will clipping MA affect the perplexity of following predictions
