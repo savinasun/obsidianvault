@@ -13,12 +13,24 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Untitled.md",
+                "file": "_01_notes/Attention.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled"
+              "title": "Attention"
+            }
+          },
+          {
+            "id": "0458360c45025fe6",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.10.6"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.10.6"
             }
           },
           {
@@ -35,7 +47,8 @@
               "title": "LLaMA"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -200,7 +213,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "Untitled.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -228,7 +240,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Untitled"
+              "title": "Graph view"
             }
           }
         ]
@@ -272,14 +284,14 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "54944d83f0e4ad7d",
+  "active": "0458360c45025fe6",
   "lastOpenFiles": [
+    "Attention Sink.md",
+    "Untitled.md",
     "_01_notes/Activation Functions.md",
     "_01_notes/LLaMA.md",
     "DDPM.md",
-    "Untitled.md",
     "_01_notes/Attention.md",
-    "Attention Sink.md",
     "Untitled",
     "_04_images/Pasted image 20251008001324.png",
     "_01_notes/VLM.md",
