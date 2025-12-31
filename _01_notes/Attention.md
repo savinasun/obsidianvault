@@ -146,3 +146,7 @@ nb
 ## Attention Heads are Independent and Additive
 ----
 https://transformer-circuits.pub/2021/framework/index.html
+
++ Dong (2021) showed that without skip connections or multi-layer perceptrons (MLPs), the output converges doubly exponentially to a rank-1 matrix. On the other hand, skip connections and MLPs stop the output from degeneration.
+	+ The intuition is that attention matrices ‘**mix**’ information, and **repeated mixing converges to a space that is of low-rank**.
++ The same phenomenon in Graph-Neural-Networks is called **over-smoothing**.
