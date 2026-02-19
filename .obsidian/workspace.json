@@ -34,21 +34,9 @@
               "icon": "lucide-file",
               "title": "Attention"
             }
-          },
-          {
-            "id": "06ceee597fb7c46f",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.11.5"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.11.5"
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -213,6 +201,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "_01_notes/Attention.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -240,7 +229,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "title": "Graph of Attention"
             }
           }
         ]
@@ -284,7 +273,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "06ceee597fb7c46f",
+  "active": "f4ca8ad06b647764",
   "lastOpenFiles": [
     "_01_notes/LLMs.md",
     "_01_notes/Attention.md",
