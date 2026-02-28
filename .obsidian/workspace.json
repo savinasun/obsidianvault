@@ -27,16 +27,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Attention.md",
+                "file": "_01_notes/Linear Algebra.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Attention"
+              "title": "Linear Algebra"
+            }
+          },
+          {
+            "id": "43357cd85d93fdad",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.7"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -201,7 +213,6 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Attention.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -229,7 +240,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Attention"
+              "title": "Graph view"
             }
           }
         ]
@@ -273,12 +284,13 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "f4ca8ad06b647764",
+  "active": "43357cd85d93fdad",
   "lastOpenFiles": [
-    "_01_notes/LLMs.md",
     "_01_notes/Attention.md",
-    "_01_notes/Spectral Analysis.md",
+    "_01_notes/Linear Algebra.md",
     "_01_notes/LLaMA.md",
+    "_01_notes/LLMs.md",
+    "_01_notes/Spectral Analysis.md",
     "Attention Sink.md",
     "Untitled.md",
     "_01_notes/Activation Functions.md",
@@ -292,7 +304,6 @@
     "_01_notes/Deep Learning.md",
     "_02_references/su2023/su2023.md",
     "_01_notes/SVD.md",
-    "_01_notes/Linear Algebra.md",
     "_04_images/llms_08.png",
     "_04_images/Pasted image 20251002004238.png",
     "_04_images/llama_04.png",
