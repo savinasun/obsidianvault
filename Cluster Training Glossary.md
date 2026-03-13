@@ -19,3 +19,17 @@
 - **NCCL**: NVIDIA’s collective communication library. This is the workhorse under most PyTorch/Megatron/NeMo distributed training runs. It provides collectives like **all-reduce**, **all-gather**, and **reduce-scatter** across multi-GPU and multi-node jobs.
 - **Rank**: in NCCL terms, each participating device/process in a collective. NCCL’s docs emphasize that collectives must be called on each rank with matching shapes/types, or you get hangs or corruption.
 - **NVLink SHARP / NVLS**, **Multimem**, **GIN**: advanced terms. NCCL now documents device-initiated communication modes including NVLink SHARP-backed multicast/reduction and GPU-initiated networking over the network fabric. These are useful later, not day one.
+- **SRAM** (Static Random-Access Memory): a type of fast, on-chip memory in a GPU.
+- 
+- 
+- 
+## GPU memory hierarchy (fast → slow)
+---
+https://cvw.cac.cornell.edu/gpu-architecture/gpu-characteristics/kernel_sm
+
+| Level | Name                     | Size               | Speed     |
+| ----- | ------------------------ | ------------------ | --------- |
+| 1     | **Registers**            | ~256 KB per SM     | Fastest   |
+| 2     | **SRAM / Shared Memory** | ~128-228 KB per SM | Very fast |
+| 3     | **L2 Cache**             | ~few MB            | Fast      |
+| 4     | **HBM (Global Memory)**  | 24-80 GB           | Slowest   |
