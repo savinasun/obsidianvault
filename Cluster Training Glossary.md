@@ -1,0 +1,21 @@
+### [[dl_moc]]  
+# **Cluster Training Glossary**
+
+**Tags**::  
+**Links**::
+
+## Glossary
+---
+- **HGX**: NVIDIA’s scale-up server platform for multi-GPU systems. Think of it as the GPU baseboard/platform level.
+- **DGX**: NVIDIA’s integrated AI server built on top of those technologies.
+- **DGX GB200 / SuperPOD / cluster**: multiple DGX/HGX systems networked together for scale-out training.
+- **NVLink**: the direct **GPU-to-GPU interconnect**.
+- **NVSwitch**: the switch fabric that ties many NVLinks together to provide **all-to-all GPU communication** inside an NVLink domain.
+- **Fabric Manager**: the system software that manages **NVSwitch-based HGX/DGX** systems.
+- **PCIe**: the general-purpose host/device interconnect. It matters for GPU-NIC and GPU-storage paths, but for fast intra-node training you generally want communication to stay on **NVLink/NVSwitch** whenever possible.
+- **InfiniBand**: the low-latency, high-throughput network typically used for **scale-out** training across nodes. NVIDIA’s Quantum InfiniBand platform emphasizes offload and in-network computing such as **SHARP**.
+- **Spectrum-X / RoCE Ethernet**: the Ethernet-based alternative for AI clusters. NVIDIA positions Spectrum-X as an Ethernet fabric for large GPU deployments, with **RoCE** connectivity between GPU servers.
+- **GPUDirect RDMA**: direct data exchange between **GPU memory and a NIC/peer device**, avoiding CPU bounce buffers. This is a core idea for efficient inter-node GPU communication. **GPUDirect Storage** does the analogous thing for storage-to-GPU paths.
+- **NCCL**: NVIDIA’s collective communication library. This is the workhorse under most PyTorch/Megatron/NeMo distributed training runs. It provides collectives like **all-reduce**, **all-gather**, and **reduce-scatter** across multi-GPU and multi-node jobs.
+- **Rank**: in NCCL terms, each participating device/process in a collective. NCCL’s docs emphasize that collectives must be called on each rank with matching shapes/types, or you get hangs or corruption.
+- **NVLink SHARP / NVLS**, **Multimem**, **GIN**: advanced terms. NCCL now documents device-initiated communication modes including NVLink SHARP-backed multicast/reduction and GPU-initiated networking over the network fabric. These are useful later, not day one.
