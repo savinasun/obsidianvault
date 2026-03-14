@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/RoPE.md",
+                "file": "_01_notes/Attention.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "RoPE"
+              "title": "Attention"
             }
           }
         ],
@@ -201,7 +201,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/RoPE.md",
+                "file": "_01_notes/Attention.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -229,7 +229,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of RoPE"
+              "title": "Graph of Attention"
             }
           }
         ]
@@ -275,13 +275,15 @@
   },
   "active": "f4ca8ad06b647764",
   "lastOpenFiles": [
-    "Cluster Training Glossary.md",
-    "Untitled 1.md",
+    "_01_notes/Cluster Training Glossary.md",
     "Untitled.md",
+    "Untitled 1.md",
+    "README.md",
+    "_01_notes/RoPE.md",
+    "Paire.md",
     "About Writing.md",
     "_01_notes/DDPM.md",
     "Attention Sink.md",
-    "README.md",
     "_01_notes/Attention.md",
     "_01_notes/Benchmark Datasets.md",
     "_01_notes/ViT.md",
@@ -310,8 +312,6 @@
     "_01_notes/DINO.md",
     "_04_images/DINO_03.png",
     "_04_images/DINO_02.png",
-    "_01_notes/CoT Prompting.md",
-    "_01_notes/BPE.md",
     "_02_references/deepseek-ai2025",
     "_02_references/grattafiori2024",
     "_02_references/wei2023",

@@ -114,13 +114,12 @@ X = X+ \Sigma_i A_i \cdot \tilde{X}\cdot\Gamma \cdot (W_i^V) \cdot ({W_i^O}^T)^T
 $$
 where $A_i\in\mathbb{R}^{n\times n}$ is the $i$-th head of attention matrix.
 
-### Benefits
-
+**Benefits**
 - **Allows the model to jointly attend to information from different subspaces.**
 - **Provides richer representations than a single attention head.**
 
 
-## Grouped-Query Attention
+## Grouped-Query Attention (GQA)
 ---
 ![[attention_03.png]]
 
@@ -140,7 +139,6 @@ This reduces the memory/computation cost for storing and computing large key/val
 
 - Significantly reduces attention memory bottleneck
 - Enables scaling up query resolution while keeping KV costs manageable
-nb
 
 
 ## Attention Heads are Independent and Additive
@@ -150,3 +148,13 @@ https://transformer-circuits.pub/2021/framework/index.html
 + Dong (2021) showed that without skip connections or multi-layer perceptrons (MLPs), the output converges doubly exponentially to a rank-1 matrix. On the other hand, skip connections and MLPs stop the output from degeneration.
 	+ The intuition is that attention matrices ‘**mix**’ information, and **repeated mixing converges to a space that is of low-rank**.
 + The same phenomenon in Graph-Neural-Networks is called **over-smoothing**.
+
+
+
+## Paired-Head Attention
+---
+In normal attention, each head independently computes `q·k` within itself. **Paired heads make adjacent heads cross-attend — head A's queries attend to head B's keys, and vice versa.**
+
+Normal MHA has **independent** heads — they can't share information with each other within a single layer. Paired heads allow **cross-head communication**: head A can leverage patterns that head B detects. This increases expressivity without adding parameters.
+
+The tradeoff is that the effective window size is halved (since `T` doubles but the sliding window `bm_size` stays the same), so it's only used on selected layers.
