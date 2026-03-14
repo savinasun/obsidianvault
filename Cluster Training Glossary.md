@@ -33,3 +33,11 @@ https://cvw.cac.cornell.edu/gpu-architecture/gpu-characteristics/kernel_sm
 | 2     | **SRAM / Shared Memory** | ~128-228 KB per SM | Very fast |
 | 3     | **L2 Cache**             | ~few MB            | Fast      |
 | 4     | **HBM (Global Memory)**  | 24-80 GB           | Slowest   |
+### What Flash Attention does
+
+Standard attention computes `softmax(Q @ K.T / scale) @ V`, which requires materializing the full `T x T` attention matrix in GPU memory — **O(T²)** memory.
+
+**Flash Attention** computes the exact same result but uses a **tiling algorithm** that:
+- Processes the attention matrix in small blocks that fit in **SRAM (fast on-chip memory)**
+- Never materializes the full T×T matrix in **HBM (slow global memory)**
+- Reduces memory from **O(T²) to O(T)**
