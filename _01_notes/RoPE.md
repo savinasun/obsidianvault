@@ -9,7 +9,7 @@
 **High level intuition**: A relative position embedding should be some $f(x,i)$ which defines the inner product s.t.
 $$
 <f_q(x_m, m), f_k(x_n, n)> = g(x_m, x_n, m-n)
-$$which means the attention function should only depend on relative position $(m-n)$. And there is a solution
+$$which means the attention function should **only depend on relative position $(m-n)$**. And there is a solution s.t.
 $$
 \begin{aligned}
 & f_q(x_m, m) = (W_q x_m)e^{im\theta},\\\\
@@ -22,7 +22,7 @@ $$
 + RoPE was proposed in [@su2023] to solve the problem.
 + The main idea is that **the q and k vectors incorporate absolute position information**, and then **the updated q and k vectors will bring relative position information by doing inner product during attention computation**.
 
-+ We want our embeddings to be invariant to absolute position and we know that inner products are invariant to arbitrary rotation. So the math here is to pair up the coordinates into $d/2$ subspaces and rotate them in 2d
++ We want our embeddings to be invariant to absolute position and we know that inner products are invariant to arbitrary rotation. So the math here is to pair up the coordinates into $d/2$ subspaces and rotate them in $2d$ spaces
 
 
 ## Proof
@@ -58,7 +58,6 @@ $$
 &= (q_m^1 k_n^1 + q_m^2 k_n^2)\cos{(m-n)\theta} - (q_m^2 k_n^1 - q_m^1 k_n^2)\sin{(m-n)\theta}
 \end{aligned}
 $$
-
 $$
 \begin{aligned}
 g(x_m, x_n, m-n) &= \text{Re}\left[(W_qx_m)(W_kx_n)^* \cdot e^{i(m-n)\theta} \right]\\
@@ -77,5 +76,5 @@ $$
 <f_q(x_m, m), f_q(x_n, n)> = g(x_m, x_n, m-n)
 $$
 
-+ ![[rope_01.png]]
++ ![[rope_01.png|782]]
 
