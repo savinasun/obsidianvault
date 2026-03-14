@@ -157,4 +157,15 @@ In normal attention, each head independently computes `q·k` within itself. **Pa
 
 Normal MHA has **independent** heads — they can't share information with each other within a single layer. Paired heads allow **cross-head communication**: head A can leverage patterns that head B detects. This increases expressivity without adding parameters.
 
-The tradeoff is that the effective window size is halved (since `T` doubles but the sliding window `bm_size` stays the same), so it's only used on selected layers.
+Paired heads make **adjacent heads' queries attend to each other's keys**:
+
+```
+Normal:    Q1→K1,  Q2→K2  (independent)
+Paired:    Q1→K2,  Q2→K1  (cross-attend)
+```
+
+This is achieved by interleaving two heads' tokens into a single doubled-length sequence, then running standard causal attention — the causal mask naturally allows cross-head visibility.
+
+- Every head has its **own** Q, K, and V (no sharing)
+- Purpose: **cross-head communication** within a single layer
+- Tradeoff: the effective window size is halved (since `T` doubles but the sliding window `bm_size` stays the same), so it's only used on selected layers.
