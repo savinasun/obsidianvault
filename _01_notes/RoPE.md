@@ -78,3 +78,13 @@ $$
 
 + ![[rope_01.png|782]]
 
+## YaRN (Yet another RoPE extensioN)
+---
+This is a compact implementation of RoPE. For each pair of dimensions `(x₀, x₁)`, it computes:
+
+```
+out₀ = cos(θ) * x₀ - sin(θ) * x₁
+out₁ = cos(θ) * x₁ + sin(θ) * x₀
+```
+
+where `θ` depends on the token's position and the dimension index.
