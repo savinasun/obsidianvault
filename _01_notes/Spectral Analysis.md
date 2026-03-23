@@ -18,3 +18,15 @@ This [matrix norm](https://mathworld.wolfram.com/MatrixNorm.html) is implement
 
 ## Spectral Theorem
 ---
+
+
+## Spectral Decomposition
+---
+$$
+S = U\Sigma V^T = \sum u_i \sigma_i v_i^T
+$$
+
+Low Rank Approximation
+
+
+Fourier Transformation
