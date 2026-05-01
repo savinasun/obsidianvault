@@ -34,21 +34,8 @@
               "icon": "lucide-file",
               "title": "Spectral Analysis"
             }
-          },
-          {
-            "id": "c224efcb405d4fab",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.12.7"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.12.7"
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -213,6 +200,7 @@
             "state": {
               "type": "localgraph",
               "state": {
+                "file": "_01_notes/Attention.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -240,7 +228,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "title": "Graph of Attention"
             }
           }
         ]
@@ -284,10 +272,10 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c224efcb405d4fab",
+  "active": "54944d83f0e4ad7d",
   "lastOpenFiles": [
-    "_01_notes/RMSNorm.md",
     "_01_notes/Spectral Analysis.md",
+    "_01_notes/RMSNorm.md",
     "_01_notes/Attention.md",
     "_01_notes/Cluster Training Glossary.md",
     "Untitled.md",
