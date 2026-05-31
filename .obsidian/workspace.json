@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Attention.md",
+                "file": "_01_notes/DDPM.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Attention"
+              "title": "DDPM"
             }
           },
           {
@@ -85,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "GQA",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -200,7 +200,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/Attention.md",
+                "file": "_01_notes/DDPM.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -228,7 +228,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of Attention"
+              "title": "Graph of DDPM"
             }
           }
         ]
@@ -274,9 +274,10 @@
   },
   "active": "54944d83f0e4ad7d",
   "lastOpenFiles": [
+    "_01_notes/Benchmark Datasets.md",
+    "_01_notes/Attention.md",
     "_01_notes/Spectral Analysis.md",
     "_01_notes/RMSNorm.md",
-    "_01_notes/Attention.md",
     "_01_notes/Cluster Training Glossary.md",
     "Untitled.md",
     "Untitled 1.md",
@@ -286,7 +287,6 @@
     "About Writing.md",
     "_01_notes/DDPM.md",
     "Attention Sink.md",
-    "_01_notes/Benchmark Datasets.md",
     "_01_notes/ViT.md",
     "_01_notes/Linear Algebra.md",
     "_01_notes/LLaMA.md",
