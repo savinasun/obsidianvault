@@ -1,4 +1,4 @@
-### Theoretical DL
+### Mathematics
 ```dataview
 table tags as "Tags"
 from "_01_notes"
