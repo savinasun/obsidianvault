@@ -11,10 +11,14 @@
             "id": "e0c3b8c4ced10fe5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "LfD.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "LfD"
             }
           }
         ]
@@ -255,14 +259,14 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "feb9ad2b5567d3d1",
+  "active": "e0c3b8c4ced10fe5",
   "lastOpenFiles": [
+    "LfD.md",
     "Untitled.canvas",
     "_01_notes/LLMs.md",
     "_01_notes/LDM.md",
     "_01_notes/Linear Algebra.md",
     "_01_notes/Deep Learning.md",
-    "Untitled.md",
     "_01_notes/MCMC.md",
     "conflict-files-obsidian-git.md",
     "_04_images/Pasted image 20260602115713.png",
