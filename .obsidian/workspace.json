@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LfD.md",
+                "file": "Contrastive Learning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LfD"
+              "title": "Contrastive Learning"
             }
           }
         ]
@@ -262,6 +262,7 @@
   "active": "e0c3b8c4ced10fe5",
   "lastOpenFiles": [
     "LfD.md",
+    "Contrastive Learning.md",
     "Untitled.canvas",
     "_01_notes/LLMs.md",
     "_01_notes/LDM.md",
