@@ -46,16 +46,6 @@ SORT file.name ASC
 ```
 
 
-### LLaMA Family
-
-```dataview
-table tags as "Tags"
-from "_01_notes"
-WHERE contains(tags, "llama")
-SORT file.name ASC
-```
-
-
 ### Vision & Self-Supervised Learning
 
 Visual representation learning: transformers for vision, self-supervised objectives, multimodal models.
