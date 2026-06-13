@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Self-Distillation with No Labels**
 
-**Tags**::  
+**Tags**::  #learning
 **Links**::
 
 ## Introduction

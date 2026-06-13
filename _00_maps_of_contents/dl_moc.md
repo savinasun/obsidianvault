@@ -2,7 +2,7 @@
 ```dataview
 table tags as "Tags"
 from "_01_notes"
-WHERE contains(tags, "dl_theo")
+WHERE contains(tags, "math")
 SORT file.name ASC
 ```
 
@@ -16,11 +16,11 @@ SORT file.name ASC
 ```
 
 
-### Transformer
+### Learning
 ```dataview
 table tags as "Tags"
 from "_01_notes"
-WHERE contains(tags, "transformer")
+WHERE contains(tags, "learning")
 SORT file.name ASC
 ```
 
