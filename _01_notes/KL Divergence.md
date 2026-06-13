@@ -16,7 +16,7 @@ There are a few important properties about KL divergence:
 2. **Relationship with [[Entropy]] / Cross Entropy**: $$H(p,q)=H(p)+D_{KL}(p,q)$$
 3. **Relationship with Information Gain**: KL divergence of $p$ relative to $q$, i.e. $D_{KL} (p||q)$, could be deemed as information gain achieved changing from $q$ to $p$.
 
-### Forward and Backward KL
+### Forward KL and Backward KL
 
 ![[entropy_01.png]]
 

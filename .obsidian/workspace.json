@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Hamming Loss.md",
+                "file": "_01_notes/MCMC.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Hamming Loss"
+              "title": "MCMC"
             }
           }
         ]
@@ -262,12 +262,14 @@
   "active": "7b5ec0adbfa9643e",
   "lastOpenFiles": [
     "_00_maps_of_contents/dl_moc.md",
+    "_01_notes/KL Divergence.md",
+    "_01_notes/Entropy.md",
+    "_01_notes/Hamming Loss.md",
     "_01_notes/Attention.md",
     "_01_notes/Activation Functions.md",
     "_01_notes/Behavior Cloning.md",
     "Academic Writing.md",
     "2026-06-12.md",
-    "_01_notes/Hamming Loss.md",
     "Untitled 1.base",
     "Untitled.base",
     "Untitled.canvas",
@@ -275,7 +277,6 @@
     "_01_notes/DINO.md",
     "_01_notes/DDPM.md",
     "_01_notes/Contrastive Learning.md",
-    "_01_notes/Entropy.md",
     "_01_notes/CoT Prompting.md",
     "_01_notes/Benchmark Datasets.md",
     "_01_notes/CLIP.md",
@@ -292,7 +293,6 @@
     "_04_images/Pasted image 20260601165600.png",
     "_04_images/Pasted image 20260601164820.png",
     "_04_images/Pasted image 20260601154614.png",
-    "_01_notes/KL Divergence.md",
     "_04_images/Pasted image 20260601151304.png",
     "_01_notes/ELBO.md",
     "Untitled",
