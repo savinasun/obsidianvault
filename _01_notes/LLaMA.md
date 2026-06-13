@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **LLaMA (Large Language Model Meta AI)**
 
-**Tags**::  
+**Tags**:: #llm #llama #architecture
 **Links**::
 
 ## Architecture

@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Few-Shot Learning**
 
-**Tags**:: 
+**Tags**:: #learning
 **Links**:: 
 
 ## Definitions

@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Normalization**
 
-**Tags**::  #architecture
+**Tags**:: #dl_theo #architecture
 **Links**::
 
 ### Data Normalization

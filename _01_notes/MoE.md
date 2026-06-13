@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Mixture of Experts**
 
-**Tags**::  
+**Tags**:: #architecture #llm
 **Links**::
 
 ## Architecture

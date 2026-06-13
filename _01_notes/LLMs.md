@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Large Language Models**
 
-**Tags**::  
+**Tags**:: #llm #architecture
 **Links**::
 
 

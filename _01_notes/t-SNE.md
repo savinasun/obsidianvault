@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **t-Stochastic Neighboring Embedding**
 
-**Tags**::  #manifold_learning
+**Tags**:: #math #learning
 **Links**::
 
 ## Introduction

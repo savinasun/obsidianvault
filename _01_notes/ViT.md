@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Vision Transformer (ViT)**
 
-**Tags**::  #vision
+**Tags**:: #vision #architecture
 **Links**::
 
 Prior to ViT, Convolutional Neural Networks (CNNs) were the undisputed standard for image recognition. CNNs use filters with local receptive fields to build up a hierarchical representation of an image.

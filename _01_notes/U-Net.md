@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **The Title of Your Note**
 
-**Tags**::  
+**Tags**:: #vision #architecture
 **Links**:: 
 
 ## U-Net Architecture

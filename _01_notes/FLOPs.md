@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Floating-Point Operations**
 
-**Tags**::  
+**Tags**:: #dl_theo
 **Links**::
 
 ## Definition

@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Spectral Analysis**
 
-**Tags**::  
+**Tags**:: #math
 **Links**::
 
 ## Spectrum Norm

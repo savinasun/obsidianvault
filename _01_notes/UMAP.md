@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Uniform Manifold Approximation and Projection **
 
-**Tags**::  
+**Tags**:: #math #learning
 **Links**:: https://pair-code.github.io/understanding-umap/
 
 ## Introduction

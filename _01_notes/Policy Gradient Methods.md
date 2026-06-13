@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Policy Gradient Methods**
 
-**Tags**::  
+**Tags**:: #rl
 **Links**:: [David Silver RL Course](https://www.youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ)
 
 Agent

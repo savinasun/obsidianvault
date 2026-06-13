@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Singular Value Decomposition**
 
-**Tags**::  #dl_theo
+**Tags**:: #math #dl_theo
 **Links**::
 
 ## Definition

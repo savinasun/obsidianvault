@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Entropy**
 
-**Tags**::  
+**Tags**:: #math
 **Links**::
 
 ## Definition

@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Score-Based Generative Modeling Methods**
 
-**Tags**::  
+**Tags**:: #generative #dl_theo
 **Links**:: [Score-Based Generative Modeling](https://yang-song.net/blog/2021/score/#the-score-function-score-based-models-and-score-matching), 
 
 ## Score Matching

@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Cluster Training**
 
-**Tags**::  
+**Tags**:: #llm
 **Links**::
 
 https://cvw.cac.cornell.edu/gpu-architecture/gpu-characteristics/kernel_sm

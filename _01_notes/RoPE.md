@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Rotary Position Embeddings**
 
-**Tags**::  
+**Tags**:: #architecture #llm
 **Links**::
 
 ## Implementation

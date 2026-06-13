@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Kullback-Leibler Divergence*
 
-**Tags**::  
+**Tags**:: #math #dl_theo
 **Links**::
 
 ## KL Divergence

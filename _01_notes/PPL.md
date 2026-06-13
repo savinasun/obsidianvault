@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # Perplexity Score
 
-**Tags**::  
+**Tags**:: #llm
 **Links**::
 
 ## Definition and Formula

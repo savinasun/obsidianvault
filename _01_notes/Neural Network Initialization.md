@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Neural Network Initialization**
 
-**Tags**:: #architecture 
+**Tags**:: #dl_theo
 **Links**::
 
 

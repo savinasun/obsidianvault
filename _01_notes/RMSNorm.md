@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Root Mean Square Layer Normalization**
 
-**Tags**::  #architecture/llama 
+**Tags**:: #dl_theo #llm
 **Links**::
 
 ### Definition

@@ -2,7 +2,7 @@
 
 ## **Internal Covariate Shift**
 
-**Tags**:: #architecture 
+**Tags**:: #dl_theo
 **Links**:: 
 
 ---

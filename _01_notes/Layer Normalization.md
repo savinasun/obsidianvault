@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Layer Normalization**
 
-**Tags**::  
+**Tags**:: #dl_theo
 **Links**::
 
 ## Overview

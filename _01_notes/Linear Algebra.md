@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Linear Algebra**
 
-**Tags**::  
+**Tags**:: #math
 **Links**:: [Gilbert Strung Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/)
 
 ![[linear_algebra_01.png]]

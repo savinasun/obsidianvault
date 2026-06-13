@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Byte Pair Encoding**
 
-**Tags**::  
+**Tags**:: #llm
 **Links**::
 
 ## Overview

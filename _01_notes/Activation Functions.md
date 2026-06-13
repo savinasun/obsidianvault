@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Activation Functions**
 
-**Tags**::  #dl_theo
+**Tags**:: #architecture #dl_theo
 **Links**:: 
 
 Activation functions are used to introduce non-linearities in models. Without non-linearities, models can only map linear relationships in data, which severely limits their the expressive powers. We list a few popular activation functions here and there are more could be seen at [@du2024].

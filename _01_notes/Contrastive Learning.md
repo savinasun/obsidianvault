@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Contrastive Learning**
 
-**Tags**::  
+**Tags**:: #learning
 **Links**::
 
 ## SimCLR

@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Vision Language Models**
 
-**Tags**::  
+**Tags**:: #vision #llm
 **Links**::
 
 ## Architecture

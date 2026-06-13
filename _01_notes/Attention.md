@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Attention**
 
-**Tags**::  
+**Tags**:: #architecture #llm
 **Links**::
 
 
