@@ -2,7 +2,7 @@
 # **Singular Value Decomposition**
 
 **Tags**:: #math #dl_theo
-**Links**::
+**Links**:: [[Linear Algebra]] · [[Spectral Analysis]]
 
 ## Definition
 ---

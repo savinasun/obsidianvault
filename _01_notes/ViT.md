@@ -2,7 +2,7 @@
 # **Vision Transformer (ViT)**
 
 **Tags**:: #vision #architecture
-**Links**::
+**Links**:: [[Transformer]] · [[DINO]] · [[CLIP]] · [[Attention]] · [[Contrastive Learning]]
 
 Prior to ViT, Convolutional Neural Networks (CNNs) were the undisputed standard for image recognition. CNNs use filters with local receptive fields to build up a hierarchical representation of an image.
 
@@ -41,7 +41,7 @@ Finally, a classification head (a simple MLP) is attached to the output `[CLS]` 
 
 * **Data Thirst and Inductive Bias:** The most critical finding was that ViTs lack the strong **inductive biases** inherent to CNNs (like translation equivariance and locality). As a result, when trained on smaller datasets like ImageNet-1k (~1M images), ViTs performed worse than comparable CNNs. However, when pre-trained on massive proprietary datasets like JFT-300M (~300M images), they **surpassed the performance of state-of-the-art CNNs**.
 * **Scalability:** The performance of ViTs scaled more effectively with more data and larger model sizes compared to their CNN counterparts.
-* **A New Foundation:** The ViT paper fundamentally changed the landscape of computer vision. It demonstrated that a general-purpose sequence processing architecture could outperform specialized vision models, paving the way for nearly all the follow-up research we've discussed, including DINO, Registers, and countless other variants.
+* **A New Foundation:** The ViT paper fundamentally changed the landscape of computer vision. It demonstrated that a general-purpose sequence processing architecture could outperform specialized vision models, paving the way for nearly all the follow-up research we've discussed, including [[DINO]], Registers, and countless other variants.
 
 
 
@@ -75,7 +75,7 @@ This note explores the findings of the paper "Vision Transformers Need Registers
 
 ## 1. The Core Problem: Noisy Feature Maps in ViTs
 
-While models like DINO and DINOv2 produce excellent semantic features in their final layers, the feature maps from the *early and middle layers* of many ViTs are often noisy and lack clear spatial meaning.
+While models like [[DINO]] and DINOv2 produce excellent semantic features in their final layers, the feature maps from the *early and middle layers* of many ViTs are often noisy and lack clear spatial meaning.
 
 * **Cause:** The authors discovered that a few background patches with high energy (high L2 norm) tend to dominate the self-attention mechanism. These "attention-hogging" patches capture the attention of many other tokens, preventing the model from building up meaningful, object-focused representations in its initial layers.
 * **Effect:** This results in messy attention maps that don't correspond well to objects. For example, the `[CLS]` token, which is supposed to aggregate global information, ends up attending to these noisy background patches instead of the main subject of the image.

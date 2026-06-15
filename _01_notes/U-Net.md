@@ -2,7 +2,7 @@
 # **The Title of Your Note**
 
 **Tags**:: #vision #architecture
-**Links**:: 
+**Links**:: [[DDPM]] · [[LDM]] · [[Score-Based Generative Modeling Methods]]
 
 ## U-Net Architecture
 ---

@@ -2,12 +2,12 @@
 # **Mixture of Experts**
 
 **Tags**:: #architecture #llm
-**Links**::
+**Links**:: [[Transformer]] · [[LLMs]] · [[Scaling Laws]] · [[FLOPs]]
 
 ## Architecture
 ---
 **Mixture of Experts (MoE)** is a neural network architecture that leverages conditional 
-computation to scale models efficiently. Instead of activating all parameters for every input, MoE activates only a subset of **"expert" networks** per example, allowing the model to scale capacity while keeping computation per input relatively low.
+computation to scale models efficiently. Instead of activating all parameters for every input, MoE activates only a subset of **"expert" networks** per example, allowing the model to scale capacity while keeping computation per input relatively low. See [[FLOPs]] for compute accounting.
 
 Introduced by Jacobs et al. (1991), MoE has seen a resurgence with large-scale models like **GShard**, **Switch Transformer**, and **GLaM**, which use sparse routing and efficient parallelization.
 
@@ -61,7 +61,7 @@ To ensure even distribution of input tokens across experts, common techniques in
 
 ## Use Cases
 ---
-- **Language models** (e.g., GLaM, Switch Transformer)
+- **Language models** (e.g., GLaM, Switch Transformer) — see [[LLMs]]
 - **Multimodal models** (e.g., Flamingo, CoMoE)
 - **Recommendation systems**
 - **Translation and multilingual modeling**

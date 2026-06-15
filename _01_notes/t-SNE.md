@@ -2,7 +2,7 @@
 # **t-Stochastic Neighboring Embedding**
 
 **Tags**:: #math #learning
-**Links**::
+**Links**:: [[KL Divergence]] · [[UMAP]] · [[Manifold Hypothesis]]
 
 ## Introduction
 ---
@@ -10,7 +10,7 @@ t-SNE is a powerful non-linear **dimensionality reduction technique** which is p
 
 It starts from Stochastic Neighbor Embedding (SNE), which is first proposed by Geoffrey Hinton and Sam Roweis in [@hinton2002] in 2002. In a follow-up paper [@maaten2008] by Laurens van der Maaten and Geoffrey Hinton, a couple of improvements were proposed that led to t-Distributed Stochastic Neighbor Embedding (t-SNE). Then finally Barnes-Hut-SNE by Laurens van der Maaten provides the toolbox to scale t-SNE to millions of datapoints.
 
-t-SNE is a probabilistic method for non-linear dimensionality reduction. The core idea of t-SNE is to preserve local neighborhood structures from the high-dimensional space in the low-dimensional map by **modeling similarities as joint probabilities and minimizing the KL divergence between the high-dimensional Gaussian distributions $P$ and the low-dimensional Students' t-probability distributions $Q$**, it creates intuitive and often insightful visualizations. The use of the Student's t-distribution for the low-dimensional similarities is crucial for its effectiveness, as it helps to separate distinct clusters and reveal the underlying structure of the data.
+t-SNE is a probabilistic method for non-linear dimensionality reduction. The core idea of t-SNE is to preserve local neighborhood structures from the high-dimensional space in the low-dimensional map by **modeling similarities as joint probabilities and minimizing the [[KL Divergence|KL divergence]] between the high-dimensional Gaussian distributions $P$ and the low-dimensional Students' t-probability distributions $Q$**, it creates intuitive and often insightful visualizations. The use of the Student's t-distribution for the low-dimensional similarities is crucial for its effectiveness, as it helps to separate distinct clusters and reveal the underlying structure of the data.
 
 
 ## Algorithm
@@ -103,4 +103,4 @@ The optimization is typically performed using momentum to speed up convergence a
 A Shepard diagram compares how far apart your data points are before and after you transform them (ie: goodness-of-fit) as a scatter plot. It could be easily used to evaluate data reduction techniques like _principal components analysis_ (PCA), _multidimensional scaling_ (MDS), or t-SNE.
 
 
-Note that the distances between clusters of t-SNE points are meaningless, this is because the KL-divergence cost function used in t-SNE doesn't care about the global structure.
+Note that the distances between clusters of t-SNE points are meaningless, this is because the [[KL Divergence|KL-divergence]] cost function used in t-SNE doesn't care about the global structure.

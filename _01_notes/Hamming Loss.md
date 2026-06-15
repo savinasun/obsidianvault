@@ -2,7 +2,7 @@
 # **Hamming Loss**
 
 **Tags**::  #math
-**Links**::
+**Links**:: [[Benchmark Datasets]]
 
 
 The Hamming Loss (HL) is the fraction of the wrong labels to the total number of labels.

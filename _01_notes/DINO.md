@@ -2,7 +2,7 @@
 # **Self-Distillation with No Labels**
 
 **Tags**:: #vision #learning
-**Links**::
+**Links**:: [[ViT]] · [[CLIP]] · [[Contrastive Learning]] · [[Transformer]] · [[Attention]]
 
 ## Introduction
 ---
@@ -54,7 +54,7 @@ The most remarkable finding of the DINO paper was the set of properties that eme
 
 ## DINOv2: Scaling Self-Supervision for Foundation Models
 ---
-The success of DINO leads to DINOv2 [@oquab2024], which scales up the core ideas to create a powerful vision "foundation model", achieving state-of-the-art performance across a wide range of tasks without fine-tuning.
+The success of DINO leads to DINOv2 [@oquab2024], which scales up the core ideas (following [[Scaling Laws]] intuitions) to create a powerful vision "foundation model", achieving state-of-the-art performance across a wide range of tasks without fine-tuning.
 
 The goal of DINOv2 was to overcome the limitations of existing pre-trained models, which often required fine-tuning on large, labeled datasets to perform well. The hypothesis was that by scaling up the pre-training data and refining the training algorithm, it would be possible to create a single, general-purpose vision backbone that excels at many tasks with only a simple linear head.
 

@@ -2,7 +2,7 @@
 # **Floating-Point Operations**
 
 **Tags**:: #dl_theo
-**Links**::
+**Links**:: [[Scaling Laws]] · [[MoE]]
 
 ## Definition
 ---

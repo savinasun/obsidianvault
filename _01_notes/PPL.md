@@ -2,7 +2,7 @@
 # Perplexity Score
 
 **Tags**:: #llm
-**Links**::
+**Links**:: [[Entropy]] · [[LLMs]] · [[Benchmark Datasets]]
 
 ## Definition and Formula
 ---
@@ -41,6 +41,6 @@ $$
 
 ## Usage
 ---
-- Widely used to evaluate **language models** (e.g., GPT, BERT pretraining, etc.)
+- Widely used to evaluate **language models** (e.g., [[GPTs|GPT]], BERT pretraining, [[LLaMA]], etc.)
 - Can be computed on a **validation or test set** to measure generalization.
 - Often reported on standard corpora like **Penn Treebank**, **WikiText**, or **OpenWebText**

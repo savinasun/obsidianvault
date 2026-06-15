@@ -2,7 +2,7 @@
 # **Activation Functions**
 
 **Tags**:: #architecture #dl_theo
-**Links**:: 
+**Links**:: [[Transformer]] · [[LLaMA]] · [[Neural Network Initialization]] · [[LLMs]]
 
 Activation functions are used to introduce non-linearities in models. Without non-linearities, models can only map linear relationships in data, which severely limits their the expressive powers. We list a few popular activation functions here and there are more could be seen at [@du2024].
 
@@ -20,7 +20,7 @@ $$h(x) = \sigma (x) = \frac{1}{1+e^{-x}}$$
 ## Softmax
 ---
 $$\sigma(\mathbf{z})_i =\frac{e^{z_i}}{\Sigma_{j=1}^{n} e^{z_j}}, \quad i=1, \cdots, n.$$
-+ Softmax is commonly used to convert logits to probability distribution, for example in classification with [[Entropy#Cross Entropy|cross entropy]] or to determine weights in [Attention Mechanism].
++ Softmax is commonly used to convert logits to probability distribution, for example in classification with [[Entropy#Cross Entropy|cross entropy]] or to determine weights in [[Attention]].
 + Softmax tends to amplify the variances of high variance vectors.
 
 

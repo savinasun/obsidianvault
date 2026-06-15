@@ -2,14 +2,14 @@
 # **Rotary Position Embeddings**
 
 **Tags**:: #architecture #llm
-**Links**::
+**Links**:: [[Attention]] · [[LLMs]] · [[LLaMA]] · [[Transformer]] · [[Linear Algebra]]
 
 ## Implementation
 ---
 **High level intuition**: A relative position embedding should be some $f(x,i)$ which defines the inner product s.t.
 $$
 <f_q(x_m, m), f_k(x_n, n)> = g(x_m, x_n, m-n)
-$$which means the attention function should **only depend on relative position $(m-n)$**. And there is a solution s.t.
+$$which means the [[Attention|attention]] function should **only depend on relative position $(m-n)$**. And there is a solution s.t.
 $$
 \begin{aligned}
 & f_q(x_m, m) = (W_q x_m)e^{im\theta},\\\\
@@ -19,7 +19,7 @@ $$
 $$
 
 + Existing variations in position embeddings, like Sine embeddings in the original transformer and Absolute embeddings all fail to be 'relative'. And Relative embeddings is not an inner product.
-+ RoPE was proposed in [@su2023] to solve the problem.
++ RoPE was proposed in [@su2023] to solve the problem. It is used in [[LLaMA]], GPT-NeoX, and most modern [[LLMs]].
 + The main idea is that **the q and k vectors incorporate absolute position information**, and then **the updated q and k vectors will bring relative position information by doing inner product during attention computation**.
 
 + We want our embeddings to be invariant to absolute position and we know that inner products are invariant to arbitrary rotation. So the math here is to pair up the coordinates into $d/2$ subspaces and rotate them in $2d$ spaces

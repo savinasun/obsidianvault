@@ -2,7 +2,7 @@
 # **Byte Pair Encoding**
 
 **Tags**:: #llm
-**Links**::
+**Links**:: [[LLMs]] · [[GPTs]]
 
 ## Overview
 ---

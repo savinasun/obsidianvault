@@ -2,14 +2,14 @@
 # **Vision Language Models**
 
 **Tags**:: #vision #llm
-**Links**::
+**Links**:: [[ViT]] · [[CLIP]] · [[LLMs]] · [[Attention]] · [[RoPE]]
 
 ## Architecture
 --- 
 The Qwen2.5-VL model [@bai2025] builds upon the foundation laid by the Qwen series. The model has three components:
 ![[vlm_qwen_01.png]]
-- **Large Language Model:** the 1D ROPE is replaced with **MROPE(Multimodal Rotary Position Embedding)** aligned to absolute time.
-- **Vision Encoder:** redesigned ViT with 2D-RoPE and window attention to support variable input resolutions and improve computational efficiency. During the training and inference the height and width of the images are resized to multiples of 28, and the image patches are generated with a stride of 14.
+- **[[LLMs|Large Language Model]]:** the 1D [[RoPE]] is replaced with **MROPE(Multimodal Rotary Position Embedding)** aligned to absolute time.
+- **Vision Encoder:** redesigned [[ViT]] with 2D-[[RoPE|RoPE]] and window attention to support variable input resolutions and improve computational efficiency. During the training and inference the height and width of the images are resized to multiples of 28, and the image patches are generated with a stride of 14.
 - **MLP-based Vision Language Merger:** compresses the feature sequences before feeding them into the LLM by grouping spatially adjacent sets of patch features, concatenating them, and projecting them into a dimension aligned with the LLM’s text embeddings using a two-layer MLP.
 
 

@@ -2,7 +2,7 @@
 # **Basics of Neural Network**
 
 **Tags**:: #architecture 
-**Links**:: 
+**Links**:: [[Transformer]] · [[Attention]] · [[Neural Network Initialization]] · [[Normalization]] · [[Activation Functions]]
 
 
 SIMD: single instruction multiple data → GPU are much better at SIMD computations than CPU

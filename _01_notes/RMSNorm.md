@@ -2,7 +2,7 @@
 # **Root Mean Square Layer Normalization**
 
 **Tags**:: #dl_theo #llm
-**Links**::
+**Links**:: [[Layer Normalization]] · [[Normalization]] · [[LLMs]] · [[LLaMA]] · [[Transformer]]
 
 ### Definition
 ---

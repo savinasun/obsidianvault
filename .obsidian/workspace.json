@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "7b5ec0adbfa9643e",
+            "id": "5a7a757f4a33e0ac",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/MCMC.md",
+                "file": "_00_maps_of_contents/dl_moc.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MCMC"
+              "title": "dl_moc"
             }
           }
         ]
@@ -33,7 +33,7 @@
       {
         "id": "b8e2a895956801b3",
         "type": "tabs",
-        "dimension": 58.333333333333336,
+        "dimension": 58.33333333333332,
         "children": [
           {
             "id": "31f305f0b8239a5f",
@@ -63,7 +63,7 @@
       {
         "id": "a9a455c0b9c6b057",
         "type": "tabs",
-        "dimension": 20.833333333333336,
+        "dimension": 20.83333333333333,
         "children": [
           {
             "id": "f4bdddf87b272eb0",
@@ -71,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#dl_theo",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -87,7 +87,7 @@
       {
         "id": "a1144893fcc3c039",
         "type": "tabs",
-        "dimension": 20.833333333333336,
+        "dimension": 20.83333333333333,
         "children": [
           {
             "id": "feb9ad2b5567d3d1",
@@ -186,7 +186,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/MCMC.md",
+                "file": "_00_maps_of_contents/dl_moc.md",
                 "options": {
                   "collapse-filter": false,
                   "search": "",
@@ -209,12 +209,12 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 0.44665832025110785,
+                  "scale": 0.2877971463391371,
                   "close": true
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of MCMC"
+              "title": "Graph of dl_moc"
             }
           }
         ]
@@ -243,8 +243,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 261.5,
-    "collapsed": true
+    "width": 261.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -259,13 +258,19 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "31f305f0b8239a5f",
+  "active": "5a7a757f4a33e0ac",
   "lastOpenFiles": [
+    "_01_notes/RLHF.md",
+    "_00_maps_of_contents/dl_moc.md",
+    "_01_notes/Cluster Training Glossary.md",
+    "_01_notes/DDPM.md",
+    "_01_notes/Spectral Analysis.md",
+    "_01_notes/VLM.md",
+    "_01_notes/MCMC.md",
+    "_01_notes/World Models.md",
+    "_01_notes/Score-Based Generative Modeling Methods.md",
     "Untitled.base",
     "Untitled 1.base",
-    "_01_notes/MCMC.md",
-    "_01_notes/Score-Based Generative Modeling Methods.md",
-    "_00_maps_of_contents/dl_moc.md",
     "_01_notes/KL Divergence.md",
     "_01_notes/Entropy.md",
     "_01_notes/Hamming Loss.md",
@@ -277,7 +282,6 @@
     "Untitled.canvas",
     "_01_notes/Double Descent.md",
     "_01_notes/DINO.md",
-    "_01_notes/DDPM.md",
     "_01_notes/Contrastive Learning.md",
     "_01_notes/CoT Prompting.md",
     "_01_notes/Benchmark Datasets.md",
@@ -285,11 +289,7 @@
     "_01_notes/LLMs.md",
     "_01_notes/LDM.md",
     "_01_notes/Linear Algebra.md",
-    "_01_notes/Deep Learning.md",
-    "conflict-files-obsidian-git.md",
     "_04_images/Pasted image 20260602115713.png",
-    "_01_notes/Manifold Hypothesis.md",
-    "_01_notes/U-Net.md",
     "_04_images/Pasted image 20260601165600.png",
     "_04_images/Pasted image 20260601164820.png",
     "_04_images/Pasted image 20260601154614.png",

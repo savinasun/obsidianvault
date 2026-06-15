@@ -2,7 +2,7 @@
 # **Attention**
 
 **Tags**:: #architecture #llm
-**Links**::
+**Links**:: [[Transformer]] · [[LLMs]] · [[RoPE]] · [[LLaMA]] · [[MoE]]
 
 
 Large Language Models ([[LLMs]]) rely heavily on the **attention mechanism**, a core component that enables the model to selectively focus on parts of the input. It’s foundational to the [[Transformer|transformer]] architecture and all its variants (e.g., [[GPTs]], BERT, T5).

@@ -2,7 +2,7 @@
 # **Spectral Analysis**
 
 **Tags**:: #math
-**Links**::
+**Links**:: [[Linear Algebra]] · [[SVD]] · [[Neural Network Initialization]]
 
 ## Spectrum Norm
 ---

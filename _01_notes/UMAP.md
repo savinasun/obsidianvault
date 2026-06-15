@@ -2,7 +2,7 @@
 # **Uniform Manifold Approximation and Projection **
 
 **Tags**:: #math #learning
-**Links**:: https://pair-code.github.io/understanding-umap/
+**Links**:: [[t-SNE]] · [[Manifold Hypothesis]] · [[Contrastive Learning]]
 
 ## Introduction
 ---
@@ -23,7 +23,7 @@ Uniform Manifold Approximation and Projection (UMAP) is a modern dimensionality 
 
 #### Theoretical Foundation: Learning the Manifold
 
-The core assumption of UMAP is that the observed data points $\mathcal{X} = \{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\}$ are sampled from a (potentially non-linear) **manifold** that is embedded in the high-dimensional space (**the ambient space**). The algorithm aims to **learn the underlying topology of this manifold** and then find the closest possible low-dimensional representation of that topology.
+The core assumption of UMAP is that the observed data points $\mathcal{X} = \{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N\}$ are sampled from a (potentially non-linear) **[[Manifold Hypothesis|manifold]]** that is embedded in the high-dimensional space (**the ambient space**). The algorithm aims to **learn the underlying topology of this manifold** and then find the closest possible low-dimensional representation of that topology.
 
 The key steps are:
 1.  Construct a weighted graph representing the topological structure of the data in the high-dimensional space.
@@ -83,7 +83,7 @@ This cost function has two distinct parts:
 
 The cost function is optimized using Stochastic Gradient Descent (SGD). A major performance advantage of UMAP comes from how it handles the repulsive force. Since the high-dimensional graph is very sparse (most $p_{ij}$ are zero or near-zero), computing the repulsive force for all pairs of points would be computationally expensive.
 
-Instead, UMAP uses **negative sampling**. For each sample (an edge with a non-zero $p_{ij}$), the attractive force is computed. Then, a small number of "negative samples" (pairs of points with $p_{ij}=0$) are randomly chosen, and the repulsive force is computed only for them. This approximation dramatically reduces the computational complexity of each optimization step, making UMAP much faster than t-SNE, which calculates repulsive forces between all pairs.
+Instead, UMAP uses **[[Contrastive Learning|negative sampling]]**. For each sample (an edge with a non-zero $p_{ij}$), the attractive force is computed. Then, a small number of "negative samples" (pairs of points with $p_{ij}=0$) are randomly chosen, and the repulsive force is computed only for them. This approximation dramatically reduces the computational complexity of each optimization step, making UMAP much faster than t-SNE, which calculates repulsive forces between all pairs.
 
 #### Conclusion
 

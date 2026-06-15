@@ -2,7 +2,7 @@
 # **Reinforcement Learning**
 
 **Tags**:: #rl
-**Links**:: [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[Behavior Cloning]] · [[World Models]]
+**Links**:: [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[Behavior Cloning]] · [[World Models]] · [[RLHF]]
 
 
 > "A Path to AI" — Yann LeCun, 2017: Unsupervised Learning (cake) → Supervised Learning (icing) → Reinforcement Learning (cherry)

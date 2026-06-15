@@ -2,7 +2,7 @@
 # **Benchmark Datasets**
 
 **Tags**:: #learning
-**Links**::
+**Links**:: [[PPL]] · [[FSL]]
 
 ### Grade School Math 8K Benchmark (GSM-8K)
 + Focus on multi-step mathematical reasoning

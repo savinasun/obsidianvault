@@ -2,7 +2,7 @@
 # **Chain-Of-Thought Prompting**
 
 **Tags**:: #llm
-**Links**:: [[FSL]] · [[LLMs]] · [[Scaling Laws]] · [[wei2023]]
+**Links**:: [[FSL]] · [[LLMs]] · [[Scaling Laws]]
 
 
 CoT Prompting = [[FSL|Few-Shot Learning]] + Reasoning

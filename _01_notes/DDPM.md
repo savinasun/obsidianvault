@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 ## **Denoising Diffusion Probabilistic Model**
 **Tags**:: #generative
-**Links**:: [Diffusion Model](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/)
+**Links**:: [[Score-Based Generative Modeling Methods]] · [[MCMC]] · [[LDM]] · [[VAE]] · [[ELBO]]
 
 DDPM; [Ho et al. 2020](https://arxiv.org/abs/2006.11239) defines a Markov chain of diffusion steps to slowly add random noise to data and then learn to reverse the diffusion process to construct desired data samples from the noise.
 ![[Pasted image 20260601154614.png]]
@@ -39,3 +39,46 @@ p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma(x_t,
 $$
  
  ![[Pasted image 20260601151304.png]]
+
+## Training Objective
+---
+We cannot directly minimize the KL divergence between $q(x_{t-1}\mid x_t)$ and $p_\theta(x_{t-1}\mid x_t)$ because $q(x_{t-1}\mid x_t)$ is intractable. However, the **posterior conditioned on $x_0$** is tractable:
+$$
+q(x_{t-1}|x_t, x_0) = \mathcal{N}\!\left(x_{t-1};\, \tilde\mu_t(x_t, x_0),\, \tilde\beta_t I\right)
+$$
+$$
+\tilde\mu_t = \frac{\sqrt{\bar\alpha_{t-1}}\beta_t}{1-\bar\alpha_t} x_0 + \frac{\sqrt{\alpha_t}(1-\bar\alpha_{t-1})}{1-\bar\alpha_t} x_t, \quad \tilde\beta_t = \frac{(1-\bar\alpha_{t-1})\beta_t}{1-\bar\alpha_t}
+$$
+
+Ho et al. (2020) showed that training $p_\theta$ to predict the **added noise** $\epsilon$ (rather than $\mu_\theta$ directly) gives the best sample quality. Using the reparameterization $x_t = \sqrt{\bar\alpha_t} x_0 + \sqrt{1-\bar\alpha_t}\epsilon$:
+
+$$
+\boxed{\mathcal{L}_\text{simple} = \mathbb{E}_{x_0,\,\epsilon \sim \mathcal{N}(0,I),\,t}\!\left[\|\epsilon - \epsilon_\theta(x_t, t)\|^2\right]}
+$$
+
+This is a simple MSE loss: the U-Net $\epsilon_\theta(x_t, t)$ predicts the noise $\epsilon$ that was added to $x_0$ to get $x_t$. At inference, the predicted noise is used to compute $\mu_\theta(x_t, t)$ for the reverse step.
+
+**Connection to score matching**: $\epsilon_\theta(x_t, t) = -\sqrt{1-\bar\alpha_t}\, s_\theta(x_t, t)$, where $s_\theta \approx \nabla_{x_t} \log q(x_t)$. See [[Score-Based Generative Modeling Methods]] for the full score matching framework.
+
+## DDIM: Deterministic Sampling
+---
+Standard DDPM sampling is stochastic (requires $T = 1000$ steps). **DDIM** (Denoising Diffusion Implicit Models, Song et al., 2020) gives a **deterministic** mapping from noise to image using a non-Markovian forward process that shares the same marginals $q(x_t \mid x_0)$:
+
+$$
+x_{t-1} = \sqrt{\bar\alpha_{t-1}} \underbrace{\left(\frac{x_t - \sqrt{1-\bar\alpha_t}\,\epsilon_\theta(x_t,t)}{\sqrt{\bar\alpha_t}}\right)}_{\text{predicted }x_0} + \sqrt{1-\bar\alpha_{t-1} - \sigma_t^2}\,\epsilon_\theta(x_t, t) + \sigma_t\epsilon_t
+$$
+
+Setting $\sigma_t = 0$ makes the process **deterministic** (no random $\epsilon_t$). This enables:
+- **Fewer steps**: skip to every $S$-th timestep, e.g., 50 steps instead of 1000 (same network, same weights)
+- **Latent interpolation**: since the mapping is deterministic and invertible, you can encode real images to their latent $x_T$ and interpolate between them
+- **Consistency**: same starting $x_T$ always gives the same image
+
+DDIM's deterministic sampler is equivalent to integrating the probability flow ODE of the corresponding SDE — see [[Score-Based Generative Modeling Methods]] for the SDE unification.
+
+## Variance Schedule
+---
+The noise schedule $\{\beta_t\}$ controls how quickly the data is destroyed:
+
+- **Linear** (original DDPM): $\beta_t$ linearly from $10^{-4}$ to $0.02$; too much noise at small $t$ for low-resolution images
+- **Cosine** (Nichol & Dhariwal, 2021): $\bar\alpha_t = \cos^2\!\left(\frac{t/T + s}{1+s}\frac{\pi}{2}\right)$; preserves more structure at small $t$, improving sample quality
+- **EDM schedule** (Karras et al., 2022): continuous-time, treats noise level $\sigma$ as a continuous variable; enables second-order ODE solvers

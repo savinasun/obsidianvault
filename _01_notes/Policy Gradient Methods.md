@@ -2,7 +2,7 @@
 # **Policy Gradient Methods**
 
 **Tags**:: #rl
-**Links**:: [David Silver RL Course](https://www.youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ)
+**Links**:: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[RLHF]] · [[Behavior Cloning]]
 
 Agent
 Policy: gives the probability of taking actions in any state

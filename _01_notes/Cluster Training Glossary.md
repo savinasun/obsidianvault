@@ -2,7 +2,7 @@
 # **Cluster Training**
 
 **Tags**:: #llm
-**Links**::
+**Links**:: [[LLMs]] · [[Optimization Algorithms]]
 
 https://cvw.cac.cornell.edu/gpu-architecture/gpu-characteristics/kernel_sm
 ## Glossary

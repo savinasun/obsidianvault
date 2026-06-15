@@ -3,18 +3,18 @@
 # **Generative Pre-Training Transformer Models**
 
 **Tags**::  #llm/gpt
-**Links**:: 
+**Links**:: [[Transformer]] · [[BPE]] · [[Scaling Laws]] · [[LLMs]] · [[RLHF]]
 
 
 ## GPT Families
 ---
 ### GPT-1
 + [Improving Language Understanding by Generative Pre-Training | GPT](https://paperswithcode.com/paper/improving-language-understanding-by)
-- a multi-layer transformer decoder
+- a multi-layer [[Transformer|transformer decoder]]
 	
 - pre-train on large unlabeled data (SSL) + supervised fine-tune on task-specific data
 	
-- self-supervised learning + next-token prediction
+- self-supervised learning + next-token prediction (uses [[BPE]] tokenization)
 	
 	![[Pasted image 20250513120752.png]]
 	
