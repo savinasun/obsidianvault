@@ -5,7 +5,7 @@
 **Links**:: [[DDPM]] · [[Score-Based Generative Modeling Methods]] · [[VAE]] · [[ELBO]] · [[CLIP]]
 
 
-**Latent Diffusion Models** (Rombach et al., 2022) apply the diffusion process in a **compressed latent space** rather than pixel space. This dramatically reduces computation while preserving image quality — enabling the training of high-resolution generative models at tractable cost. **Stable Diffusion** is the most prominent LDM.
+**Latent Diffusion Models** ([Rombach et al., 2022](https://arxiv.org/abs/2112.10752)) apply the diffusion process in a **compressed latent space** rather than pixel space. This dramatically reduces computation while preserving image quality — enabling the training of high-resolution generative models at tractable cost. **Stable Diffusion** is the most prominent LDM.
 
 ## Motivation: Why Latent Space?
 ---
@@ -67,7 +67,7 @@ The conditioning context is injected at multiple resolutions in the U-Net via cr
 
 ## Classifier-Free Guidance (CFG)
 ---
-To strengthen adherence to the conditioning signal, LDMs use **classifier-free guidance** (Ho & Salimans, 2022):
+To strengthen adherence to the conditioning signal, LDMs use **classifier-free guidance** ([Ho & Salimans, 2022](https://arxiv.org/abs/2207.12598)):
 
 1. Train the model with the condition randomly dropped (replaced by $\varnothing$) with probability $p_\text{uncond}$
 2. At inference, interpolate between conditional and unconditional predictions:

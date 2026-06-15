@@ -29,7 +29,7 @@ Before any network normalization, inputs are often normalized:
 
 ## Batch Normalization (BN)
 ---
-Ioffe & Szegedy (2015). Normalizes across the **batch dimension** for each feature/channel:
+[Ioffe & Szegedy, 2015](https://arxiv.org/abs/1502.03167). Normalizes across the **batch dimension** for each feature/channel:
 
 Given activations $x \in \mathbb{R}^{B \times D}$ (batch size $B$, feature dim $D$):
 $$
@@ -53,7 +53,7 @@ $\gamma, \beta$ are learned scale and shift parameters that restore representati
 
 ## Layer Normalization (LN)
 ---
-Ba et al. (2016). Normalizes across the **feature dimension** for each sample independently — see [[Layer Normalization]]:
+[Ba et al., 2016](https://arxiv.org/abs/1607.06450). Normalizes across the **feature dimension** for each sample independently — see [[Layer Normalization]]:
 $$
 \hat x_i = \frac{x_i - \mu}{\sqrt{\sigma^2 + \epsilon}}, \quad y_i = \gamma \hat x_i + \beta
 $$
@@ -65,7 +65,7 @@ where $\mu = \frac{1}{D}\sum_i x_i$ and $\sigma^2 = \frac{1}{D}\sum_i(x_i - \mu)
 
 ## RMSNorm
 ---
-Zhang & Sennrich (2019). Simplification of Layer Normalization — see [[RMSNorm]]:
+[Zhang & Sennrich, 2019](https://arxiv.org/abs/1910.07467). Simplification of Layer Normalization — see [[RMSNorm]]:
 $$
 \hat x_i = \frac{x_i}{\text{RMS}(x)} \cdot \gamma, \quad \text{RMS}(x) = \sqrt{\frac{1}{D}\sum_i x_i^2}
 $$
@@ -74,7 +74,7 @@ Drops the mean subtraction and the bias term $\beta$. Reduces parameters and imp
 
 ## Group Normalization (GN)
 ---
-Wu & He (2018). Divides features into $G$ groups; normalizes within each group independently:
+[Wu & He, 2018](https://arxiv.org/abs/1803.08494). Divides features into $G$ groups; normalizes within each group independently:
 $$
 \hat x_{g,i} = \frac{x_{g,i} - \mu_g}{\sqrt{\sigma^2_g + \epsilon}} \cdot \gamma + \beta
 $$
@@ -87,7 +87,7 @@ where $g$ indexes the group.
 
 ## Instance Normalization (IN)
 ---
-Ulyanov et al. (2016). Normalizes over spatial dimensions for each sample and channel independently. Used in **style transfer**: normalizes the style (statistics) of each image independently, enabling the model to transfer style without batch-level interference.
+[Ulyanov et al., 2016](https://arxiv.org/abs/1607.08022). Normalizes over spatial dimensions for each sample and channel independently. Used in **style transfer**: normalizes the style (statistics) of each image independently, enabling the model to transfer style without batch-level interference.
 
 ## Comparison
 ---

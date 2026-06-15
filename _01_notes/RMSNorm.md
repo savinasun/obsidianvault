@@ -6,7 +6,7 @@
 
 ### Definition
 ---
-From [@zhang], we know that RMS Norm applies Root Mean Square [[Layer Normalization]] over a mini-batch of inputs.
+From [Zhang & Sennrich, 2019](https://arxiv.org/abs/1910.07467), we know that RMS Norm applies Root Mean Square [[Layer Normalization]] over a mini-batch of inputs.
 $$
 y_i = \frac{x_i}{\text{RMS}_{\epsilon}(x)}\cdot \gamma_i, \quad i=1,2,\dots,d
 $$

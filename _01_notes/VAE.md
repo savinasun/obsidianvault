@@ -5,7 +5,7 @@
 **Links**:: [[ELBO]] · [[KL Divergence]] · [[LDM]] · [[Score-Based Generative Modeling Methods]] · [[Manifold Hypothesis]]
 
 
-A **VAE** (Kingma & Welling, 2013) is a latent variable generative model that learns to encode data into a structured latent space and decode back. Unlike standard autoencoders, the latent space is **probabilistic** and **regularized**, making it suitable for generation.
+A **VAE** ([Kingma & Welling, 2013](https://arxiv.org/abs/1312.6114)) is a latent variable generative model that learns to encode data into a structured latent space and decode back. Unlike standard autoencoders, the latent space is **probabilistic** and **regularized**, making it suitable for generation.
 
 ## Generative Model
 ---
@@ -100,7 +100,7 @@ A failure mode where the KL term drives $q_\phi(z \mid x) \to p(z)$. The encoder
 
 ## $\beta$-VAE
 ---
-$\beta$-VAE (Higgins et al., 2017) upweights the KL term by $\beta > 1$:
+$\beta$-VAE ([Higgins et al., 2017](https://openreview.net/forum?id=Sy2fchgwl)) upweights the KL term by $\beta > 1$:
 $$
 \mathcal{L}_{\beta\text{-VAE}} = \mathbb{E}[\log p_\theta(x\mid z)] - \beta\, D_\text{KL}(q_\phi(z\mid x) \| p(z))
 $$

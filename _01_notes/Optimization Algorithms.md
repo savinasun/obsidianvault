@@ -7,8 +7,25 @@
 
 Optimization algorithms update model parameters $\theta$ to minimize a loss $\mathcal{L}(\theta)$. The choice of optimizer, learning rate schedule, and regularization critically affects both training stability and final performance.
 
-## Gradient Descent Variants
+## Batch Size and Gradient Descent Variants
 ---
+
+**Full-batch gradient descent**: compute gradient over the entire dataset per step. Exact gradient direction, but impractical for large datasets.
+
+**Mini-batch SGD**: compute gradient over a random subset (mini-batch) of size $B$. Most common in practice.
+
+$$
+\theta_{t+1} = \theta_t - \eta \nabla_\theta \mathcal{L}(\theta_t; \mathcal{B}_t), \quad |\mathcal{B}_t| = B
+$$
+
+**Stochastic SGD** ($B = 1$): high variance per step, very noisy updates — loses all benefit of vectorization.
+
+**Batch size tradeoffs**:
+- Larger $B$ → smoother gradients, better GPU utilization, but requires scaling learning rate ($\eta \propto B$) and generalizes slightly worse (sharp minima)
+- Smaller $B$ → noisier gradients act as **implicit regularization**, favoring flat minima
+- Typical values: 256–4096 for image models; 1M–4M tokens per step for LLMs
+
+The **critical batch size** $B_\text{crit}$ is where noise and curvature balance — training beyond it gives diminishing returns per step.
 
 ### Stochastic Gradient Descent (SGD)
 $$
@@ -65,7 +82,7 @@ The $\lambda\, \theta_t$ term directly decays weights, independent of the gradie
 
 ## Lion (EvoLved Sign Momentum)
 ---
-Lion (Chen et al., 2023 — Google Brain) uses only the **sign** of the gradient:
+Lion ([Chen et al., 2023](https://arxiv.org/abs/2302.06675) — Google Brain) uses only the **sign** of the gradient:
 $$
 \begin{aligned}
 c_t &= \beta_1 m_{t-1} + (1-\beta_1)\, g_t \\

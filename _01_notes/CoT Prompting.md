@@ -11,7 +11,7 @@ CoT Prompting = [[FSL|Few-Shot Learning]] + Reasoning
 
 ## Standard CoT (Few-Shot)
 ---
-Wei et al. (2022) showed that providing exemplars with reasoning steps dramatically improves performance on arithmetic, commonsense, and symbolic reasoning tasks.
+[Wei et al., 2022](https://arxiv.org/abs/2201.11903) showed that providing exemplars with reasoning steps dramatically improves performance on arithmetic, commonsense, and symbolic reasoning tasks.
 
 **Standard prompting**:
 > Q: If John has 5 apples and gives 2 away, how many does he have? A: 3.
@@ -26,7 +26,7 @@ Wei et al. (2022) showed that providing exemplars with reasoning steps dramatica
 
 ## Zero-Shot CoT
 ---
-Kojima et al. (2022) showed that simply appending **"Let's think step by step."** to the question triggers CoT reasoning without any exemplars:
+[Kojima et al., 2022](https://arxiv.org/abs/2205.11916) showed that simply appending **"Let's think step by step."** to the question triggers CoT reasoning without any exemplars:
 
 > Q: Roger has 5 tennis balls. He buys 2 more cans of 3 tennis balls each. How many tennis balls does he now have?
 > A: **Let's think step by step.** Roger starts with 5 balls. He buys 2 cans × 3 = 6 more balls. 5 + 6 = 11. The answer is 11.
@@ -37,7 +37,7 @@ This works because the model has seen similar reasoning patterns during pre-trai
 
 ## Self-Consistency
 ---
-Wang et al. (2022) improves CoT by sampling **multiple diverse reasoning paths** and taking a **majority vote** on the final answer:
+[Wang et al., 2022](https://arxiv.org/abs/2203.11171) improves CoT by sampling **multiple diverse reasoning paths** and taking a **majority vote** on the final answer:
 
 1. Sample $k$ independent CoT completions: $\{c_1, \ldots, c_k\}$
 2. Extract the final answer from each: $\{a_1, \ldots, a_k\}$
@@ -47,7 +47,7 @@ This exploits the intuition that correct answers are robust — many valid reaso
 
 ## Tree of Thought (ToT)
 ---
-Yao et al. (2023) extends CoT from a linear chain to a **tree search** over reasoning steps:
+[Yao et al., 2023](https://arxiv.org/abs/2305.10601) extends CoT from a linear chain to a **tree search** over reasoning steps:
 
 - The model proposes multiple **thought candidates** at each step
 - A **value estimator** (the model itself, prompted) scores each candidate

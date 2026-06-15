@@ -35,7 +35,7 @@ Setting $W \sim \mathcal{N}(0, \sigma^2)$ or $W \sim U(-a, a)$ breaks symmetry. 
 
 ## Xavier / Glorot Initialization
 ---
-Glorot & Bengio (2010). Designed for **tanh** and **sigmoid** activations (symmetric, near-linear at origin).
+[Glorot & Bengio, 2010](https://proceedings.mlr.press/v9/glorot10a.html). Designed for **tanh** and **sigmoid** activations (symmetric, near-linear at origin).
 
 Goal: preserve variance through both forward and backward passes. With fan-in $n_\text{in}$ and fan-out $n_\text{out}$:
 
@@ -54,7 +54,7 @@ $$
 
 ## Kaiming / He Initialization
 ---
-He et al. (2015). Extends Xavier for **ReLU** and variants, which are asymmetric and kill half the neurons.
+[He et al., 2015](https://arxiv.org/abs/1502.01852). Extends Xavier for **ReLU** and variants, which are asymmetric and kill half the neurons.
 
 For ReLU: $\mathbb{E}[\text{ReLU}(z)^2] = \frac{1}{2} \text{Var}(z)$ (half the variance is killed). So we need $2\times$ the variance to compensate:
 $$

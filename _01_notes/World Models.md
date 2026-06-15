@@ -19,7 +19,7 @@ Model-free RL (PPO, SAC) requires millions of environment steps to learn complex
 
 ## Recurrent State Space Model (RSSM)
 ---
-The RSSM (Hafner et al., 2019 — DreamerV1) is the core latent dynamics model used in the Dreamer family. It factors the latent state into:
+The RSSM ([Hafner et al., 2019](https://arxiv.org/abs/1912.01603) — DreamerV1) is the core latent dynamics model used in the Dreamer family. It factors the latent state into:
 
 - **Stochastic component** $z_t \sim p_\theta(z_t \mid h_t)$: captures uncertainty
 - **Deterministic component** $h_t = f_\theta(h_{t-1}, z_{t-1}, a_{t-1})$: GRU hidden state, carries information across time
@@ -38,7 +38,7 @@ Training uses the ELBO / RSSM objective, balancing reconstruction and KL regular
 
 ## Dreamer (DreamerV1)
 ---
-Hafner et al. (2019) — **learns latent dynamics, then trains the policy entirely in imagination**:
+[Hafner et al., 2019](https://arxiv.org/abs/1912.01603) — **learns latent dynamics, then trains the policy entirely in imagination**:
 
 1. **World model training**: fit RSSM to observed sequences $(x_t, a_t, r_t)$
 2. **Behavior learning**: unroll imagined trajectories $\{h_\tau, z_\tau, a_\tau\}$ inside the RSSM for $H$ steps; train policy $\pi_\theta$ and value function $V_\psi$ on imagined rollouts using backpropagation through the model
@@ -47,9 +47,9 @@ The actor-critic update uses **latent-space value targets** via truncated backpr
 
 ## DreamerV2 & V3
 ---
-**DreamerV2** (2020): replaces continuous stochastic latents with **categorical latents** (32 categories × 32 variables → 1024-bit latent), trained with straight-through gradients. Achieves superhuman performance on Atari.
+**DreamerV2** ([Hafner et al., 2020](https://arxiv.org/abs/2010.02193)): replaces continuous stochastic latents with **categorical latents** (32 categories × 32 variables → 1024-bit latent), trained with straight-through gradients. Achieves superhuman performance on Atari.
 
-**DreamerV3** (2023): the most general version. Key innovations:
+**DreamerV3** ([Hafner et al., 2023](https://arxiv.org/abs/2301.04104)): the most general version. Key innovations:
 - **Symlog predictions**: applies $\text{symlog}(x) = \text{sign}(x)\ln(|x|+1)$ to targets, handling reward scales that vary across tasks without reward normalization
 - **KL balancing**: separately scales the KL terms for the stochastic and deterministic parts
 - **Regularized returns**: uses a percentile-based normalization of returns
@@ -57,7 +57,7 @@ The actor-critic update uses **latent-space value targets** via truncated backpr
 
 ## MuZero
 ---
-MuZero (Schrittwieser et al., 2020 — DeepMind) learns a world model for **planning with MCTS** rather than imagination rollouts:
+MuZero ([Schrittwieser et al., 2020](https://arxiv.org/abs/1911.08265) — DeepMind) learns a world model for **planning with MCTS** rather than imagination rollouts:
 
 - **Representation function**: $h_t = f(o_1, \ldots, o_t)$ — encode observation history
 - **Dynamics function**: $h_{t+1}, r_t = g(h_t, a_t)$ — predict next latent + reward

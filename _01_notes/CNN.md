@@ -1,0 +1,102 @@
+### [[dl_moc]]  
+# **Convolutional Neural Networks**
+
+**Tags**:: #architecture #vision
+**Links**:: [[ViT]] · [[U-Net]] · [[Neural Network Initialization]] · [[Normalization]] · [[Activation Functions]] · [[Regularization]]
+
+
+**CNNs** (Convolutional Neural Networks) dominated computer vision from ~2012 to ~2020. Their core inductive biases — **locality** and **translation equivariance** — are hard-coded into the architecture, making them highly data-efficient for image tasks. [[ViT|Vision Transformers]] have since matched or exceeded CNNs on large-scale datasets by learning these biases from data.
+
+## Core Operations
+---
+
+### Convolution
+A filter $W \in \mathbb{R}^{f \times f \times C_\text{in}}$ slides across the input and computes dot products at each location:
+$$
+Z[i,j,k] = \sum_{u=0}^{f-1}\sum_{v=0}^{f-1}\sum_{c=0}^{C_\text{in}-1} X[si+u,\, sj+v,\, c] \cdot W_k[u,v,c]
+$$
+
+- **$f$**: filter/kernel size (e.g., 3×3, 5×5)
+- **$s$**: stride (step size); larger stride → smaller output
+- **$p$**: padding (zeros added to border); `same` padding: $p = (f-1)/2$ keeps spatial size constant
+- **Output size**: $\lfloor(n + 2p - f)/s\rfloor + 1$
+
+### Pooling
+Reduces spatial resolution with no learned parameters:
+- **Max pooling**: $\max$ over each $f \times f$ window — preserves strongest activations
+- **Average pooling**: average over the window — used in global average pooling at the end of a network to collapse spatial dims
+
+### $1 \times 1$ Convolution
+A $1 \times 1$ filter applies a learned linear combination across channels at each spatial position — effectively a per-pixel fully-connected layer. Used to:
+- **Change channel dimension** ($C_\text{in} \to C_\text{out}$) without touching spatial dimensions
+- Add non-linearity between depthwise convolutions (MobileNet)
+- Reduce computation (bottleneck in ResNet, Inception)
+
+## Inductive Biases
+---
+CNNs hard-code two inductive biases:
+
+**Locality**: each output unit depends on a small *receptive field* of the input. Filters learn local features (edges, textures) that are compositioned hierarchically into global features (objects).
+
+**Translation equivariance**: applying the same filter at every position → a shifted input produces a shifted output. (Pooling breaks exact equivariance → approximate translation *invariance*.)
+
+**Parameter sharing**: the same filter weights are applied at every spatial location — dramatically reduces parameters vs. a fully-connected layer.
+
+These biases explain why CNNs work well with limited data. [[ViT|Vision Transformers]] lack them but learn analogous patterns given enough data.
+
+## Classic Architectures
+---
+
+### LeNet-5 (LeCun, 1998)
+The original CNN. ~60K parameters. `Conv → Pool → Conv → Pool → FC → FC → output`. Demonstrated that learned features outperform hand-crafted features for digit recognition.
+
+### AlexNet (Krizhevsky et al., [2012](https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf))
+Sparked the deep learning revolution by winning ImageNet 2012 by a large margin. ~60M parameters.
+- First large-scale use of **ReLU** (faster training than sigmoid/tanh)
+- Trained on two GPUs (data parallelism)
+- **Dropout** for regularization
+
+### VGG-16/19 (Simonyan & Zisserman, [2015](https://arxiv.org/abs/1409.1556))
+~138M parameters. Used only **3×3 convolutions** throughout — two stacked 3×3 convs have the same receptive field as one 5×5 but fewer parameters and more non-linearities. Showed deeper is better if kept simple and uniform.
+
+### ResNet (He et al., [2015](https://arxiv.org/abs/1512.03385))
+Introduced **skip connections** (residual connections) that let the gradient flow directly:
+$$
+y = F(x, W) + x
+$$
+The layer only needs to learn the **residual** $F(x) = y - x$ rather than the full transformation. This solves the **degradation problem**: adding more layers without skip connections hurts training (not overfitting — the training loss itself worsens). ResNets trained with 50, 101, and 152 layers.
+
+Skip connections are now universal: used in [[Transformer|Transformers]], [[U-Net|U-Nets]], [[DDPM|diffusion models]], etc.
+
+### EfficientNet (Tan & Le, 2019)
+Jointly scales **depth** (layers), **width** (channels), and **resolution** (input size) via a **compound scaling** coefficient $\phi$:
+$$
+d = \alpha^\phi, \quad w = \beta^\phi, \quad r = \gamma^\phi, \quad \text{s.t.} \; \alpha\beta^2\gamma^2 \approx 2
+$$
+The constraint ensures compute doubles with each $\phi$ increment. Achieves better accuracy-efficiency tradeoff than scaling any single dimension.
+
+## Object Detection
+---
+Detection extends classification to predicting **bounding boxes** and **class labels** for multiple objects.
+
+**YOLO** ([Redmon et al., 2015](https://arxiv.org/abs/1506.02640)): divide image into $S \times S$ grid; each cell predicts $B$ bounding boxes + class probabilities in a **single forward pass** — enabling real-time detection.
+
+**Non-Max Suppression (NMS)**: after prediction, discard overlapping boxes:
+1. Keep box with highest confidence $p_c$
+2. Discard remaining boxes with IoU ≥ 0.5 with the kept box
+3. Repeat
+
+**R-CNN family**: propose candidate regions first, then classify each region. Slower but more accurate for dense scenes.
+
+## Transition to ViTs
+---
+[[ViT|Vision Transformers]] (Dosovitskiy et al., 2021) replaced the convolution inductive bias with global self-attention. Key tradeoffs:
+
+| | CNN | ViT |
+|--|-----|-----|
+| Inductive bias | Strong (locality, equivariance) | Weak (learned from data) |
+| Data efficiency | High (works on ImageNet-1k) | Low (needs JFT-300M or DINO pre-training) |
+| Scaling | Limited | Excellent |
+| Long-range | Limited (by receptive field) | Full (global attention from layer 1) |
+
+Modern vision models like [[DINO]]/DINOv2 use ViT backbones. CNNs remain competitive for small-data regimes, mobile deployment (MobileNet), and medical imaging ([[U-Net]]).

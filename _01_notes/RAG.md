@@ -5,7 +5,7 @@
 **Links**:: [[LLMs]] · [[CLIP]] · [[Attention]] · [[BPE]]
 
 
-**RAG** (Lewis et al., 2020) augments a language model's generation with **retrieved documents** from an external knowledge store. Instead of relying solely on parametric memory (weights), the model can look up relevant information at inference time — enabling factual, up-to-date, and verifiable responses.
+**RAG** ([Lewis et al., 2020](https://arxiv.org/abs/2005.11401)) augments a language model's generation with **retrieved documents** from an external knowledge store. Instead of relying solely on parametric memory (weights), the model can look up relevant information at inference time — enabling factual, up-to-date, and verifiable responses.
 
 ## Motivation
 ---
@@ -47,7 +47,7 @@ The LLM generates its response conditioned on both the query and the retrieved e
 
 ## Dense Passage Retrieval (DPR)
 ---
-DPR (Karpukhin et al., 2020) trains a **bi-encoder** for retrieval using contrastive learning:
+DPR ([Karpukhin et al., 2020](https://arxiv.org/abs/2004.04906)) trains a **bi-encoder** for retrieval using contrastive learning:
 
 - **Query encoder** $\text{Enc}_Q$: encodes the query into a dense vector
 - **Passage encoder** $\text{Enc}_P$: encodes each passage into a dense vector

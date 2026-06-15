@@ -5,7 +5,7 @@
 **Links**:: [[Attention]] · [[LLMs]] · [[RoPE]] · [[RMSNorm]] · [[Layer Normalization]] · [[Activation Functions]]
 
 
-The Transformer (Vaswani et al., 2017) introduced a purely attention-based architecture for sequence-to-sequence tasks, replacing recurrence and convolution entirely. It is now the foundation of virtually all modern deep learning: [[LLMs]], [[ViT|vision models]], and [[VLM|multimodal models]].
+The Transformer ([Vaswani et al., 2017](https://arxiv.org/abs/1706.03762)) introduced a purely attention-based architecture for sequence-to-sequence tasks, replacing recurrence and convolution entirely. It is now the foundation of virtually all modern deep learning: [[LLMs]], [[ViT|vision models]], and [[VLM|multimodal models]].
 
 ## Encoder-Decoder Architecture
 ---

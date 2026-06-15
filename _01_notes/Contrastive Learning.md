@@ -5,7 +5,7 @@
 **Links**:: [[CLIP]] · [[DINO]] · [[Manifold Hypothesis]] · [[Entropy]] · [[FSL]]
 
 
-**Contrastive learning** is a self-supervised learning paradigm that learns representations by pulling together embeddings of semantically similar (positive) pairs and pushing apart dissimilar (negative) pairs — without requiring human labels.
+**Contrastive learning** is a self-supervised learning (SSL) paradigm that learns representations by pulling together embeddings of semantically similar (positive) pairs and pushing apart dissimilar (negative) pairs — without requiring human labels.
 
 ## Core Idea
 ---
@@ -15,7 +15,7 @@ Given a sample $x$, create two augmented **views** $\tilde x_1, \tilde x_2$ via 
 
 The representation is forced to capture *invariant* features (shared across views) and discard *variant* features (augmentation-specific).
 
-## SimCLR (Chen et al., 2020)
+## SimCLR ([Chen et al., 2020](https://arxiv.org/abs/2002.05709))
 ---
 **Simple Framework for Contrastive Learning of Visual Representations** — the canonical contrastive learning method.
 
@@ -39,7 +39,7 @@ where $\text{sim}(u,v) = u^\top v / (\|u\|\|v\|)$ is cosine similarity and $\tau
 - Larger batch sizes improve performance (more negatives per step)
 - The projection head is critical — without it, representations are worse
 
-## MoCo (Momentum Contrast, He et al., 2019)
+## MoCo (Momentum Contrast, [He et al., 2019](https://arxiv.org/abs/1911.05722))
 ---
 SimCLR requires large batches for good negatives. **MoCo** decouples the negative pool from the batch size using a **memory queue** and a **momentum encoder**:
 
@@ -51,7 +51,7 @@ The query's positive is the corresponding key from the same image; negatives are
 
 **Advantage**: enables large effective batch sizes ($K \gg$ batch size) at low memory cost.
 
-## BYOL (Bootstrap Your Own Latent, Grill et al., 2020)
+## BYOL (Bootstrap Your Own Latent, [Grill et al., 2020](https://arxiv.org/abs/2006.07733))
 ---
 BYOL achieves strong representations **without negative pairs** — avoiding mode collapse through asymmetry:
 
@@ -66,7 +66,7 @@ where $z = \text{proj}(f_\theta(\tilde x_1))$, $\bar z' = \text{proj}(f_\xi(\til
 
 **Why doesn't it collapse?** The predictor $q_\theta$ creates an asymmetry: the online network must *predict* the target network's output. The EMA target creates a slowly-moving target that prevents trivial solutions. The combination prevents the collapse that a pure symmetric negative-free approach would suffer.
 
-## Barlow Twins (Zbontar et al., 2021)
+## Barlow Twins ([Zbontar et al., 2021](https://arxiv.org/abs/2103.03230))
 ---
 Reduces redundancy between features by minimizing the **cross-correlation matrix** between the two views' embeddings away from identity:
 $$

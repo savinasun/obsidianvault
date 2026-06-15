@@ -5,7 +5,7 @@
 **Links**:: [[Contrastive Learning]] · [[VLM]] · [[DINO]] · [[ViT]]
 
 
-**CLIP** (Radford et al., OpenAI 2021) learns visual representations by aligning images and text using a contrastive objective over massive internet-scale image–caption pairs. It enables **zero-shot transfer** to downstream vision tasks without any task-specific training.
+**CLIP** ([Radford et al., 2021](https://arxiv.org/abs/2103.00020)) learns visual representations by aligning images and text using a contrastive objective over massive internet-scale image–caption pairs. It enables **zero-shot transfer** to downstream vision tasks without any task-specific training.
 
 ## Architecture: Dual Encoder
 ---

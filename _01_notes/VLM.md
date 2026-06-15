@@ -6,7 +6,7 @@
 
 ## Architecture
 --- 
-The Qwen2.5-VL model [@bai2025] builds upon the foundation laid by the Qwen series. The model has three components:
+The Qwen2.5-VL model ([Bai et al., 2025](https://arxiv.org/abs/2502.13923)) builds upon the foundation laid by the Qwen series. The model has three components:
 ![[vlm_qwen_01.png]]
 - **[[LLMs|Large Language Model]]:** the 1D [[RoPE]] is replaced with **MROPE(Multimodal Rotary Position Embedding)** aligned to absolute time.
 - **Vision Encoder:** redesigned [[ViT]] with 2D-[[RoPE|RoPE]] and window attention to support variable input resolutions and improve computational efficiency. During the training and inference the height and width of the images are resized to multiples of 28, and the image patches are generated with a stride of 14.

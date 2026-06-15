@@ -22,7 +22,7 @@ SORT file.name ASC
 
 Building blocks of modern neural networks: transformers, normalization, activation functions, positional encodings, and efficiency variants.
 
-Key notes: [[Transformer]] · [[Attention]] · [[MoE]] · [[RoPE]] · [[RMSNorm]] · [[Layer Normalization]] · [[Normalization]] · [[Activation Functions]] · [[Neural Network Initialization]] · [[U-Net]]
+Key notes: [[Transformer]] · [[Attention]] · [[MoE]] · [[RoPE]] · [[RMSNorm]] · [[Layer Normalization]] · [[Normalization]] · [[Activation Functions]] · [[Neural Network Initialization]] · [[CNN]] · [[RNN]] · [[U-Net]]
 
 ```dataview
 table tags as "Tags"
@@ -92,7 +92,7 @@ SORT file.name ASC
 
 Supervised, self-supervised, contrastive, and few-shot learning paradigms.
 
-Key notes: [[Contrastive Learning]] · [[DINO]] · [[CLIP]] · [[FSL]] · [[t-SNE]] · [[UMAP]] · [[Benchmark Datasets]]
+Key notes: [[Contrastive Learning]] · [[DINO]] · [[CLIP]] · [[FSL]] · [[t-SNE]] · [[UMAP]] · [[Word Embeddings]] · [[Benchmark Datasets]]
 
 ```dataview
 table tags as "Tags"
@@ -106,7 +106,7 @@ SORT file.name ASC
 
 Theoretical underpinnings: generalization, optimization landscapes, normalization effects, initialization.
 
-Key notes: [[Double Descent]] · [[Manifold Hypothesis]] · [[Neural Network Initialization]] · [[Internal Covariate Shift]] · [[Normalization]] · [[Optimization Algorithms]] · [[Scaling Laws]] · [[FLOPs]]
+Key notes: [[Double Descent]] · [[Manifold Hypothesis]] · [[Neural Network Initialization]] · [[Internal Covariate Shift]] · [[Normalization]] · [[Regularization]] · [[Optimization Algorithms]] · [[Scaling Laws]] · [[FLOPs]]
 
 ```dataview
 table tags as "Tags"

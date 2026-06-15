@@ -6,7 +6,7 @@
 
 ## Introduction
 ---
-DINO (self-**DI**stillation with **NO** labels) is a groundbreaking self-supervised learning method for computer vision which is prompted in the paper [@caron2021] -- "Emerging Properties in Self-Supervised Vision Transformers" by Caron et al., and touch upon its influential successor, DINOv2. Note that it is not a [[Contrastive Learning|Contrastive Learning]] method.
+DINO (self-**DI**stillation with **NO** labels) is a groundbreaking self-supervised learning method for computer vision which is prompted in the paper [Caron et al., 2021](https://arxiv.org/abs/2104.14294) -- "Emerging Properties in Self-Supervised Vision Transformers" by Caron et al., and touch upon its influential successor, DINOv2. Note that it is not a [[Contrastive Learning|Contrastive Learning]] method.
 
 **Self-Supervised Learning (SSL)** is a paradigm in machine learning where a model learns representations from unlabeled data. Instead of relying on human-provided labels (like "cat" or "dog"), the model generates its own supervision from the data itself. A common technique is to create a "pretext task," such as predicting a missing part of an image, which forces the model to learn meaningful features about the world.
 
@@ -54,7 +54,7 @@ The most remarkable finding of the DINO paper was the set of properties that eme
 
 ## DINOv2: Scaling Self-Supervision for Foundation Models
 ---
-The success of DINO leads to DINOv2 [@oquab2024], which scales up the core ideas (following [[Scaling Laws]] intuitions) to create a powerful vision "foundation model", achieving state-of-the-art performance across a wide range of tasks without fine-tuning.
+The success of DINO leads to DINOv2 ([Oquab et al., 2024](https://arxiv.org/abs/2304.07193)), which scales up the core ideas (following [[Scaling Laws]] intuitions) to create a powerful vision "foundation model", achieving state-of-the-art performance across a wide range of tasks without fine-tuning.
 
 The goal of DINOv2 was to overcome the limitations of existing pre-trained models, which often required fine-tuning on large, labeled datasets to perform well. The hypothesis was that by scaling up the pre-training data and refining the training algorithm, it would be possible to create a single, general-purpose vision backbone that excels at many tasks with only a simple linear head.
 

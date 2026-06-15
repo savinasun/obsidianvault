@@ -6,7 +6,7 @@
 
 Prior to ViT, Convolutional Neural Networks (CNNs) were the undisputed standard for image recognition. CNNs use filters with local receptive fields to build up a hierarchical representation of an image.
 
-The ViT paper [@dosovitskiy2021] challenged this convention by asking: Can we apply a standard Transformer directly to an image with minimal modifications? To do this, they had to solve one key problem: Transformers expect a 1D sequence of tokens (like words), but images are 2D grids of pixels.
+The ViT paper ([Dosovitskiy et al., 2021](https://arxiv.org/abs/2010.11929)) challenged this convention by asking: Can we apply a standard Transformer directly to an image with minimal modifications? To do this, they had to solve one key problem: Transformers expect a 1D sequence of tokens (like words), but images are 2D grids of pixels.
 
 The solution was to **reshape the image into a sequence of flattened patches**.
 
@@ -69,7 +69,7 @@ Finally, a classification head (a simple MLP) is attached to the output `[CLS]` 
 
 # Technical Deep Dive: "Vision Transformers Need Registers"
 
-This note explores the findings of the paper "Vision Transformers Need Registers" by Darcet et al. The paper identifies a key issue with standard Vision Transformers (ViTs) — poor quality feature maps in early layers — and proposes a simple, effective solution: adding "registers" as extra input tokens.
+This note explores the findings of the paper ["Vision Transformers Need Registers"](https://arxiv.org/abs/2309.16588) by Darcet et al., 2023. The paper identifies a key issue with standard Vision Transformers (ViTs) — poor quality feature maps in early layers — and proposes a simple, effective solution: adding "registers" as extra input tokens.
 
 ---
 

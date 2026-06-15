@@ -19,7 +19,7 @@ Persistant Homology
 
 
 
-Uniform Manifold Approximation and Projection (UMAP) is a modern dimensionality reduction algorithm developed by Leland McInnes, John Healy, and James Melville in [@mcinnes2020] in 2018. Like [[t-SNE]], it is highly effective for visualizing high-dimensional data in low-dimensional spaces. However, UMAP is often significantly faster and is argued to provide a better balance between preserving local and global data structure. Its theoretical underpinnings are based on Riemannian geometry and algebraic topology.
+Uniform Manifold Approximation and Projection (UMAP) is a modern dimensionality reduction algorithm developed by Leland McInnes, John Healy, and James Melville in [McInnes et al., 2020](https://arxiv.org/abs/1802.03426) in 2018. Like [[t-SNE]], it is highly effective for visualizing high-dimensional data in low-dimensional spaces. However, UMAP is often significantly faster and is argued to provide a better balance between preserving local and global data structure. Its theoretical underpinnings are based on Riemannian geometry and algebraic topology.
 
 #### Theoretical Foundation: Learning the Manifold
 

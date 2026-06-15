@@ -7,9 +7,9 @@
 
 **Scaling laws** describe how model performance (typically measured by loss) changes as a function of model size $N$, training data $D$, and compute budget $C$. Understanding these relationships guides decisions about model architecture, training duration, and resource allocation.
 
-## OpenAI Scaling Laws (Kaplan et al., 2020)
+## OpenAI Scaling Laws ([Kaplan et al., 2020](https://arxiv.org/abs/2001.08361))
 ---
-Kaplan et al. found that language model loss follows clean **power laws** in $N$, $D$, and $C$:
+[Kaplan et al., 2020](https://arxiv.org/abs/2001.08361) found that language model loss follows clean **power laws** in $N$, $D$, and $C$:
 
 $$
 L(N) \sim N^{-\alpha_N}, \quad L(D) \sim D^{-\alpha_D}, \quad L(C) \sim C^{-\alpha_C}
@@ -24,7 +24,7 @@ with $\alpha_N \approx 0.076$, $\alpha_D \approx 0.095$, $\alpha_C \approx 0.050
 
 This last point was later revised by Chinchilla.
 
-## Chinchilla Scaling Laws (Hoffmann et al., 2022)
+## Chinchilla Scaling Laws ([Hoffmann et al., 2022](https://arxiv.org/abs/2203.15556))
 ---
 DeepMind's **Chinchilla** paper corrected the earlier conclusion: prior large models (GPT-3, Gopher) were **significantly undertrained** — too large for their dataset size.
 
@@ -49,7 +49,7 @@ The optimal strategy: **scale $N$ and $D$ in equal proportion**. The rule of thu
 
 ## Loss as a Function of N and D
 ---
-Hoffman et al. model loss as:
+[Hoffmann et al., 2022](https://arxiv.org/abs/2203.15556) model loss as:
 $$
 L(N, D) = E + \frac{A}{N^\alpha} + \frac{B}{D^\beta}
 $$
@@ -63,13 +63,13 @@ This allows extrapolating the loss of a larger model before training it — enab
 
 ## Emergent Abilities
 ---
-**Emergent abilities** (Wei et al., 2022) are capabilities that appear abruptly at a certain scale — not present in smaller models, but suddenly appearing in larger ones. Examples:
+**Emergent abilities** ([Wei et al., 2022](https://arxiv.org/abs/2206.07682)) are capabilities that appear abruptly at a certain scale — not present in smaller models, but suddenly appearing in larger ones. Examples:
 - Multi-step arithmetic
 - Chain-of-thought reasoning (see [[CoT Prompting]])
 - Few-shot translation to rare languages
 - Code generation
 
-**Controversy**: Schaeffer et al. (2023) argue that emergent abilities are an artifact of **discontinuous evaluation metrics** (e.g., exact-match accuracy on multi-step tasks). Using continuous metrics (log-likelihood), they find smooth scaling curves. This suggests "emergence" may be a measurement artifact rather than a fundamental phenomenon.
+**Controversy**: [Schaeffer et al., 2023](https://arxiv.org/abs/2304.15004) argue that emergent abilities are an artifact of **discontinuous evaluation metrics** (e.g., exact-match accuracy on multi-step tasks). Using continuous metrics (log-likelihood), they find smooth scaling curves. This suggests "emergence" may be a measurement artifact rather than a fundamental phenomenon.
 
 ## Beyond Language Models
 ---

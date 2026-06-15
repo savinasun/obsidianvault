@@ -34,7 +34,7 @@ where $\bar{A}, \bar{B}$ are the discretized matrices via zero-order hold (ZOH).
 
 ## S4: Structured State Space Sequences
 ---
-S4 (Gu et al., 2021) made SSMs practical for deep learning by:
+S4 ([Gu et al., 2021](https://arxiv.org/abs/2111.00396)) made SSMs practical for deep learning by:
 
 1. **HiPPO initialization**: initialize $A$ using the HiPPO (High-order Polynomial Projection Operators) framework — this compresses the history of the input signal into the state optimally
 2. **Diagonal plus low-rank (DPLR) structure**: represent $A$ in a structured form that enables $O(N \log N)$ computation via the convolution theorem
@@ -48,7 +48,7 @@ Training uses the convolutional mode (fast on GPUs); inference uses the recurren
 
 ## Mamba: Selective SSMs
 ---
-Gu & Dao (2023) identified a fundamental limitation of prior SSMs: **$A$, $B$, $C$ are fixed** for all inputs — the model cannot selectively remember or forget based on content. This makes them poor at **content-based reasoning** (e.g., answering questions about specific tokens in a long context).
+[Gu & Dao, 2023](https://arxiv.org/abs/2312.00752) identified a fundamental limitation of prior SSMs: **$A$, $B$, $C$ are fixed** for all inputs — the model cannot selectively remember or forget based on content. This makes them poor at **content-based reasoning** (e.g., answering questions about specific tokens in a long context).
 
 **Mamba's solution**: make $B$, $C$, and $\Delta$ (the discretization step) **functions of the input**:
 $$
@@ -80,7 +80,7 @@ No attention mechanism — the model is **purely recurrent**.
 
 ## Mamba-2
 ---
-Gu & Dao (2024) reformulated Mamba's selective scan as a **semi-separable matrix multiplication**, connecting SSMs to a theoretical framework that also unifies with linear attention. This enables:
+[Gu & Dao, 2024](https://arxiv.org/abs/2405.21060) reformulated Mamba's selective scan as a **semi-separable matrix multiplication**, connecting SSMs to a theoretical framework that also unifies with linear attention. This enables:
 - Even faster hardware implementation via tensor-core-friendly operations
 - Cleaner theoretical analysis
 - SSD (State Space Duality) — a family that includes both SSMs and linear attention as special cases

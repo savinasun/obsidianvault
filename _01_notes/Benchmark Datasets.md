@@ -2,7 +2,39 @@
 # **Benchmark Datasets**
 
 **Tags**:: #learning
-**Links**:: [[PPL]] · [[FSL]]
+**Links**:: [[PPL]] · [[FSL]] · [[Word Embeddings]]
+
+## Evaluation Metrics
+---
+
+### BLEU Score (Bilingual Evaluation Understudy)
+[Papineni et al., 2002](https://aclanthology.org/P02-1040.pdf). The dominant automatic metric for machine translation and text generation quality.
+
+**Core idea**: measure the **modified n-gram precision** of the hypothesis against one or more reference translations, then penalize for being too short.
+
+**Modified n-gram precision** for order $n$:
+$$
+p_n = \frac{\sum_{\text{n-gram} \in \hat{y}} \min\!\left(\text{count}(\text{n-gram}, \hat{y}),\, \max_r \text{count}(\text{n-gram}, r)\right)}{\sum_{\text{n-gram} \in \hat{y}} \text{count}(\text{n-gram}, \hat{y})}
+$$
+The "modified" part clips each n-gram count to its maximum count in any reference (prevents inflating score by repeating common words).
+
+**BLEU score**:
+$$
+\text{BLEU} = \text{BP} \cdot \exp\!\left(\sum_{n=1}^{N} w_n \log p_n\right)
+$$
+where:
+- $N = 4$ (1–4 gram precision), $w_n = 1/N$
+- **Brevity Penalty**: $\text{BP} = \min\!\left(1, e^{1 - r/c}\right)$, where $c$ = hypothesis length, $r$ = reference length
+
+**Limitations**:
+- Measures surface-level overlap, not semantic meaning
+- A paraphrase with different words scores poorly despite being correct
+- Favors short outputs (hence BP) but doesn't fully compensate
+- Poor correlation with human judgment at the sentence level (better at corpus level)
+
+Modern alternatives: **ROUGE** (recall-oriented, used for summarization), **BERTScore** (semantic similarity via BERT embeddings), **METEOR**, **ChrF**.
+
+---
 
 ### Grade School Math 8K Benchmark (GSM-8K)
 + Focus on multi-step mathematical reasoning

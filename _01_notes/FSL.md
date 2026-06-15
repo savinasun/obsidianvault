@@ -30,7 +30,7 @@ The model must use $S$ to classify $Q$ — mimicking test-time deployment. Train
 ---
 These methods learn an embedding space where support and query examples from the same class are close.
 
-### Prototypical Networks (Snell et al., 2017)
+### Prototypical Networks ([Snell et al., 2017](https://arxiv.org/abs/1703.05175))
 Compute a **prototype** for each class by averaging its support embeddings, then classify queries by nearest prototype:
 $$
 c_k = \frac{1}{|S_k|} \sum_{(x_i, y_i) \in S_k} f_\theta(x_i)
@@ -40,7 +40,7 @@ p(y = k \mid x) = \frac{\exp(-d(f_\theta(x), c_k))}{\sum_{k'} \exp(-d(f_\theta(x
 $$
 where $d$ is Euclidean distance (or cosine). Simple, fast, and surprisingly strong. Prototypical networks implicitly learn a metric space where intra-class variance is small.
 
-### Matching Networks (Vinyals et al., 2016)
+### Matching Networks ([Vinyals et al., 2016](https://arxiv.org/abs/1606.04080))
 Classify a query using a weighted sum over support examples:
 $$
 \hat y = \sum_{i=1}^{|S|} a(x, x_i) y_i, \quad a(x, x_i) = \frac{\exp(\text{cos}(f(x), g(x_i)))}{\sum_j \exp(\text{cos}(f(x), g(x_j)))}
@@ -51,7 +51,7 @@ The attention-weighted nearest-neighbor is computed end-to-end. Both embedders $
 ---
 These methods learn an initialization or update rule that can rapidly adapt to new tasks.
 
-### MAML (Model-Agnostic Meta-Learning, Finn et al., 2017)
+### MAML (Model-Agnostic Meta-Learning, [Finn et al., 2017](https://arxiv.org/abs/1703.03400))
 **Goal**: find an initial parameter vector $\theta$ such that a few gradient steps on any new task's loss leads to good performance.
 
 **Algorithm**:

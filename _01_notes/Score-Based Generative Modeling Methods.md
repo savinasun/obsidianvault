@@ -59,7 +59,7 @@ When $\epsilon\to 0$ and $K\to \infty$, $X_K$ converges to a sample drawn from d
 According to [[Manifold Hypothesis]], most of the data lives in a low-dimensional manifold in high-dimensional space. It brings a negative effect on score estimation since in low density regions, where few data points are available for computing the score matching objective. Therefore, score matching has had limited success in practice, and a noise-perturbed score-based method come up to address this problem.
 #### Annealed Langevin Dynamics
 ---
-The manifold problem means that score estimation is unreliable in low-density regions (few data points → noisy score estimates). **Annealed Langevin Dynamics** (Song & Ermon, 2019) addresses this by perturbing the data with noise at multiple scales:
+The manifold problem means that score estimation is unreliable in low-density regions (few data points → noisy score estimates). **Annealed Langevin Dynamics** ([Song & Ermon, 2019](https://arxiv.org/abs/1907.05600)) addresses this by perturbing the data with noise at multiple scales:
 
 1. Define a noise schedule $\sigma_1 > \sigma_2 > \cdots > \sigma_L$ (e.g., geometric sequence)
 2. For each noise level $\sigma_i$, define a perturbed data distribution:
@@ -80,7 +80,7 @@ $$
 
 ## Connection to DDPM
 ---
-The connection between score-based models and [[DDPM]] (Ho et al., 2020) was unified by Song et al. (2020) under a **stochastic differential equation (SDE)** framework:
+The connection between score-based models and [[DDPM]] ([Ho et al., 2020](https://arxiv.org/abs/2006.11239)) was unified by [Song et al., 2020](https://arxiv.org/abs/2011.13456) under a **stochastic differential equation (SDE)** framework:
 
 - The **forward diffusion process** in DDPM is a discrete approximation of adding Gaussian noise (a variance-exploding or variance-preserving SDE)
 - The **reverse denoising process** corresponds to reversing this SDE, which requires the score function $\nabla_x \log p_t(x)$ at each time $t$

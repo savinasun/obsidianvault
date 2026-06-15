@@ -36,7 +36,7 @@ This is the most dangerous point: the model has just enough capacity to memorize
 
 ## Modern (Overparameterized) Regime: Double Descent
 ---
-Belkin et al. (2019) showed that beyond the interpolation threshold, test error *decreases again* as capacity continues to grow:
+[Belkin et al., 2019](https://arxiv.org/abs/1812.11118) showed that beyond the interpolation threshold, test error *decreases again* as capacity continues to grow:
 
 ```
 Test
@@ -65,7 +65,7 @@ Error
 
 ## Empirical Evidence
 ---
-Nakkiran et al. (OpenAI, 2019) confirmed double descent empirically across:
+[Nakkiran et al., 2019](https://arxiv.org/abs/1912.02292) confirmed double descent empirically across:
 - Model size (number of parameters)
 - Training epochs (epoch-wise double descent: even for fixed-size models, test error peaks early then decreases with more training)
 - Dataset size (for fixed model, adding more data can initially *hurt* near the interpolation threshold)

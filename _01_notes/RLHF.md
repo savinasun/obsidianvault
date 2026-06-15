@@ -48,7 +48,7 @@ The KL penalty $\beta$ controls the tradeoff between reward optimization and sta
 
 ## Constitutional AI (CAI)
 ---
-Anthropic's approach (Bai et al., 2022): instead of human preference labels at scale, use a set of **principles** (a "constitution") to have the model critique and revise its own outputs (RLAIF — RL from AI Feedback):
+Anthropic's approach ([Bai et al., 2022](https://arxiv.org/abs/2212.08073)): instead of human preference labels at scale, use a set of **principles** (a "constitution") to have the model critique and revise its own outputs (RLAIF — RL from AI Feedback):
 
 1. Generate initial response
 2. Critique using a principle from the constitution
@@ -59,7 +59,7 @@ Reduces reliance on human labeling while maintaining alignment.
 
 ## Direct Preference Optimization (DPO)
 ---
-DPO (Rafailov et al., 2023) eliminates the explicit reward model and PPO training entirely. It derives that the optimal RLHF policy satisfies:
+DPO ([Rafailov et al., 2023](https://arxiv.org/abs/2305.18290)) eliminates the explicit reward model and PPO training entirely. It derives that the optimal RLHF policy satisfies:
 $$
 \pi^*(y \mid x) \propto \pi_\text{ref}(y \mid x) \exp\!\left(\frac{1}{\beta} r^*(x,y)\right)
 $$

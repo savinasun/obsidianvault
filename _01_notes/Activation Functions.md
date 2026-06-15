@@ -62,7 +62,7 @@ $$where $\Phi(x)$ is the c.d.f. of standard Gaussian distribution.
 
 ## Swish Gated Linear Unit (SwiGLU)
 ---
- + SwiGLU together with GeGLU were first developed as variants of Gated Linear Unit (GLU) in [@shazeer2020]. The basic idea is to simply combine GLU with Swish or GELU, replacing the sigmoid gate with either a Swish gate or a GELU gate
+ + SwiGLU together with GeGLU were first developed as variants of Gated Linear Unit (GLU) in [Shazeer, 2020](https://arxiv.org/abs/2002.05202). The basic idea is to simply combine GLU with Swish or GELU, replacing the sigmoid gate with either a Swish gate or a GELU gate
 $$
 \textrm{SwiGLU}(x, W, V, \beta) = \textrm{Swish}_{\beta}(xW) \otimes (xV),
 $$
