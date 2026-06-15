@@ -1,8 +1,8 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[sequence_llms_moc]]  
 
 # **Generative Pre-Training Transformer Models**
 
-**Tags**::  #llm/gpt
+**Tags**:: #llm
 **Links**:: [[Transformer]] · [[BPE]] · [[Scaling Laws]] · [[LLMs]] · [[RLHF]]
 
 

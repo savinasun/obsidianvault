@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[learning_methods_moc]]  
 # **Regularization**
 
 **Tags**:: #dl_theo #learning

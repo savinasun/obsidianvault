@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[math_moc]]  
 # **t-Stochastic Neighboring Embedding**
 
 **Tags**:: #math #learning

@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[math_moc]]  
 # **Kullback-Leibler Divergence**
 
 **Tags**:: #math #dl_theo

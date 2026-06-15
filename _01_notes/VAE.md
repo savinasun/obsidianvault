@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[generative_moc]]  
 # **Variational Autoencoder (VAE)**
 
 **Tags**:: #generative #dl_theo

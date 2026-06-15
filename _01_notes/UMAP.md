@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[math_moc]]  
 # **Uniform Manifold Approximation and Projection **
 
 **Tags**:: #math #learning

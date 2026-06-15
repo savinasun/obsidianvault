@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[rl_embodied_moc]]  
 # **Reinforcement Learning**
 
 **Tags**:: #rl

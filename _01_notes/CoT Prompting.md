@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[sequence_llms_moc]]  
 # **Chain-Of-Thought Prompting**
 
 **Tags**:: #llm

@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[math_moc]]  
 # **Singular Value Decomposition**
 
 **Tags**:: #math #dl_theo

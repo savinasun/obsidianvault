@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[math_moc]]  
 # **Evidence Lower Bound (ELBO)**
 
 **Tags**:: #dl_theo #math

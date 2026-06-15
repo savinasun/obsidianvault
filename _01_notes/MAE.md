@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[vision_ssl_moc]]  
 # **Masked Autoencoder (MAE)**
 
 **Tags**:: #vision #learning

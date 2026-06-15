@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[vision_ssl_moc]]  
 # **Contrastive Language-Image Pre-Training (CLIP)**
 
 **Tags**:: #vision #learning

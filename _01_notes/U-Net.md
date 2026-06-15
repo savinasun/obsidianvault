@@ -1,5 +1,5 @@
-### [[dl_moc]]  
-# **The Title of Your Note**
+### [[dl_moc]] · [[vision_ssl_moc]]  
+# **U-Net**
 
 **Tags**:: #vision #architecture
 **Links**:: [[DDPM]] · [[LDM]] · [[Score-Based Generative Modeling Methods]]

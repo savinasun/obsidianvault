@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[learning_methods_moc]]  
 # **Root Mean Square Layer Normalization**
 
 **Tags**:: #dl_theo #llm

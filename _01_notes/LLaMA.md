@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+### [[dl_moc]] · [[sequence_llms_moc]]  
 # **LLaMA (Large Language Model Meta AI)**
 
 **Tags**:: #llm #llama #architecture
