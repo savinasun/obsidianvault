@@ -50,7 +50,7 @@ SORT file.name ASC
 
 Visual representation learning: transformers for vision, self-supervised objectives, multimodal models.
 
-Key notes: [[ViT]] · [[DINO]] · [[CLIP]] · [[VLM]] · [[Contrastive Learning]] · [[U-Net]]
+Key notes: [[ViT]] · [[DINO]] · [[MAE]] · [[CLIP]] · [[VLM]] · [[Contrastive Learning]] · [[U-Net]]
 
 ```dataview
 table tags as "Tags"

@@ -272,8 +272,9 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "f4bdddf87b272eb0",
+  "active": "5a7a757f4a33e0ac",
   "lastOpenFiles": [
+    "_01_notes/MAE.md",
     "_01_notes/Basics of Neural Network.md",
     "_01_notes/Internal Covariate Shift.md",
     "_00_maps_of_contents/dl_moc.md",
@@ -301,7 +302,6 @@
     "Untitled 1.base",
     "_01_notes/Entropy.md",
     "_01_notes/Attention.md",
-    "_01_notes/Activation Functions.md",
     "Untitled.canvas",
     "_04_images/Pasted image 20260602115713.png",
     "_04_images/Pasted image 20260601165600.png",
