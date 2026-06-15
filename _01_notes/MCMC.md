@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[math_moc]]  
+### [[dl_moc]]  
 # **Markov Chain Monte Carlo**
 
 **Tags**:: #math #dl_theo

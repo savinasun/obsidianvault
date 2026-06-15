@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[rl_embodied_moc]]  
+### [[dl_moc]]  
 # **Behavior Cloning**
 
 **Tags**:: #rl

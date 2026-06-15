@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[learning_methods_moc]]  
+### [[dl_moc]]  
 # **Normalization**
 
 **Tags**:: #dl_theo #architecture

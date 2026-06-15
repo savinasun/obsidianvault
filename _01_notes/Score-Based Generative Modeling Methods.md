@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[generative_moc]]  
+### [[dl_moc]]  
 # **Score-Based Generative Modeling Methods**
 
 **Tags**:: #generative #dl_theo

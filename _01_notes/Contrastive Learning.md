@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[vision_ssl_moc]]  
+### [[dl_moc]]  
 # **Contrastive Learning**
 
 **Tags**:: #learning

@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[learning_methods_moc]]  
+### [[dl_moc]]  
 # **Pre-training**
 
 **Tags**:: #learning #dl_theo

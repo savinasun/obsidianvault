@@ -1,7 +1,7 @@
-### [[dl_moc]] · [[math_moc]]  
+### [[dl_moc]]  
 # **Manifold Hypothesis**
 
-**Tags**:: #dl_theo #math
+**Tags**:: #dl_theo
 **Links**:: [[t-SNE]] · [[UMAP]] · [[Double Descent]] · [[Score-Based Generative Modeling Methods]] · [[Contrastive Learning]]
 
 

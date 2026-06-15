@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[math_moc]]  
+### [[dl_moc]] · [[math_moc]]
 # **Hamming Loss**
 
 **Tags**::  #math

@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[learning_methods_moc]]  
+### [[dl_moc]]  
 # **Neural Network Fundamentals**
 
 **Tags**:: #architecture #dl_theo

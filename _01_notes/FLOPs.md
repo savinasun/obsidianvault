@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[learning_methods_moc]]  
+### [[dl_moc]] · [[learning_methods_moc]]
 # **Floating-Point Operations**
 
 **Tags**:: #dl_theo

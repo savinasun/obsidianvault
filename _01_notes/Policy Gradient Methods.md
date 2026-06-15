@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[rl_embodied_moc]]  
+### [[dl_moc]] · [[rl_embodied_moc]]
 # **Policy Gradient Methods**
 
 **Tags**:: #rl

@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[generative_moc]]  
+### [[dl_moc]]  
 ## **Denoising Diffusion Probabilistic Model**
 **Tags**:: #generative
 **Links**:: [[Score-Based Generative Modeling Methods]] · [[MCMC]] · [[LDM]] · [[VAE]] · [[ELBO]]

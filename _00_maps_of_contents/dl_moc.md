@@ -1,45 +1,116 @@
-# Deep Learning — Map of Contents
+# Deep Learning Map of Contents
 
-A hub index across 60 notes organized by research direction. Each section links to a dedicated MOC with full note listings and Dataview queries.
-
----
-
-## [[math_moc|Mathematics]]
-*Linear algebra, information theory, probability, and dimensionality reduction.*
-
-[[Linear Algebra]] · [[SVD]] · [[Entropy]] · [[KL Divergence]] · [[ELBO]] · [[MCMC]] · [[Manifold Hypothesis]] · [[t-SNE]] · [[UMAP]]
+A living index of notes across mathematics, architecture, learning theory, and frontier research. Each section shows key notes directly and a Dataview query for tag-filtered discovery.
 
 ---
 
-## [[learning_methods_moc|Learning Methods & Theories]]
-*How networks are trained, how representations generalize, and the primitives that make deep learning stable.*
+### Mathematics & Foundations
 
-[[Pre-training]] · [[Optimization Algorithms]] · [[Regularization]] · [[Scaling Laws]] · [[Double Descent]] · [[Activation Functions]] · [[Normalization]] · [[Neural Network Initialization]]
+Core mathematical machinery: linear algebra, probability, information theory, and matrix decompositions.
 
----
+Key notes: [[Linear Algebra]] · [[SVD]] · [[Spectral Analysis]] · [[Entropy]] · [[KL Divergence]] · [[ELBO]] · [[MCMC]] · [[Manifold Hypothesis]] · [[Hamming Loss]]
 
-## [[sequence_llms_moc|Sequence Modeling & LLMs]]
-*From RNNs to Transformers to SSMs — and the full LLM stack: tokenization, architecture, inference, and alignment.*
+```dataview
+table tags as "Tags"
+from "_01_notes"
+WHERE contains(tags, "math")
+SORT file.name ASC
+```
 
-[[Transformer]] · [[Attention]] · [[Mamba]] · [[LLMs]] · [[LLaMA]] · [[RoPE]] · [[MoE]] · [[RAG]] · [[CoT Prompting]]
 
----
+### Architecture
 
-## [[vision_ssl_moc|Vision & Self-Supervised Learning]]
-*Visual architectures and the self-supervised objectives (contrastive, masked, distillation) that replaced supervised pre-training.*
+Building blocks of modern neural networks: transformers, normalization, activation functions, positional encodings, and efficiency variants.
 
-[[ViT]] · [[CNN]] · [[DINO]] · [[MAE]] · [[CLIP]] · [[Contrastive Learning]]
+Key notes: [[Transformer]] · [[Attention]] · [[MoE]] · [[RoPE]] · [[RMSNorm]] · [[Layer Normalization]] · [[Normalization]] · [[Activation Functions]] · [[Neural Network Initialization]] · [[CNN]] · [[RNN]] · [[U-Net]]
 
----
+```dataview
+table tags as "Tags"
+from "_01_notes"
+WHERE contains(tags, "architecture")
+SORT file.name ASC
+```
 
-## [[generative_moc|Generative Modeling]]
-*Learning to synthesize: VAEs, score-based models, and diffusion — the research behind Stable Diffusion and DALL-E.*
 
-[[VAE]] · [[DDPM]] · [[LDM]] · [[Score-Based Generative Modeling Methods]] · [[U-Net]]
+### Language Models
 
----
+Modern LLM internals: training dynamics, tokenization, inference tricks, and model families.
 
-## [[rl_embodied_moc|RL & Embodied AI]]
-*Policy optimization, imitation learning, world models, and human feedback — the path toward autonomous agents.*
+Key notes: [[LLMs]] · [[Attention]] · [[GPTs]] · [[LLaMA]] · [[BPE]] · [[RoPE]] · [[KV Cache]] · [[MoE]] · [[PPL]] · [[Cluster Training Glossary]] · [[CoT Prompting]]
 
-[[Reinforcement Learning]] · [[Policy Gradient Methods]] · [[Deep Reinforcement Learning]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]]
+```dataview
+table tags as "Tags"
+from "_01_notes"
+WHERE contains(tags, "llm")
+SORT file.name ASC
+```
+
+
+### Vision & Self-Supervised Learning
+
+Visual representation learning: transformers for vision, self-supervised objectives, multimodal models.
+
+Key notes: [[ViT]] · [[DINO]] · [[MAE]] · [[CLIP]] · [[VLM]] · [[Contrastive Learning]] · [[U-Net]]
+
+```dataview
+table tags as "Tags"
+from "_01_notes"
+WHERE contains(tags, "vision")
+SORT file.name ASC
+```
+
+
+### Reinforcement Learning & Robotics
+
+Policy optimization, imitation learning, and model-based RL — foundations for embodied AI.
+
+Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]]
+
+```dataview
+table tags as "Tags"
+from "_01_notes"
+WHERE contains(tags, "rl")
+SORT file.name ASC
+```
+
+
+### Generative Models
+
+Score-based methods, diffusion models, VAEs, and latent diffusion.
+
+Key notes: [[Score-Based Generative Modeling Methods]] · [[DDPM]] · [[LDM]] · [[VAE]] · [[ELBO]]
+
+```dataview
+table tags as "Tags"
+from "_01_notes"
+WHERE contains(tags, "generative")
+SORT file.name ASC
+```
+
+
+### Learning Methods
+
+Supervised, self-supervised, contrastive, and few-shot learning paradigms.
+
+Key notes: [[Pre-training]] · [[Contrastive Learning]] · [[DINO]] · [[MAE]] · [[CLIP]] · [[FSL]] · [[t-SNE]] · [[UMAP]] · [[Word Embeddings]] · [[Benchmark Datasets]]
+
+```dataview
+table tags as "Tags"
+from "_01_notes"
+WHERE contains(tags, "learning")
+SORT file.name ASC
+```
+
+
+### Training Dynamics & Theory
+
+Theoretical underpinnings: generalization, optimization landscapes, normalization effects, initialization.
+
+Key notes: [[Double Descent]] · [[Manifold Hypothesis]] · [[Neural Network Initialization]] · [[Internal Covariate Shift]] · [[Normalization]] · [[Regularization]] · [[Optimization Algorithms]] · [[Scaling Laws]] · [[FLOPs]]
+
+```dataview
+table tags as "Tags"
+from "_01_notes"
+WHERE contains(tags, "dl_theo")
+SORT file.name ASC
+```

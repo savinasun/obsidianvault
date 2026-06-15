@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[sequence_llms_moc]]  
+### [[dl_moc]]  
 # **Mamba / State Space Models**
 
 **Tags**:: #architecture #llm

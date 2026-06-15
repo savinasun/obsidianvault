@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[generative_moc]]  
+### [[dl_moc]]  
 # **Latent Diffusion Model (LDM)**
 
 **Tags**:: #generative

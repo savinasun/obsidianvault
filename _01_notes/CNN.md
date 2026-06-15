@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[vision_ssl_moc]]  
+### [[dl_moc]]  
 # **Convolutional Neural Networks**
 
 **Tags**:: #architecture #vision
