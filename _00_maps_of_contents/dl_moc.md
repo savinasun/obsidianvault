@@ -32,7 +32,7 @@ SORT file.name ASC
 ```
 
 
-### Large Language Models
+### Language Models
 
 Modern LLM internals: training dynamics, tokenization, inference tricks, and model families.
 
@@ -92,7 +92,7 @@ SORT file.name ASC
 
 Supervised, self-supervised, contrastive, and few-shot learning paradigms.
 
-Key notes: [[Contrastive Learning]] · [[DINO]] · [[CLIP]] · [[FSL]] · [[t-SNE]] · [[UMAP]] · [[Word Embeddings]] · [[Benchmark Datasets]]
+Key notes: [[Pre-training]] · [[Contrastive Learning]] · [[DINO]] · [[MAE]] · [[CLIP]] · [[FSL]] · [[t-SNE]] · [[UMAP]] · [[Word Embeddings]] · [[Benchmark Datasets]]
 
 ```dataview
 table tags as "Tags"

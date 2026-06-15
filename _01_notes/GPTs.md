@@ -22,7 +22,7 @@
 
 ### BERT (Bidirectional Encoder Representations from Transformers)
 	
-- [[Devlin et al., 2018](https://arxiv.org/abs/1810.04805), [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://paperswithcode.com/paper/bert-pre-training-of-deep-bidirectional)]
+- [Devlin et al., 2018](https://arxiv.org/abs/1810.04805), [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://paperswithcode.com/paper/bert-pre-training-of-deep-bidirectional)
 - bidirectional encoder → an encoder-only transformer model
 - pre-train on large unlabeled data + supervised fine-tune on task-specific data
 	- randomly masks some of the tokens from the input;

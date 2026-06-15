@@ -5,7 +5,7 @@
 **Links**:: [[ViT]] · [[DINO]] · [[Contrastive Learning]] · [[Transformer]] · [[Normalization]]
 
 
-**MAE** ([He et al., 2021](https://arxiv.org/abs/2111.06377)) is a self-supervised pre-training method for vision that learns representations by masking a large fraction of image patches and reconstructing the missing pixels. It is the vision analogue of BERT's masked language modeling, adapted to the continuous signal of images.
+**MAE** ([He et al., 2021](https://arxiv.org/abs/2111.06377)) is a self-supervised pre-training method for vision that learns representations by masking a large fraction of image patches and reconstructing the missing pixels. It is the **vision analogue of BERT's masked language modeling**, adapted to the continuous signal of images.
 
 ## Core Idea
 ---
