@@ -2,7 +2,7 @@
 
 # **Generative Pre-Training Transformer Models**
 
-**Tags**::  #llm/gpt
+**Tags**:: #llm
 **Links**:: [[Transformer]] · [[BPE]] · [[Scaling Laws]] · [[LLMs]] · [[RLHF]]
 
 

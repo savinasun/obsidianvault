@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
-# **The Title of Your Note**
+# **U-Net**
 
-**Tags**:: #vision #architecture
+**Tags**:: #generative #architecture
 **Links**:: [[DDPM]] · [[LDM]] · [[Score-Based Generative Modeling Methods]]
 
 ## U-Net Architecture

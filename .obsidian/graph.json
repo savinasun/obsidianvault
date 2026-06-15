@@ -5,8 +5,33 @@
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": true,
-  "colorGroups": [],
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "tag:#rl",
+      "color": { "a": 1, "rgb": 15680580 }
+    },
+    {
+      "query": "tag:#generative",
+      "color": { "a": 1, "rgb": 15485081 }
+    },
+    {
+      "query": "tag:#vision",
+      "color": { "a": 1, "rgb": 2278750 }
+    },
+    {
+      "query": "tag:#llm",
+      "color": { "a": 1, "rgb": 16096779 }
+    },
+    {
+      "query": "tag:#math",
+      "color": { "a": 1, "rgb": 3900150 }
+    },
+    {
+      "query": "tag:#dl_theo OR tag:#learning",
+      "color": { "a": 1, "rgb": 11032055 }
+    }
+  ],
   "collapse-display": true,
   "showArrow": false,
   "textFadeMultiplier": 0,

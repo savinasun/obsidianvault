@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Scaling Laws**
 
-**Tags**:: #dl_theo #llm
+**Tags**:: #dl_theo
 **Links**:: [[LLMs]] · [[Optimization Algorithms]] · [[MoE]] · [[Double Descent]] · [[FLOPs]]
 
 

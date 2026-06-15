@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Word Embeddings**
 
-**Tags**:: #llm #learning
+**Tags**:: #learning
 **Links**:: [[BPE]] · [[LLMs]] · [[Transformer]] · [[Contrastive Learning]] · [[RNN]]
 
 

@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Vision Language Models**
 
-**Tags**:: #vision #llm
+**Tags**:: #llm
 **Links**:: [[ViT]] · [[CLIP]] · [[LLMs]] · [[Attention]] · [[RoPE]]
 
 ## Architecture

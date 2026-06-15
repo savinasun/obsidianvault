@@ -1,7 +1,7 @@
 ### [[dl_moc]] · [[learning_methods_moc]]
 # **Root Mean Square Layer Normalization**
 
-**Tags**:: #dl_theo #llm
+**Tags**:: #dl_theo
 **Links**:: [[Layer Normalization]] · [[Normalization]] · [[LLMs]] · [[LLaMA]] · [[Transformer]]
 
 ### Definition

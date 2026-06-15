@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Recurrent Neural Networks**
 
-**Tags**:: #architecture
+**Tags**:: #architecture #llm
 **Links**:: [[Transformer]] · [[Mamba]] · [[Attention]] · [[Optimization Algorithms]] · [[Activation Functions]]
 
 

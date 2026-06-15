@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Contrastive Learning**
 
-**Tags**:: #learning
+**Tags**:: #vision #learning
 **Links**:: [[CLIP]] · [[DINO]] · [[Manifold Hypothesis]] · [[Entropy]] · [[FSL]]
 
 

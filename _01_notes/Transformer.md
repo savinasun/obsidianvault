@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Transformer Network Architecture**
 
-**Tags**:: #architecture
+**Tags**:: #architecture #llm
 **Links**:: [[Attention]] · [[LLMs]] · [[RoPE]] · [[RMSNorm]] · [[Layer Normalization]] · [[Activation Functions]]
 
 
