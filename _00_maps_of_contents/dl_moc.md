@@ -4,7 +4,7 @@ A living index organized by research direction. Each section corresponds to a di
 
 ---
 
-### Mathematics
+### Mathematics & Statistics
 
 Pure mathematical machinery — information theory, linear algebra, probability, and dimensionality reduction — that underpins all of deep learning.
 
@@ -29,6 +29,7 @@ table tags as "Tags"
 from "_01_notes"
 WHERE contains(tags, "dl_theo") OR contains(tags, "learning")
 SORT file.name ASC
+limit 10
 ```
 
 
