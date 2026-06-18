@@ -5,7 +5,7 @@
 **Links**:: [[KL Divergence]] · [[VAE]] · [[Score-Based Generative Modeling Methods]] · [[MCMC]]
 
 
-The **ELBO** (Evidence Lower Bound) is the fundamental **objective for training latent variable models** when the true posterior $p_\theta(z \mid x)$ is intractable. It provides a tractable lower bound on the log-likelihood $\log p_\theta(x)$.
+The **ELBO** **(Evidence Lower Bound)** is the **==fundamental objective for training latent variable models==** when the **true posterior** $p_\theta(z \mid x)$ is **intractable**. It provides a **tractable lower bound** on the log-likelihood $\log p_\theta(x)$.
 
 ## Derivation
 ---
