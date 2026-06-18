@@ -99,7 +99,7 @@ Self-attention dominates when $n \gg d$; FFN dominates when $d \gg n$.
 
 ![[image-6-x104-y597.png]]
 
-**Efficient attention variants** address the $O(n^2)$ bottleneck: sparse attention, local/sliding-window attention (Longformer), linear attention, FlashAttention (IO-aware exact computation).
+**Efficient attention variants** address the $O(n^2)$ bottleneck: sparse attention, local/sliding-window attention (Longformer), [[Linear Attention]], FlashAttention (IO-aware exact computation).
 
 ## Architecture Variants
 ---

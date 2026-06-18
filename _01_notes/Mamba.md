@@ -2,7 +2,7 @@
 # **Mamba / State Space Models**
 
 **Tags**:: #architecture #llm
-**Links**:: [[Transformer]] · [[Attention]] · [[LLMs]] · [[RoPE]]
+**Links**:: [[Transformer]] · [[Attention]] · [[Linear Attention]] · [[LLMs]] · [[RoPE]]
 
 
 **State Space Models (SSMs)** are a family of sequence models that offer an alternative to the [[Transformer]] architecture. While Transformers scale as $O(n^2)$ in sequence length due to full attention, SSMs achieve **linear-time inference and training** through a recurrent formulation.
@@ -83,7 +83,7 @@ No attention mechanism — the model is **purely recurrent**.
 [Gu & Dao, 2024](https://arxiv.org/abs/2405.21060) reformulated Mamba's selective scan as a **semi-separable matrix multiplication**, connecting SSMs to a theoretical framework that also unifies with linear attention. This enables:
 - Even faster hardware implementation via tensor-core-friendly operations
 - Cleaner theoretical analysis
-- SSD (State Space Duality) — a family that includes both SSMs and linear attention as special cases
+- SSD (State Space Duality) — a family that includes both SSMs and [[Linear Attention]] as special cases
 
 ## Comparison: Mamba vs. Transformer
 ---
