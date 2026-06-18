@@ -27,8 +27,10 @@ Apply **Jensen's inequality** (log is concave, so $\log\mathbb{E}[\cdot] \ge \ma
 $$
 \ge \mathbb{E}_{z \sim q_\phi(\cdot \mid x)}\left[\log \frac{p_\theta(x, z)}{q_\phi(z \mid x)}\right] \eqqcolon \mathcal{L}(\phi, \theta;\, x)
 $$
-This is called the **ELBO**. 
-
+$\mathcal{L}(\phi, \theta;\, x)$ is called the **ELBO**, i.e.
+$$
+\log p_{\theta}(x) \geq \mathcal{L}(\phi, \theta; x).
+$$
 The gap between $\log p_\theta(x)$ and $\mathcal{L}$ is exactly the [[KL Divergence|KL divergence]] of the variational posterior from the true posterior:
 $$
 \log p_\theta(x) = \mathcal{L}(\phi, \theta;\, x) + D_\text{KL}(q_\phi(z\mid x) \| p_\theta(z\mid x))
