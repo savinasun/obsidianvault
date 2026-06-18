@@ -5,7 +5,7 @@
 **Links**:: [[Transformer]] · [[Attention]] · [[LLMs]] · [[RoPE]]
 
 
-**State Space Models (SSMs)** are a family of sequence models that offer an alternative to the [[Transformer]] architecture. While Transformers scale as $O(n^2)$ in sequence length due to full attention, SSMs achieve **linear-time** inference and training through a recurrent formulation.
+**State Space Models (SSMs)** are a family of sequence models that offer an alternative to the [[Transformer]] architecture. While Transformers scale as $O(n^2)$ in sequence length due to full attention, SSMs achieve **linear-time inference and training** through a recurrent formulation.
 
 ## State Space Models (SSMs)
 ---

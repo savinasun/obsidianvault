@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Hamming Loss.md",
+                "file": "_01_notes/Mamba.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Hamming Loss"
+              "title": "Mamba"
             }
           },
           {
@@ -270,6 +270,7 @@
   "active": "c7f5ae17062ab518",
   "lastOpenFiles": [
     "_00_maps_of_contents/dl_moc.md",
+    "_01_notes/Hamming Loss.md",
     "_01_notes/ELBO.md",
     "_01_notes/Activation Functions.md",
     "_00_maps_of_contents/math_moc.md",
@@ -295,7 +296,6 @@
     "_01_notes/Deep Reinforcement Learning.md",
     "_01_notes/U-Net.md",
     "_01_notes/Manifold Hypothesis.md",
-    "_01_notes/Score-Based Generative Modeling Methods.md",
     "Untitled.base",
     "Untitled 1.base",
     "_04_images/Pasted image 20260602115713.png",
