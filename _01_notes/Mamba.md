@@ -9,7 +9,7 @@
 
 ## State Space Models (SSMs)
 ---
-An SSM maps an input sequence $u(t)$ to an output sequence $y(t)$ through a latent state $x(t)$:
+An SSM maps an **input sequence $u(t)$** to an **output sequence $y(t)$** through a **latent state $x(t)$**:
 
 $$
 \begin{aligned}
@@ -44,7 +44,7 @@ $$
 y_k = \sum_{j=0}^{k} \bar{C}\bar{A}^{k-j}\bar{B}\, u_j = (K * u)_k, \quad K_j = \bar{C}\bar{A}^j\bar{B}
 $$
 
-Training uses the convolutional mode (fast on GPUs); inference uses the recurrent mode (constant memory per step).
+==**Training uses the convolutional mode (fast on GPUs); inference uses the recurrent mode (constant memory per step).**==
 
 ## Mamba: Selective SSMs
 ---
