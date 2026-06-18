@@ -9,11 +9,11 @@ The **ELBO** **(Evidence Lower Bound)** is the **==fundamental objective for tra
 
 ## Derivation
 ---
-Let $X$ and $Z$ be random variables jointly distributed with $p_\theta(X, Z)$. For a sample $x$ drawn from the data distribution and any distribution $q_\phi(z \mid x)$ (the **variational posterior** or **encoder**):
-
+Let $X$ and $Z$ be random variables jointly distributed with $p_\theta(X, Z)$. For a sample $x$ drawn from the marginal distribution $p_{\theta}(X)$, we call $\log p_{\theta}(x)$ the **evidence** of $x$.
 $$
 \log p_\theta(x) = \log \int p_\theta(x, z)\, dz
 $$
+For any distribution $q_\phi(z \mid x)$ (the **variational posterior** or **encoder**):
 
 Multiply and divide by $q_\phi(z \mid x)$:
 $$
@@ -24,8 +24,9 @@ Apply **Jensen's inequality** (log is concave, so $\log\mathbb{E}[\cdot] \ge \ma
 $$
 \ge \mathbb{E}_{z \sim q_\phi(\cdot \mid x)}\left[\log \frac{p_\theta(x, z)}{q_\phi(z \mid x)}\right] \eqqcolon \mathcal{L}(\phi, \theta;\, x)
 $$
+This is the **ELBO**. 
 
-This is the **ELBO**. The gap between $\log p_\theta(x)$ and $\mathcal{L}$ is exactly the [[KL Divergence|KL divergence]] of the variational posterior from the true posterior:
+The gap between $\log p_\theta(x)$ and $\mathcal{L}$ is exactly the [[KL Divergence|KL divergence]] of the variational posterior from the true posterior:
 $$
 \log p_\theta(x) = \mathcal{L}(\phi, \theta;\, x) + D_\text{KL}(q_\phi(z\mid x) \| p_\theta(z\mid x))
 $$
