@@ -11,20 +11,23 @@ The **ELBO** **(Evidence Lower Bound)** is the **==fundamental objective for tra
 ---
 Let $X$ and $Z$ be random variables jointly distributed with $p_\theta(X, Z)$. For a sample $x$ drawn from the marginal distribution $p_{\theta}(X)$, we call $\log p_{\theta}(x)$ the **evidence** of $x$.
 $$
+\begin{aligned}
 \log p_\theta(x) = \log \int p_\theta(x, z)\, dz
+\end{aligned}
 $$
-For any distribution $q_\phi(z \mid x)$ (the **variational posterior** or **encoder**):
-
-Multiply and divide by $q_\phi(z \mid x)$:
+For any distribution $q_\phi(z \mid x)$ (the **variational posterior** or **encoder**), multiply the above equation and divide by $q_\phi(z \mid x)$:
 $$
-= \log \mathbb{E}_{z \sim q_\phi(\cdot \mid x)}\left[\frac{p_\theta(x, z)}{q_\phi(z \mid x)}\right]
+\begin{aligned}
+&= \log \int \frac{p_\theta(x, z)}{q_\phi(z \mid x)} \cdot q_\phi(z \mid x) dz \\
+&= \log \mathbb{E}_{z \sim q_\phi(\cdot \mid x)}\left[\frac{p_\theta(x, z)}{q_\phi(z \mid x)}\right]
+\end{aligned}
 $$
 
 Apply **Jensen's inequality** (log is concave, so $\log\mathbb{E}[\cdot] \ge \mathbb{E}[\log\cdot]$):
 $$
 \ge \mathbb{E}_{z \sim q_\phi(\cdot \mid x)}\left[\log \frac{p_\theta(x, z)}{q_\phi(z \mid x)}\right] \eqqcolon \mathcal{L}(\phi, \theta;\, x)
 $$
-This is the **ELBO**. 
+This is called the **ELBO**. 
 
 The gap between $\log p_\theta(x)$ and $\mathcal{L}$ is exactly the [[KL Divergence|KL divergence]] of the variational posterior from the true posterior:
 $$
