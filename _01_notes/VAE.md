@@ -23,7 +23,7 @@ The marginal $p_\theta(x)$ involves an integral over all latent codes — intrac
 
 ## Variational Inference: ELBO
 ---
-Introduce a variational posterior $q_\phi(z \mid x)$ (the **encoder**) to approximate the true posterior. By the [[ELBO]] derivation:
+Introduce a **variational posterior $q_\phi(z \mid x)$** (the **encoder**) to approximate the true posterior. By the [[ELBO]] derivation:
 $$
 \log p_\theta(x) \ge \mathcal{L}(\theta, \phi;\, x) = \underbrace{\mathbb{E}_{q_\phi(z\mid x)}[\log p_\theta(x \mid z)]}_{\text{reconstruction}} - \underbrace{D_\text{KL}(q_\phi(z\mid x) \| p(z))}_{\text{regularization}}
 $$

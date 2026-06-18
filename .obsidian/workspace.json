@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_00_maps_of_contents/dl_moc.md",
+                "file": "_01_notes/ELBO.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "dl_moc"
+              "title": "ELBO"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Mamba.md",
+                "file": "_01_notes/Linear Attention.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Mamba"
+              "title": "Linear Attention"
             }
           },
           {
@@ -59,12 +59,12 @@
                   "textFadeMultiplier": -1.5,
                   "nodeSizeMultiplier": 1.17586263020833,
                   "lineSizeMultiplier": 1,
-                  "collapse-forces": false,
-                  "centerStrength": 0.222825907998288,
+                  "collapse-forces": true,
+                  "centerStrength": 0.0679640422799565,
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 1.3199483685022462,
+                  "scale": 1.3789045577134054,
                   "close": true
                 }
               },
@@ -72,8 +72,7 @@
               "title": "Graph of ELBO"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -267,10 +266,14 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c7f5ae17062ab518",
+  "active": "508f81551a217dfa",
   "lastOpenFiles": [
-    "_01_notes/Linear Attention.md",
+    "_01_notes/LDM.md",
+    "_01_notes/VAE.md",
+    "_01_notes/ViT.md",
+    "_01_notes/Mamba.md",
     "_00_maps_of_contents/dl_moc.md",
+    "_01_notes/Linear Attention.md",
     "_01_notes/Hamming Loss.md",
     "_01_notes/ELBO.md",
     "_01_notes/Activation Functions.md",
@@ -292,10 +295,6 @@
     "_01_notes/CNN.md",
     "_01_notes/RNN.md",
     "_01_notes/KL Divergence.md",
-    "_01_notes/Regularization.md",
-    "_01_notes/Benchmark Datasets.md",
-    "_01_notes/Deep Reinforcement Learning.md",
-    "_01_notes/U-Net.md",
     "Untitled.base",
     "Untitled 1.base",
     "_04_images/Pasted image 20260602115713.png",
