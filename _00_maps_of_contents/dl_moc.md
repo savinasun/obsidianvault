@@ -65,7 +65,7 @@ SORT file.name ASC
 
 Learning to synthesize: score-based methods, denoising diffusion, latent diffusion, and variational autoencoders.
 
-Key notes: [[Score-Based Generative Modeling Methods]] · [[DDPM]] · [[LDM]] · [[VAE]] · [[U-Net]]
+Key notes: [[Score-Based Generative Modeling Methods]] · [[DDPM]] · [[LDM]] · [[VAE]] · [[RAE]] · [[U-Net]] · [[FID]]
 
 ```dataview
 table tags as "Tags"

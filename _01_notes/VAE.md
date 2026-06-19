@@ -2,7 +2,7 @@
 # **Variational Autoencoder (VAE)**
 
 **Tags**:: #generative #dl_theo
-**Links**:: [[ELBO]] · [[KL Divergence]] · [[LDM]] · [[Score-Based Generative Modeling Methods]] · [[Manifold Hypothesis]]
+**Links**:: [[ELBO]] · [[KL Divergence]] · [[LDM]] · [[RAE]] · [[Score-Based Generative Modeling Methods]] · [[Manifold Hypothesis]]
 
 
 A **VAE** ([Kingma & Welling, 2013](https://arxiv.org/abs/1312.6114)) is a latent variable generative model that learns to encode data into a structured latent space and decode back. Unlike standard autoencoders, the latent space is **probabilistic** and **regularized**, making it suitable for generation.
@@ -110,12 +110,13 @@ Higher $\beta$ encourages more **disentangled** representations — each latent 
 ## VAE vs. GAN vs. Diffusion
 ---
 
-| | VAE | GAN | Diffusion |
-|---|---|---|---|
-| **Training** | Stable (ELBO) | Unstable (adversarial) | Stable (denoising) |
-| **Sample quality** | Blurry | Sharp | Sharp |
-| **Latent space** | Structured, smooth | Unstructured | Via inversion only |
-| **Likelihood** | Tractable (via ELBO) | Intractable | Tractable |
-| **Use in LDMs** | **Encoder/decoder** | Alternative encoder | Diffusion core |
+| | VAE | RAE | GAN | Diffusion |
+|---|---|---|---|---|
+| **Training** | Stable (ELBO) | Stable (L2 reg) | Unstable (adversarial) | Stable (denoising) |
+| **Sample quality** | Blurry | Less blurry | Sharp | Sharp |
+| **Latent space** | Structured, smooth | Structured, smooth | Unstructured | Via inversion only |
+| **Posterior collapse** | Common | Impossible | N/A | N/A |
+| **Likelihood** | Tractable (via ELBO) | Ex-post density | Intractable | Tractable |
+| **Use in LDMs** | **Encoder/decoder** | Drop-in alternative | Alternative encoder | Diffusion core |
 
-VAEs produce blurrier samples than GANs or diffusion models because the MSE reconstruction loss averages over possible reconstructions. However, their structured latent spaces make them ideal as the **compression stage** in [[LDM|Latent Diffusion Models]].
+VAEs produce blurrier samples than GANs or diffusion models because the MSE reconstruction loss averages over possible reconstructions. [[RAE]] addresses the blurriness and posterior collapse by replacing the stochastic encoder and KL term with a deterministic encoder and explicit regularization. However, VAE latent spaces remain the standard compression stage in [[LDM|Latent Diffusion Models]].
