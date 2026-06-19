@@ -2,7 +2,7 @@
 # **Autoencoder**
 
 **Tags**:: #generative #learning
-**Links**:: [[VAE]] · [[RAE]] · [[MAE]] · [[LDM]] · [[ELBO]] · [[KL Divergence]] · [[Manifold Hypothesis]] · [[Contrastive Learning]] · [[t-SNE]] · [[UMAP]] · [[FID]]
+**Links**:: [[VAE]] · [[VQ-VAE]] · [[RAE]] · [[MAE]] · [[LDM]] · [[ELBO]] · [[KL Divergence]] · [[Manifold Hypothesis]] · [[Contrastive Learning]] · [[t-SNE]] · [[UMAP]] · [[FID]]
 
 
 An **autoencoder** is a neural network trained to compress input data into a low-dimensional **latent code** and reconstruct it back — learning a compact, lossy representation without supervision. The reconstruction objective forces the model to discover the most informative structure in the data. Over four decades, autoencoders evolved from dimensionality reduction tools into the compression backbone of modern generative models.
@@ -65,13 +65,7 @@ This forces the representation to be locally invariant to small input perturbati
 The [[VAE]] transforms the autoencoder into a **probabilistic generative model** by replacing the deterministic encoder with a distribution $q_\phi(z|x) = \mathcal{N}(\mu_\phi(x), \sigma_\phi^2(x))$ and adding a [[KL Divergence]] penalty to the [[ELBO]] objective. The latent space becomes continuous and regularized — any point $z \sim \mathcal{N}(0,I)$ decodes to a plausible image. VAEs enabled controllable generation, interpolation, and became the standard compression stage in [[LDM|Latent Diffusion Models]].
 
 ### 2017 — VQ-VAE (van den Oord et al.)
-**Vector Quantized VAE** replaces the continuous Gaussian latent with a **discrete codebook** $\{e_k\}_{k=1}^K$. The encoder maps $x$ to a continuous vector, which is then snapped to the nearest codebook entry:
-
-$$
-z_q = \arg\min_{e_k} \|f_\phi(x) - e_k\|
-$$
-
-The discrete bottleneck enables autoregressive modeling over the latent codes (e.g., with a PixelCNN or Transformer prior). VQ-VAE-2 produced high-fidelity images by using a hierarchical two-level discrete code. VQ-VAE is also the foundation of **VQGAN**, which adds an adversarial discriminator to sharpen reconstructions and is used as the tokenizer in [[LDM|LDM (Stable Diffusion)]].
+[[VQ-VAE|Vector Quantized VAE]] replaces the continuous Gaussian latent with a **discrete codebook** $\{e_k\}_{k=1}^K$. The encoder maps $x$ to a continuous vector, snapped to the nearest codebook entry via $\arg\min$. A **straight-through estimator** passes gradients through the non-differentiable lookup. The discrete bottleneck enables autoregressive modeling over latent tokens (PixelCNN or [[Transformer]] prior). VQ-VAE-2 extended this hierarchically (coarse + fine codes); VQGAN added a patch discriminator and perceptual loss for sharper reconstructions and became the compression stage in [[LDM]].
 
 ### 2019 — Regularized Autoencoder (Ghosh et al.)
 [[RAE]] showed that neither stochastic encoding nor KL divergence is necessary to get well-structured latent spaces. A **deterministic encoder** with explicit L2 regularization on latent codes avoids posterior collapse by design and produces less blurry samples. Separates the latent geometry (encoder training) from the prior (ex-post density estimation), a cleaner design than the VAE's intertwined ELBO.
@@ -89,14 +83,14 @@ The discrete bottleneck enables autoregressive modeling over the latent codes (e
 | **Sparse AE** | Activation sparsity | Deterministic | Interpretable features |
 | **Contractive AE** | Jacobian norm | Deterministic | Smooth manifold encoding |
 | **[[VAE]]** | KL divergence (ELBO) | Probabilistic | Generation, compression |
-| **VQ-VAE** | Discrete codebook | Discrete | Autoregressive generation |
+| **[[VQ-VAE]]** | Discrete codebook | Discrete | Autoregressive generation |
 | **[[RAE]]** | L2 / spectral norm | Deterministic | Generation (no collapse) |
 | **[[MAE]]** | Masking (75% patches) | High-dim patch | Vision pre-training |
 
 ## Applications
 ---
 - **Dimensionality reduction**: nonlinear alternative to PCA; compare with [[t-SNE]] and [[UMAP]] for visualization
-- **Generative modeling**: [[VAE]], [[RAE]], VQ-VAE; the encoder/decoder is also the compression stage of [[LDM]]
+- **Generative modeling**: [[VAE]], [[VQ-VAE]], [[RAE]]; the encoder/decoder is also the compression stage of [[LDM]]
 - **Self-supervised pre-training**: [[MAE]] for vision; denoising objective connects to [[Score-Based Generative Modeling Methods]]
 - **Anomaly detection**: train on normal data; high reconstruction error at test time indicates anomalies
 - **Denoising / inpainting**: denoising AE directly; masked AE for inpainting

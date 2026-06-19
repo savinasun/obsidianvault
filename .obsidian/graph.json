@@ -9,27 +9,45 @@
   "colorGroups": [
     {
       "query": "tag:#rl",
-      "color": { "a": 1, "rgb": 15680580 }
+      "color": {
+        "a": 1,
+        "rgb": 15680580
+      }
     },
     {
       "query": "tag:#generative",
-      "color": { "a": 1, "rgb": 15485081 }
+      "color": {
+        "a": 1,
+        "rgb": 15485081
+      }
     },
     {
       "query": "tag:#vision",
-      "color": { "a": 1, "rgb": 2278750 }
+      "color": {
+        "a": 1,
+        "rgb": 2278750
+      }
     },
     {
       "query": "tag:#llm",
-      "color": { "a": 1, "rgb": 16096779 }
+      "color": {
+        "a": 1,
+        "rgb": 16096779
+      }
     },
     {
       "query": "tag:#math",
-      "color": { "a": 1, "rgb": 3900150 }
+      "color": {
+        "a": 1,
+        "rgb": 3900150
+      }
     },
     {
       "query": "tag:#dl_theo OR tag:#learning",
-      "color": { "a": 1, "rgb": 11032055 }
+      "color": {
+        "a": 1,
+        "rgb": 11032055
+      }
     }
   ],
   "collapse-display": true,
@@ -42,6 +60,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.47453714196591806,
+  "scale": 0.5843745441937555,
   "close": true
 }

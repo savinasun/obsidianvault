@@ -2,7 +2,7 @@
 # **Variational Autoencoder (VAE)**
 
 **Tags**:: #generative #dl_theo
-**Links**:: [[Autoencoder]] · [[ELBO]] · [[KL Divergence]] · [[LDM]] · [[RAE]] · [[Score-Based Generative Modeling Methods]] · [[Manifold Hypothesis]]
+**Links**:: [[Autoencoder]] · [[VQ-VAE]] · [[ELBO]] · [[KL Divergence]] · [[LDM]] · [[RAE]] · [[Score-Based Generative Modeling Methods]] · [[Manifold Hypothesis]]
 
 
 A **VAE** ([Kingma & Welling, 2013](https://arxiv.org/abs/1312.6114)) is a latent variable generative model that learns to encode data into a structured latent space and decode back. Unlike standard autoencoders, the latent space is **probabilistic** and **regularized**, making it suitable for generation.
