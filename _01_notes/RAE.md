@@ -2,7 +2,7 @@
 # **Regularized Autoencoder (RAE)**
 
 **Tags**:: #generative #dl_theo
-**Links**:: [[VAE]] · [[ELBO]] · [[KL Divergence]] · [[LDM]] · [[FID]] · [[Manifold Hypothesis]]
+**Links**:: [[Autoencoder]] · [[VAE]] · [[ELBO]] · [[KL Divergence]] · [[LDM]] · [[FID]] · [[Manifold Hypothesis]]
 
 
 **RAE** ([Ghosh et al., 2019](https://arxiv.org/abs/1903.12436)) asks: do we actually need a stochastic encoder to get a well-structured latent space? The answer is no. RAE replaces the [[VAE]]'s variational encoder and KL term with a **deterministic encoder** plus explicit **regularization on the latent codes**, recovering comparably structured latent spaces without the pathologies of the ELBO objective.

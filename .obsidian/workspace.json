@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/FID.md",
+                "file": "_01_notes/Autoencoder.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "FID"
+              "title": "Autoencoder"
             }
           },
           {
@@ -41,7 +41,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "_01_notes/FID.md",
+                "file": "_01_notes/Autoencoder.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -69,7 +69,7 @@
                 }
               },
               "icon": "lucide-git-fork",
-              "title": "Graph of FID"
+              "title": "Graph of Autoencoder"
             }
           }
         ]
@@ -268,10 +268,11 @@
   },
   "active": "508f81551a217dfa",
   "lastOpenFiles": [
+    "_01_notes/FID.md",
+    "_01_notes/Autoencoder.md",
     "_01_notes/RAE.md",
     "_00_maps_of_contents/dl_moc.md",
     "_01_notes/ELBO.md",
-    "_01_notes/FID.md",
     "_01_notes/LDM.md",
     "_01_notes/VAE.md",
     "_01_notes/ViT.md",
@@ -294,7 +295,6 @@
     "_01_notes/Contrastive Learning.md",
     "_01_notes/Internal Covariate Shift.md",
     "_01_notes/Word Embeddings.md",
-    "_01_notes/CNN.md",
     "Untitled.base",
     "Untitled 1.base",
     "_04_images/Pasted image 20260602115713.png",

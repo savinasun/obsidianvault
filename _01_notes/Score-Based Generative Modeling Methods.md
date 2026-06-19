@@ -2,7 +2,7 @@
 # **Score-Based Generative Modeling Methods**
 
 **Tags**:: #generative #dl_theo
-**Links**:: [[DDPM]] · [[MCMC]] · [[Manifold Hypothesis]] · [[ELBO]] · [Score-Based Generative Modeling](https://yang-song.net/blog/2021/score/)
+**Links**:: [[Autoencoder]] · [[DDPM]] · [[MCMC]] · [[Manifold Hypothesis]] · [[ELBO]] · [Score-Based Generative Modeling](https://yang-song.net/blog/2021/score/)
 
 ## Score Matching
 ---

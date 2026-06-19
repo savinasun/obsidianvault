@@ -2,7 +2,7 @@
 # **Latent Diffusion Model (LDM)**
 
 **Tags**:: #generative
-**Links**:: [[DDPM]] · [[Score-Based Generative Modeling Methods]] · [[VAE]] · [[ELBO]] · [[CLIP]] · [[FID]]
+**Links**:: [[Autoencoder]] · [[DDPM]] · [[Score-Based Generative Modeling Methods]] · [[VAE]] · [[ELBO]] · [[CLIP]] · [[FID]]
 
 
 **Latent Diffusion Models** ([Rombach et al., 2022](https://arxiv.org/abs/2112.10752)) apply the diffusion process in a **compressed latent space** rather than pixel space. This dramatically reduces computation while preserving image quality — enabling the training of high-resolution generative models at tractable cost. **Stable Diffusion** is the most prominent LDM.
