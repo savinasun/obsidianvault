@@ -2,7 +2,6 @@
 
 A living index organized by research direction. Each section corresponds to a distinct area of the ML landscape.
 
----
 
 ### Mathematics & Statistics
 
@@ -15,6 +14,7 @@ table tags as "Tags"
 from "_01_notes"
 WHERE contains(tags, "math")
 SORT file.name ASC
+limit 10
 ```
 
 
@@ -44,6 +44,7 @@ table tags as "Tags"
 from "_01_notes"
 WHERE contains(tags, "llm")
 SORT file.name ASC
+limit 10
 ```
 
 
@@ -58,6 +59,7 @@ table tags as "Tags"
 from "_01_notes"
 WHERE contains(tags, "vision")
 SORT file.name ASC
+limit 10
 ```
 
 
@@ -72,6 +74,7 @@ table tags as "Tags"
 from "_01_notes"
 WHERE contains(tags, "generative")
 SORT file.name ASC
+limit 10
 ```
 
 
@@ -86,4 +89,5 @@ table tags as "Tags"
 from "_01_notes"
 WHERE contains(tags, "rl")
 SORT file.name ASC
+limit 10
 ```
