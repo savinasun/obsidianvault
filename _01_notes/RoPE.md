@@ -77,6 +77,7 @@ $$
 $$
 
 + ![[rope_01.png|782]]
++ ![[rope_02.png|782]]
 
 ## YaRN (Yet another RoPE extensioN)
 ---

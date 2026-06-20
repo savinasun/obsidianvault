@@ -20,7 +20,7 @@ CoT Prompting = [[FSL|Few-Shot Learning]] + Reasoning
 > Q: If John has 5 apples and gives 2 away, how many does he have?
 > A: John starts with 5 apples. He gives 2 away. 5 − 2 = 3. The answer is 3.
 
-![[_02_references/wei2023/image-undefined-x102-y117.png]]
+![[wei2023_cot_example.png]]
 
 **Key finding**: CoT is an **emergent ability** — it only helps for models above ~100B parameters. Smaller models are not improved (and sometimes hurt) by CoT exemplars.
 
@@ -33,7 +33,7 @@ CoT Prompting = [[FSL|Few-Shot Learning]] + Reasoning
 
 This works because the model has seen similar reasoning patterns during pre-training. The phrase acts as a **soft prompt** that shifts the model into a reasoning mode.
 
-![[_02_references/wei2023/image-5-x305-y312.png | 500]]
+![[wei2023_cot_benchmark.png | 500]]
 
 ## Self-Consistency
 ---

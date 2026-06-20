@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "af24ced56aba489d",
+        "id": "3fe34f7e38decb9e",
         "type": "tabs",
         "children": [
           {
-            "id": "508f81551a217dfa",
+            "id": "39f44e5ebd6160c1",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "_02_references/su2023/rope_02.png"
+                "file": "_01_notes/LLaMA.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "rope_02"
+              "icon": "lucide-file",
+              "title": "LLaMA"
             }
           }
         ]
@@ -85,7 +87,7 @@
       {
         "id": "a1144893fcc3c039",
         "type": "tabs",
-        "dimension": 21.1864406779661,
+        "dimension": 21.186440677966104,
         "children": [
           {
             "id": "feb9ad2b5567d3d1",
@@ -133,7 +135,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_02_references/su2023/rope_02.png",
+                "file": "_01_notes/LLaMA.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +145,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for rope_02"
+              "title": "Backlinks for LLaMA"
             }
           },
           {
@@ -212,11 +214,21 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "508f81551a217dfa",
+  "active": "39f44e5ebd6160c1",
   "lastOpenFiles": [
-    "_02_references/su2023/rope_01.png",
-    "_02_references/su2023/rope_02.png",
+    "_01_notes/Activation Functions.md",
     "_00_maps_of_contents/dl_moc.md",
+    "_01_notes/RLHF.md",
+    "_02_references/su2023/rope_02.png",
+    "_04_images/xiao2024_attention_sink.png",
+    "_04_images/wei2023_cot_benchmark.png",
+    "_04_images/wei2023_cot_example.png",
+    "_04_images/image-6-x104-y597.png",
+    "_04_images/image-5-x104-y560.png",
+    "_04_images/image-4-x206-y296.png",
+    "_04_images/image-3-x173-y371.png",
+    "_04_images/grpo_loss_function.png",
+    "_04_images/rope_02.png",
     "_01_notes/DINO.md",
     "vision_ssl_moc.md",
     "_01_notes/FID.md",
@@ -230,7 +242,6 @@
     "_01_notes/ViT.md",
     "_01_notes/Mamba.md",
     "_01_notes/Hamming Loss.md",
-    "_01_notes/Activation Functions.md",
     "_00_maps_of_contents/math_moc.md",
     "_00_maps_of_contents/learning_methods_moc.md",
     "_00_maps_of_contents/generative_moc.md",
@@ -244,16 +255,7 @@
     "_01_notes/GPTs.md",
     "Untitled.base",
     "Untitled 1.base",
-    "_04_images/Pasted image 20260602115713.png",
-    "_04_images/Pasted image 20260601165600.png",
-    "_04_images/Pasted image 20260601164820.png",
-    "_04_images/Pasted image 20260601154614.png",
-    "_04_images/Pasted image 20260601151304.png",
     "Untitled",
-    "_04_images/Pasted image 20251008001324.png",
-    "_04_images/llms_08.png",
-    "_04_images/Pasted image 20251002004238.png",
-    "_04_images/llama_04.png",
     "_02_references/deepseek-ai2025",
     "_02_references/grattafiori2024",
     "_02_references/wei2023",

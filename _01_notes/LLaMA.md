@@ -78,3 +78,7 @@ the caching size is around $4MB$ per token
 ![[Pasted image 20251008001324.png]]
 ![[Pasted image 20251002004238.png]]
 DeepSeek R1 uses Multi-Head Latent Attention (MLA)
+
+## Llama 3
+---
+[Grattafiori et al., 2024](https://arxiv.org/abs/2407.21783) — **The Llama 3 Herd of Models** — scales to 405B parameters with a 128K token context window, natively supports multilinguality, coding, reasoning, and tool use. Llama 3 retains the core architectural choices of Llama 2 (GQA, RoPE, SwiGLU) while scaling pre-training data to ~15T tokens and adopting a more carefully curated post-training pipeline (SFT + RLHF). Multimodal (image, video, speech) variants were trained via a compositional approach, integrating modality-specific encoders into the frozen language backbone.

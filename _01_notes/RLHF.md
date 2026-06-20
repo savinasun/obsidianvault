@@ -78,7 +78,7 @@ $$
 
 ## GRPO (Group Relative Policy Optimization)
 ---
-Used in DeepSeek-R1 and other reasoning models. Rather than a separate reward model, GRPO uses **verifiable rewards** (e.g., math answer correctness) and groups $G$ responses to the same prompt:
+Used in [DeepSeek-R1](https://arxiv.org/abs/2501.12948) and other reasoning models. Rather than a separate reward model, GRPO uses **verifiable rewards** (e.g., math answer correctness) and groups $G$ responses to the same prompt:
 $$
 \hat{A}_i = \frac{r_i - \text{mean}(r_{1:G})}{\text{std}(r_{1:G})}
 $$
