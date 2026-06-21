@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Benchmark Datasets.md",
+                "file": "_01_notes/ImageNet.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Benchmark Datasets"
+              "title": "ImageNet"
             }
           }
         ]
@@ -216,6 +216,8 @@
   },
   "active": "e41d630fdbdb16d2",
   "lastOpenFiles": [
+    "_01_notes/BPE.md",
+    "_01_notes/Benchmark Datasets.md",
     "_01_notes/ImageNet.md",
     "_01_notes/Internal Covariate Shift.md",
     "_01_notes/FID.md",
@@ -252,8 +254,6 @@
     "_01_notes/Autoencoder.md",
     "_01_notes/RAE.md",
     "_01_notes/ELBO.md",
-    "_01_notes/LDM.md",
-    "_01_notes/VAE.md",
     "Untitled.canvas",
     "Untitled",
     "_02_references/deepseek-ai2025",
