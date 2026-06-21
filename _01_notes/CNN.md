@@ -7,6 +7,8 @@
 
 **CNNs** (Convolutional Neural Networks) dominated computer vision from ~2012 to ~2020. Their core inductive biases — **locality** and **translation equivariance** — are hard-coded into the architecture, making them highly data-efficient for image tasks. [[ViT|Vision Transformers]] have since matched or exceeded CNNs on large-scale datasets by learning these biases from data.
 
+![[cnn_architecture_overview.png|700]]
+
 ## Core Operations
 ---
 
@@ -38,6 +40,10 @@ CNNs hard-code two inductive biases:
 
 **Locality**: each output unit depends on a small *receptive field* of the input. Filters learn local features (edges, textures) that are compositioned hierarchically into global features (objects).
 
+The receptive field $r_0$ of the first layer feature map with respect to the input is computed as:
+![[cnn_receptive_field_formula.png|400]]
+![[cnn_receptive_field_diagram.png|350]]
+
 **Translation equivariance**: applying the same filter at every position → a shifted input produces a shifted output. (Pooling breaks exact equivariance → approximate translation *invariance*.)
 
 **Parameter sharing**: the same filter weights are applied at every spatial location — dramatically reduces parameters vs. a fully-connected layer.
@@ -66,6 +72,8 @@ y = F(x, W) + x
 $$
 The layer only needs to learn the **residual** $F(x) = y - x$ rather than the full transformation. This solves the **degradation problem**: adding more layers without skip connections hurts training (not overfitting — the training loss itself worsens). ResNets trained with 50, 101, and 152 layers.
 
+![[cnn_residual_depth_accuracy.png|500]]
+
 Skip connections are now universal: used in [[Transformer|Transformers]], [[U-Net|U-Nets]], [[DDPM|diffusion models]], etc.
 
 ### EfficientNet (Tan & Le, 2019)
@@ -74,6 +82,10 @@ $$
 d = \alpha^\phi, \quad w = \beta^\phi, \quad r = \gamma^\phi, \quad \text{s.t.} \; \alpha\beta^2\gamma^2 \approx 2
 $$
 The constraint ensures compute doubles with each $\phi$ increment. Achieves better accuracy-efficiency tradeoff than scaling any single dimension.
+
+ImageNet accuracy vs. receptive field size and accuracy vs. throughput across major architectures:
+![[cnn_imagenet_receptive_field.png|600]]
+![[cnn_architecture_throughput.png|600]]
 
 ## Object Detection
 ---
@@ -87,6 +99,24 @@ Detection extends classification to predicting **bounding boxes** and **class la
 3. Repeat
 
 **R-CNN family**: propose candidate regions first, then classify each region. Slower but more accurate for dense scenes.
+
+## Neural Style Transfer
+---
+[Gatys et al., 2015](https://arxiv.org/abs/1508.06576). Uses a pretrained CNN (VGG) to transfer the *style* of one image onto the *content* of another by optimizing a generated image against two CNN-derived losses.
+
+**Content loss**: measures how much the generated image $p$ differs from the content image $x$ at layer $l$ — directly compares feature activations.
+
+**Style loss**: measures style similarity via the **Gram matrix** of feature maps $F^l \in \mathbb{R}^{N_l \times M_l}$ (channels × spatial positions):
+
+![[cnn_style_transfer_gram_matrix.png|350]]
+
+The Gram matrix $G^l_{ij} = \sum_k F^l_{ik} F^l_{jk}$ captures pairwise channel correlations — the "texture statistics" — independent of spatial layout. Style loss minimizes the difference between the Gram matrices of the generated and style images.
+
+**Total loss** combines content and style terms:
+
+![[cnn_style_transfer_loss.png|500]]
+
+where $\alpha$ controls content fidelity and $\beta$ controls style strength. Optimization is run on the generated image pixels via gradient descent.
 
 ## Transition to ViTs
 ---

@@ -39,6 +39,8 @@ where $\mu_\mathcal{B} = \frac{1}{B}\sum_b x_{b,i}$ and $\sigma^2_\mathcal{B} = 
 
 $\gamma, \beta$ are learned scale and shift parameters that restore representational capacity.
 
+![[normalization_layer_mapping.png|400]]
+
 **At inference**: uses running statistics (exponential moving averages of $\mu_\mathcal{B}$, $\sigma^2_\mathcal{B}$ accumulated during training) rather than batch statistics.
 
 **Strengths**:

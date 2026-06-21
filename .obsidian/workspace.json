@@ -11,12 +11,10 @@
             "id": "c5d6bd35fc7770f3",
             "type": "leaf",
             "state": {
-              "type": "image",
-              "state": {
-                "file": "_04_images/Pasted image 20250513110529.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250513110529"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -214,17 +212,17 @@
   },
   "active": "c5d6bd35fc7770f3",
   "lastOpenFiles": [
-    "_04_images/Pasted image 20250513110512.png",
-    "_04_images/Pasted image 20250513110442.png",
-    "_04_images/Pasted image 20250513110403.png",
-    "_04_images/Pasted image 20250513110349.png",
-    "_04_images/Pasted image 20250513110318.png",
-    "_04_images/Pasted image 20250513110300.png",
-    "_04_images/Pasted image 20250513105438.png",
-    "_04_images/mcmc_sampling.png",
-    "_04_images/Pasted image 20250513110615.png",
-    "_04_images/Pasted image 20250513110610.png",
-    "_04_images/Pasted image 20250513110544.png",
+    "_04_images/Pasted image 20250513110529.png",
+    "_04_images/ldm_architecture.png",
+    "_04_images/dino_self_attention_viz.png",
+    "_04_images/attention_complexity_table.png",
+    "_04_images/fid_chisquared_distance.png",
+    "_04_images/cnn_style_transfer_loss.png",
+    "_04_images/cnn_style_transfer_gram_matrix.png",
+    "_04_images/cnn_architecture_throughput.png",
+    "_04_images/cnn_residual_depth_accuracy.png",
+    "_04_images/cnn_receptive_field_diagram.png",
+    "_04_images/cnn_receptive_field_formula.png",
     "_00_maps_of_contents/dl_moc.md",
     "Untitled.base",
     "Untitled 1.base",

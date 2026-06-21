@@ -19,6 +19,8 @@ LDMs compress the image to a much smaller latent $z \in \mathbb{R}^{h \times w \
 ## Architecture: Two-Stage Design
 ---
 
+![[ldm_architecture.png|700]]
+
 ### Stage 1: Perceptual Compression (VAE)
 A [[VAE]]-based **encoder–decoder** pair is trained to compress and reconstruct images:
 

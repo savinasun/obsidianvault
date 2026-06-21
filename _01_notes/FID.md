@@ -64,6 +64,14 @@ Lower is always better; comparisons are only valid when using the **same referen
 
 In practice, text-to-image models report both FID (realism + diversity) and CLIP Score (text alignment) together — neither alone is sufficient.
 
+## Distribution Distance Metrics
+---
+FID uses Wasserstein-2 (Fréchet) distance under a Gaussian assumption. A related alternative is the **chi-squared distance**, which compares normalized histogram counts or feature distributions:
+
+![[fid_chisquared_distance.png|400]]
+
+The symmetric chi-squared divergence $X^2 = \frac{1}{2}\sum_i \frac{(x_i - y_i)^2}{x_i + y_i}$ is zero when $x = y$ and unbounded as distributions diverge, but unlike FID it does not capture covariance structure. FID's Gaussian assumption gives it better sensitivity to both mean shift and spread mismatch.
+
 ## Limitations
 ---
 - **Inception bias**: Inception v3 was trained on ImageNet. FID reflects "ImageNet-likeness" — a photorealistic painting may score poorly even if high quality

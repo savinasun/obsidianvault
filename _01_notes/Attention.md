@@ -169,3 +169,10 @@ This is achieved by interleaving two heads' tokens into a single doubled-length 
 - Every head has its **own** Q, K, and V (no sharing)
 - Purpose: **cross-head communication** within a single layer
 - Tradeoff: the effective window size is halved (since `T` doubles but the sliding window `bm_size` stays the same), so it's only used on selected layers.
+## Computational Complexity
+---
+From [Vaswani et al., 2017](https://arxiv.org/abs/1706.03762) Table 1 — comparing per-layer complexity, sequential operations, and maximum path length across layer types ($n$ = sequence length, $d$ = representation dimension, $k$ = kernel size):
+
+![[attention_complexity_table.png|700]]
+
+Self-attention's $O(n^2 \cdot d)$ complexity is the bottleneck for long sequences — all $n^2$ token pairs must be compared. This motivates [[Linear Attention]] and other efficient attention variants that reduce this to $O(n \cdot d^2)$.

@@ -48,6 +48,7 @@ The most remarkable finding of the DINO paper was the set of properties that eme
 
 * **High-Quality Semantic Segmentation:** The **self-attention maps from the final layer** of the ViT model naturally segment objects from the background. By visualizing the attention of the `[CLS]` token, one can produce object masks of surprising quality.
 ![[dino_02.png|350]]
+![[dino_self_attention_viz.png]]
 * **Feature Re-use:** DINO-trained ViTs learn features that are highly effective for downstream tasks like image classification, even when using a simple k-NN classifier on the frozen features.
 ![[dino_03.png]]
 

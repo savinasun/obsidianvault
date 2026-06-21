@@ -25,6 +25,8 @@ $$
 - Smaller $B$ → noisier gradients act as **implicit regularization**, favoring flat minima
 - Typical values: 256–4096 for image models; 1M–4M tokens per step for LLMs
 
+![[optimization_minibatch_tips.png|600]]
+
 The **critical batch size** $B_\text{crit}$ is where noise and curvature balance — training beyond it gives diminishing returns per step.
 
 ### Stochastic Gradient Descent (SGD)
@@ -32,6 +34,8 @@ $$
 \theta_{t+1} = \theta_t - \eta \nabla_\theta \mathcal{L}(\theta_t; \mathcal{B}_t)
 $$
 where $\mathcal{B}_t$ is a mini-batch. Pure SGD is rarely used for deep learning — momentum is almost always added.
+
+![[optimization_sgd_vs_gd.png|500]]
 
 ### SGD with Momentum
 $$

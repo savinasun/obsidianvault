@@ -88,6 +88,8 @@ Artificially expand the training set by applying label-preserving transformation
 ---
 Monitor the **validation loss** during training; stop when it stops decreasing (or starts increasing). Prevents the model from memorizing training noise in the later training phases.
 
+![[regularization_overfitting_curve.png|600]]
+
 **Practical note**: in overparameterized models ([[Double Descent]]), early stopping can avoid the interpolation threshold peak. However, training *past* this threshold often recovers generalization. Modern practice (large transformers) is to train to completion with a proper learning rate schedule rather than using early stopping.
 
 ## Entropy Regularization
