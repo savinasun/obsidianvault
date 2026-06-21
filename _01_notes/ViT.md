@@ -13,7 +13,7 @@ The solution was to **reshape the image into a sequence of flattened patches**.
 ## Architecture
 ---
 The ViT architecture can be broken down into a few key steps:
-![[ViT.png]]
+![[vit_architecture.png]]
 ### A. Image Patching and Embedding
 
 1.  **Split into Patches:** An input image is divided into a grid of fixed-size, non-overlapping patches. For example, a 224x224 image might be split into a 14x14 grid of 16x16 pixel patches.

@@ -6,7 +6,7 @@
 
 ## Definition
 ---
-If $A\in\mathbb{R}^{m\times n}$, then $U$ and $V$ are guaranteed to be real orthogonal matrices and $$A = U\Sigma V^T \in \mathbb{R}^{m\times n}$$![[SVD_01.png|500]]
+If $A\in\mathbb{R}^{m\times n}$, then $U$ and $V$ are guaranteed to be real orthogonal matrices and $$A = U\Sigma V^T \in \mathbb{R}^{m\times n}$$![[svd_01.png|500]]
 + $U \in \mathbb{R}^{m\times m}$: orthogonal matrix
 + $V \in \mathbb{R}^{n\times n}$: orthogonal matrix
 + $\Sigma \in \mathbb{R}^{m\times n}$: a rectangle diagonal matrix whose diagonal entries are non-negative
@@ -37,7 +37,7 @@ $$
 Geometrically, Σ maps the j‑th unit coordinate vector of n‑dimensional space to the j‑th coordinate vector of m‑dimensional space, scaled by the factor σj.
 
 SVD finds the direction which stretches a unit vector the most
-![[SVD_02.png|500]]
+![[svd_02.png|500]]
 **Theorem**. Let $A\in\mathbb{R}^{m\times n}$, then the largest singular value of $A$ is given by
 $$
 \sigma_1 = \max\limits_{x\in \mathbb{R}^{n\times 1}, \|x\|=1}{\|Ax\|}

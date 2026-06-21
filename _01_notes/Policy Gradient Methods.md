@@ -22,7 +22,7 @@ $$A^{\pi}(s,a) = Q^{\pi}(s,a) - V^{\pi}(s)$$
 **PPO (Clipping)**: PPO uses a clipping function that modifies the objective function to restrict the size of policy updates:
 $$L^{CLIP}(θ)=E_t​[min(r_t​(θ)A_t​,clip(r_t​(θ), 1−ϵ, 1+ϵ)A_t​)]$$
 
-![[RLHF.png]]
+![[rlhf_pipeline.png]]
 
 
 
@@ -48,7 +48,7 @@ $$L^{CLIP}(θ)=E_t​[min(r_t​(θ)A_t​,clip(r_t​(θ), 1−ϵ, 1+ϵ)A_t​)
 + **An on-policy algorithm**: this means the agent learns from its own experiences, updating the policy it uses to act based on the outcomes of those actions.
 
 + **Loss Function**: 
-	![[grpo_loss_function.png]]
+	![[policy_gradient_grpo_loss.png]]
 	
 + **Advantage**: Normalized rewards scores
 $$A_i = \frac{r_i - mean(r_1, r_2, \dots, r_G)}{std(r_1, r_2, \dots, r_G)}, $$

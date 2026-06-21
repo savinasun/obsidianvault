@@ -75,8 +75,8 @@ the caching size is around $4MB$ per token
 ## Grouped-Query Attention (GQA)
 ---
 + **Grouped-Query attention (GQA)**, is an evolution of MQA and strikes a balance by using an intermediate number of key-value heads (more than one but fewer than the query heads). The GQA model efficiently breaks the **query** into `n_heads` segments like the original **multi-head attention**, and the key and value are divided into `n_kv_heads`groups, ==enabling multiple key-value heads to share the same query.==
-![[Pasted image 20251008001324.png]]
-![[Pasted image 20251002004238.png]]
+![[llama_mha_variants.png]]
+![[llama_gqa_comparison.png]]
 DeepSeek R1 uses Multi-Head Latent Attention (MLA)
 
 ## Llama 3

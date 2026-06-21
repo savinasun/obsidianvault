@@ -17,7 +17,7 @@ $$
 - If each factor has norm $< 1$: gradient vanishes exponentially → early layers learn nothing
 - If each factor has norm $> 1$: gradient explodes exponentially → training diverges
 
-![[Pasted image 20250513105524.png]]
+![[nn_init_xavier_he.png]]
 
 ## Zero Initialization: Why It Fails
 ---
@@ -45,7 +45,7 @@ W \sim U\!\left[-\sqrt{\frac{6}{n_\text{in} + n_\text{out}}},\, \sqrt{\frac{6}{n
 W \sim \mathcal{N}\!\left(0,\, \frac{2}{n_\text{in} + n_\text{out}}\right)
 $$
 
-![[Pasted image 20250513105559.png]]
+![[nn_init_variance_analysis.png]]
 ![[initialization_02.png]]
 
 **PyTorch**: `torch.nn.init.xavier_uniform_` / `xavier_normal_`

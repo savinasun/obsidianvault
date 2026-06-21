@@ -11,7 +11,7 @@ The Transformer ([Vaswani et al., 2017](https://arxiv.org/abs/1706.03762)) intro
 ---
 The original Transformer is an **encoder-decoder** model for tasks like machine translation where input and output distributions differ.
 
-![[image-3-x173-y371.png|300]]
+![[transformer_encoder_decoder.png|300]]
 
 ### Encoder
 Maps an input sequence $x_{1:n}$ to **context-aware embeddings** $z_{1:n}$:
@@ -97,7 +97,7 @@ For sequence length $n$ and model dimension $d$:
 
 Self-attention dominates when $n \gg d$; FFN dominates when $d \gg n$.
 
-![[image-6-x104-y597.png]]
+![[transformer_attention_complexity.png]]
 
 **Efficient attention variants** address the $O(n^2)$ bottleneck: sparse attention, local/sliding-window attention (Longformer), [[Linear Attention]], FlashAttention (IO-aware exact computation).
 

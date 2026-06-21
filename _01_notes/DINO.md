@@ -16,7 +16,7 @@ DINO is a specific SSL method that uses a form of knowledge distillation, but wi
 ## Framework
 ---
 The core idea of DINO is to train a **student network** ($g_{\theta_s}$) to match the output of a **teacher network** ($g_{\theta_t}$). The key is that both networks have the same architecture, but the teacher's weights are an exponential moving average (EMA) of the student's weights.
-![[DINO_01.png|350]]
+![[dino_01.png|350]]
 ### Student-Teacher Architecture
 + **Teacher Network ($g_{\theta_t}$):** 
 	Vit-Large, it is already trained, strong and slow.
@@ -47,9 +47,9 @@ The update rule for the **teacher** is: $\theta_t \leftarrow \lambda \theta_t + 
 The most remarkable finding of the DINO paper was the set of properties that emerged in the [[ViT|Vision Transformer]] (ViT) architecture when trained with this method, without any explicit supervision for these tasks.
 
 * **High-Quality Semantic Segmentation:** The **self-attention maps from the final layer** of the ViT model naturally segment objects from the background. By visualizing the attention of the `[CLS]` token, one can produce object masks of surprising quality.
-![[DINO_02.png|350]]
+![[dino_02.png|350]]
 * **Feature Re-use:** DINO-trained ViTs learn features that are highly effective for downstream tasks like image classification, even when using a simple k-NN classifier on the frozen features.
-![[DINO_03.png]]
+![[dino_03.png]]
 
 
 ## DINOv2: Scaling Self-Supervision for Foundation Models

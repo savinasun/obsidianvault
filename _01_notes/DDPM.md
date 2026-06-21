@@ -4,7 +4,7 @@
 **Links**:: [[Score-Based Generative Modeling Methods]] · [[MCMC]] · [[LDM]] · [[VAE]] · [[ELBO]] · [[FID]]
 
 DDPM; [Ho et al. 2020](https://arxiv.org/abs/2006.11239) defines a Markov chain of diffusion steps to slowly add random noise to data and then learn to reverse the diffusion process to construct desired data samples from the noise.
-![[Pasted image 20260601154614.png]]
+![[ddpm_forward_backward.png]]
 
 ## Forward Diffusion Process
 ---
@@ -38,7 +38,7 @@ $$
 p_{\theta}(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_{\theta}(x_t, t), \Sigma(x_t, t))
 $$
  
- ![[Pasted image 20260601151304.png]]
+ ![[ddpm_reverse_process.png]]
 
 ## Training Objective
 ---

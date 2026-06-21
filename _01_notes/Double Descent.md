@@ -70,7 +70,7 @@ Error
 - Training epochs (epoch-wise double descent: even for fixed-size models, test error peaks early then decreases with more training)
 - Dataset size (for fixed model, adding more data can initially *hurt* near the interpolation threshold)
 
-![[Pasted image 20250513110154.png]]
+![[double_descent_curve.png]]
 
 Key findings:
 - Occurs in ResNets, CNNs, and Transformers

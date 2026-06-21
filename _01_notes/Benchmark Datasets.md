@@ -40,7 +40,7 @@ Modern alternatives: **ROUGE** (recall-oriented, used for summarization), **BERT
 + Focus on multi-step mathematical reasoning
 + [GSM8K](https://paperswithcode.com/dataset/gsm8k), 
 + [Arithmetic Reasoning on GSM8K](https://paperswithcode.com/sota/arithmetic-reasoning-on-gsm8k)
-![[Pasted image 20250530224146.png]]
+![[benchmark_datasets_overview.png]]
 
 ### Harder Endings, Longer contexts, and Low-shot Activities for Situations With Adversarial Generations (Hellaswag)
 + Harder Endings, Longer contexts, and Low-shot Activities for Situations With Adversarial Generations

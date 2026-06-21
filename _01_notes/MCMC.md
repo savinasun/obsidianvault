@@ -18,7 +18,7 @@
 4. **Accept** $x^*$ if $u \le f(x^*)$; **reject** otherwise
 5. Accepted samples are distributed as $f$
 
-![[Pasted image 20260602115713.png]]
+![[mcmc_sampling.png]]
 
 **Limitation**: acceptance rate $= 1/M$ decreases exponentially in high dimensions — unusable for deep learning applications.
 
