@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[sequence_llms_moc]]
+### [[dl_moc]]
 # **Large Language Models**
 
 **Tags**:: #llm #architecture

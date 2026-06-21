@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[learning_methods_moc]]
+### [[dl_moc]]
 # **Activation Functions**
 
 **Tags**:: #architecture #dl_theo

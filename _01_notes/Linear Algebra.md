@@ -1,4 +1,4 @@
-### [[dl_moc]] · [[math_moc]]
+### [[dl_moc]]
 # **Linear Algebra**
 
 **Tags**:: #math
