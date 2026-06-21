@@ -11,10 +11,14 @@
             "id": "c5d6bd35fc7770f3",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "_01_notes/FID.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "FID"
             }
           }
         ]
@@ -29,7 +33,7 @@
       {
         "id": "b8e2a895956801b3",
         "type": "tabs",
-        "dimension": 50.859950859950864,
+        "dimension": 45.280437756497946,
         "children": [
           {
             "id": "31f305f0b8239a5f",
@@ -59,7 +63,7 @@
       {
         "id": "a9a455c0b9c6b057",
         "type": "tabs",
-        "dimension": 24.57002457002457,
+        "dimension": 27.359781121751027,
         "children": [
           {
             "id": "f4bdddf87b272eb0",
@@ -67,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "inceptio",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -83,7 +87,7 @@
       {
         "id": "a1144893fcc3c039",
         "type": "tabs",
-        "dimension": 24.57002457002457,
+        "dimension": 27.359781121751027,
         "children": [
           {
             "id": "feb9ad2b5567d3d1",
@@ -212,24 +216,24 @@
   },
   "active": "c5d6bd35fc7770f3",
   "lastOpenFiles": [
-    "_04_images/Pasted image 20250513110529.png",
-    "_04_images/ldm_architecture.png",
-    "_04_images/dino_self_attention_viz.png",
-    "_04_images/attention_complexity_table.png",
-    "_04_images/fid_chisquared_distance.png",
-    "_04_images/cnn_style_transfer_loss.png",
-    "_04_images/cnn_style_transfer_gram_matrix.png",
-    "_04_images/cnn_architecture_throughput.png",
-    "_04_images/cnn_residual_depth_accuracy.png",
-    "_04_images/cnn_receptive_field_diagram.png",
-    "_04_images/cnn_receptive_field_formula.png",
+    "_04_images/policy_gradient_grpo_loss.png",
+    "_04_images/optimization_minibatch_tips.png",
+    "_04_images/normalization_layer_mapping.png",
+    "_04_images/nn_init_xavier_he.png",
+    "_04_images/nn_init_variance_analysis.png",
+    "_04_images/mcmc_sampling.png",
+    "_04_images/transformer_attention_complexity.png",
+    "_04_images/transformer_architecture.png",
+    "_04_images/svd_02.png",
+    "_04_images/svd_01.png",
+    "_04_images/rope_02.png",
+    "_01_notes/FID.md",
     "_00_maps_of_contents/dl_moc.md",
     "Untitled.base",
     "Untitled 1.base",
     "Pasted image 20250513105622.png.md",
     "_03_templates/literature-source-template.md",
     "_03_templates/knowledge-integration-note.md",
-    "_01_notes/FID.md",
     "learning_methods_moc.md",
     "_01_notes/LLaMA.md",
     "_01_notes/Activation Functions.md",
