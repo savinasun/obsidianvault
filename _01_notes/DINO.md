@@ -2,7 +2,7 @@
 # **Self-Distillation with No Labels**
 
 **Tags**:: #vision #learning
-**Links**:: [[ViT]] · [[CLIP]] · [[Contrastive Learning]] · [[Transformer]] · [[Attention]]
+**Links**:: [[ViT]] · [[CLIP]] · [[Contrastive Learning]] · [[Transformer]] · [[Attention]] · [[ImageNet]]
 
 ## Introduction
 ---

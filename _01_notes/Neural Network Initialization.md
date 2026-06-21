@@ -60,9 +60,6 @@ For ReLU: $\mathbb{E}[\text{ReLU}(z)^2] = \frac{1}{2} \text{Var}(z)$ (half the v
 $$
 W \sim \mathcal{N}\!\left(0,\, \frac{2}{n_\text{in}}\right)
 $$
-
-![[Pasted image 20250513105622.png]]
-
 **PyTorch**: `torch.nn.init.kaiming_uniform_` / `kaiming_normal_`
 
 **Mode**: use `fan_in` (default) to preserve variance in the forward pass; use `fan_out` to preserve backward gradients.

@@ -2,7 +2,7 @@
 # **Convolutional Neural Networks**
 
 **Tags**:: #architecture #vision
-**Links**:: [[ViT]] · [[U-Net]] · [[Neural Network Initialization]] · [[Normalization]] · [[Activation Functions]] · [[Regularization]]
+**Links**:: [[ViT]] · [[U-Net]] · [[Neural Network Initialization]] · [[Normalization]] · [[Activation Functions]] · [[Regularization]] · [[ImageNet]]
 
 
 **CNNs** (Convolutional Neural Networks) dominated computer vision from ~2012 to ~2020. Their core inductive biases — **locality** and **translation equivariance** — are hard-coded into the architecture, making them highly data-efficient for image tasks. [[ViT|Vision Transformers]] have since matched or exceeded CNNs on large-scale datasets by learning these biases from data.

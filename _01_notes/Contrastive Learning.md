@@ -2,7 +2,7 @@
 # **Contrastive Learning**
 
 **Tags**:: #vision #learning
-**Links**:: [[Autoencoder]] · [[CLIP]] · [[DINO]] · [[Manifold Hypothesis]] · [[Entropy]] · [[FSL]]
+**Links**:: [[Autoencoder]] · [[CLIP]] · [[DINO]] · [[Manifold Hypothesis]] · [[Entropy]] · [[FSL]] · [[ImageNet]]
 
 
 **Contrastive learning** is a self-supervised learning (SSL) paradigm that learns representations by pulling together embeddings of semantically similar (positive) pairs and pushing apart dissimilar (negative) pairs — without requiring human labels.

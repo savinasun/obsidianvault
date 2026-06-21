@@ -2,7 +2,7 @@
 # **Vision Transformer (ViT)**
 
 **Tags**:: #vision #architecture
-**Links**:: [[Transformer]] · [[DINO]] · [[CLIP]] · [[Attention]] · [[Contrastive Learning]]
+**Links**:: [[Transformer]] · [[DINO]] · [[CLIP]] · [[Attention]] · [[Contrastive Learning]] · [[ImageNet]]
 
 Prior to ViT, Convolutional Neural Networks (CNNs) were the undisputed standard for image recognition. CNNs use filters with local receptive fields to build up a hierarchical representation of an image.
 

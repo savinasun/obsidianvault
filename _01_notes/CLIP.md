@@ -2,7 +2,7 @@
 # **Contrastive Language-Image Pre-Training (CLIP)**
 
 **Tags**:: #vision #learning
-**Links**:: [[Contrastive Learning]] · [[VLM]] · [[DINO]] · [[ViT]]
+**Links**:: [[Contrastive Learning]] · [[VLM]] · [[DINO]] · [[ViT]] · [[ImageNet]]
 
 
 **CLIP** ([Radford et al., 2021](https://arxiv.org/abs/2103.00020)) learns visual representations by aligning images and text using a contrastive objective over massive internet-scale image–caption pairs. It enables **zero-shot transfer** to downstream vision tasks without any task-specific training.
