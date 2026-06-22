@@ -52,7 +52,7 @@ limit 10
 
 Visual architectures, self-supervised objectives (contrastive, distillation, masked modeling), and vision-language alignment.
 
-Key notes: [[ViT]] · [[DINO]] · [[MAE]] · [[CLIP]] · [[CNN]] · [[Contrastive Learning]] · [[ImageNet]]
+Key notes: [[ViT]] · [[DINO]] · [[MAE]] · [[CLIP]] · [[CNNs]] · [[Contrastive Learning]] · [[ImageNet]]
 
 ```dataview
 table tags as "Tags"

@@ -2,7 +2,7 @@
 # **Neural Network Fundamentals**
 
 **Tags**:: #architecture #dl_theo
-**Links**:: [[Activation Functions]] · [[Neural Network Initialization]] · [[Normalization]] · [[Regularization]] · [[Optimization Algorithms]] · [[CNN]] · [[RNN]] · [[Transformer]]
+**Links**:: [[Activation Functions]] · [[Neural Network Initialization]] · [[Normalization]] · [[Regularization]] · [[Optimization Algorithms]] · [[CNNs]] · [[RNN]] · [[Transformer]]
 
 
 This note is an index. The core topics have been split into focused notes.
@@ -20,7 +20,7 @@ This note is an index. The core topics have been split into focused notes.
 
 ## Architectures
 ---
-- **[[CNN]]** — Convolutional networks; inductive biases; LeNet → ResNet; object detection; ViT transition
+- **[[CNNs]]** — Convolutional networks; inductive biases; LeNet → ResNet; object detection; ViT transition
 - **[[RNN]]** — Recurrent networks; LSTM/GRU; vanishing gradients; why Transformers replaced RNNs
 - **[[Transformer]]** — Self-attention; encoder-decoder; Pre-LN; complexity; modern variants
 - **[[Mamba]]** — State space models; selective SSMs; Transformer vs. SSM tradeoffs

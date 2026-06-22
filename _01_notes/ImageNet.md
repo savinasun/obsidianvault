@@ -2,7 +2,7 @@
 # **ImageNet**
 
 **Tags**:: #vision #dl_theo
-**Links**:: [[CNN]] · [[ViT]] · [[DINO]] · [[MAE]] · [[Contrastive Learning]] · [[CLIP]] · [[FID]] · [[Normalization]] · [[Benchmark Datasets]]
+**Links**:: [[CNNs]] · [[ViT]] · [[DINO]] · [[MAE]] · [[Contrastive Learning]] · [[CLIP]] · [[FID]] · [[Normalization]] · [[Benchmark Datasets]]
 
 
 **ImageNet** is a large-scale image dataset and annual benchmark competition (ILSVRC) that catalyzed the deep learning revolution in computer vision. AlexNet's landmark 2012 win — beating the runner-up by ~10.8 percentage points — marked the moment the field shifted **from hand-crafted features to learned representations**.
@@ -27,6 +27,7 @@ Categories span animals, objects, instruments, vehicles, and more — selected t
 ## ILSVRC Winners: 2010–2017
 ---
 The **ImageNet Large Scale Visual Recognition Challenge (ILSVRC)** ran from 2010 to 2017. The progression traces the entire arc of modern deep learning for vision.
+![[bokeh_plot.png|450]]
 
 | Year | Winner | Top-5 Error | Key Innovation |
 |------|--------|-------------|----------------|
@@ -44,7 +45,7 @@ The **ImageNet Large Scale Visual Recognition Challenge (ILSVRC)** ran from 2010
 
 ## 2012: The AlexNet Moment
 ---
-[[CNN|AlexNet]] ([Krizhevsky, Sutskever & Hinton, 2012](https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf)) won by a gap the community had never seen — ~10.8 points over the runner-up. The prior ILSVRC improvements had been incremental; this was a discontinuity.
+[[CNNs|AlexNet]] ([Krizhevsky, Sutskever & Hinton, 2012](https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf)) won by a gap the community had never seen — ~10.8 points over the runner-up. The prior ILSVRC improvements had been incremental; this was a discontinuity.
 
 Key ingredients that made AlexNet work at scale:
 - **ReLU** activations — ~6× faster convergence than sigmoid/tanh; solved vanishing gradient for 8 layers
@@ -84,7 +85,7 @@ Similarly, three 3×3 convs cover the same field as one 7×7 — with 3× the no
 **Architecture**: 13 convolutional layers in blocks of identical width; max pooling halves resolution 5 times ($224 \to 7$); channel depth doubles at each block (64 → 128 → 256 → 512 → 512); three large FC layers at the top. The FC layers account for most of the 138M parameters — a major weakness.
 
 **Impact despite runner-up status**: VGGNet placed second to GoogLeNet in 2014 but dominated as the feature extractor of choice for years afterward:
-- Neural style transfer (Gram matrices over VGG feature maps — see [[CNN]])
+- Neural style transfer (Gram matrices over VGG feature maps — see [[CNNs]])
 - Early object detection (R-CNN family backbone)
 - Perceptual loss functions in image synthesis
 
@@ -256,7 +257,7 @@ Beyond benchmarking, "ImageNet-pretrained" became the default initialization for
 
 ## Relationship to Other Notes
 ---
-- [[CNN]] — the architectural evolution this competition drove: AlexNet → ZFNet → VGG → GoogLeNet → ResNet → EfficientNet
+- [[CNNs]] — the architectural evolution this competition drove: AlexNet → ZFNet → VGG → GoogLeNet → ResNet → EfficientNet
 - [[ViT]] — transformers eventually surpassed CNNs on ImageNet given sufficient pre-training scale
 - [[DINO]] — self-supervised ViT pre-training; DINOv2's LVD-142M is a curated superset of ImageNet
 - [[MAE]] — masked autoencoder pre-training; all evaluations use ImageNet-1K fine-tuning and linear probe

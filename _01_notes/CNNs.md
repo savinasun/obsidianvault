@@ -5,13 +5,12 @@
 **Links**:: [[ViT]] · [[U-Net]] · [[Neural Network Initialization]] · [[Normalization]] · [[Activation Functions]] · [[Regularization]] · [[ImageNet]]
 
 
-**CNNs** (Convolutional Neural Networks) dominated computer vision from ~2012 to ~2020. Their core inductive biases — **locality** and **translation equivariance** — are hard-coded into the architecture, making them highly data-efficient for image tasks. [[ViT|Vision Transformers]] have since matched or exceeded CNNs on large-scale datasets by learning these biases from data.
+**CNNs** (Convolutional Neural Networks) dominated computer vision from ~2012 to ~2020. Their core [[CNNs#Inductive Biases|inductive biases]] — **locality** and **translation equivariance** — are hard-coded into the architecture, making them highly data-efficient for image tasks. [[ViT|Vision Transformers]] have since matched or exceeded CNNs on large-scale datasets by learning these biases from data.
 
 ![[cnn_architecture_overview.png|700]]
 
 ## Core Operations
 ---
-
 ### Convolution
 A filter $W \in \mathbb{R}^{f \times f \times C_\text{in}}$ slides across the input and computes dot products at each location:
 $$
@@ -41,8 +40,8 @@ CNNs hard-code two inductive biases:
 **Locality**: each output unit depends on a small *receptive field* of the input. Filters learn local features (edges, textures) that are compositioned hierarchically into global features (objects).
 
 The receptive field $r_0$ of the first layer feature map with respect to the input is computed as:
-![[cnn_receptive_field_formula.png|400]]
-![[cnn_receptive_field_diagram.png|350]]
+![[cnn_receptive_field_formula.png|197]]
+![[cnn_receptive_field_diagram.png|186]]
 
 **Translation equivariance**: applying the same filter at every position → a shifted input produces a shifted output. (Pooling breaks exact equivariance → approximate translation *invariance*.)
 
@@ -84,9 +83,7 @@ $$
 The constraint ensures compute doubles with each $\phi$ increment. Achieves better accuracy-efficiency tradeoff than scaling any single dimension.
 
 ImageNet accuracy vs. receptive field size and accuracy vs. throughput across major architectures:
-![[cnn_imagenet_receptive_field.png|600]]
-![[cnn_architecture_throughput.png|600]]
-
+![[cnn_imagenet_receptive_field.png|434]]
 ## Object Detection
 ---
 Detection extends classification to predicting **bounding boxes** and **class labels** for multiple objects.
@@ -107,12 +104,15 @@ Detection extends classification to predicting **bounding boxes** and **class la
 **Content loss**: measures how much the generated image $p$ differs from the content image $x$ at layer $l$ — directly compares feature activations.
 
 **Style loss**: measures style similarity via the **Gram matrix** of feature maps $F^l \in \mathbb{R}^{N_l \times M_l}$ (channels × spatial positions):
-
-![[cnn_style_transfer_gram_matrix.png|350]]
-
-The Gram matrix $G^l_{ij} = \sum_k F^l_{ik} F^l_{jk}$ captures pairwise channel correlations — the "texture statistics" — independent of spatial layout. Style loss minimizes the difference between the Gram matrices of the generated and style images.
+$$
+G_{ij}^l = \sum\limits_{k} F_{ik}^{\ell} F_{jk}^{\ell}.
+$$
+The Gram matrix $G^l_{ij}$ captures pairwise channel correlations — the "texture statistics" — independent of spatial layout. Style loss minimizes the difference between the Gram matrices of the generated and style images.
 
 **Total loss** combines content and style terms:
+$$
+\mathcal{L}()
+$$
 
 ![[cnn_style_transfer_loss.png|500]]
 
