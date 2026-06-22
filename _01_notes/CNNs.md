@@ -40,7 +40,9 @@ CNNs hard-code two inductive biases:
 **Locality**: each output unit depends on a small *receptive field* of the input. Filters learn local features (edges, textures) that are compositioned hierarchically into global features (objects).
 
 The receptive field $r_0$ of the first layer feature map with respect to the input is computed as:
-![[cnn_receptive_field_formula.png|197]]
+$$
+r_0 = \sum\limits_{i=1}^L \left((k_i -1)\prod\limits_{j=1}^{\ell-1}s_j \right)+1
+$$
 ![[cnn_receptive_field_diagram.png|186]]
 
 **Translation equivariance**: applying the same filter at every position → a shifted input produces a shifted output. (Pooling breaks exact equivariance → approximate translation *invariance*.)
@@ -51,7 +53,6 @@ These biases explain why CNNs work well with limited data. [[ViT|Vision Transfor
 
 ## Classic Architectures
 ---
-
 ### LeNet-5 (LeCun, 1998)
 The original CNN. ~60K parameters. `Conv → Pool → Conv → Pool → FC → FC → output`. Demonstrated that learned features outperform hand-crafted features for digit recognition.
 
@@ -71,7 +72,7 @@ y = F(x, W) + x
 $$
 The layer only needs to learn the **residual** $F(x) = y - x$ rather than the full transformation. This solves the **degradation problem**: adding more layers without skip connections hurts training (not overfitting — the training loss itself worsens). ResNets trained with 50, 101, and 152 layers.
 
-![[cnn_residual_depth_accuracy.png|500]]
+![[cnn_residual_depth_accuracy.png|208]]
 
 Skip connections are now universal: used in [[Transformer|Transformers]], [[U-Net|U-Nets]], [[DDPM|diffusion models]], etc.
 
@@ -83,7 +84,7 @@ $$
 The constraint ensures compute doubles with each $\phi$ increment. Achieves better accuracy-efficiency tradeoff than scaling any single dimension.
 
 ImageNet accuracy vs. receptive field size and accuracy vs. throughput across major architectures:
-![[cnn_imagenet_receptive_field.png|434]]
+![[cnn_imagenet_receptive_field.png|328]]
 ## Object Detection
 ---
 Detection extends classification to predicting **bounding boxes** and **class labels** for multiple objects.
@@ -111,11 +112,8 @@ The Gram matrix $G^l_{ij}$ captures pairwise channel correlations — the "textu
 
 **Total loss** combines content and style terms:
 $$
-\mathcal{L}()
+\mathcal{L}_{total}(\vec{p},\vec{a},\vec{x}) = \alpha \mathcal{L}_{content}(\vec{p},\vec{x})+\beta\mathcal{L}_{style}(\vec{a},\vec{x})
 $$
-
-![[cnn_style_transfer_loss.png|500]]
-
 where $\alpha$ controls content fidelity and $\beta$ controls style strength. Optimization is run on the generated image pixels via gradient descent.
 
 ## Transition to ViTs
