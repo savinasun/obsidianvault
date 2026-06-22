@@ -16,7 +16,7 @@ Hand-crafted features and domain knowledge have been repeatedly outcompeted by g
 
 ## Deep Q-Network (DQN)
 ---
-DQN (Mnih et al., 2015) extends Q-learning to work with neural networks by addressing two key instabilities: **correlation between consecutive samples** and **non-stationary targets**.
+DQN ([Mnih et al., 2015](https://arxiv.org/abs/1312.5602)) extends Q-learning to work with neural networks by addressing two key instabilities: **correlation between consecutive samples** and **non-stationary targets**.
 
 **Core components**:
 
@@ -53,7 +53,7 @@ $$
 
 ## On-Policy: PPO
 ---
-**Proximal Policy Optimization** (Schulman et al., 2017) is the workhorse of modern deep RL. It constrains how much the policy can change per update by clipping the probability ratio $r_t(\theta) = \frac{\pi_\theta(a_t\mid s_t)}{\pi_{\theta_\text{old}}(a_t\mid s_t)}$:
+**Proximal Policy Optimization** ([Schulman et al., 2017](https://arxiv.org/abs/1707.06347)) is the workhorse of modern deep RL. It constrains how much the policy can change per update by clipping the probability ratio $r_t(\theta) = \frac{\pi_\theta(a_t\mid s_t)}{\pi_{\theta_\text{old}}(a_t\mid s_t)}$:
 
 $$
 \mathcal{L}^{\text{CLIP}}(\theta) = \mathbb{E}_t\left[\min\left(r_t(\theta)\hat{A}_t,\;\text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon)\hat{A}_t\right)\right]
@@ -66,7 +66,7 @@ Benefits: stable, simple to tune, works with continuous and discrete actions. Se
 
 ## Off-Policy: SAC (Soft Actor-Critic)
 ---
-SAC (Haarnoja et al., 2018) maximizes a **maximum entropy** objective — reward *plus* entropy of the policy:
+SAC ([Haarnoja et al., 2018](https://arxiv.org/abs/1801.01290)) maximizes a **maximum entropy** objective — reward *plus* entropy of the policy:
 $$
 J(\pi) = \sum_t \mathbb{E}\left[r(s_t, a_t) + \alpha \mathcal{H}(\pi(\cdot \mid s_t))\right]
 $$

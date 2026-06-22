@@ -58,6 +58,6 @@ The Qwen2.5-VL model ([Bai et al., 2025](https://arxiv.org/abs/2502.13923)) buil
 	+ **MM-Vet:** MM-Vet assesses a model’s ability to engage in visual conversations across various tasks, evaluating both the accuracy and helpfulness of responses using GPT-4. The dataset includes 200 images and 218 questions, each paired with corresponding ground truth answers.
 	+ VQAv2 GQA VizWiz SQAI VQAT MME MMBen SEEDI LLaVAW MM-Vet
 + **Visual Hallucination Task:** evaluates whether the response of the model is consistent with the image content to ensure the trustworthiness and reliability of the model
-	+ Example benchmarks: CHAIR (Rohrbach et al., 2018), POPE (Li et al., 2023c), and MMHal-Bench (Sun et al., 2023)
+	+ Example benchmarks: CHAIR ([Rohrbach et al., 2018](https://arxiv.org/abs/1809.02156)), POPE ([Li et al., 2023](https://arxiv.org/abs/2305.10355)), and MMHal-Bench ([Sun et al., 2023](https://arxiv.org/abs/2309.14525))
 + **Vision-Centric Task:** evaluates visual understanding capabilities, such as determining the spatial relationship between objects in the image
-	+ Example benchmarks: MMVP (Tong et al., 2024b), CV-Bench2D, and CV-Bench3D (Tong et al., 2024a).
+	+ Example benchmarks: MMVP ([Tong et al., 2024](https://arxiv.org/abs/2401.06209)), CV-Bench2D, and CV-Bench3D (Tong et al., 2024).

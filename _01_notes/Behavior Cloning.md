@@ -36,7 +36,7 @@ The error accumulates **quadratically**: a policy with per-step error $\epsilon$
 
 ## DAgger: Dataset Aggregation
 ---
-**DAgger** (Ross & Bagnell, 2011) fixes covariate shift by iteratively querying the expert at states the *learner* visits:
+**DAgger** ([Ross & Bagnell, 2011](https://arxiv.org/abs/1011.0686)) fixes covariate shift by iteratively querying the expert at states the *learner* visits:
 
 1. Train initial policy $\pi_1$ on demonstration data $\mathcal{D}_1$
 2. **Repeat** for iteration $i$:

@@ -79,7 +79,7 @@ Total cost: $O(nCd + nd^2/C)$, minimized at $C = d$ → $O(nd^{3/2})$. In practi
 ---
 
 ### Performer (2020)
-[Choromanski et al.](https://arxiv.org/abs/2009.14794) uses **random Fourier features** (FAVOR+) to construct an *unbiased* approximation of the softmax kernel:
+[Choromanski et al., 2020](https://arxiv.org/abs/2009.14794) uses **random Fourier features** (FAVOR+) to construct an *unbiased* approximation of the softmax kernel:
 $$
 \phi(x) = \frac{1}{\sqrt{m}} \left[\exp(\omega_r^\top x - \|\omega_r\|^2/2)\right]_{r=1}^m, \quad \omega_r \sim \mathcal{N}(0, I)
 $$
@@ -87,14 +87,14 @@ $$
 Unbiased but high-variance; memory cost shifts from $O(n^2)$ to $O(nm)$ where $m \ll n$.
 
 ### RWKV (2023)
-[Peng et al.](https://arxiv.org/abs/2305.13048) replaces attention with a **WKV** (weighted key-value) operator using time-decay:
+[Peng et al., 2023](https://arxiv.org/abs/2305.13048) replaces attention with a **WKV** (weighted key-value) operator using time-decay:
 $$
 \text{wkv}_t = \frac{\sum_{i<t} e^{-(t-1-i)w + k_i} v_i + e^{u+k_t} v_t}{\sum_{i<t} e^{-(t-1-i)w + k_i} + e^{u+k_t}}
 $$
 where $w$ is a learnable per-channel decay and $u$ is a bonus for the current token. Fully recurrent at inference; trained in parallel via prefix-sum.
 
 ### RetNet (2023)
-[Sun et al.](https://arxiv.org/abs/2307.08621) introduces a **retention** mechanism with three equivalent representations:
+[Sun et al., 2023](https://arxiv.org/abs/2307.08621) introduces a **retention** mechanism with three equivalent representations:
 - **Parallel**: like attention with a decay mask — trainable on GPU
 - **Recurrent**: $O(1)$ inference
 - **Chunkwise**: balanced efficiency
@@ -102,7 +102,7 @@ where $w$ is a learnable per-channel decay and $u$ is a bonus for the current to
 Retention uses a fixed geometric decay per head: $\gamma_h = 1 - 2^{-5 - h}$, and complex-valued rotations for positional encoding (analogous to [[RoPE]]).
 
 ### Gated Linear Attention (2023)
-[Yang et al.](https://arxiv.org/abs/2312.06635) extends linear attention with an **input-dependent gate**:
+[Yang et al., 2023](https://arxiv.org/abs/2312.06635) extends linear attention with an **input-dependent gate**:
 $$
 S_i = G_i \odot S_{i-1} + \phi(k_i) v_i^\top, \quad G_i = \sigma(W_g x_i)
 $$

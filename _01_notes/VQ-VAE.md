@@ -71,7 +71,7 @@ $$
 
 This two-stage approach cleanly separates perceptual compression (VQ-VAE) from sequence modeling (prior).
 
-## VQ-VAE-2 (Razavi et al., 2019)
+## VQ-VAE-2 ([Razavi et al., 2019](https://arxiv.org/abs/1906.00446))
 ---
 [VQ-VAE-2](https://arxiv.org/abs/1906.00446) scales up with a **hierarchical two-level codebook**:
 
@@ -86,7 +86,7 @@ $$
 
 VQ-VAE-2 produced samples that matched GAN quality on ImageNet ($256\times256$) — the first likelihood-based model to do so — by combining hierarchical structure with a powerful prior.
 
-## VQGAN (Esser et al., 2020 — "Taming Transformers")
+## VQGAN ([Esser et al., 2020](https://arxiv.org/abs/2012.09841) — "Taming Transformers")
 ---
 [VQGAN](https://arxiv.org/abs/2012.09841) improves VQ-VAE's reconstruction quality by replacing the pixel-level MSE loss with:
 

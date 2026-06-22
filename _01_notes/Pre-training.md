@@ -60,7 +60,7 @@ Historically, models pre-trained on ImageNet with supervised labels (class label
 
 ## Pre-training Scale and the Bitter Lesson
 ---
-Empirically, pre-training quality scales predictably with compute, data, and model size (see [[Scaling Laws]]). This is the foundation of the **bitter lesson** (Sutton, 2019): general methods that leverage computation eventually outperform hand-crafted inductive biases. Pre-training on massive corpora is the canonical example — a language model trained on enough text acquires emergent capabilities (reasoning, translation, coding) that were never explicitly trained for.
+Empirically, pre-training quality scales predictably with compute, data, and model size (see [[Scaling Laws]]). This is the foundation of the **bitter lesson** ([Sutton, 2019](http://www.incompleteideas.net/IncIdeas/BitterLesson.html)): general methods that leverage computation eventually outperform hand-crafted inductive biases. Pre-training on massive corpora is the canonical example — a language model trained on enough text acquires emergent capabilities (reasoning, translation, coding) that were never explicitly trained for.
 
 The [[Scaling Laws]] (Chinchilla) quantify this: loss follows a power law in both model parameters $N$ and training tokens $D$:
 $$

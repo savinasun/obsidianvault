@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "ff30bdd8519600c9",
+        "id": "0c3e727a02cf00d6",
         "type": "tabs",
         "children": [
           {
-            "id": "1630bdf8ecaf3f6f",
+            "id": "1e49970e7eebfbf5",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -210,7 +210,7 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "1630bdf8ecaf3f6f",
+  "active": "1e49970e7eebfbf5",
   "lastOpenFiles": [
     "_01_notes/DINO.md",
     "_00_maps_of_contents/dl_moc.md",

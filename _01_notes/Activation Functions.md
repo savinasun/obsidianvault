@@ -69,7 +69,8 @@ $$
 $$
 \textrm{FF}_{\textrm{SwiGLU}}(x, W, V, \beta, W_2) = \textrm{Swish}_{\beta}(xW) \otimes (xV)W_2.
 $$
-+ SwiGLU has since been adopted in a number of prominent LLMs including Google’s PaLM [22](https://dublog.net/blog/all-the-activations/#fn:22) and Meta’s Llama2 [23](https://dublog.net/blog/all-the-activations/#fn:23),[[LLaMA]]![[activation_functions_05.png]]
++ SwiGLU has since been adopted in a number of prominent LLMs including Google’s PaLM ([Chowdhery et al., 2022](https://arxiv.org/abs/2204.02311)) and Meta’s Llama 2 ([Touvron et al., 2023](https://arxiv.org/abs/2307.09288)) — see also [[LLaMA]]
+![[activation_functions_05.png]]
 + Notable models using SwiGLU: LLaMA, PaLM, Mistral, most models post 2023
 
 

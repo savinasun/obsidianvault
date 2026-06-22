@@ -240,7 +240,7 @@ Notable results after 2017:
 |-------|------|-------|-------|
 | [EfficientNet-L2 (NoisyStudent)](https://arxiv.org/abs/1911.04252) | 2020 | 88.4% | Semi-supervised; pseudo-label on 300M images |
 | [ViT-G/14](https://arxiv.org/abs/2106.04560) | 2022 | 90.45% | ~1.8B params, JFT-3B pre-training |
-| [[[DINO\|DINOv2]] (ViT-g)](https://arxiv.org/abs/2304.07193) | 2023 | 86.5% | **Self-supervised only** — no labels at any stage |
+| [[DINO|DINOv2]] (ViT-g) ([Oquab et al., 2023](https://arxiv.org/abs/2304.07193)) | 2023 | 86.5% | **Self-supervised only** — no labels at any stage |
 | [CoCa](https://arxiv.org/abs/2205.01068) | 2022 | 91.0% | Image-text contrastive + captioning pre-training |
 | [EVA-02](https://arxiv.org/abs/2303.11331) | 2023 | 90.0% | CLIP supervision + MAE-style reconstruction |
 

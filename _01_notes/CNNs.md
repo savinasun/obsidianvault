@@ -53,19 +53,19 @@ These biases explain why CNNs work well with limited data. [[ViT|Vision Transfor
 
 ## Classic Architectures
 ---
-### LeNet-5 (LeCun, 1998)
+### LeNet-5 ([LeCun et al., 1998](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf))
 The original CNN. ~60K parameters. `Conv → Pool → Conv → Pool → FC → FC → output`. Demonstrated that learned features outperform hand-crafted features for digit recognition.
 
-### AlexNet (Krizhevsky et al., [2012](https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf))
+### AlexNet ([Krizhevsky et al., 2012](https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf))
 Sparked the deep learning revolution by winning ImageNet 2012 by a large margin. ~60M parameters.
 - First large-scale use of **ReLU** (faster training than sigmoid/tanh)
 - Trained on two GPUs (data parallelism)
 - **Dropout** for regularization
 
-### VGG-16/19 (Simonyan & Zisserman, [2015](https://arxiv.org/abs/1409.1556))
+### VGG-16/19 ([Simonyan & Zisserman, 2014](https://arxiv.org/abs/1409.1556))
 ~138M parameters. Used only **3×3 convolutions** throughout — two stacked 3×3 convs have the same receptive field as one 5×5 but fewer parameters and more non-linearities. Showed deeper is better if kept simple and uniform.
 
-### ResNet (He et al., [2015](https://arxiv.org/abs/1512.03385))
+### ResNet ([He et al., 2015](https://arxiv.org/abs/1512.03385))
 Introduced **skip connections** (residual connections) that let the gradient flow directly:
 $$
 y = F(x, W) + x
@@ -76,7 +76,7 @@ The layer only needs to learn the **residual** $F(x) = y - x$ rather than the fu
 
 Skip connections are now universal: used in [[Transformer|Transformers]], [[U-Net|U-Nets]], [[DDPM|diffusion models]], etc.
 
-### EfficientNet (Tan & Le, 2019)
+### EfficientNet ([Tan & Le, 2019](https://arxiv.org/abs/1905.11946))
 Jointly scales **depth** (layers), **width** (channels), and **resolution** (input size) via a **compound scaling** coefficient $\phi$:
 $$
 d = \alpha^\phi, \quad w = \beta^\phi, \quad r = \gamma^\phi, \quad \text{s.t.} \; \alpha\beta^2\gamma^2 \approx 2
@@ -85,6 +85,7 @@ The constraint ensures compute doubles with each $\phi$ increment. Achieves bett
 
 ImageNet accuracy vs. receptive field size and accuracy vs. throughput across major architectures:
 ![[cnn_imagenet_receptive_field.png|328]]
+![[cnn_architecture_throughput.png|450]]
 ## Object Detection
 ---
 Detection extends classification to predicting **bounding boxes** and **class labels** for multiple objects.
@@ -118,7 +119,7 @@ where $\alpha$ controls content fidelity and $\beta$ controls style strength. Op
 
 ## Transition to ViTs
 ---
-[[ViT|Vision Transformers]] (Dosovitskiy et al., 2021) replaced the convolution inductive bias with global self-attention. Key tradeoffs:
+[[ViT|Vision Transformers]] ([Dosovitskiy et al., 2021](https://arxiv.org/abs/2010.11929)) replaced the convolution inductive bias with global self-attention. Key tradeoffs:
 
 | | CNN | ViT |
 |--|-----|-----|

@@ -73,4 +73,4 @@ CLIP embeddings are widely used as the **visual backbone** in [[VLM]] systems: t
 ---
 CLIP was trained on 400M image–text pairs (WIT dataset). Scale is critical: smaller CLIP models show poor zero-shot performance; the largest ViT-L/14 variant achieves 76.2% zero-shot on ImageNet, competitive with supervised ResNet-50 at 76.1%.
 
-**SigLIP** (Google, 2023): replaces the softmax normalization in InfoNCE with a sigmoid-based pairwise loss, removing the need for a large batch to form negatives — more training efficient.
+**SigLIP** ([Zhai et al., 2023](https://arxiv.org/abs/2303.15343)): replaces the softmax normalization in InfoNCE with a sigmoid-based pairwise loss, removing the need for a large batch to form negatives — more training efficient.

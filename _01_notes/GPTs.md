@@ -33,13 +33,13 @@
 
 
 ### GPT-2
-- [[Radford et al., 2019](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf), [Language Models are Unsupervised Multitask Learners](https://paperswithcode.com/paper/language-models-are-unsupervised-multitask)]
+- [Radford et al., 2019](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf), [Language Models are Unsupervised Multitask Learners](https://paperswithcode.com/paper/language-models-are-unsupervised-multitask)
 - ~1.5 billion parameters
 - a **zero-shot** learner
 
 
 ### GPT-3
-- [[Brown et al., 2020](https://arxiv.org/abs/2005.14165v4), [Language Models are Few-Shot Learners](https://paperswithcode.com/paper/language-models-are-few-shot-learners)]
+- [Brown et al., 2020](https://arxiv.org/abs/2005.14165), [Language Models are Few-Shot Learners](https://paperswithcode.com/paper/language-models-are-few-shot-learners)
 - ~175 billion parameters
 - no fine-tuning + no gradient update in few-shot learning
 - as you increase the layers, the width per layer should also be increased

@@ -28,13 +28,13 @@ The bottleneck prevents the trivial identity solution — the model must compres
 ## History and Advancements
 ---
 
-### 1986 — Original Autoencoder (Rumelhart, Hinton & Williams)
+### 1986 — Original Autoencoder (Rumelhart et al., 1986)
 Introduced as part of the backpropagation paper as a demonstration that hidden representations could be learned unsupervised. A shallow network was trained to reconstruct its input through a narrow bottleneck — conceptually equivalent to **nonlinear PCA**. At the time, limited to shallow architectures due to vanishing gradients.
 
-### 2006 — Deep Autoencoders and Layer-Wise Pre-Training (Hinton & Salakhutdinov)
+### 2006 — Deep Autoencoders and Layer-Wise Pre-Training ([Hinton & Salakhutdinov, 2006](https://doi.org/10.1126/science.1127647))
 Hinton & Salakhutdinov showed that deep autoencoders could dramatically outperform PCA for dimensionality reduction — but only with careful initialization via **greedy layer-wise pre-training** (stacking Restricted Boltzmann Machines). This was a landmark result in the first wave of deep learning, demonstrating that depth was worth the training difficulty. Also used as an **unsupervised pre-training** technique before fine-tuning on labeled data, before dropout and better optimizers made random initialization viable.
 
-### 2008–2010 — Denoising Autoencoder (Vincent et al.)
+### 2008–2010 — Denoising Autoencoder ([Vincent et al., 2010](https://www.jmlr.org/papers/v11/vincent10a.html))
 **Key insight**: rather than reconstructing clean input from clean input, train to reconstruct clean $x$ from *corrupted* $\tilde{x}$:
 
 $$
@@ -52,7 +52,7 @@ $$
 
 where $\hat\rho_j$ is the average activation of hidden unit $j$ and $\rho$ is the target sparsity (e.g., 0.05). Only a few neurons fire for any given input, producing interpretable, disentangled features. Sparse autoencoders have recently found renewed interest as a tool for **mechanistic interpretability** of large language models — decomposing activations into sparse, human-interpretable features.
 
-### 2011 — Contractive Autoencoder (Rifai et al.)
+### 2011 — Contractive Autoencoder (Rifai et al., 2011)
 Penalizes the **Frobenius norm of the encoder's Jacobian**:
 
 $$
@@ -61,16 +61,16 @@ $$
 
 This forces the representation to be locally invariant to small input perturbations — the encoder's output should not change much if the input changes slightly. Contractive AEs learn representations that are smooth along the data manifold and sensitive only to directions of true variation, related to the geometry studied in [[Manifold Hypothesis]].
 
-### 2013 — Variational Autoencoder (Kingma & Welling)
+### 2013 — Variational Autoencoder ([Kingma & Welling, 2013](https://arxiv.org/abs/1312.6114))
 The [[VAE]] transforms the autoencoder into a **probabilistic generative model** by replacing the deterministic encoder with a distribution $q_\phi(z|x) = \mathcal{N}(\mu_\phi(x), \sigma_\phi^2(x))$ and adding a [[KL Divergence]] penalty to the [[ELBO]] objective. The latent space becomes continuous and regularized — any point $z \sim \mathcal{N}(0,I)$ decodes to a plausible image. VAEs enabled controllable generation, interpolation, and became the standard compression stage in [[LDM|Latent Diffusion Models]].
 
-### 2017 — VQ-VAE (van den Oord et al.)
+### 2017 — VQ-VAE ([van den Oord et al., 2017](https://arxiv.org/abs/1711.00937))
 [[VQ-VAE|Vector Quantized VAE]] replaces the continuous Gaussian latent with a **discrete codebook** $\{e_k\}_{k=1}^K$. The encoder maps $x$ to a continuous vector, snapped to the nearest codebook entry via $\arg\min$. A **straight-through estimator** passes gradients through the non-differentiable lookup. The discrete bottleneck enables autoregressive modeling over latent tokens (PixelCNN or [[Transformer]] prior). VQ-VAE-2 extended this hierarchically (coarse + fine codes); VQGAN added a patch discriminator and perceptual loss for sharper reconstructions and became the compression stage in [[LDM]].
 
-### 2019 — Regularized Autoencoder (Ghosh et al.)
+### 2019 — Regularized Autoencoder ([Ghosh et al., 2019](https://arxiv.org/abs/1903.12436))
 [[RAE]] showed that neither stochastic encoding nor KL divergence is necessary to get well-structured latent spaces. A **deterministic encoder** with explicit L2 regularization on latent codes avoids posterior collapse by design and produces less blurry samples. Separates the latent geometry (encoder training) from the prior (ex-post density estimation), a cleaner design than the VAE's intertwined ELBO.
 
-### 2021 — Masked Autoencoder (He et al.)
+### 2021 — Masked Autoencoder ([He et al., 2021](https://arxiv.org/abs/2111.06377))
 [[MAE]] applied the autoencoder principle to self-supervised **vision pre-training**. The encoder processes only 25% of visible image patches (a [[ViT]]); the lightweight decoder reconstructs the masked 75%. The reconstruction target is raw pixel values. MAE is the vision analogue of BERT's masked language modeling — the bottleneck is created by masking rather than a narrow layer, forcing the encoder to learn globally coherent representations. MAE pre-trained backbones match or exceed supervised pre-training on detection and segmentation.
 
 ## Taxonomy of Autoencoder Variants

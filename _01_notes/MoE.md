@@ -9,7 +9,7 @@
 **Mixture of Experts (MoE)** is a neural network architecture that leverages conditional 
 computation to scale models efficiently. Instead of activating all parameters for every input, MoE activates only a subset of **"expert" networks** per example, allowing the model to scale capacity while keeping computation per input relatively low. See [[FLOPs]] for compute accounting.
 
-Introduced by Jacobs et al. (1991, [Neural Computation](https://www.sciencedirect.com/science/article/pii/S0893608005800231)), MoE has seen a resurgence with large-scale models like **GShard**, **Switch Transformer**, and **GLaM**, which use sparse routing and efficient parallelization.
+Introduced by [Jacobs et al., 1991](https://www.sciencedirect.com/science/article/pii/S0893608005800231), MoE has seen a resurgence with large-scale models like **GShard**, **Switch Transformer**, and **GLaM**, which use sparse routing and efficient parallelization.
 
 An MoE layer consists of:
 - A **gating network** $G(x)$ that decides which experts to activate for a given input $x$.
@@ -69,8 +69,8 @@ To ensure even distribution of input tokens across experts, common techniques in
 
 ## References
 ---
-- Jacobs et al. (1991): [Adaptive Mixtures of Local Experts](https://www.sciencedirect.com/science/article/abs/pii/S0893608005800231)
-- Shazeer et al. (2017): [Outrageously Large Neural Networks](https://arxiv.org/abs/1701.06538)
-- Shazeer et al. (2020): [GShard: Scaling Giant Models with Conditional Computation](https://arxiv.org/abs/2006.16668)
-- Fedus et al. (2021): [Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity](https://arxiv.org/abs/2101.03961)
-- Du et al. (2022): [GLaM: Efficient Scaling with Mixture-of-Experts](https://arxiv.org/abs/2112.06905)
+- [Jacobs et al., 1991](https://www.sciencedirect.com/science/article/abs/pii/S0893608005800231) — Adaptive Mixtures of Local Experts
+- [Shazeer et al., 2017](https://arxiv.org/abs/1701.06538) — Outrageously Large Neural Networks
+- [Shazeer et al., 2020](https://arxiv.org/abs/2006.16668) — GShard: Scaling Giant Models with Conditional Computation
+- [Fedus et al., 2021](https://arxiv.org/abs/2101.03961) — Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity
+- [Du et al., 2022](https://arxiv.org/abs/2112.06905) — GLaM: Efficient Scaling with Mixture-of-Experts

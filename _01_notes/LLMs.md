@@ -18,7 +18,7 @@
 ## Pre-Layer Normalization vs. Post-Layer Normalization
 ---
 ![[llms_01.png|550]]
-- In the **original-designed Post-LN** [[Transformer|transformer]], [[Layer Normalization|layer normalization]] is placed between the residual blocks, this architecture has achieved state-of-the-art performance in many tasks. The very early pre-trained large language models like [[GPTs]] and [[BERT]] also uses Post-LN. 
+- In the **original-designed Post-LN** [[Transformer|transformer]], [[Layer Normalization|layer normalization]] is placed between the residual blocks, this architecture has achieved state-of-the-art performance in many tasks. The very early pre-trained large language models like [[GPTs]] and [[GPTs|BERT]] also uses Post-LN. 
  + The function of post-LN could be expressed as$$
 	x_{l+1} = \textrm{LN}(x_{l}+f_l(x_l)),
 	$$where $f_l(\cdot)$ represents FFN or attention function in the $l$-th layer.

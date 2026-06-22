@@ -50,7 +50,7 @@ Momentum $\mu \in [0.9, 0.99]$ accumulates gradient history, dampening oscillati
 
 ## Adam (Adaptive Moment Estimation)
 ---
-Adam (Kingma & Ba, 2014) maintains per-parameter **running estimates** of the first and second moments of gradients:
+Adam ([Kingma & Ba, 2014](https://arxiv.org/abs/1412.6980)) maintains per-parameter **running estimates** of the first and second moments of gradients:
 
 $$
 \begin{aligned}
@@ -67,7 +67,7 @@ $$
 
 ## AdamW (Adam + Weight Decay)
 ---
-**Weight decay** (L2 regularization) in standard Adam is coupled into the gradient, distorting the adaptive scaling. **AdamW** (Loshchilov & Hutter, 2017) decouples weight decay from the gradient update:
+**Weight decay** (L2 regularization) in standard Adam is coupled into the gradient, distorting the adaptive scaling. **AdamW** ([Loshchilov & Hutter, 2017](https://arxiv.org/abs/1711.05101)) decouples weight decay from the gradient update:
 
 $$
 \theta_{t+1} = \theta_t - \eta\left(\frac{\hat m_t}{\sqrt{\hat v_t} + \epsilon} + \lambda\, \theta_t\right)

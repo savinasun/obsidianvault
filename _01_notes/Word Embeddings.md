@@ -81,7 +81,7 @@ $$
 v_\text{man} - v_\text{woman} \approx v_\text{programmer} - v_\text{homemaker}
 $$
 
-**Bolukbasi et al., 2016** ([arXiv:1607.06520](https://arxiv.org/abs/1607.06520)) proposed debiasing by:
+[Bolukbasi et al., 2016](https://arxiv.org/abs/1607.06520) proposed debiasing by:
 1. Identify the **bias direction** (e.g., the gender subspace): $g = v_\text{he} - v_\text{she}$
 2. **Neutralize** non-gender words by projecting out the bias direction: $v_w \leftarrow v_w - (v_w \cdot \hat{g})\hat{g}$
 3. **Equalize** gendered word pairs (e.g., "grandmother"/"grandfather") to be equidistant from the neutral embedding

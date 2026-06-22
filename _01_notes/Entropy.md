@@ -76,7 +76,7 @@ This property motivates using Gaussian priors in [[VAE|VAEs]] and [[ELBO|variati
 
 ## Cross Entropy
 ---
-[[Cross entropy](https://en.wikipedia.org/wiki/Cross-entropy)] between distributions $p$ (true) and $q$ (model) measures the average number of bits needed to encode data from $p$ using a code optimized for $q$:
+[Cross entropy](https://en.wikipedia.org/wiki/Cross-entropy) between distributions $p$ (true) and $q$ (model) measures the average number of bits needed to encode data from $p$ using a code optimized for $q$:
 $$
 H(p, q) = -\mathbb{E}_p[\log q] = -\sum_x p(x) \log q(x)
 $$

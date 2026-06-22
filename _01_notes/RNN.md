@@ -23,7 +23,7 @@ Weights $W_{hh}$, $W_{xh}$, $W_{hy}$ are **shared across all timesteps** — the
 - **One-to-many**: one input → sequence output (image captioning)
 - **Many-to-one**: sequence input → one output (sentiment classification)
 - **Many-to-many (same length)**: e.g., POS tagging
-- **Many-to-many (different length)**: encoder-decoder for machine translation (Cho et al., 2014; Sutskever et al., 2014)
+- **Many-to-many (different length)**: encoder-decoder for machine translation ([Cho et al., 2014](https://arxiv.org/abs/1406.1078); [Sutskever et al., 2014](https://arxiv.org/abs/1409.3215))
 
 ### Vanishing Gradient Problem
 Backpropagating through $T$ timesteps involves products of $T$ Jacobians:
@@ -68,7 +68,7 @@ The additive update to $c_t$ (via $i_t \odot \tilde{c}_t$) creates an **uninterr
 
 ## GRU (Gated Recurrent Unit)
 ---
-GRU (Cho et al., 2014) is a simplified LSTM with **two gates** and no separate cell state:
+GRU ([Cho et al., 2014](https://arxiv.org/abs/1406.1078)) is a simplified LSTM with **two gates** and no separate cell state:
 
 $$
 \begin{aligned}

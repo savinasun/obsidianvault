@@ -107,7 +107,7 @@ Self-attention dominates when $n \gg d$; FFN dominates when $d \gg n$.
 | Architecture | Type | Key example |
 |-------------|------|-------------|
 | Encoder-only | Bidirectional attention | BERT, RoBERTa |
-| Decoder-only | Causal (masked) attention | [[GPTs\|GPT]], [[LLaMA]] |
+| Decoder-only | Causal (masked) attention | [[GPTs|GPT]], [[LLaMA]] |
 | Encoder-decoder | Full attention | T5, BART |
 
 **Decoder-only** (causal) is now dominant for language models: simpler, scales better, and in-context learning emerges naturally from the autoregressive objective.
