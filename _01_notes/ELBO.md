@@ -45,10 +45,10 @@ $$
 \mathcal{L}(\phi, \theta;\, x) = \underbrace{\mathbb{E}_{q_\phi(z \mid x)}[\log p_\theta(x \mid z)]}_{\text{reconstruction}} - \underbrace{D_\text{KL}(q_\phi(z \mid x) \| p(z))}_{\text{regularization}}
 $$
 
-| Term | Interpretation |
-|------|----------------|
-| $\mathbb{E}[\log p_\theta(x \mid z)]$ | How well the decoder reconstructs $x$ from latent $z$ |
-| $D_\text{KL}(q_\phi \| p)$ | How far the variational posterior deviates from the prior $p(z) = \mathcal{N}(0, I)$ |
+| Term                                  | Interpretation                                                                       |
+| ------------------------------------- | ------------------------------------------------------------------------------------ |
+| $\mathbb{E}[\log p_\theta(x \mid z)]$ | How well the decoder reconstructs $x$ from latent $z$                                |
+| $D_\text{KL}(q_\phi \| p)$            | How far the variational posterior deviates from the prior $p(z) = \mathcal{N}(0, I)$ |
 
 Maximizing the ELBO simultaneously:
 1. **Improves reconstruction**: the decoder $p_\theta(x \mid z)$ must explain the data well
@@ -65,7 +65,6 @@ The KL term has a closed form for Gaussian posteriors:
 $$
 D_\text{KL}(\mathcal{N}(\mu, \sigma^2) \| \mathcal{N}(0, 1)) = \frac{1}{2}\sum_j \left(\mu_j^2 + \sigma_j^2 - \log \sigma_j^2 - 1\right)
 $$
-
 The VAE is trained end-to-end by maximizing the ELBO using the **reparameterization trick** to backpropagate through the sampling step: $z = \mu_\phi(x) + \sigma_\phi(x) \odot \epsilon$, where $\epsilon \sim \mathcal{N}(0, I)$.
 
 ## Posterior Collapse
@@ -76,7 +75,7 @@ A failure mode in VAE training: the KL term dominates, pushing $q_\phi(z \mid x)
 
 ## ELBO in Diffusion Models
 ---
-DDPM training can also be derived as an ELBO on the data log-likelihood. The variational posterior $q(x_{1:T} \mid x_0)$ is fixed (the forward noising process), and the learned reverse $p_\theta(x_{0:T})$ plays the role of the generative model. The simplified MSE loss in [[DDPM]] corresponds to one term of this ELBO.
+DDPM training can also be derived as an ELBO on the data log-likelihood. The variational posterior $q(x_{1:T} \mid x_0)$ is fixed (the forward noising process), and the learned reverse $p_\theta(x_{0:T})$ plays the role of the generative model. The simplified MSE loss in [[DDPM]]corresponds to one term of this ELBO.
 
 ## Why ELBO Matters
 ---
