@@ -5,29 +5,24 @@
 **Links**:: [[VAE]] · [[VQ-VAE]] · [[RAE]] · [[MAE]] · [[LDM]] · [[ELBO]] · [[KL Divergence]] · [[Manifold Hypothesis]] · [[Contrastive Learning]] · [[t-SNE]] · [[UMAP]] · [[FID]]
 
 
-An **autoencoder** is a neural network trained to compress input data into a low-dimensional **latent code** and reconstruct it back — learning a compact, lossy representation without supervision. The reconstruction objective forces the model to discover the most informative structure in the data. Over four decades, autoencoders evolved from dimensionality reduction tools into the compression backbone of modern generative models.
+An **autoencoder** is a neural network trained to compress input data into a low-dimensional **latent code** and **reconstruct it back** — learning a compact, lossy representation **without supervision**. The reconstruction objective forces the model to discover the most informative structure in the data. Over four decades, autoencoders evolved from dimensionality reduction tools into the **compression backbone of modern generative models**.
 
 ## Core Architecture
 ---
 An autoencoder has two components:
-
 $$
 z = f_\phi(x) \qquad \hat{x} = g_\theta(z)
 $$
-
 - **Encoder** $f_\phi$: maps input $x \in \mathbb{R}^D$ → latent code $z \in \mathbb{R}^d$, with $d \ll D$ (the **bottleneck**)
 - **Decoder** $g_\theta$: maps $z$ back to reconstruction $\hat{x} \in \mathbb{R}^D$
-- **Loss**: reconstruction error, typically MSE for continuous data or binary cross-entropy for binary:
-
+- **Loss**: reconstruction error, typically MSE for continuous data or cross-entropy for binary:
 $$
 \mathcal{L} = \|x - g_\theta(f_\phi(x))\|^2
 $$
-
 The bottleneck prevents the trivial identity solution — the model must compress, forcing it to retain only the most informative features. By the [[Manifold Hypothesis]], real data lies on a low-dimensional manifold; the autoencoder learns to parameterize that manifold.
 
 ## History and Advancements
 ---
-
 ### 1986 — Original Autoencoder (Rumelhart et al., 1986)
 Introduced as part of the backpropagation paper as a demonstration that hidden representations could be learned unsupervised. A shallow network was trained to reconstruct its input through a narrow bottleneck — conceptually equivalent to **nonlinear PCA**. At the time, limited to shallow architectures due to vanishing gradients.
 
@@ -59,7 +54,7 @@ $$
 \mathcal{L}_\text{CAE} = \|x - \hat{x}\|^2 + \lambda \|J_{f_\phi}(x)\|_F^2
 $$
 
-This forces the representation to be locally invariant to small input perturbations — the encoder's output should not change much if the input changes slightly. Contractive AEs learn representations that are smooth along the data manifold and sensitive only to directions of true variation, related to the geometry studied in [[Manifold Hypothesis]].
+This forces the representation to be **locally invariant to small input perturbations** — the encoder's output should not change much if the input changes slightly. Contractive AEs learn representations that are smooth along the data manifold and sensitive only to directions of true variation, related to the geometry s tudied in [[Manifold Hypothesis]].
 
 ### 2013 — Variational Autoencoder ([Kingma & Welling, 2013](https://arxiv.org/abs/1312.6114))
 The [[VAE]] transforms the autoencoder into a **probabilistic generative model** by replacing the deterministic encoder with a distribution $q_\phi(z|x) = \mathcal{N}(\mu_\phi(x), \sigma_\phi^2(x))$ and adding a [[KL Divergence]] penalty to the [[ELBO]] objective. The latent space becomes continuous and regularized — any point $z \sim \mathcal{N}(0,I)$ decodes to a plausible image. VAEs enabled controllable generation, interpolation, and became the standard compression stage in [[LDM|Latent Diffusion Models]].

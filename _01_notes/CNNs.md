@@ -128,4 +128,4 @@ where $\alpha$ controls content fidelity and $\beta$ controls style strength. Op
 | Scaling | Limited | Excellent |
 | Long-range | Limited (by receptive field) | Full (global attention from layer 1) |
 
-Modern vision models like [[DINO]]/DINOv2 use ViT backbones. CNNs remain competitive for small-data regimes, mobile deployment (MobileNet), and medical imaging ([[U-Net]]).
+Modern vision models like [[DINO]]/DINOv2 use ViT backbones. **CNNs remain competitive for small-data regimes**, mobile deployment (MobileNet), and medical imaging ([[U-Net]]).

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/CNNs.md",
+                "file": "_01_notes/ELBO.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CNNs"
+              "title": "ELBO"
             }
           }
         ]
@@ -216,10 +216,13 @@
   },
   "active": "1e49970e7eebfbf5",
   "lastOpenFiles": [
+    "_01_notes/VAE.md",
+    "_01_notes/Autoencoder.md",
+    "_01_notes/Manifold Hypothesis.md",
     "_00_maps_of_contents/dl_moc.md",
+    "_01_notes/CNNs.md",
     "_01_notes/DINO.md",
     "[DINO.md",
-    "_01_notes/CNNs.md",
     "_01_notes/Basics of Neural Network.md",
     "inductive biases.md",
     "_01_notes/ImageNet.md",
@@ -232,7 +235,6 @@
     "_01_notes/VQ-VAE.md",
     "_01_notes/ViT.md",
     "_01_notes/Pre-training.md",
-    "_01_notes/Manifold Hypothesis.md",
     "_01_notes/MAE.md",
     "_01_notes/FSL.md",
     "_04_images/policy_gradient_grpo_loss.png",
@@ -252,8 +254,6 @@
     "learning_methods_moc.md",
     "_01_notes/LLaMA.md",
     "_01_notes/Activation Functions.md",
-    "_01_notes/RLHF.md",
-    "vision_ssl_moc.md",
     "Untitled.canvas",
     "Untitled",
     "_02_references/deepseek-ai2025",

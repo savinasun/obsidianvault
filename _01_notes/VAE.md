@@ -5,17 +5,15 @@
 **Links**:: [[Autoencoder]] · [[VQ-VAE]] · [[ELBO]] · [[KL Divergence]] · [[LDM]] · [[RAE]] · [[Score-Based Generative Modeling Methods]] · [[Manifold Hypothesis]]
 
 
-A **VAE** ([Kingma & Welling, 2013](https://arxiv.org/abs/1312.6114)) is a latent variable generative model that learns to encode data into a structured latent space and decode back. Unlike standard autoencoders, the latent space is **probabilistic** and **regularized**, making it suitable for generation.
+A **VAE** ([Kingma & Welling, 2013](https://arxiv.org/abs/1312.6114)) is a latent variable generative model that learns to encode data into a structured latent space and decode back. Unlike standard [[Autoencoder|autoencoders]], the latent space is **probabilistic** and **regularized**, making it suitable for generation.
 
 ## Generative Model
 ---
 The VAE models data $x$ as generated from a latent variable $z$:
-
 $$
 p_\theta(x) = \int p_\theta(x \mid z)\, p(z)\, dz
 $$
-
-- **Prior**: $p(z) = \mathcal{N}(0, I)$ — standard Gaussian
+- **Prior**: $z\sim\mathcal{N}(0, I)$ — standard Gaussian
 - **Decoder** (generative model): $p_\theta(x \mid z)$ — neural network parameterized by $\theta$
 - **True posterior**: $p_\theta(z \mid x) = p_\theta(x\mid z)\,p(z) / p_\theta(x)$ — **intractable** (requires computing $p_\theta(x)$)
 
