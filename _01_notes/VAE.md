@@ -34,7 +34,7 @@ Maximizing the ELBO:
 ---
 **Encoder** $q_\phi(z \mid x) = \mathcal{N}(\mu_\phi(x), \text{diag}(\sigma^2_\phi(x)))$:
 - Neural network that maps input $x$ → mean $\mu \in \mathbb{R}^d$ and log-variance $\log\sigma^2 \in \mathbb{R}^d$
-- Output is a diagonal Gaussian (assumes independent latent dimensions)
+- Output is a **diagonal Gaussian** (assumes independent latent dimensions)
 
 **Decoder** $p_\theta(x \mid z)$:
 - For continuous data: $\mathcal{N}(f_\theta(z), \sigma^2 I)$ — reconstruction loss is MSE
@@ -45,14 +45,11 @@ Both encoder and decoder are jointly trained end-to-end.
 ## Reparameterization Trick
 ---
 We need to backpropagate through the sampling step $z \sim q_\phi(z \mid x)$. Sampling is non-differentiable, so we can't compute $\partial z / \partial \phi$ directly.
-
 **Solution**: reparameterize the sampling as:
 $$
 z = \mu_\phi(x) + \sigma_\phi(x) \odot \epsilon, \quad \epsilon \sim \mathcal{N}(0, I)
 $$
-
 Now $z$ is a deterministic function of $\phi$ (given $\epsilon$), and gradients flow through $\mu_\phi$ and $\sigma_\phi$ normally. $\epsilon$ is sampled from a fixed distribution with no parameters.
-
 This trick is fundamental — it extends to other distributions (Gumbel-softmax for discrete, etc.).
 
 ## KL Term: Closed Form
@@ -61,7 +58,6 @@ For Gaussian encoder and Gaussian prior, the KL has an analytic form:
 $$
 D_\text{KL}(\mathcal{N}(\mu, \sigma^2) \| \mathcal{N}(0, I)) = \frac{1}{2} \sum_{j=1}^d \left(\mu_j^2 + \sigma_j^2 - \log \sigma_j^2 - 1\right)
 $$
-
 This doesn't require Monte Carlo estimation — the full ELBO gradient can be computed exactly (reconstruction term via reparameterization, KL term analytically).
 
 ## Training Objective
@@ -70,7 +66,6 @@ The final per-sample training loss (to minimize):
 $$
 \mathcal{L} = -\mathbb{E}_{\epsilon \sim \mathcal{N}(0,I)}\left[\log p_\theta(x \mid \mu_\phi(x) + \sigma_\phi(x) \odot \epsilon)\right] + \frac{1}{2}\sum_j \left(\mu_j^2 + \sigma_j^2 - \log\sigma_j^2 - 1\right)
 $$
-
 In practice, the expectation is estimated with a **single Monte Carlo sample** ($L=1$) — this is sufficient because each training step processes a different mini-batch.
 
 ## Latent Space Properties
@@ -102,19 +97,18 @@ $\beta$-VAE ([Higgins et al., 2017](https://openreview.net/forum?id=Sy2fchgwl)) 
 $$
 \mathcal{L}_{\beta\text{-VAE}} = \mathbb{E}[\log p_\theta(x\mid z)] - \beta\, D_\text{KL}(q_\phi(z\mid x) \| p(z))
 $$
-
 Higher $\beta$ encourages more **disentangled** representations — each latent dimension controls one independent factor of variation (e.g., rotation, scale, lighting). At the cost of reduced reconstruction quality.
 
 ## VAE vs. GAN vs. Diffusion
 ---
 
-| | VAE | RAE | GAN | Diffusion |
-|---|---|---|---|---|
-| **Training** | Stable (ELBO) | Stable (L2 reg) | Unstable (adversarial) | Stable (denoising) |
-| **Sample quality** | Blurry | Less blurry | Sharp | Sharp |
-| **Latent space** | Structured, smooth | Structured, smooth | Unstructured | Via inversion only |
-| **Posterior collapse** | Common | Impossible | N/A | N/A |
-| **Likelihood** | Tractable (via ELBO) | Ex-post density | Intractable | Tractable |
-| **Use in LDMs** | **Encoder/decoder** | Drop-in alternative | Alternative encoder | Diffusion core |
+|                        | VAE                  | RAE                 | GAN                    | Diffusion          |
+| ---------------------- | -------------------- | ------------------- | ---------------------- | ------------------ |
+| **Training**           | Stable (ELBO)        | Stable (L2 reg)     | Unstable (adversarial) | Stable (denoising) |
+| **Sample quality**     | Blurry               | Less blurry         | Sharp                  | Sharp              |
+| **Latent space**       | Structured, smooth   | Structured, smooth  | Unstructured           | Via inversion only |
+| **Posterior collapse** | Common               | Impossible          | N/A                    | N/A                |
+| **Likelihood**         | Tractable (via ELBO) | Ex-post density     | Intractable            | Tractable          |
+| **Use in LDMs**        | **Encoder/decoder**  | Drop-in alternative | Alternative encoder    | Diffusion core     |
 
 VAEs produce blurrier samples than GANs or diffusion models because the MSE reconstruction loss averages over possible reconstructions. [[RAE]] addresses the blurriness and posterior collapse by replacing the stochastic encoder and KL term with a deterministic encoder and explicit regularization. However, VAE latent spaces remain the standard compression stage in [[LDM|Latent Diffusion Models]].
