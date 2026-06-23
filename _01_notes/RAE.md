@@ -1,84 +1,135 @@
 ### [[dl_moc]]  
-# **Regularized Autoencoder (RAE)**
+# **Representation Autoencoder (RAE)**
 
-**Tags**:: #generative #dl_theo
-**Links**:: [[Autoencoder]] · [[VAE]] · [[VQ-VAE]] · [[ELBO]] · [[KL Divergence]] · [[LDM]] · [[FID]] · [[Manifold Hypothesis]]
+**Tags**:: #generative #dl_theo #diffusion
+**Links**:: [[Autoencoder]] · [[VAE]] · [[DiT]] · [[DINO]] · [[LDM]] · [[FID]] · [[ViT]] · [[GAN]]
 
 
-**RAE** ([Ghosh et al., 2019](https://arxiv.org/abs/1903.12436)) asks: do we actually need a stochastic encoder to get a well-structured latent space? The answer is no. RAE replaces the [[VAE]]'s variational encoder and KL term with a **deterministic encoder** plus explicit **regularization on the latent codes**, recovering comparably structured latent spaces without the pathologies of the ELBO objective.
+**RAE** ([Zheng et al., 2025](https://arxiv.org/abs/2510.11690)) asks: instead of training a VAE from scratch to compress images for diffusion, why not reuse a frozen pretrained representation encoder and just learn a decoder? The answer is that this works far better — frozen encoders like DINOv2 already capture rich semantic structure; a lightweight decoder trained on top recovers reconstruction quality that exceeds SD-VAE, with 47× faster DiT convergence.
 
-## Motivation: Problems with the VAE
+## Motivation: VAE Bottlenecks in Latent Diffusion
 ---
-The [[VAE]] optimizes the [[ELBO]]:
-$$
-\mathcal{L}_\text{VAE} = \underbrace{\mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)]}_{\text{reconstruction}} - \underbrace{D_\text{KL}(q_\phi(z|x) \| p(z))}_{\text{regularization}}
-$$
+[[LDM]]-style diffusion (including [[DiT]]) relies on a VAE encoder to compress images into a compact latent space, then runs diffusion there. This introduces three compounding problems:
 
-This objective introduces two well-known failure modes:
+1. **Outdated backbones**: the SD-VAE encoder was trained purely for reconstruction, yielding weak semantic representations (8% linear probe accuracy on ImageNet).
+2. **Aggressive compression**: spatial downsampling to 4-channel latents destroys high-frequency detail that diffusion must then hallucinate back.
+3. **Reconstruction ceiling**: rFID of 0.62 limits generation quality before diffusion even runs.
 
-1. **Posterior collapse**: when the decoder is powerful, the KL term drives $q_\phi(z|x) \to p(z)$, causing the encoder to be ignored entirely. The model generates but doesn't encode.
-2. **Blurry samples**: the stochastic encoder averages over multiple plausible reconstructions — the decoder must explain away injected noise, which pushes it toward blurry mean predictions.
+RAE decouples the representation from the reconstruction objective entirely.
 
-Both stem from tying the *regularization mechanism* (KL) to the *probabilistic encoder*. RAE decouples them.
-
-## RAE Objective
+## RAE Architecture
 ---
-RAE uses a **deterministic encoder** $z = f_\phi(x)$ (no sampling, no KL) and adds an explicit penalty directly on the latent codes:
+An RAE is the combination of a **frozen pretrained encoder** and a **trained lightweight decoder**:
 
 $$
-\mathcal{L}_\text{RAE} = \underbrace{\|x - g_\theta(f_\phi(x))\|^2}_{\text{reconstruction}} + \underbrace{\lambda \, \|f_\phi(x)\|^2}_{\text{L2 latent regularization}}
+z = f_\text{enc}(x), \qquad \hat{x} = g_\theta(z)
 $$
 
-where $g_\theta$ is the decoder. The L2 penalty prevents the encoder from collapsing to a degenerate (e.g., unbounded) latent space, replacing the role of the KL term without the stochasticity.
+where $f_\text{enc}$ is frozen (no gradient, no finetuning) and $g_\theta$ is a ViT-XL trained end-to-end.
 
-Two regularization variants are proposed:
+**Encoder options evaluated** (all at ViT-B scale, 768-dim tokens):
 
-| Variant | Mechanism | Effect |
-|---------|-----------|--------|
-| **RAE-L2** | $\lambda\|z\|^2$ on latent codes | Keeps codes bounded near origin |
-| **RAE-SN** | Spectral normalization on encoder weights | Bounds the Lipschitz constant of $f_\phi$; more implicit regularization |
+| Encoder | Type | Linear Probe Acc. | rFID |
+|---------|------|:-----------------:|:----:|
+| DINOv2-B | Self-supervised | 84.5% | 0.49 |
+| SigLIP2-B | Language-supervised | — | — |
+| MAE-B | Masked AE | — | **0.16** |
 
-Both variants avoid posterior collapse by design — there is no KL term to drive $q_\phi \to p$.
+All three beat SD-VAE's rFID of 0.62. The encoder produces $N = HW/p_e^2$ tokens at the encoder patch size — **no spatial compression**. For 256×256 with $p_e = 14$: 256 tokens of dim 768.
 
-## Ex-Post Density Estimation
+## Decoder Training
 ---
-A standard autoencoder doesn't define a generative model. To sample, RAE uses **ex-post density estimation**:
+The decoder is trained with a combined reconstruction loss:
 
-1. After training, compute latent codes for all training data: $\{z_i = f_\phi(x_i)\}$
-2. Fit a simple density model $p_\lambda(z)$ to these codes (Gaussian, GMM, or a small normalizing flow)
-3. At generation: sample $z \sim p_\lambda(z)$, then decode $\hat x = g_\theta(z)$
+$$
+\mathcal{L}_\text{rec}(x) = \omega_L \cdot \text{LPIPS}(\hat{x}, x) + \|{\hat{x} - x}\|_1 + \omega_G \cdot \lambda \cdot \mathcal{L}_\text{GAN}(\hat{x}, x)
+$$
 
-This separates learning the **latent geometry** (encoder/decoder training) from learning the **prior over that geometry** (density estimation). In contrast, the VAE tries to do both simultaneously via the KL term, which creates the tension that causes posterior collapse.
+The GAN term is critical for perceptual sharpness. The decoder is ~14× more compute-efficient than SD-VAE's encoder/decoder and outperforms it on rFID.
 
-## Why RAE Latent Spaces Are Still Structured
+### Noise-Augmented Decoder Training
+A subtle problem: the encoder sees clean real images $x \sim p_\text{data}$, so $z$ lives on a low-dimensional manifold. But at generation time, the diffusion model outputs a continuous distribution over $z$-space — off-manifold samples reach the decoder that it has never seen during training, causing artifacts.
+
+Fix: augment decoder training inputs with additive Gaussian noise:
+
+$$
+p_n(z) = \int p(z - \epsilon) \cdot \mathcal{N}(0, \sigma^2 I) \, d\epsilon, \quad \sigma \sim |\mathcal{N}(0, \tau^2)|
+$$
+
+This smooths the training distribution over $z$-space at no cost to encoder semantics. There's a small rFID tradeoff (0.49 → 0.57) but generation FID improves (4.81 → 4.28).
+
+## Running Diffusion in RAE Latent Space
 ---
-At first glance, removing the KL term should break the smooth, continuous latent space that makes VAEs useful. In practice, the L2 penalty + reconstruction loss jointly enforce structure:
+RAE's 768-dim tokens are far higher-dimensional than VAE's 4-channel latents. Naively dropping a standard DiT into this space fails. Three adaptations are required:
 
-- **Bounded**: L2 prevents codes from drifting to infinity
-- **Dense**: reconstruction pressure keeps codes informative — the decoder must use $z$ to reconstruct $x$, so nearby $x$'s map to nearby $z$'s
-- **Smooth**: unlike a standard AE with no regularization, the penalty prevents the encoder from exploiting high-frequency directions in the latent space
+### 1. Width Scaling ($d \geq n$)
+The DiT hidden dimension $d$ must satisfy $d \geq n$ (latent token dimension). Theoretical reason: diffusion injects Gaussian noise, expanding the data support to full-rank in $\mathbb{R}^n$. A model with $d < n$ cannot represent full-rank distributions.
 
-The [[Manifold Hypothesis]] perspective: the data manifold is still recovered; RAE just regularizes the coordinate system (latent codes) rather than regularizing the posterior family.
+Verified empirically: training loss fails to converge whenever $d < 768$ regardless of encoder or model size.
 
-## Comparison: RAE vs. VAE
+### 2. Dimension-Dependent Noise Schedule Shift
+Standard diffusion noise schedules are calibrated for pixel or VAE latents. They ignore the effect of latent dimensionality on the SNR at each noise level. RAE latents have effective dimension $m = \text{tokens} \times \text{dim} = 256 \times 768$, versus $n_0 = 4096$ for VAE baselines.
+
+The schedule is shifted by:
+
+$$
+\alpha_\text{shift} = \sqrt{m / n_0}
+$$
+
+Without this: FID 23.08. With it: FID 4.81 — a >4× improvement from a single hyperparameter fix.
+
+### 3. DiT$^\text{DH}$: Shallow-but-Wide Head
+Width scaling alone causes quadratic FLOP growth in attention. To satisfy $d \geq 768$ efficiently, the paper introduces a **dual-head DiT** ($\text{DiT}^\text{DH}$):
+
+$$
+z_t = M(x_t \mid t, y) \quad \text{[base DiT, standard width]}
+$$
+$$
+v_t = H(x_t \mid z_t, t, y) \quad \text{[head: 2 layers, } d=2048\text{]}
+$$
+
+The head is shallow (2 transformer blocks) but wide (2048-dim), satisfying $d \geq n$ with ~40% of the FLOPs of a monolithic DiT-XL. The head architecture only helps when latents are high-dimensional — applying $\text{DiT}^\text{DH}$ to VAE latents hurts performance.
+
+## Results
 ---
 
-| | VAE | RAE |
+**ImageNet 256×256**:
+
+| Model | FID (no guidance) | FID (with guidance) |
+|-------|:-----------------:|:-------------------:|
+| DiT-XL (VAE) | 2.27 | — |
+| REPA | 1.83 | — |
+| **RAE-DiT (ours)** | **1.51** | **1.13** |
+
+**ImageNet 512×512**: FID **1.13** with guidance, surpassing EDM2 (1.25).
+
+**Convergence speed**: 47× faster than standard VAE-DiT; 16× faster than REPA-aligned methods.
+
+## Why This Works: Representation vs. Reconstruction
+---
+The core insight is that representation and reconstruction are separable objectives that have historically been conflated in the VAE design. A VAE encoder is optimized to compress for reconstruction, so it discards semantic signal. A pretrained representation encoder (DINO, SigLIP) optimizes for semantics and discards nothing useful for generation — a lightweight decoder can recover pixel details from semantically rich tokens more easily than from compressed reconstruction tokens.
+
+The [[Manifold Hypothesis]] perspective: pretrained encoders already find a structured, low-dimensional manifold in token space. The decoder just needs to learn the inverse map from that manifold to pixels.
+
+## Comparison: RAE vs. SD-VAE
+---
+
+| | SD-VAE | RAE (DINOv2-B) |
 |---|---|---|
-| **Encoder** | Stochastic $q_\phi(z\|x) = \mathcal{N}(\mu, \sigma^2)$ | Deterministic $z = f_\phi(x)$ |
-| **Regularization** | KL divergence (implicit, via ELBO) | Explicit L2 / spectral norm |
-| **Reparameterization** | Required | Not needed |
-| **Posterior collapse** | Common failure mode | Impossible by construction |
-| **Sample blurriness** | High (stochastic encoder averages modes) | Lower (deterministic encoder) |
-| **Prior at generation** | $p(z) = \mathcal{N}(0,I)$ (assumed) | Ex-post density model (learned) |
-| **ELBO** | Optimized directly | Not used |
-| **Sample quality (FID)** | Worse than diffusion | Competitive with VAE; better sharpness |
+| **Encoder training** | From scratch, reconstruction | Pretrained, frozen |
+| **Latent tokens** | 256 × 4 channels | 256 × 768 channels |
+| **rFID** | 0.62 | 0.49 |
+| **Linear probe acc.** | 8.0% | 84.5% |
+| **DiT convergence** | Baseline | 47× faster |
+| **Width requirement** | $d \geq 4$ | $d \geq 768$ |
+| **Schedule shift needed** | No | Yes |
 
 ## Relationship to Other Notes
 ---
-- [[VAE]] — RAE is a direct drop-in alternative; addresses posterior collapse and blurriness while preserving a structured latent space
-- [[ELBO]] — RAE deliberately avoids the ELBO; the KL–reconstruction tradeoff is the root cause of VAE failures
-- [[KL Divergence]] — replaced by explicit L2 regularization; the two serve the same structural role but RAE's version can't collapse
-- [[LDM]] — LDMs use a VAE encoder; RAE could substitute as the compression stage with potentially sharper reconstructions
-- [[FID]] — the standard metric used to compare RAE vs. VAE generation quality
-- [[Manifold Hypothesis]] — motivates why deterministic encoders with mild regularization still recover the data manifold
+- [[VAE]] — RAE replaces the VAE encoder entirely; no ELBO, no KL, no reparameterization
+- [[DiT]] — RAE is the tokenizer for DiT; requires three adaptations (width, schedule, noise augmentation)
+- [[DINO]] — DINOv2-B is the best-performing frozen encoder in RAE; its strong semantic representations drive fast convergence
+- [[LDM]] — LDMs use SD-VAE as the compression stage; RAE is a direct, superior drop-in replacement
+- [[GAN]] — decoder training uses an adversarial loss for perceptual sharpness
+- [[FID]] — primary metric; RAE achieves 1.51 (no guidance) and 1.13 (with guidance) on ImageNet 256×256
+- [[ViT]] — both encoder and decoder are ViT architectures; patch size determines token count
