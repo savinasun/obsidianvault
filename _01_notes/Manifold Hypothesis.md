@@ -37,7 +37,6 @@ This explains why deep networks generalize despite being massively overparameter
 ## Implications for Representation Learning
 ---
 The goal of a good encoder is to **unfold the manifold**: map $x \in \mathcal{M} \subset \mathbb{R}^d$ to a flat representation $z \in \mathbb{R}^k$ that preserves the manifold's intrinsic geometry.
-
 - **[[t-SNE]]** and **[[UMAP]]**: explicitly try to preserve local neighborhood structure when projecting to 2D for visualization
 - **[[Contrastive Learning]]**: pulls together points that are nearby on the manifold (different views of the same image) and pushes apart distant points
 - **[[DINO]]** self-supervised features: shown to capture meaningful manifold structure (e.g., unsupervised segmentation emerges from the learned features)

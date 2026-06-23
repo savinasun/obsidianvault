@@ -20,22 +20,32 @@ RAE decouples the representation from the reconstruction objective entirely.
 ## RAE Architecture
 ---
 An RAE is the combination of a **frozen pretrained encoder** and a **trained lightweight decoder**:
-
 $$
 z = f_\text{enc}(x), \qquad \hat{x} = g_\theta(z)
 $$
-
 where $f_\text{enc}$ is frozen (no gradient, no finetuning) and $g_\theta$ is a ViT-XL trained end-to-end.
 
 **Encoder options evaluated** (all at ViT-B scale, 768-dim tokens):
 
-| Encoder | Type | Linear Probe Acc. | rFID |
-|---------|------|:-----------------:|:----:|
-| DINOv2-B | Self-supervised | 84.5% | 0.49 |
-| SigLIP2-B | Language-supervised | — | — |
-| MAE-B | Masked AE | — | **0.16** |
+| Encoder   | Type                | Linear Probe Acc. |   rFID   |
+| --------- | ------------------- | :---------------: | :------: |
+| DINO-v2-B | Self-supervised     |       84.5%       |   0.49   |
+| SigLIP2-B | Language-supervised |         —         |    —     |
+| MAE-B     | Masked AE           |         —         | **0.16** |
 
 All three beat SD-VAE's rFID of 0.62. The encoder produces $N = HW/p_e^2$ tokens at the encoder patch size — **no spatial compression**. For 256×256 with $p_e = 14$: 256 tokens of dim 768.
+
+### Linear Probing Accuracy as a Representation Quality Metric
+**Linear probing** evaluates the semantic content of a frozen encoder by training only a single linear classifier on top of its output features — no finetuning of the encoder. Formally:
+
+1. Freeze the encoder $f_\text{enc}$
+2. Extract features $z = f_\text{enc}(x)$ for all training images
+3. Train a linear layer $W$ (and bias) to predict ImageNet class labels: $\hat{y} = W z$
+4. Report top-1 accuracy on the validation set
+
+Because the classifier has only linear capacity, the accuracy directly reflects how much **linearly separable semantic structure** the encoder has already organized into its representation space. If classes are not clustered in $z$-space, a linear head cannot separate them — no amount of linear capacity compensates for a poorly structured representation.
+
+**Why 84.5% vs. 8.0% matters for generation**: diffusion operates by denoising in the latent space $z$. If $z$ is semantically structured (nearby codes = semantically similar images), the denoising function $\epsilon_\theta(z_t, t)$ only needs to learn to follow those pre-existing semantic gradients — a much easier optimization. SD-VAE's 8% linear probe accuracy implies its latent codes carry almost no semantic geometry; the diffusion model must discover all structure from scratch. This directly explains RAE's 47× convergence speedup.
 
 ## Decoder Training
 ---
