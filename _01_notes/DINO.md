@@ -22,7 +22,7 @@ The core idea of DINO is to train a **student network** ($g_{\theta_s}$) to matc
 	Vit-Large, it is already trained, strong and slow.
 	This network is not trained directly. Its weights ($\theta_t$) are updated using an EMA of the student's weights ($\theta_s$). This provides a more stable target for the student to learn from. 
 + **Student Network ($g_{\theta_s}$):** 
-	Vit-Base, it doesn't have as many parameters as the teacher, not as strong but it is faster
+	Vit-Base, it doesn't have as many parameters as the teacher, not as strong but it is faster.
 	This network is trained with standard back-propagation.
 
 ### Multi-Crop Training 
