@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_00_maps_of_contents/dl_moc.md",
+                "file": "_01_notes/DINO.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "dl_moc"
+              "title": "DINO"
             }
           }
         ]
@@ -216,13 +216,13 @@
   },
   "active": "1e49970e7eebfbf5",
   "lastOpenFiles": [
+    "_00_maps_of_contents/dl_moc.md",
+    "_01_notes/DINO.md",
     "_01_notes/VAE.md",
     "_01_notes/ELBO.md",
     "_01_notes/Autoencoder.md",
     "_01_notes/Manifold Hypothesis.md",
-    "_00_maps_of_contents/dl_moc.md",
     "_01_notes/CNNs.md",
-    "_01_notes/DINO.md",
     "[DINO.md",
     "_01_notes/Basics of Neural Network.md",
     "inductive biases.md",

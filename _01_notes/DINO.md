@@ -10,12 +10,12 @@
 
 **Self-Supervised Learning (SSL)** is a paradigm in machine learning where a model learns representations from unlabeled data. Instead of relying on human-provided labels (like "cat" or "dog"), the model generates its own supervision from the data itself. A common technique is to create a "pretext task," such as predicting a missing part of an image, which forces the model to learn meaningful features about the world.
 
-DINO is a specific SSL method that uses a form of knowledge distillation, but without needing any pre-trained, labeled teacher network.
+DINO is a specific SSL method that uses a form of **knowledge distillation** without needing any pre-trained, labeled teacher network.
 
 
 ## Framework
 ---
-The core idea of DINO is to train a **student network** ($g_{\theta_s}$) to match the output of a **teacher network** ($g_{\theta_t}$). The key is that both networks have the same architecture, but the teacher's weights are an exponential moving average (EMA) of the student's weights.
+The core idea of DINO is to train a **student network** ($g_{\theta_s}$) to match the output of a **teacher network** ($g_{\theta_t}$). The key is that both networks have the **same architecture**, but the teacher's weights are an **exponential moving average (EMA)** of the student's weights.
 ![[dino_01.png|350]]
 ### Student-Teacher Architecture
 + **Teacher Network ($g_{\theta_t}$):** 
