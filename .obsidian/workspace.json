@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/DINO.md",
+                "file": "_00_maps_of_contents/dl_moc.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DINO"
+              "title": "dl_moc"
             }
           }
         ]
@@ -216,9 +216,10 @@
   },
   "active": "1e49970e7eebfbf5",
   "lastOpenFiles": [
+    "_01_notes/VAE.md",
     "_00_maps_of_contents/dl_moc.md",
     "_01_notes/DINO.md",
-    "_01_notes/VAE.md",
+    "_01_notes/Scaling Laws.md",
     "_01_notes/ELBO.md",
     "_01_notes/Autoencoder.md",
     "_01_notes/Manifold Hypothesis.md",
@@ -253,7 +254,6 @@
     "_03_templates/literature-source-template.md",
     "_03_templates/knowledge-integration-note.md",
     "learning_methods_moc.md",
-    "_01_notes/LLaMA.md",
     "Untitled.canvas",
     "Untitled",
     "_02_references/deepseek-ai2025",

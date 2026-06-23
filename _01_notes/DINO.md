@@ -53,46 +53,38 @@ The most remarkable finding of the DINO paper was the set of properties that eme
 ![[dino_03.png]]
 
 
-## DINOv2: Scaling Self-Supervision for Foundation Models
+## DINO-v2: Scaling Self-Supervision for Foundation Models
 ---
-The success of DINO leads to DINOv2 ([Oquab et al., 2024](https://arxiv.org/abs/2304.07193)), which scales up the core ideas (following [[Scaling Laws]] intuitions) to create a powerful vision "foundation model", achieving state-of-the-art performance across a wide range of tasks without fine-tuning.
+The success of DINO leads to DINO-v2 ([Oquab et al., 2024](https://arxiv.org/abs/2304.07193)), which scales up the core ideas (following [[Scaling Laws]] intuitions) to create a powerful vision "foundation model", achieving state-of-the-art performance across a wide range of tasks without fine-tuning.
 
-The goal of DINOv2 was to overcome the limitations of existing pre-trained models, which often required fine-tuning on large, labeled datasets to perform well. The hypothesis was that by scaling up the pre-training data and refining the training algorithm, it would be possible to create a single, general-purpose vision backbone that excels at many tasks with only a simple linear head.
+The goal of DINO-v2 was to overcome the limitations of existing pre-trained models, which often required fine-tuning on large, labeled datasets to perform well. The hypothesis was that by scaling up the pre-training data and refining the training algorithm, it would be possible to create a single, general-purpose vision backbone that excels at many tasks with only a simple linear head.
 
-* **Massive, Curated Dataset:** DINOv2 was trained on a new, curated dataset of 142 million images, carefully selected from a larger pool to remove low-quality or irrelevant images.
+* **Massive, Curated Dataset:** DINO-v2 was trained on a new, curated dataset of 142 million images, carefully selected from a larger pool to remove low-quality or irrelevant images.
 * **Architectural Improvements:** It incorporated techniques like SwiGLU activations and Nested Dropout for better performance and stability during training at scale.
-* **State-of-the-Art Performance:** DINOv2 established itself as a leading general-purpose vision backbone, achieving excellent results on tasks like depth estimation, semantic segmentation, and image classification.
+* **State-of-the-Art Performance:** DINO-v2 established itself as a leading general-purpose vision backbone, achieving excellent results on tasks like depth estimation, semantic segmentation, and image classification.
 
 
 ### Key Innovations
 
-DINOv2 introduced several crucial improvements over the original DINO.
+DINO-v2 introduced several crucial improvements over the original DINO.
 #### A. Data Curation at Scale (The LVD-142M Dataset)
-
-Instead of using an existing, off-the-shelf dataset, the DINOv2 authors built their own: **LVD-142M**. This involved a massive data-sourcing and curation pipeline:
-
+Instead of using an existing, off-the-shelf dataset, the DINO-v2 authors built their own: **LVD-142M**. This involved a massive data-sourcing and curation pipeline:
 1.  **Sourcing:** An initial, un-curated dataset of 1.2 billion unique images was sourced from the web.
 2.  **Deduplication & Similarity Search:** Self-supervised models (like DINO) were used to compute image embeddings. These embeddings helped identify and remove near-duplicate images.
 3.  **Curation:** The remaining images were clustered. Clusters that were too close to ImageNet or other standard benchmarks were removed to ensure the pre-training data was sufficiently different from evaluation datasets. This process resulted in a final, high-quality dataset of **142 million images**.
 
 #### B. Algorithmic and Architectural Improvements
-
 To make training stable and effective at this new scale, several changes were made:
-
 * **Image-Text Foundation Model Filtering:** [[CLIP]] was used to filter the web-scale dataset to ensure a good alignment between images and their alt-text, improving the quality of the image source.
-* **Combined Loss Function:** DINOv2 incorporates the **iBOT loss**, which adds a masked image modeling objective. This forces the model to learn not just global features (from the `[CLS]` token) but also dense, patch-level features.
+* **Combined Loss Function:** DINO-v2 incorporates the **iBOT loss**, which adds a masked image modeling objective. This forces the model to learn not just global features (from the `[CLS]` token) but also dense, patch-level features.
 * **KoLeo Regularizer:** A regularization term was added to the loss to encourage batch-wise feature diversity, preventing the model from collapsing and ensuring a broader representation space.
 * **Architectural Tweaks:** The ViT architecture was updated with modern components like SwiGLU activations and Nested Dropout for improved performance and stability.
 
 #### C. Efficient Implementation
-
 Training on over 100 million images is computationally expensive. The team made significant engineering efforts to make it feasible:
-
 * **PyTorch 2.0 Compilation:** The model was compiled with `torch.compile` for significant speedups.
 * **Fully Sharded Data Parallel (FSDP):** This technique was used to distribute the model and optimizer states across GPUs, enabling training of the largest ViT models.
 * **Mixed-Precision Training:** Using `bfloat16` precision reduced memory usage and further accelerated training.
-
-
 
 
 ## Remark
