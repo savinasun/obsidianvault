@@ -1,7 +1,6 @@
 # Deep Learning Map of Contents
 
-A living index organized by research direction. Each section corresponds to a distinct area of the ML landscape.
-
+A living index organized by research direction. 
 
 ### Mathematics & Statistics
 

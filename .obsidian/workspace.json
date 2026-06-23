@@ -11,10 +11,14 @@
             "id": "1e49970e7eebfbf5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "_01_notes/CNNs.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "CNNs"
             }
           }
         ]
@@ -212,8 +216,8 @@
   },
   "active": "1e49970e7eebfbf5",
   "lastOpenFiles": [
-    "_01_notes/DINO.md",
     "_00_maps_of_contents/dl_moc.md",
+    "_01_notes/DINO.md",
     "[DINO.md",
     "_01_notes/CNNs.md",
     "_01_notes/Basics of Neural Network.md",
