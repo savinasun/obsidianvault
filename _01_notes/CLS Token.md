@@ -6,13 +6,13 @@
 
 ---
 
-The **`[CLS]` token** (classification token) is a special learnable embedding prepended to the input sequence of a Transformer. It serves as a global "summary" of the entire input — attending to all other tokens over many layers, its final hidden state is used as the aggregate representation for downstream tasks.
+The **`[CLS]` token** (classification token) is a special learnable embedding prepended to the input sequence of a Transformer. It serves as a global **"summary"** of the entire input — attending to all other tokens over many layers, **==its final hidden state is used as the aggregate representation for downstream tasks.==**
 
 ---
 
 ## 1. Origins: BERT (NLP)
 
-Introduced in **BERT** ([Devlin et al., 2019](https://arxiv.org/abs/1810.04805)), the `[CLS]` token is the first token in every input sequence. After the full Transformer encoder stack, the output at position 0 is taken as the **sequence-level representation** and fed to a linear classification head.
+Introduced in **BERT** ([Devlin et al., 2019](https://arxiv.org/abs/1810.04805)), the `[CLS]` or `[BOS]` token is the first token in every input sequence. After the full Transformer encoder stack, the output at position 0 is taken as the **sequence-level representation** and fed to a linear classification head.
 
 $$
 \mathbf{h}_0^{(L)} = \text{BERT}([{\tt CLS}], x_1, \ldots, x_n)_0 \in \mathbb{R}^d
@@ -43,7 +43,7 @@ where $\mathbf{e}_{\tt cls} \in \mathbb{R}^d$ is the learnable CLS embedding and
 
 ## 3. CLS Token in Self-Supervised Vision
 
-### DINO ([Caron et al., 2021](https://arxiv.org/abs/2104.14294))
+### [[DINO]] ([Caron et al., 2021](https://arxiv.org/abs/2104.14294))
 
 DINO uses a **self-distillation** objective: a student network is trained to match the output of a momentum teacher. Crucially, DINO operates **on the CLS token alone** — both student and teacher compute $\mathbf{z}^{(L)}_0$, and the cross-entropy loss between their softmax-normalized CLS outputs is minimized.
 
@@ -53,11 +53,11 @@ $$
 
 A remarkable emergent property: the **CLS attention maps** develop semantically meaningful segmentation without any supervision signal for localization. The CLS token learns to integrate spatial information in a way that reflects object boundaries, which motivated its use as a feature for k-NN classification and dense prediction.
 
-### MAE ([He et al., 2022](https://arxiv.org/abs/2111.06377))
+### [[MAE]] ([He et al., 2022](https://arxiv.org/abs/2111.06377))
 
 MAE takes the opposite approach — it **does not use a CLS token during pre-training**. The encoder only sees unmasked patches; the decoder reconstructs masked pixels. The CLS token is added only at **fine-tuning time**. This raises an important question about what the CLS token actually stores versus what can be recovered by pooling patch tokens — and MAE's competitive performance suggests that CLS is not strictly necessary for learning good representations, though it does help during fine-tuning.
 
-### DINOv2 ([Oquab et al., 2023](https://arxiv.org/abs/2304.07193))
+### [[DINO#DINO-v2 Scaling Self-Supervision for Foundation Models|DINO-v2]] ([Oquab et al., 2023](https://arxiv.org/abs/2304.07193))
 
 DINOv2 adds **register tokens** (see §5) to address artifacts in intermediate layers, and scales self-supervised ViT training. The CLS token in DINOv2 remains the primary representation for downstream tasks and achieves state-of-the-art performance on linear probing and k-NN benchmarks.
 
