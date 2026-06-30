@@ -163,7 +163,7 @@ CLS token behavior is not uniform across depth:
 | Middle (L=4–8) | Becomes selective; attends to semantically relevant patches; risk of artifacts in adjacent patch tokens |
 | Late (L=9–12) | Highly task-specific; attention maps resemble semantic segmentation; serves as the final summary |
 
-DINO-style training amplifies the semantic quality of CLS across all layers; supervised training tends to produce more diffuse intermediate CLS representations.
+==DINO-style training amplifies the semantic quality of CLS across all layers; supervised training tends to produce more diffuse intermediate CLS representations.==
 
 ---
 
