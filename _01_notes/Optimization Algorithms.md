@@ -25,7 +25,9 @@ $$
 - Smaller $B$ → noisier gradients act as **implicit regularization**, favoring flat minima
 - Typical values: 256–4096 for image models; 1M–4M tokens per step for LLMs
 
-![[optimization_minibatch_tips.png|600]]
+**Takeaways**:
++ Shuffling and Partitioning are the two steps required to build mini-batches
++ Powers of two are often chosen to be the mini-batch size, e.g., 16, 32, 64, 128.
 
 The **critical batch size** $B_\text{crit}$ is where noise and curvature balance — training beyond it gives diminishing returns per step.
 
