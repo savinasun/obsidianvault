@@ -2,7 +2,7 @@
 # **World Models**
 
 **Tags**:: #rl
-**Links**:: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[DDPM]] · [[Behavior Cloning]]
+**Links**:: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[DDPM]] · [[Behavior Cloning]] · [[JEPA]]
 
 
 A **world model** is a learned model of the environment dynamics: given the current state and action, it predicts the next state and reward. Model-based RL uses world models to **plan** or **generate synthetic experience** rather than requiring all learning to come from real environment interactions — dramatically improving sample efficiency.
@@ -90,3 +90,21 @@ In the robotics context, world models offer:
 - **Long horizons**: robot manipulation tasks require many steps; compounding error is severe
 
 **Current directions**: video prediction models (e.g., Genie, UniSim) as scalable world models trained on internet-scale video data, then used for robot policy training.
+
+## JEPA as a Non-Generative World Model
+---
+[[JEPA]] (LeCun, 2022; I-JEPA / V-JEPA) proposes a fundamentally different world model design: predict the **representation** of a future or masked state rather than the raw observation.
+
+**The core argument against generative world models**: to predict every pixel of the future, a generative model must model irreducible stochasticity (exact texture, lighting, background movement). This wastes capacity and forces the model to either hallucinate plausible detail or produce blurry averages. Neither is useful for planning.
+
+**JEPA's alternative**: compress observations into a semantic representation (using an encoder), then predict in that representation space. The encoder absorbs the irreducible variation — the world model only needs to predict the *semantically predictable* aspects of the future.
+
+| | Dreamer (RSSM) | MuZero | JEPA |
+|--|---------------|--------|------|
+| Prediction target | Raw pixels (reconstruction) | Latent state (no reconstruction) | EMA representation |
+| Generative | Yes | No | No |
+| Irreducible noise modeled | Yes | Partially | No (encoder abstracts it) |
+| Trained with | ELBO / reconstruction | TD + policy + value | Repr prediction (L2) |
+| Action conditioning | Yes | Yes | Not yet (research direction) |
+
+V-JEPA in particular — predicting masked spatiotemporal video tubes — is the closest concrete realization of LeCun's JEPA world model vision for learning physical dynamics from raw video.

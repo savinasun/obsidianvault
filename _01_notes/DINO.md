@@ -2,7 +2,7 @@
 # **Self-Distillation with No Labels**
 
 **Tags**:: #vision #learning
-**Links**:: [[ViT]] · [[CLIP]] · [[Contrastive Learning]] · [[Transformer]] · [[Attention]] · [[ImageNet]]
+**Links**:: [[ViT]] · [[CLIP]] · [[JEPA]] · [[Contrastive Learning]] · [[Transformer]] · [[Attention]] · [[ImageNet]]
 
 ## Introduction
 ---
@@ -86,6 +86,15 @@ Training on over 100 million images is computationally expensive. The team made 
 * **Fully Sharded Data Parallel (FSDP):** This technique was used to distribute the model and optimizer states across GPUs, enabling training of the largest ViT models.
 * **Mixed-Precision Training:** Using `bfloat16` precision reduced memory usage and further accelerated training.
 
+
+## Comparison to JEPA
+---
+[[JEPA]] (I-JEPA) occupies a different part of the self-supervised design space from DINO:
+
+- **DINO** matches representations of differently-augmented views of the same image — learning invariances to the augmentation set. The objective is view-matching, not prediction.
+- **I-JEPA** predicts the representation of a spatially masked region from the context — no augmentations required. The objective is spatial prediction.
+
+Both use an EMA momentum encoder to stabilize targets, but their training signals are structurally different: DINO enforces global view consistency, while JEPA enforces local spatial predictability. DINO's CLS token tends to produce better linear probe performance out of the box; JEPA is competitive without any augmentation engineering.
 
 ## Remark
 ---

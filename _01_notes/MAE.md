@@ -2,7 +2,7 @@
 # **Masked Autoencoder (MAE)**
 
 **Tags**:: #vision #learning
-**Links**:: [[Autoencoder]] · [[ViT]] · [[DINO]] · [[Contrastive Learning]] · [[Transformer]] · [[Normalization]] · [[ImageNet]]
+**Links**:: [[Autoencoder]] · [[ViT]] · [[DINO]] · [[JEPA]] · [[Contrastive Learning]] · [[Transformer]] · [[Normalization]] · [[ImageNet]]
 
 
 **MAE** ([He et al., 2021](https://arxiv.org/abs/2111.06377)) is a self-supervised pre-training method for vision that learns representations by masking a large fraction of image patches and reconstructing the missing pixels. It is the **vision analogue of BERT's masked language modeling**, adapted to the continuous signal of images.
@@ -101,8 +101,23 @@ MAE is the direct vision analogue of **BERT** (masked language modeling), but wi
 
 Later work (**BEiT**, **data2vec**) explored predicting discrete visual tokens or latent BERT-like targets rather than raw pixels, closing the gap between NLP and vision masked modeling.
 
+## Comparison to JEPA
+---
+[[JEPA]] (I-JEPA, Assran et al. 2023) addresses the core limitation of pixel-space reconstruction: the model is forced to predict texture, lighting, and other irrelevant details. JEPA predicts representations of masked regions in the **embedding space** of an EMA target encoder rather than in pixel space.
+
+| | MAE | I-JEPA |
+|--|-----|--------|
+| Prediction target | Raw pixels (MSE) | EMA encoder representation |
+| Masking | Random scattered (75%) | Multi-block, semantically large |
+| Augmentations | Minimal | None |
+| Reconstructs irrelevant details | Yes | No — target encoder abstracts them away |
+| Linear probe | Good | Stronger |
+
+The key tradeoff: MAE's pixel targets preserve every detail (good for fine-tuning on dense tasks), while JEPA's repr targets discard irrelevant variation (better linear probe, no augmentation needed).
+
 ## References
 ---
 - [He et al., 2022 — Masked Autoencoders Are Scalable Vision Learners](https://arxiv.org/abs/2111.06377)
 - [Bao et al., 2022 — BEiT: BERT Pre-Training of Image Transformers](https://arxiv.org/abs/2106.08254)
 - [Dosovitskiy et al., 2021 — ViT](https://arxiv.org/abs/2010.11929)
+- [Assran et al., 2023 — Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture](https://arxiv.org/abs/2301.08243)
