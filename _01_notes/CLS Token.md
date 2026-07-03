@@ -30,7 +30,7 @@ $$
 \mathbf{z}_0 = [\mathbf{e}_{\tt cls};\, \mathbf{e}_1 + \mathbf{p}_1;\, \ldots;\, \mathbf{e}_N + \mathbf{p}_N]
 $$
 
-where $\mathbf{e}_{\tt cls} \in \mathbb{R}^d$ is the learnable CLS embedding and $\mathbf{p}_i$ are positional embeddings. After $L$ Transformer blocks, **$\mathbf{z}^{(L)}_0$ — the CLS output — is the image representation** fed to the classification head.
+where $\mathbf{e}_{\tt cls} \in \mathbb{R}^d$ is the learnable CLS embedding and $\mathbf{p}_i$ are positional embeddings. After $L$ Transformer blocks, **$\mathbf{z}^{(L)}_0$ — ==the CLS output — is the image representation** fed to the classification head.==
 
 ### What does the CLS token learn?
 - Early layers: attends broadly and somewhat uniformly across patches
