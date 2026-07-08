@@ -2,7 +2,7 @@
 # **Vision Language Models**
 
 **Tags**:: #llm
-**Links**:: [[ViT]] · [[CLIP]] · [[LLMs]] · [[Attention]] · [[RoPE]]
+**Links**:: [[ViT]] · [[CLIP]] · [[LLaVA]] · [[LLMs]] · [[Attention]] · [[RoPE]]
 
 ## Architecture
 --- 
