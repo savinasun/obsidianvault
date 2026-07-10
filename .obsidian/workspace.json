@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Optimization Algorithms.md",
+                "file": "_01_notes/LLaVA.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Optimization Algorithms"
+              "title": "LLaVA"
             }
           }
         ],
@@ -232,11 +232,11 @@
   },
   "active": "a8fdf90cf236fe34",
   "lastOpenFiles": [
+    "_01_notes/Optimization Algorithms.md",
     "_01_notes/AdamW.md",
     "_01_notes/Attention.md",
     "_01_notes/CLS Token.md",
     "_00_maps_of_contents/dl_moc.md",
-    "_01_notes/Optimization Algorithms.md",
     "_01_notes/JEPA.md",
     "_01_notes/Muon.md",
     "_01_notes/SOAP.md",
