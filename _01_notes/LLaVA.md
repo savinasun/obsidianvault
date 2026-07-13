@@ -2,7 +2,7 @@
 # **Large Language and Vision Assistant (LLaVA)**
 
 **Tags**:: #llm #vision #learning
-**Links**:: [[VLM]] · [[CLIP]] · [[LLaMA]] · [[LLMs]] · [[ViT]] · [[RLHF]] · [[Pre-training]]
+**Links**:: [[VLM]] · [[Cambrian]] · [[CLIP]] · [[LLaMA]] · [[LLMs]] · [[ViT]] · [[RLHF]] · [[Pre-training]]
 
 
 **LLaVA** ([Liu et al., 2023](https://arxiv.org/abs/2304.08485), *Visual Instruction Tuning*, NeurIPS 2023) is the first attempt to extend **instruction tuning** to the multimodal setting. Its central insight is *data-centric*: use a **text-only** GPT-4 to synthesize multimodal instruction-following data, then train a lightweight connector to bridge a frozen [[CLIP]] vision encoder and an open LLM ([[LLaMA|Vicuna]]). The result is a general-purpose visual assistant that follows free-form language instructions grounded in an image — a template that most later open VLMs ([[VLM]]) inherit.
