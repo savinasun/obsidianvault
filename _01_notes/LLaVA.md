@@ -73,3 +73,7 @@ These made LLaVA the de-facto baseline recipe: *frozen CLIP + MLP projector + in
 | BLIP-2 | Q-Former (cross-attn) | Yes | Frozen encoder + LLM |
 | **LLaVA** | Linear / MLP projector | Yes | Visual instruction tuning |
 | [[VLM|Qwen2.5-VL]] | MLP merger + dynamic res | Yes | Large-scale multimodal |
+
+
+
+$$\text{AUC} = \frac{\sum_{i \in \text{TRUE}} \text{rank}_i - \frac{n_T(n_T+1)}{2}}{n_T \cdot n_F}$$
