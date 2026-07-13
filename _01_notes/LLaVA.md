@@ -11,7 +11,8 @@
 ---
 LLaVA connects three components; only the middle one is new:
 
-- **Vision encoder** $g(\cdot)$: a frozen [[CLIP]] **ViT-L/14** ([[ViT]]). For an input image $X_v$ it produces grid features $Z_v = g(X_v)$ (the patch-token grid, before/after the last transformer layer).
+- **Vision encoder** $g(\cdot)$: a frozen [[CLIP]] **ViT-L/14** ([[ViT]]). 
+	For an input image $X_v$ --- it produces grid features $Z_v = g(X_v)$ (the patch-token grid, before/after the last transformer layer).
 - **Projection** $W$: a trainable matrix (a *linear* layer in LLaVA-1.0) that maps visual features into the language embedding space, yielding **visual tokens** $H_v = W \cdot Z_v$. These have the same dimensionality as the LLM's word embeddings.
 - **LLM** $f_\phi$: [[LLaMA|Vicuna]] (7B / 13B), which autoregressively decodes a response conditioned on the interleaved sequence of visual tokens $H_v$ and text instruction tokens $H_{\text{instruct}}$.
 
