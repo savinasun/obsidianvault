@@ -1,5 +1,5 @@
 ### [[dl_moc]]  
-# **t-Stochastic Neighboring Embedding**
+# **t-Distributed Stochastic Neighbor Embedding**
 
 **Tags**:: #math #learning
 **Links**:: [[KL Divergence]] · [[UMAP]] · [[Manifold Hypothesis]]
@@ -54,7 +54,7 @@ $$q_{ij}^{\text{(SNE)}} = \frac{\exp(-\|\mathbf{y}_i - \mathbf{y}_j\|^2)}{\sum_{
 
 The crowding problem arises from a "mismatch of dimensionalities." In a high-dimensional space, there is a lot of room, and points can have many neighbors at a moderate distance. When we try to project this structure onto a 2D or 3D map, there isn't enough space to accommodate all the neighbors accurately.
 
-Specifically, the area of a hypersphere's surface grows exponentially with its dimension. This means that points that are moderately distant in a high-dimensional space (e.g., 100-D) must be squeezed into a much smaller volume in the low-dimensional map (e.g., 2-D). The Gaussian distribution used in SNE has a "light" tail, meaning the probability density drops off very quickly with distance. This creates significant attractive forces between points that are only moderately close in the high-D space, forcing them to be placed very close together in the low-D map. This results in a visualization where distinct clusters are not well separated and are often clumped together in a single, crowded ball.
+Specifically, the volume of a sphere of radius $r$ scales as $r^d$ with the dimension $d$, so there is far more room at moderate distances in high-dimensional space. This means that points that are moderately distant in a high-dimensional space (e.g., 100-D) must be squeezed into a much smaller volume in the low-dimensional map (e.g., 2-D). The Gaussian distribution used in SNE has a "light" tail, meaning the probability density drops off very quickly with distance. This creates significant attractive forces between points that are only moderately close in the high-D space, forcing them to be placed very close together in the low-D map. This results in a visualization where distinct clusters are not well separated and are often clumped together in a single, crowded ball.
 
 #### Student's t-Distribution in Low-Dimensional Space Solving the Crowding Problem
 

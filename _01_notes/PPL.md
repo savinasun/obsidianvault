@@ -12,7 +12,7 @@ For a language model assigning probabilities $P(w_1, w_2, \dots, w_N)$ to a sequ
 $$
 \text{Perplexity} = \exp\left( -\frac{1}{N} \sum_{i=1}^N \log P(w_i \mid w_1, \dots, w_{i-1}) \right)
 $$
-It is the **exponentiated average log-likelihood** of the predicted words in a sequence.
+It is the **exponentiated average negative log-likelihood** of the predicted words in a sequence.
 
 
 ## Relationship with [[Entropy#Cross Entropy|Cross Entropy]]

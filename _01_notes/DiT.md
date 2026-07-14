@@ -80,9 +80,9 @@ Implications:
 
 | Model | Resolution | FID (cfg=1) | FID (guidance) |
 |-------|-----------|:-----------:|:--------------:|
-| ADM-U | 256×256 | 3.94 | — |
-| LDM-4 | 256×256 | 3.60 | — |
-| **DiT-XL/2** | 256×256 | 5.02 (400ep) | **2.27** |
+| ADM-U | 256×256 | 7.49 | 3.94 (ADM-G,U) |
+| LDM-4 | 256×256 | 10.56 | 3.60 (LDM-4-G) |
+| **DiT-XL/2** | 256×256 | 9.62 | **2.27** |
 | **DiT-XL/2** | 512×512 | — | **3.04** |
 
 DiT-XL/2 at 256×256 uses 119 Gflops vs. 742 Gflops for ADM-U (a CNN) — 6× more efficient at a better FID.
@@ -100,7 +100,7 @@ Higher guidance scale $s$ improves FID at the cost of sample diversity (FID/IS t
 ## DiT in the Ecosystem
 ---
 DiT became the standard backbone for large-scale image generation after 2023:
-- **Stable Diffusion 3, FLUX.1**: scaled DiT architectures with text conditioning via cross-attention
+- **Stable Diffusion 3, FLUX.1**: scaled DiT architectures (MM-DiT) with text conditioning via joint attention over concatenated text–image tokens
 - **[[RAE]]**: replaces the VAE tokenizer with a frozen representation encoder; uses DiT as the diffusion backbone with three adaptations (width scaling, schedule shift, noise-augmented decoder)
 
 ## Relationship to Other Notes

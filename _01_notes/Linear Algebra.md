@@ -54,7 +54,7 @@ The **rank** of a matrix $A \in \mathbb{R}^{m \times n}$ is the dimension of its
 
 
 ### Matrix Multiplication
-There are four types of interpretations for matrix multiplication.
+There are five types of interpretations for matrix multiplication.
 Denote $A\in\mathbb{R}^{m\times n}$, $B\in\mathbb{R}^{n\times r}$ and $C = AB$.
 #### 1. Matrix-Matrix Multiplication
 Multiplying matrices $A$ and $B$ will produce matrix $C$ of size $m\times r$ with elements,
@@ -222,7 +222,7 @@ $A = QR$, where $Q$ is orthogonal, $R$ is upper-triangular
 Used in least squares problems
 
 ### Schur Decomposition
-$A = Q T Q^\top$, where $T$ is upper triangular, $Q$ is orthogonal
+$A = Q T Q^\ast$, where $T$ is upper triangular, $Q$ is unitary
 All square matrices have a Schur decomposition
 
 

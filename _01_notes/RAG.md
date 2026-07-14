@@ -54,7 +54,7 @@ DPR ([Karpukhin et al., 2020](https://arxiv.org/abs/2004.04906)) trains a **bi-e
 
 Training: for each (question, positive passage, negative passages) triple, maximize similarity to the positive and minimize to negatives:
 $$
-\mathcal{L} = -\log \frac{e^{\text{sim}(q, p^+)}}{\sum_j e^{\text{sim}(q, p_j^-)}}
+\mathcal{L} = -\log \frac{e^{\text{sim}(q, p^+)}}{e^{\text{sim}(q, p^+)} + \sum_j e^{\text{sim}(q, p_j^-)}}
 $$
 
 This is essentially the same InfoNCE loss as [[CLIP]] but for text-text retrieval.

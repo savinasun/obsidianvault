@@ -48,13 +48,13 @@ $$
 
 The optimal preconditioned update is $\mathcal{G}_t^{-1/2}\,\text{vec}(g_t)$ — storing $\mathcal{G}_t$ costs $O(m^2 n^2)$ which is completely infeasible.
 
-Shampoo approximates $\mathcal{G}_t \approx L_t \otimes R_t$ (Kronecker product), where:
+Shampoo approximates $\mathcal{G}_t \approx (L_t \otimes R_t)^{1/2}$ (Kronecker product), where:
 
 $$
 L_t = \sum_{\tau=1}^t G_\tau G_\tau^\top \in \mathbb{R}^{m \times m}, \qquad R_t = \sum_{\tau=1}^t G_\tau^\top G_\tau \in \mathbb{R}^{n \times n}
 $$
 
-By the identity $(A \otimes B)^{-1/2} = A^{-1/2} \otimes B^{-1/2}$ for Kronecker products, the preconditioned update becomes:
+By the identity $(A \otimes B)^{-1/4} = A^{-1/4} \otimes B^{-1/4}$ for Kronecker products, the preconditioned update becomes:
 
 $$
 \boxed{
@@ -66,13 +66,13 @@ This requires storing only $m \times m$ and $n \times n$ matrices — $O(m^2 + n
 
 ### Why $-1/4$, not $-1/2$?
 
-Because we have two factors: $L^{-1/4} \otimes R^{-1/4}$, and $(L^{-1/4} \otimes R^{-1/4}) = (L \otimes R)^{-1/4}$. But we want $(L \otimes R)^{-1/2}$, which would require $L^{-1/2} \otimes R^{-1/2}$... Wait — actually the power is $-1/4$ because:
+Because $L_t$ and $R_t$ each accumulate the full gradient history, $L_t \otimes R_t$ double-counts it: the accumulator satisfies $\mathcal{G}_t \approx (L_t \otimes R_t)^{1/2}$ (exact for a single rank-1 gradient; a bound in general — Gupta et al., Lemma 8). The full-matrix AdaGrad target is therefore:
 
 $$
-(L \otimes R)^{-1/2} \approx L^{-1/4} \otimes R^{-1/4}
+\mathcal{G}_t^{-1/2} \approx (L_t \otimes R_t)^{-1/4} = L_t^{-1/4} \otimes R_t^{-1/4}
 $$
 
-only if $L$ and $R$ each contribute a $1/4$ exponent — the Kronecker product combines as $(A \otimes B)(C \otimes D) = AC \otimes BD$, so left and right factors split the $-1/2$ exponent equally.
+using the exact identity $(A \otimes B)^s = A^s \otimes B^s$ — each Kronecker factor inherits half of the $-1/2$ exponent.
 
 In matrix form, applying $L^{-1/4}$ on the left and $R^{-1/4}$ on the right is equivalent to applying $L^{-1/4} \otimes R^{-1/4}$ to the vectorized gradient.
 
@@ -138,7 +138,7 @@ For convex problems, Shampoo provably converges faster than AdaGrad when the gra
 
 ## 7. Limitations
 
-- **Memory**: $O(m^2 + n^2)$ per weight matrix — non-trivial for large matrices. For a 4096×4096 attention weight, $L_t$ alone is 64M floats = 256 MB.
+- **Memory**: $O(m^2 + n^2)$ per weight matrix — non-trivial for large matrices. For a 4096×4096 attention weight, $L_t$ alone is ~16.8M floats ≈ 67 MB.
 - **Compute for matrix roots**: despite amortization, eigendecompositions for large blocks are a significant overhead
 - **No momentum**: original Shampoo lacks Adam-style momentum; this matters for training stability
 - **Hyperparameter complexity**: the preconditioning frequency $T_{\text{inv}}$, blocking strategy, and epsilon initialization all require tuning

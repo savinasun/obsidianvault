@@ -19,7 +19,7 @@ $$
 $$
 
 + Existing variations in position embeddings, like Sine embeddings in the original transformer and Absolute embeddings all fail to be 'relative'. And Relative embeddings is not an inner product.
-+ RoPE was proposed in [Su et al., 2023](https://arxiv.org/abs/2104.09864) to solve the problem. It is used in [[LLaMA]], GPT-NeoX, and most modern [[LLMs]].
++ RoPE was proposed in [Su et al., 2021](https://arxiv.org/abs/2104.09864) to solve the problem. It is used in [[LLaMA]], GPT-NeoX, and most modern [[LLMs]].
 + The main idea is that **the q and k vectors incorporate absolute position information**, and then **the updated q and k vectors will bring relative position information by doing inner product during attention computation**.
 
 + We want our embeddings to be invariant to absolute position and we know that inner products are invariant to arbitrary rotation. So the math here is to pair up the coordinates into $d/2$ subspaces and rotate them in $2d$ spaces
@@ -54,7 +54,7 @@ $$
 Then
 $$
 \begin{aligned}
-<f_q(x_m, m), f_q(x_n, n)> &= f_q(x_m, m)^T f_k(x_n, n)\\
+<f_q(x_m, m), f_k(x_n, n)> &= f_q(x_m, m)^T f_k(x_n, n)\\
 &= (q_m^1 k_n^1 + q_m^2 k_n^2)\cos{(m-n)\theta} - (q_m^2 k_n^1 - q_m^1 k_n^2)\sin{(m-n)\theta}
 \end{aligned}
 $$
@@ -73,7 +73,7 @@ Generalize to $d>2$ cases
 
 The authors try to formulate the relative relationship between tokens like below, where **the dot product between tokens injected with absolute position information inherently contains relative position information**.
 $$
-<f_q(x_m, m), f_q(x_n, n)> = g(x_m, x_n, m-n)
+<f_q(x_m, m), f_k(x_n, n)> = g(x_m, x_n, m-n)
 $$
 
 + ![[rope_01.png|782]]
@@ -81,7 +81,7 @@ $$
 
 ## YaRN (Yet another RoPE extensioN)
 ---
-This is a compact implementation of RoPE. For each pair of dimensions `(x₀, x₁)`, it computes:
+YaRN ([Peng et al., 2023](https://arxiv.org/abs/2309.00071)) is a method for extending the context window of RoPE-based models by rescaling the per-dimension frequencies — not an implementation of RoPE itself. The base RoPE rotation it modifies: for each pair of dimensions `(x₀, x₁)`, it computes:
 
 ```
 out₀ = cos(θ) * x₀ - sin(θ) * x₁

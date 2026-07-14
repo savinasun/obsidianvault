@@ -99,7 +99,7 @@ h_i &= \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)\cdot V \\
 $$
 Note that in [[RMSNorm]] layer, 
 $$
-X = \frac{X}{\sqrt{\|X\|_2 + \epsilon}}\cdot \Gamma = \tilde{X}\cdot\Gamma$$
+X = \frac{X}{\sqrt{\frac{1}{d_{\text{model}}}\|X\|_2^2 + \epsilon}}\cdot \Gamma = \tilde{X}\cdot\Gamma$$
 where $\Gamma \in\mathbb{R}^{d_{\text{model}}}$.
 
 $$

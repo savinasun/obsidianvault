@@ -55,7 +55,7 @@ https://cvw.cac.cornell.edu/gpu-architecture/gpu-characteristics/kernel_sm
 | ----- | ------------------------ | ------------------ | --------- |
 | 1     | **Registers**            | ~256 KB per SM     | Fastest   |
 | 2     | **SRAM / Shared Memory** | ~128-228 KB per SM | Very fast |
-| 3     | **L2 Cache**             | ~few MB            | Fast      |
+| 3     | **L2 Cache**             | ~40-50 MB (A100/H100) | Fast      |
 | 4     | **HBM (Global Memory)**  | 24-80 GB           | Slowest   |
 ### What Flash Attention does
 

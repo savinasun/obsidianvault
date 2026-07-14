@@ -73,7 +73,7 @@ With optimal step $\eta^* = 2/(\lambda_1 + \lambda_d)$ this gives $\rho_\text{GD
 With heavy-ball momentum, the update per eigenspace $i$ becomes a 2nd-order linear recurrence:
 
 $$
-\begin{bmatrix} \theta_i^{(t+1)} \\ m_i^{(t+1)} \end{bmatrix} = \underbrace{\begin{bmatrix} 1 - \eta\lambda_i & -\eta \\ \lambda_i & \mu \end{bmatrix}}_{M_i} \begin{bmatrix} \theta_i^{(t)} \\ m_i^{(t)} \end{bmatrix}
+\begin{bmatrix} \theta_i^{(t+1)} \\ m_i^{(t+1)} \end{bmatrix} = \underbrace{\begin{bmatrix} 1 - \eta\lambda_i & -\eta\mu \\ \lambda_i & \mu \end{bmatrix}}_{M_i} \begin{bmatrix} \theta_i^{(t)} \\ m_i^{(t)} \end{bmatrix}
 $$
 
 The convergence rate per eigenspace is the spectral radius $\rho(M_i)$. With optimal $\mu = \left(\frac{\sqrt{\kappa}-1}{\sqrt{\kappa}+1}\right)^2$ and $\eta = \frac{4}{(\sqrt{\lambda_1}+\sqrt{\lambda_d})^2}$, the convergence rate is:
@@ -292,6 +292,6 @@ Best practices from [[LLMs]]: use AdamW + weight decay $0.1$ + gradient clipping
 | SGD | 1 (momentum) | 4 bytes |
 | Adam/AdamW | 2 (m, v) | 8 bytes |
 | Lion | 1 (m) | 4 bytes |
-| 8-bit Adam | 2 (quantized) | ~1 byte |
+| 8-bit Adam | 2 (quantized) | ~2 bytes |
 
 For a 70B parameter model, Adam optimizer states alone cost $70 \times 10^9 \times 8 \approx 560$ GB — larger than the model weights themselves. This drives use of Lion, 8-bit Adam, or CPU offloading in large-scale training.

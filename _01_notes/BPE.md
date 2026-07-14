@@ -45,7 +45,7 @@ Steps:
 
 ## Applications
 ---
-- Widely used in NLP models like **GPT**, **BERT**, **RoBERTa**, and **MarianMT**.
+- Widely used in NLP models like **GPT**, **RoBERTa**, and **MarianMT** (BERT instead uses the related **WordPiece**).
 - Helps with handling **morphologically rich languages** and rare words.
 - Used in frameworks like:
   - [SentencePiece](https://github.com/google/sentencepiece) (Google)

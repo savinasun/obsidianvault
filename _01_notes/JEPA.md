@@ -82,12 +82,11 @@ The rationale: a model predicting large contiguous regions cannot rely on local 
 
 | Task | Metric | Value |
 |------|--------|-------|
-| ImageNet linear probe | Top-1 acc | 77.5% (ViT-H) |
-| ImageNet fine-tuning | Top-1 acc | 87.7% (ViT-H) |
-| Low-shot (1%) | Top-1 acc | 62.5% |
-| ADE20K segmentation | Linear probe mIoU | 45.3% |
+| ImageNet linear probe | Top-1 acc | 79.3% (ViT-H/14) |
+| ImageNet fine-tuning | Top-1 acc | 87.1% (ViT-H/16@448) |
+| Low-shot (1%) | Top-1 acc | 73.3% (ViT-H/14) |
 
-I-JEPA achieves strong linear probe performance **without any data augmentation** other than multi-crop during pre-training — a notable contrast to contrastive methods that require heavy augmentation pipelines.
+I-JEPA achieves strong linear probe performance **without any hand-crafted data augmentation** during pre-training — a notable contrast to contrastive methods that require heavy augmentation pipelines.
 
 ### I-JEPA vs. MAE vs. DINO
 
@@ -173,7 +172,7 @@ A notable difference from CLIP: CLIP's visual encoder is trained with language s
 - **No explicit negative control**: JEPA relies on the EMA/predictor bottleneck to prevent collapse; this can fail if the predictor is too powerful or the EMA decay is too slow
 - **Masking design**: multi-block masking is manually designed to encourage semantic reasoning — an automatic curriculum for mask difficulty would be preferable
 - **Action conditioning**: current I/V-JEPA models don't condition on actions; extending to action-conditioned JEPA (as in LeCun's full vision) is an open problem
-- **Language grounding**: JEPA learns visual representations without language alignment; combining with CLIP-style text supervision (as in data2vec 2.0) could bridge both strengths
+- **Language grounding**: JEPA learns visual representations without language alignment; combining with CLIP-style text supervision could bridge both strengths
 
 ---
 

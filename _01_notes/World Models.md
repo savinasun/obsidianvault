@@ -19,7 +19,7 @@ Model-free RL (PPO, SAC) requires millions of environment steps to learn complex
 
 ## Recurrent State Space Model (RSSM)
 ---
-The RSSM ([Hafner et al., 2019](https://arxiv.org/abs/1912.01603) — DreamerV1) is the core latent dynamics model used in the Dreamer family. It factors the latent state into:
+The RSSM ([Hafner et al., 2019](https://arxiv.org/abs/1811.04551) — PlaNet) is the core latent dynamics model used in the Dreamer family. It factors the latent state into:
 
 - **Stochastic component** $z_t \sim p_\theta(z_t \mid h_t)$: captures uncertainty
 - **Deterministic component** $h_t = f_\theta(h_{t-1}, z_{t-1}, a_{t-1})$: GRU hidden state, carries information across time
@@ -47,13 +47,13 @@ The actor-critic update uses **latent-space value targets** via truncated backpr
 
 ## DreamerV2 & V3
 ---
-**DreamerV2** ([Hafner et al., 2020](https://arxiv.org/abs/2010.02193)): replaces continuous stochastic latents with **categorical latents** (32 categories × 32 variables → 1024-bit latent), trained with straight-through gradients. Achieves superhuman performance on Atari.
+**DreamerV2** ([Hafner et al., 2020](https://arxiv.org/abs/2010.02193)): replaces continuous stochastic latents with **categorical latents** (32 categories × 32 variables → 1024-bit latent), trained with straight-through gradients. Achieves human-level performance on Atari.
 
 **DreamerV3** ([Hafner et al., 2023](https://arxiv.org/abs/2301.04104)): the most general version. Key innovations:
 - **Symlog predictions**: applies $\text{symlog}(x) = \text{sign}(x)\ln(|x|+1)$ to targets, handling reward scales that vary across tasks without reward normalization
-- **KL balancing**: separately scales the KL terms for the stochastic and deterministic parts
+- **KL balancing**: splits the posterior–prior KL into separately-scaled dynamics and representation losses (with free bits)
 - **Regularized returns**: uses a percentile-based normalization of returns
-- **Universal**: solves tasks across Atari, DMControl, Minecraft, and robotics from pixels in a single training run with the same hyperparameters
+- **Universal**: solves tasks across Atari, DMControl, Minecraft, and robotics from pixels with a single fixed configuration — the same hyperparameters for every task, no per-task tuning
 
 ## MuZero
 ---

@@ -74,11 +74,11 @@ the caching size is around $4MB$ per token
 
 ## Grouped-Query Attention (GQA)
 ---
-+ **Grouped-Query attention (GQA)**, is an evolution of MQA and strikes a balance by using an intermediate number of key-value heads (more than one but fewer than the query heads). The GQA model efficiently breaks the **query** into `n_heads` segments like the original **multi-head attention**, and the key and value are divided into `n_kv_heads`groups, ==enabling multiple key-value heads to share the same query.==
++ **Grouped-Query attention (GQA)**, is an evolution of MQA and strikes a balance by using an intermediate number of key-value heads (more than one but fewer than the query heads). The GQA model efficiently breaks the **query** into `n_heads` segments like the original **multi-head attention**, and the key and value are divided into `n_kv_heads`groups, ==enabling multiple query heads to share the same key-value head.==
 ![[llama_mha_variants.png]]
 ![[llama_gqa_comparison.png]]
 DeepSeek R1 uses Multi-Head Latent Attention (MLA)
 
 ## Llama 3
 ---
-[Grattafiori et al., 2024](https://arxiv.org/abs/2407.21783) — **The Llama 3 Herd of Models** — scales to 405B parameters with a 128K token context window, natively supports multilinguality, coding, reasoning, and tool use. Llama 3 retains the core architectural choices of Llama 2 (GQA, RoPE, SwiGLU) while scaling pre-training data to ~15T tokens and adopting a more carefully curated post-training pipeline (SFT + RLHF). Multimodal (image, video, speech) variants were trained via a compositional approach, integrating modality-specific encoders into the frozen language backbone.
+[Grattafiori et al., 2024](https://arxiv.org/abs/2407.21783) — **The Llama 3 Herd of Models** — scales to 405B parameters with a 128K token context window, natively supports multilinguality, coding, reasoning, and tool use. Llama 3 retains the core architectural choices of Llama 2 (GQA, RoPE, SwiGLU) while scaling pre-training data to ~15T tokens and adopting a more carefully curated post-training pipeline (SFT + rejection sampling + DPO). Multimodal (image, video, speech) variants were trained via a compositional approach, integrating modality-specific encoders into the frozen language backbone.

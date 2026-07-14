@@ -102,4 +102,4 @@ This is the core idea behind denoising score matching and, ultimately, [[DDPM|di
 - **Mixing time**: how many steps until the chain distribution is close to $\pi$; poor mixing → highly correlated samples
 - **Thinning**: keep every $k$-th sample to reduce autocorrelation
 
-In practice for deep learning, these issues motivate using diffusion models (which sample in one-shot via learned denoisers) over raw MCMC.
+In practice for deep learning, these issues motivate using diffusion models (which sample via a fixed, finite sequence of learned denoising steps) over raw MCMC.

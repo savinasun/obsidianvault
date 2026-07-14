@@ -92,15 +92,15 @@ No negatives needed. Encourages each feature dimension to encode a distinct fact
 ---
 Contrastive objectives lower-bound the **mutual information** between the two views $I(Z_1; Z_2)$:
 $$
-\mathcal{L}_\text{InfoNCE} \le -I(Z_1; Z_2) + \log N
+\mathcal{L}_\text{InfoNCE} \ge -I(Z_1; Z_2) + \log N
 $$
-where $N$ is the number of negatives. Maximizing the objective (minimizing the loss) maximizes the mutual information between the two views' representations.
+where $N$ is the number of negatives. Minimizing the loss maximizes a lower bound ($\log N - \mathcal{L}$) on the mutual information between the two views' representations.
 
 By the **data processing inequality**, $I(Z_1; Z_2) \le I(X_1; X_2)$ — so the representation captures the mutual information that exists between different views of the same image, which corresponds to the **invariant content** (semantics) rather than view-specific details (augmentation artifacts).
 
 ## Extensions
 ---
-- **SimCLR v2**: semi-supervised learning with larger models + knowledge distillation from fine-tuned to linear models
+- **SimCLR v2**: semi-supervised learning with larger models + knowledge distillation from fine-tuned models to smaller student networks
 - **[[CLIP]]**: contrastive learning between image–text pairs, enabling zero-shot transfer
 - **[[DINO]]**: self-distillation with no labels; connects to contrastive learning via the centering mechanism
 - **Masked Autoencoders (MAE)**: generative alternative — predict masked patches instead of contrasting views

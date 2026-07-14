@@ -73,7 +73,7 @@ After pre-training, the encoder is used as a backbone for downstream tasks via f
 | Task | Architecture | Top-1 acc / AP |
 |------|-------------|----------------|
 | ImageNet classification | ViT-H (MAE pre-train) | 87.8% |
-| COCO detection (ViTDet) | ViT-L (MAE pre-train) | 60.4 AP$^\text{box}$ |
+| COCO detection (ViTDet) | ViT-L (MAE pre-train) | 59.6 AP$^\text{box}$ |
 | ADE20K segmentation | ViT-L (MAE pre-train) | 53.6 mIoU |
 
 MAE outperforms supervised pre-training baselines and competes with [[DINO]]/DINOv2 on dense prediction tasks when fine-tuned.

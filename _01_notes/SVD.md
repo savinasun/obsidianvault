@@ -12,7 +12,7 @@ If $A\in\mathbb{R}^{m\times n}$, then $U$ and $V$ are guaranteed to be real orth
 + $\Sigma \in \mathbb{R}^{m\times n}$: a rectangle diagonal matrix whose diagonal entries are non-negative
 + $V$ is given by the eigen-decomposition of $A^T A$$$A^TA = V\Sigma^2 V^T,$$ and $v_1, \dots, v_n$ are the eigenvectors of $A^T A$.
 + $U$ is given by the eigen-decomposition of $AA^T$$$AA^T = U\Sigma^2 U^T,$$ and $u_1, \dots, u_m$ are the eigenvectors of $AA^T$.
-+ We also proved that the eigenvalues of $AA^T$ and $A^T A$ are equal.
++ We also proved that the non-zero eigenvalues of $AA^T$ and $A^T A$ are equal.
 
 
 ## SVD in Complex Hilbert Space
@@ -23,10 +23,10 @@ $$
 + $U:=(u_1, \dots, u_m) \in\mathbb{C}^{m\times m}$: a complex unitary matrix whose columns are left singular vectors 
 	+ $u_1, \dots, u_m$ form an orthonormal basis of $\mathbb{C}^m$
 + $V:=(v_1, \dots, v_n)\in\mathbb{C}^{n\times n}$: a complex unitary matrix whose columns are right singular vectors
-	+ $v_1, \dots, v_m$ form an orthonormal basis of $\mathbb{C}^n$
+	+ $v_1, \dots, v_n$ form an orthonormal basis of $\mathbb{C}^n$
 + $\Sigma\in\mathbb{R}^{m\times n}$: a rectangle diagonal matrix whose diagonal entries are non-negative and are called the **singular values** of $A$
 + $V^{\star}$ is the conjugate transpose of $V$
-+ The number of non-negative singular values is equal to the rank of $A$
++ The number of non-zero singular values is equal to the rank of $A$
 + **Existence**: 
 	A SVD **always exists for any real or complex matrix** though it is **not unique**.
 	It is always possible to choose the decomposition such that the singular values $\Sigma_{ii}$ are in descending order. In this case, $\Sigma$ is uniquely determined by ⁠$A$.

@@ -55,11 +55,11 @@ A remarkable emergent property: the **CLS attention maps** develop semantically 
 
 ### [[MAE]] ([He et al., 2022](https://arxiv.org/abs/2111.06377))
 
-MAE takes the opposite approach — it **does not use a CLS token during pre-training**. The encoder only sees unmasked patches; the decoder reconstructs masked pixels. The CLS token is added only at **fine-tuning time**. This raises an important question about what the CLS token actually stores versus what can be recovered by pooling patch tokens — and MAE's competitive performance suggests that CLS is not strictly necessary for learning good representations, though it does help during fine-tuning.
+MAE takes the opposite approach — during pre-training it only appends an **auxiliary "dummy" class token** to the encoder input (for compatibility with the ViT design); no pre-training loss uses it. The encoder otherwise only sees unmasked patches; the decoder reconstructs masked pixels. The paper reports MAE **works similarly well without this token**, using average pooling instead. This raises an important question about what the CLS token actually stores versus what can be recovered by pooling patch tokens — and MAE's competitive performance suggests that CLS is not strictly necessary for learning good representations, though it does help during fine-tuning.
 
 ### [[DINO#DINO-v2 Scaling Self-Supervision for Foundation Models|DINO-v2]] ([Oquab et al., 2023](https://arxiv.org/abs/2304.07193))
 
-DINOv2 adds **register tokens** (see §5) to address artifacts in intermediate layers, and scales self-supervised ViT training. The CLS token in DINOv2 remains the primary representation for downstream tasks and achieves state-of-the-art performance on linear probing and k-NN benchmarks.
+DINOv2 scales self-supervised ViT training; **register tokens** (see §6, from Darcet et al., 2023) were added in later DINOv2 releases to address artifacts in intermediate layers. The CLS token in DINOv2 remains the primary representation for downstream tasks and achieves state-of-the-art performance on linear probing and k-NN benchmarks.
 
 ---
 
@@ -74,7 +74,7 @@ VLMs connect a vision encoder (typically ViT) to a language model. How the visua
 | **BLIP-2** ([Li et al., 2023](https://arxiv.org/abs/2301.12597)) | Q-Former queries all patch tokens | CLS is bypassed; Q-Former learns to extract relevant content |
 | **LLaVA** ([Liu et al., 2023](https://arxiv.org/abs/2304.08485)) | All patch tokens (no CLS) | CLS discarded; patch grid preserves spatial detail |
 | **InstructBLIP** ([Dai et al., 2023](https://arxiv.org/abs/2305.06500)) | Q-Former + instruction conditioning | CLS optional depending on backbone |
-| **SigLIP** ([Zhai et al., 2023](https://arxiv.org/abs/2303.15343)) | EOS-position pooling (BERT-style) | Functional equivalent of CLS, but uses EOS |
+| **SigLIP** ([Zhai et al., 2023](https://arxiv.org/abs/2303.15343)) | MAP head (learned attention pooling over patch tokens) | No CLS; a learned probe token plays the CLS role |
 
 ### The LLaVA Design Choice
 LLaVA deliberately **discards the CLS token** and feeds the full $N \times d$ patch embedding grid to the LLM (after a linear projection layer). The rationale: CLS compresses spatial detail into a single vector, losing fine-grained spatial information that the LLM needs for dense visual reasoning. Passing all patch tokens preserves this at the cost of a longer context length.
@@ -102,7 +102,7 @@ If no token is informative, one must still receive the probability mass — the 
 
 ### Mechanistic View
 
-Subsequent work ([Sun et al., 2024](https://arxiv.org/abs/2402.10685)) showed that sink tokens develop **near-zero value vectors** — so even when attended to heavily, they contribute minimally to the output hidden state. The softmax "wasted" mass goes to these near-zero-value positions, which is functionally equivalent to attention dropout.
+Subsequent work ([Guo et al., 2024](https://arxiv.org/abs/2410.13835)) showed that sink tokens develop **near-zero value vectors** — so even when attended to heavily, they contribute minimally to the output hidden state. The softmax "wasted" mass goes to these near-zero-value positions, which is functionally equivalent to attention dropout.
 
 ---
 
@@ -175,14 +175,14 @@ CLS token behavior is not uniform across depth:
 | [ViT](https://arxiv.org/abs/2010.11929) (Dosovitskiy et al.) | 2021 | Ported CLS to vision; CLS = image representation |
 | [DeiT](https://arxiv.org/abs/2012.12877) (Touvron et al.) | 2021 | Added distillation token; CLS + extra global tokens |
 | [DINO](https://arxiv.org/abs/2104.14294) (Caron et al.) | 2021 | CLS-only self-supervised loss; emergent segmentation in CLS attn |
-| [MAE](https://arxiv.org/abs/2111.06377) (He et al.) | 2022 | Pre-trains without CLS; adds CLS only at fine-tuning |
+| [MAE](https://arxiv.org/abs/2111.06377) (He et al.) | 2022 | CLS is an unused auxiliary token in pre-training; average pooling works equally well |
 | [CLIP](https://arxiv.org/abs/2103.00020) (Radford et al.) | 2021 | CLS output as the image embedding for contrastive VL alignment |
 | [BLIP-2](https://arxiv.org/abs/2301.12597) (Li et al.) | 2023 | Q-Former replaces single CLS with K learned query vectors |
 | [LLaVA](https://arxiv.org/abs/2304.08485) (Liu et al.) | 2023 | Discards CLS; passes all patch tokens to LLM |
-| [DINOv2](https://arxiv.org/abs/2304.07193) (Oquab et al.) | 2023 | Scaled DINO with registers; CLS remains primary repr. |
+| [DINOv2](https://arxiv.org/abs/2304.07193) (Oquab et al.) | 2023 | Scaled DINO (registers added in later releases); CLS remains primary repr. |
 | [StreamingLLM](https://arxiv.org/abs/2309.17453) (Xiao et al.) | 2023 | Identifies attention sink in LLMs; initial tokens as probability dumping ground |
 | [Registers](https://arxiv.org/abs/2309.16588) (Darcet et al.) | 2023 | Artifact patches as secondary attention sinks in ViT; registers as fix |
-| [Sun et al.](https://arxiv.org/abs/2402.10685) | 2024 | Mechanistic analysis: sink tokens have near-zero value vectors |
+| [Guo et al.](https://arxiv.org/abs/2410.13835) | 2024 | Mechanistic analysis: sink tokens have near-zero value vectors |
 
 ---
 
@@ -190,5 +190,5 @@ CLS token behavior is not uniform across depth:
 
 - **Is a single CLS token optimal?** MAE and LLaVA suggest patch pooling can match or exceed it. Q-Former generalizes to $K$ summary tokens.
 - **Should VLMs retain CLS?** For dense tasks (grounding, segmentation), no — spatial patch features are needed. For global tasks (image classification, retrieval), yes.
-- **Can attention sinks be designed away?** Softmax always requires unit-sum attention; some form of sink behavior is inevitable without changing the normalization (e.g., sigmoid attention as in SigLIP or FlashAttention variants with temperature scaling).
+- **Can attention sinks be designed away?** Softmax always requires unit-sum attention; some form of sink behavior is inevitable without changing the normalization (e.g., sigmoid attention; note SigLIP's sigmoid is in the contrastive loss, not in attention).
 - **Do registers fully eliminate the CLS-as-sink problem?** Registers address artifact patches, but CLS may still behave as an attention sink in the first few transformer blocks. Their interaction at scale is not fully characterized.

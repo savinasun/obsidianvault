@@ -75,8 +75,8 @@ This two-stage approach cleanly separates perceptual compression (VQ-VAE) from s
 ---
 [VQ-VAE-2](https://arxiv.org/abs/1906.00446) scales up with a **hierarchical two-level codebook**:
 
-- **Top level** (coarse, $8\times8$): encodes global structure — layout, object shape, semantic content
-- **Bottom level** (fine, $32\times32$): encodes local detail — texture, edges, fine color
+- **Top level** (coarse, $32\times32$): encodes global structure — layout, object shape, semantic content
+- **Bottom level** (fine, $64\times64$): encodes local detail — texture, edges, fine color
 
 The top code is sampled first, then the bottom code is sampled conditioned on the top. Each level has its own PixelSnail (a [[Transformer]]-based autoregressive model) prior:
 

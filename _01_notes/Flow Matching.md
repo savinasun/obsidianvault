@@ -125,7 +125,7 @@ This explains the $10\text{–}100\times$ step-count advantage of flow matching 
 ---
 - **Stable Diffusion 3 / FLUX.1**: use rectified flow (straight-line FM) with a [[DiT]] backbone for text-to-image generation
 - **Image generation**: FM with OT paths achieves state-of-the-art likelihood and FID on ImageNet, outperforming diffusion-based CNFs
-- **Protein structure**: AlphaFold 3 uses a flow matching diffusion head for atomic coordinate generation
+- **Protein structure**: AlphaFold 3 uses a diffusion module for atomic coordinate generation
 - **Audio**: F5-TTS, E2-TTS use flow matching for fast text-to-speech synthesis
 
 ## Relationship to Other Notes

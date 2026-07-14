@@ -114,9 +114,9 @@ Standard practice: split parameters into two groups — decay group (weight matr
 AdamW requires storing $m_t$ and $v_t$ — two fp32 states per parameter. For a 7B model:
 $$7 \times 10^9 \times 2 \times 4 \text{ bytes} = 56 \text{ GB}$$
 
-**8-bit Adam** ([Dettmers et al., 2022](https://arxiv.org/abs/2110.02861)): quantizes optimizer states to int8 with block-wise dynamic exponents, reducing to ~$7 \text{ GB}$ with minimal accuracy loss.
+**8-bit Adam** ([Dettmers et al., 2022](https://arxiv.org/abs/2110.02861)): quantizes optimizer states to int8 with block-wise dynamic exponents, reducing to ~$14 \text{ GB}$ with minimal accuracy loss.
 
-**Adafactor** ([Shazeer & Stern, 2018](https://arxiv.org/abs/1805.09820)): factorizes $v_t$ as an outer product of row/column statistics, reducing the second moment from $O(mn)$ to $O(m+n)$ per weight matrix.
+**Adafactor** ([Shazeer & Stern, 2018](https://arxiv.org/abs/1804.04235)): factorizes $v_t$ as an outer product of row/column statistics, reducing the second moment from $O(mn)$ to $O(m+n)$ per weight matrix.
 
 ---
 

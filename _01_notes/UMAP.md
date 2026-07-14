@@ -19,7 +19,7 @@ Persistant Homology
 
 
 
-Uniform Manifold Approximation and Projection (UMAP) is a modern dimensionality reduction algorithm developed by Leland McInnes, John Healy, and James Melville in [McInnes et al., 2020](https://arxiv.org/abs/1802.03426) in 2018. Like [[t-SNE]], it is highly effective for visualizing high-dimensional data in low-dimensional spaces. However, UMAP is often significantly faster and is argued to provide a better balance between preserving local and global data structure. Its theoretical underpinnings are based on Riemannian geometry and algebraic topology.
+Uniform Manifold Approximation and Projection (UMAP) is a modern dimensionality reduction algorithm developed by Leland McInnes, John Healy, and James Melville in [McInnes et al., 2018](https://arxiv.org/abs/1802.03426) in 2018. Like [[t-SNE]], it is highly effective for visualizing high-dimensional data in low-dimensional spaces. However, UMAP is often significantly faster and is argued to provide a better balance between preserving local and global data structure. Its theoretical underpinnings are based on Riemannian geometry and algebraic topology.
 
 #### Theoretical Foundation: Learning the Manifold
 
@@ -67,7 +67,7 @@ The similarity $q_{ij}$ between two points in the low-dimensional space is model
 
 $$q_{ij} = \left(1 + a\|\mathbf{y}_i - \mathbf{y}_j\|_2^{2b}\right)^{-1}$$
 
-The parameters $a$ and $b$ are typically determined by a non-linear least squares fit to the curve $(1+y)^{-1}$, with default values in the UMAP implementation around $a \approx 1.93$ and $b \approx 0.79$. This provides a heavy-tailed distribution, which, like in t-SNE, helps separate clusters and avoid crowding.
+The parameters $a$ and $b$ are typically determined by a non-linear least squares fit to a piecewise curve controlled by the `min_dist` parameter (equal to $1$ for distances up to `min_dist`, decaying exponentially beyond it), with default values in the UMAP implementation around $a \approx 1.93$ and $b \approx 0.79$. This provides a heavy-tailed distribution, which, like in t-SNE, helps separate clusters and avoid crowding.
 
 #### Cost Function and Optimization
 

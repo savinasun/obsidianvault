@@ -37,7 +37,7 @@ where $\bar{A}, \bar{B}$ are the discretized matrices via zero-order hold (ZOH).
 S4 ([Gu et al., 2021](https://arxiv.org/abs/2111.00396)) made SSMs practical for deep learning by:
 
 1. **HiPPO initialization**: initialize $A$ using the HiPPO (High-order Polynomial Projection Operators) framework — this compresses the history of the input signal into the state optimally
-2. **Diagonal plus low-rank (DPLR) structure**: represent $A$ in a structured form that enables $O(N \log N)$ computation via the convolution theorem
+2. **Diagonal plus low-rank (DPLR) structure**: represent $A$ in a structured form that enables $O(L \log L)$ computation (over sequence length $L$) via the convolution theorem
 
 **Key insight**: an SSM can be computed either as a **recurrence** (efficient for inference, $O(1)$ per step) or as a **convolution** (efficient for training, parallelizable over the sequence):
 $$
@@ -80,7 +80,7 @@ No attention mechanism — the model is **purely recurrent**.
 
 ## Mamba-2
 ---
-[Gu & Dao, 2024](https://arxiv.org/abs/2405.21060) reformulated Mamba's selective scan as a **semi-separable matrix multiplication**, connecting SSMs to a theoretical framework that also unifies with linear attention. This enables:
+[Dao & Gu, 2024](https://arxiv.org/abs/2405.21060) reformulated Mamba's selective scan as a **semi-separable matrix multiplication**, connecting SSMs to a theoretical framework that also unifies with linear attention. This enables:
 - Even faster hardware implementation via tensor-core-friendly operations
 - Cleaner theoretical analysis
 - SSD (State Space Duality) — a family that includes both SSMs and [[Linear Attention]] as special cases

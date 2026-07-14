@@ -17,7 +17,7 @@ The ViT architecture can be broken down into a few key steps:
 ### A. Image Patching and Embedding
 
 1.  **Split into Patches:** An input image is divided into a grid of fixed-size, non-overlapping patches. For example, a 224x224 image might be split into a 14x14 grid of 16x16 pixel patches.
-2.  **Flatten and Project:** Each patch (e.g., 16x16x3 pixels) is flattened into a long vector (16 * 16 * 3 = 768 dimensions) and then linearly projected into a lower-dimensional embedding. This is the equivalent of a "word embedding" in NLP.
+2.  **Flatten and Project:** Each patch (e.g., 16x16x3 pixels) is flattened into a long vector (16 * 16 * 3 = 768 dimensions) and then linearly projected into a $D$-dimensional embedding (the model width). This is the equivalent of a "word embedding" in NLP.
 
 ### B. Positional and `[CLS]` Token
 

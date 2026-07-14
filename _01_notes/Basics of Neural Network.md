@@ -47,7 +47,7 @@ $$
 
 ![[nn_forward_prop_formulas.png|700]]
 
-This is equivalent to the **Optimal Control / Joint State Method** (Pontryagin, 1960s), independently rediscovered for neural networks as backpropagation. GPUs excel at these operations via **SIMD** (single instruction, multiple data) parallelism.
+This is equivalent to the **Optimal Control / Adjoint State Method** (Pontryagin, 1960s), independently rediscovered for neural networks as backpropagation. GPUs excel at these operations via **SIMD** (single instruction, multiple data) parallelism.
 
 ## References
 ---

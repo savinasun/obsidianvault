@@ -42,7 +42,7 @@ $$\textrm{FF}(x) = \max(0, xW_1)W_2$$
     - LeNet uses sigmoid, AlexNet uses ReLu
 - Image of ReLU and Swish function and their derivative functions 
 	![[activation_functions_03.png]]
-+ Notable models using ReLU: [[Transformer|original transformer]], T5, Chinchilla, Gopher
++ Notable models using ReLU: [[Transformer|original transformer]], T5
 + **Swish**:  A derived modification from SiLU$$\textrm{Swish}_{\beta}(x) = x\cdot \sigma(\beta x) = \frac{x}{1+e^{-\beta x}}$$
 
 ## Gaussian Error Linear Unit (GELU)
@@ -84,5 +84,5 @@ $$Instead of simply using a linear projection together with [[Activation Functio
 	$$This gives the gated variant ReGLU, which gates the vanilla ReLU using an extra parameter $V$$$
 \textrm{FF}_{\textrm{ReGLU}}(x) = (\max(0, xW_1)\otimes xV)W_2.
 $$
-+ Notable models using ReGLU: T5 v1.1, mT5, Phi3, Gemma2, Gemma3
++ Notable models using the GeGLU variant: T5 v1.1, mT5, Gemma2, Gemma3
 

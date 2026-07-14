@@ -20,7 +20,7 @@ X \to \tilde{X}\cdot\Gamma,
 $$
 where
 $$
-\tilde{X} = X \oslash \sqrt{\frac 1 d H\odot H \mathbf{1}^d + \epsilon}
+\tilde{X} = X \oslash \sqrt{\frac 1 d X\odot X \mathbf{1}^d + \epsilon}
 $$
 and$$
 \Gamma = \text{diag} (\gamma_1, \gamma_2, \dots, \gamma_d).

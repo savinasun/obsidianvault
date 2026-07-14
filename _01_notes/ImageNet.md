@@ -41,7 +41,7 @@ The **ImageNet Large Scale Visual Recognition Challenge (ILSVRC)** ran from 2010
 | **2016** | Trimps-Soushen | 2.99% | Large ensemble of residual networks |
 | **2017** | [**SENet**](https://arxiv.org/abs/1709.01507) (Hu et al.) | **2.25%** | Squeeze-and-Excitation channel attention |
 
-**Human-level performance** (Karpathy, 2014): ~5.1% top-5 error. ResNet 2015 was the first model to surpass it.
+**Human-level performance** (Karpathy, 2014): ~5.1% top-5 error. ResNet 2015 was the first ILSVRC winner to surpass it.
 
 ## 2012: The AlexNet Moment
 ---
@@ -170,7 +170,7 @@ where $W_1 \in \mathbb{R}^{C/r \times C}$, $W_2 \in \mathbb{R}^{C \times C/r}$ w
 3. **Scale**: multiply each channel by its learned weight:
 $$\tilde{u}_c = e_c \cdot u_c$$
 
-**Plug-and-play**: SE blocks add only ~2% extra parameters to any backbone. SE-ResNet-50 improves ResNet-50's top-1 from 76.1% to 77.6% at minimal cost. SE-ResNet-154 won ILSVRC 2017 at 2.25% top-5 error. The mechanism generalizes well and was adopted in EfficientNet's MBConv blocks.
+**Plug-and-play**: SE blocks add only ~10% extra parameters (and <1% extra FLOPs) to a ResNet-50 backbone. SE-ResNet-50 improves ResNet-50's top-1 from 76.1% to 77.6% at minimal cost. SENet-154 won ILSVRC 2017 at 2.25% top-5 error. The mechanism generalizes well and was adopted in EfficientNet's MBConv blocks.
 
 ## EfficientNet (2019)
 ---
@@ -222,7 +222,7 @@ subject to $\alpha \cdot \beta^2 \cdot \gamma^2 \approx 2$ so that total FLOPs d
 | [**AlexNet**](https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf) | 2012 | 8 | 60M | 57.1% | ReLU, GPU, dropout |
 | [**ZFNet**](https://arxiv.org/abs/1311.2901) | 2013 | 8 | 60M | 62.5% | Deconv visualization; smaller stride in layer 1 |
 | [**VGG-16**](https://arxiv.org/abs/1409.1556) | 2014 | 16 | 138M | 71.5% | Uniform 3×3 conv; very deep |
-| [**GoogLeNet**](https://arxiv.org/abs/1409.4842) | 2014 | 22 | 6.8M | 74.8% | Inception module; much fewer params via 1×1 bottleneck |
+| [**GoogLeNet**](https://arxiv.org/abs/1409.4842) | 2014 | 22 | 6.8M | 69.8% | Inception module; much fewer params via 1×1 bottleneck |
 | [**ResNet-50**](https://arxiv.org/abs/1512.03385) | 2015 | 50 | 25M | 76.1% | Skip connections; enables 100+ layer training |
 | [**ResNet-152**](https://arxiv.org/abs/1512.03385) | 2015 | 152 | 60M | 78.6% | Depth at scale; ILSVRC winner |
 | [**DenseNet-121**](https://arxiv.org/abs/1608.06993) | 2017 | 121 | 7M | 74.5% | Dense connections (all layers to all layers) |
@@ -241,7 +241,7 @@ Notable results after 2017:
 | [EfficientNet-L2 (NoisyStudent)](https://arxiv.org/abs/1911.04252) | 2020 | 88.4% | Semi-supervised; pseudo-label on 300M images |
 | [ViT-G/14](https://arxiv.org/abs/2106.04560) | 2022 | 90.45% | ~1.8B params, JFT-3B pre-training |
 | [[DINO|DINOv2]] (ViT-g) ([Oquab et al., 2023](https://arxiv.org/abs/2304.07193)) | 2023 | 86.5% | **Self-supervised only** — no labels at any stage |
-| [CoCa](https://arxiv.org/abs/2205.01068) | 2022 | 91.0% | Image-text contrastive + captioning pre-training |
+| [CoCa](https://arxiv.org/abs/2205.01917) | 2022 | 91.0% | Image-text contrastive + captioning pre-training |
 | [EVA-02](https://arxiv.org/abs/2303.11331) | 2023 | 90.0% | CLIP supervision + MAE-style reconstruction |
 
 **Saturation**: top models exceed 91% top-1 on ImageNet-1K. Research has shifted to harder evaluations: **ImageNet-21K** (10K+ classes), **ObjectNet** (out-of-distribution), **ImageNet-A/R/Sketch** (robustness to natural corruptions and distribution shifts).

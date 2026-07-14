@@ -26,7 +26,7 @@
 - It causes the **gradient-norm decay exponentially** in backward propagation, which shadows the original intention of introducing residual connections here and leading to **gradient vanishing** when training deep network. $$
 	x_{l+1} = \textrm{LN}(x_{l}+f_l(x_l)) = \frac{x_l + f_l(x_l)}{\sqrt{2}} = \frac{x_{l-1}}{2} + \frac{f_{l-1}(x_{l-1})}{2} + \frac{f_l(x_l)}{\sqrt{2}} = \cdots = \frac{x_0}{2^{(l+1)/2}} + \frac{f_0(x_0)}{2^{(l+1)/2}} + \cdots + \frac{f_l(x_l)}{\sqrt{2}}
 	$$- It therefore requires a subtly tuned **LR warm-up stage** for the optimizer to perform well. Experiments are conducted to show that this learning rate warm-up stage is essential for training Post-LN transformer models, ![[llms_02.png]]
-- In [Xiong et al., 2020](https://arxiv.org/abs/2002.04745), the author proposes the **Pre-LN Transformer** which puts **layer normalization inside the residual connection** and places it before all other non-linear transformations. Additionally, the Pre-LN Transformer uses a final layer normalization right before the prediction.
+- In [Xiong et al., 2020](https://arxiv.org/abs/2002.04745), the authors analyze the **Pre-LN Transformer** (already used in e.g. GPT-2) which puts **layer normalization inside the residual connection** and places it before all other non-linear transformations. Additionally, the Pre-LN Transformer uses a final layer normalization right before the prediction.
 - The function of pre-LN could be expressed as$$
 x_{l+1} = x_l + f_l (\textrm{LN}(x_l))
 	$$where $f_l(\cdot)$ represents FFN or attention function in the $l$-th layer. $$
@@ -120,7 +120,7 @@ $$𝑑_{𝑓𝑓} = \frac 8 3 d_{model}.$$This is mostly what happens. Some nota
 | PaLM         | 4                  |
 | Mistral 7B   | 3.5                |
 | LLaMA-2 70B  | 3.5                |
-| LLaMA 70B    | 2.68               |
+| LLaMA 65B    | 2.68               |
 | Qwen 14B     | 2.67               |
 | DeepSeek 67B | 2.68               |
 | Yi 34B       | 2.85               |

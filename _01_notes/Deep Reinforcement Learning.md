@@ -16,7 +16,7 @@ Hand-crafted features and domain knowledge have been repeatedly outcompeted by g
 
 ## Deep Q-Network (DQN)
 ---
-DQN ([Mnih et al., 2015](https://arxiv.org/abs/1312.5602)) extends Q-learning to work with neural networks by addressing two key instabilities: **correlation between consecutive samples** and **non-stationary targets**.
+DQN ([Mnih et al., 2013](https://arxiv.org/abs/1312.5602); [Mnih et al., 2015, Nature](https://www.nature.com/articles/nature14236)) extends Q-learning to work with neural networks by addressing two key instabilities: **correlation between consecutive samples** and **non-stationary targets**.
 
 **Core components**:
 

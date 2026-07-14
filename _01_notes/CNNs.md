@@ -39,9 +39,9 @@ CNNs hard-code two inductive biases:
 
 **Locality**: each output unit depends on a small *receptive field* of the input. Filters learn local features (edges, textures) that are compositioned hierarchically into global features (objects).
 
-The receptive field $r_0$ of the first layer feature map with respect to the input is computed as:
+The receptive field $r_0$ of the final layer feature map with respect to the input is computed as:
 $$
-r_0 = \sum\limits_{i=1}^L \left((k_i -1)\prod\limits_{j=1}^{\ell-1}s_j \right)+1
+r_0 = \sum\limits_{i=1}^L \left((k_i -1)\prod\limits_{j=1}^{i-1}s_j \right)+1
 $$
 ![[cnn_receptive_field_diagram.png|186]]
 
@@ -59,7 +59,7 @@ The original CNN. ~60K parameters. `Conv → Pool → Conv → Pool → FC → F
 ### AlexNet ([Krizhevsky et al., 2012](https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf))
 Sparked the deep learning revolution by winning ImageNet 2012 by a large margin. ~60M parameters.
 - First large-scale use of **ReLU** (faster training than sigmoid/tanh)
-- Trained on two GPUs (data parallelism)
+- Trained on two GPUs (model parallelism)
 - **Dropout** for regularization
 
 ### VGG-16/19 ([Simonyan & Zisserman, 2014](https://arxiv.org/abs/1409.1556))
@@ -103,7 +103,7 @@ Detection extends classification to predicting **bounding boxes** and **class la
 ---
 [Gatys et al., 2015](https://arxiv.org/abs/1508.06576). Uses a pretrained CNN (VGG) to transfer the *style* of one image onto the *content* of another by optimizing a generated image against two CNN-derived losses.
 
-**Content loss**: measures how much the generated image $p$ differs from the content image $x$ at layer $l$ — directly compares feature activations.
+**Content loss**: measures how much the generated image $x$ differs from the content image $p$ at layer $l$ — directly compares feature activations.
 
 **Style loss**: measures style similarity via the **Gram matrix** of feature maps $F^l \in \mathbb{R}^{N_l \times M_l}$ (channels × spatial positions):
 $$

@@ -89,7 +89,7 @@ $$
 Without this: FID 23.08. With it: FID 4.81 — a >4× improvement from a single hyperparameter fix.
 
 ### 3. DiT$^\text{DH}$: Shallow-but-Wide Head
-Width scaling alone causes quadratic FLOP growth in attention. To satisfy $d \geq 768$ efficiently, the paper introduces a **dual-head DiT** ($\text{DiT}^\text{DH}$):
+Width scaling alone causes quadratic FLOP growth in attention. To satisfy $d \geq 768$ efficiently, the paper introduces **DiT with a shallow-but-wide DDT head** ($\text{DiT}^\text{DH}$):
 
 $$
 z_t = M(x_t \mid t, y) \quad \text{[base DiT, standard width]}
@@ -107,8 +107,8 @@ The head is shallow (2 transformer blocks) but wide (2048-dim), satisfying $d \g
 
 | Model | FID (no guidance) | FID (with guidance) |
 |-------|:-----------------:|:-------------------:|
-| DiT-XL (VAE) | 2.27 | — |
-| REPA | 1.83 | — |
+| DiT-XL (VAE) | 9.62 | 2.27 |
+| REPA | 5.78 | 1.29 |
 | **RAE-DiT (ours)** | **1.51** | **1.13** |
 
 **ImageNet 512×512**: FID **1.13** with guidance, surpassing EDM2 (1.25).

@@ -27,7 +27,7 @@ $$L^{CLIP}(θ)=E_t​[min(r_t​(θ)A_t​,clip(r_t​(θ), 1−ϵ, 1+ϵ)A_t​)
 
 
 
-## Direct Policy Optimization (DPO)
+## Direct Preference Optimization (DPO)
 ---
 
 ![[policy_gradient_methods_01.png]]
@@ -55,7 +55,7 @@ $$A_i = \frac{r_i - mean(r_1, r_2, \dots, r_G)}{std(r_1, r_2, \dots, r_G)}, $$
 	where $A_i$ is the advantage of the $i$-th completion and $r_i$ is the reward assigned to $i$-th completion
 	
 + **Components**:
-	1. Ratio of Token Probability Distributions of Reference Model (no adapter) and Updated Model (with adapter)
+	1. Ratio of Token Probability Distributions of the Updated Policy $\pi_\theta$ and the Old Policy $\pi_{\theta_{old}}$ (the frozen reference model enters only through the KL term)
 	2. Advantages
 	3. Ratio Clipping
 	4. [[KL Divergence]]: make sure the new model does not deviate too much from the baseline model during update
@@ -87,5 +87,5 @@ $$A_i = \frac{r_i - mean(r_1, r_2, \dots, r_G)}{std(r_1, r_2, \dots, r_G)}, $$
 			$g_t^m \leftarrow r_{t+1}^m + \gamma r_{t+2}^m + \cdots$
 			$\delta \leftarrow g_t^m - \hat{v}(s_t^m, \omega)$
 			$\omega \leftarrow \omega+ \alpha^\omega \delta \nabla \hat{v} (s_t^m, \omega)$
-			$\theta \leftarrow \theta + \alpha \cdot \gamma^t g_t^m \cdot \frac{\nabla \pi(a_t^m|s_t^m, \theta)}{\pi(a_t^m|s_t^m, \theta)}$ or $\theta \leftarrow \theta + \alpha \cdot \gamma^t g_t^m \cdot \nabla \ln \pi(a_t^m|s_t^m, \theta)$
+			$\theta \leftarrow \theta + \alpha^\theta \cdot \gamma^t \delta \cdot \frac{\nabla \pi(a_t^m|s_t^m, \theta)}{\pi(a_t^m|s_t^m, \theta)}$ or $\theta \leftarrow \theta + \alpha^\theta \cdot \gamma^t \delta \cdot \nabla \ln \pi(a_t^m|s_t^m, \theta)$
 	

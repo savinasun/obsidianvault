@@ -73,7 +73,7 @@ The recurrence is fast at inference but sequential to train. **Chunkwise paralle
 2. Within each chunk: use the **parallel (attention-matrix) form** — parallelizable over the chunk.
 3. Across chunks: carry the recurrent state $S$ forward — sequential but only $n/C$ steps.
 
-Total cost: $O(nCd + nd^2/C)$, minimized at $C = d$ → $O(nd^{3/2})$. In practice $C$ is tuned for hardware (e.g., $C = 64$–$256$).
+Total cost: $O(nCd + nd^2)$ — for $C \le d$ this matches the parallel form's $O(nd^2)$ while cutting the sequential steps from $n$ to $n/C$. In practice $C$ is tuned for hardware (e.g., $C = 64$–$256$).
 
 ## Notable Models
 ---
@@ -81,7 +81,7 @@ Total cost: $O(nCd + nd^2/C)$, minimized at $C = d$ → $O(nd^{3/2})$. In practi
 ### Performer (2020)
 [Choromanski et al., 2020](https://arxiv.org/abs/2009.14794) uses **random Fourier features** (FAVOR+) to construct an *unbiased* approximation of the softmax kernel:
 $$
-\phi(x) = \frac{1}{\sqrt{m}} \left[\exp(\omega_r^\top x - \|\omega_r\|^2/2)\right]_{r=1}^m, \quad \omega_r \sim \mathcal{N}(0, I)
+\phi(x) = \frac{1}{\sqrt{m}} \left[\exp(\omega_r^\top x - \|x\|^2/2)\right]_{r=1}^m, \quad \omega_r \sim \mathcal{N}(0, I)
 $$
 
 Unbiased but high-variance; memory cost shifts from $O(n^2)$ to $O(nm)$ where $m \ll n$.

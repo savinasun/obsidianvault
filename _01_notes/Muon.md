@@ -36,7 +36,7 @@ This means the optimal update under spectral norm is the matrix whose singular v
 
 ### Connection to Modular Duality
 
-Bernstein & Newhouse ([2024](https://arxiv.org/abs/2408.00065)) formalize this via *modular duality*: for each layer, the natural update norm is the operator norm (spectral norm), and the steepest descent direction is the dual norm gradient — the polar factor. Muon is the practical implementation of this principle.
+Bernstein & Newhouse ([2024](https://arxiv.org/abs/2410.21265)) formalize this via *modular duality*: for each layer, the natural update norm is the operator norm (spectral norm), and the steepest descent direction is the dual norm gradient — the polar factor. Muon is the practical implementation of this principle.
 
 ---
 
@@ -48,7 +48,7 @@ $$
 X_0 = G / \|G\|_F, \qquad X_{k+1} = \frac{3}{2} X_k - \frac{1}{2} X_k X_k^\top X_k
 $$
 
-This iteration converges quadratically to the orthogonal polar factor of $G$. Starting from $\|X_0\|_2 \leq 1$ (ensured by Frobenius normalization), **5 iterations** are sufficient in practice to orthogonalize a gradient matrix to machine precision.
+This iteration converges quadratically to the orthogonal polar factor of $G$. Starting from $\|X_0\|_2 \leq 1$ (ensured by Frobenius normalization), **5 iterations** are sufficient in practice to approximately orthogonalize a gradient matrix (singular values pushed toward 1, not to machine precision).
 
 Each Newton-Schulz step costs two matrix multiplications — $O(m^2 n + mn^2)$ total, comparable to one transformer forward pass for a weight matrix. This is much cheaper than eigendecomposition or SVD.
 

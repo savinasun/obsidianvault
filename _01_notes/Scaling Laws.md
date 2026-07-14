@@ -12,10 +12,10 @@
 [Kaplan et al., 2020](https://arxiv.org/abs/2001.08361) found that language model loss follows clean **power laws** in $N$, $D$, and $C$:
 
 $$
-L(N) \sim N^{-\alpha_N}, \quad L(D) \sim D^{-\alpha_D}, \quad L(C) \sim C^{-\alpha_C}
+L(N) = \left(\frac{N_c}{N}\right)^{\alpha_N}, \quad L(D) = \left(\frac{D_c}{D}\right)^{\alpha_D}, \quad L(C_\text{min}) = \left(\frac{C_c}{C_\text{min}}\right)^{\alpha_C}
 $$
 
-with $\alpha_N \approx 0.076$, $\alpha_D \approx 0.095$, $\alpha_C \approx 0.050$.
+with $\alpha_N \approx 0.076$ ($N_c \approx 8.8 \times 10^{13}$ non-embedding parameters), $\alpha_D \approx 0.095$ ($D_c \approx 5.4 \times 10^{13}$ tokens), $\alpha_C \approx 0.050$ ($C_c \approx 3.1 \times 10^8$ PF-days). Each law holds in the regime where the other two factors are not the bottleneck.
 
 **Key findings**:
 - Performance improves smoothly and predictably with scale

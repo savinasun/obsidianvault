@@ -19,10 +19,10 @@ The core idea of DINO is to train a **student network** ($g_{\theta_s}$) to matc
 ![[dino_01.png|350]]
 ### Student-Teacher Architecture
 + **Teacher Network ($g_{\theta_t}$):** 
-	Vit-Large, it is already trained, strong and slow.
+	Same architecture and size as the student — it is **not** pre-trained.
 	This network is not trained directly. Its weights ($\theta_t$) are updated using an EMA of the student's weights ($\theta_s$). This provides a more stable target for the student to learn from. 
 + **Student Network ($g_{\theta_s}$):** 
-	Vit-Base, it doesn't have as many parameters as the teacher, not as strong but it is faster.
+	Same architecture and size as the teacher.
 	This network is trained with standard back-propagation.
 
 ### Multi-Crop Training 
@@ -60,7 +60,7 @@ The success of DINO leads to DINO-v2 ([Oquab et al., 2024](https://arxiv.org/abs
 The goal of DINO-v2 was to overcome the limitations of existing pre-trained models, which often required fine-tuning on large, labeled datasets to perform well. The hypothesis was that by scaling up the pre-training data and refining the training algorithm, it would be possible to create a single, general-purpose vision backbone that excels at many tasks with only a simple linear head.
 
 * **Massive, Curated Dataset:** DINO-v2 was trained on a new, curated dataset of 142 million images, carefully selected from a larger pool to remove low-quality or irrelevant images.
-* **Architectural Improvements:** It incorporated techniques like SwiGLU activations and Nested Dropout for better performance and stability during training at scale.
+* **Architectural Improvements:** It incorporated techniques like SwiGLU activations and stochastic depth for better performance and stability during training at scale.
 * **State-of-the-Art Performance:** DINO-v2 established itself as a leading general-purpose vision backbone, achieving excellent results on tasks like depth estimation, semantic segmentation, and image classification.
 
 
@@ -75,14 +75,14 @@ Instead of using an existing, off-the-shelf dataset, the DINO-v2 authors built t
 
 #### B. Algorithmic and Architectural Improvements
 To make training stable and effective at this new scale, several changes were made:
-* **Image-Text Foundation Model Filtering:** [[CLIP]] was used to filter the web-scale dataset to ensure a good alignment between images and their alt-text, improving the quality of the image source.
+* **Purely Image-Based Filtering:** no text metadata or [[CLIP]]-style image–text filtering was used — the pipeline works directly on images alone, selecting them via self-supervised embedding similarity to curated seed datasets.
 * **Combined Loss Function:** DINO-v2 incorporates the **iBOT loss**, which adds a masked image modeling objective. This forces the model to learn not just global features (from the `[CLS]` token) but also dense, patch-level features.
 * **KoLeo Regularizer:** A regularization term was added to the loss to encourage batch-wise feature diversity, preventing the model from collapsing and ensuring a broader representation space.
-* **Architectural Tweaks:** The ViT architecture was updated with modern components like SwiGLU activations and Nested Dropout for improved performance and stability.
+* **Architectural Tweaks:** The ViT architecture was updated with modern components like SwiGLU activations and stochastic depth for improved performance and stability.
 
 #### C. Efficient Implementation
 Training on over 100 million images is computationally expensive. The team made significant engineering efforts to make it feasible:
-* **PyTorch 2.0 Compilation:** The model was compiled with `torch.compile` for significant speedups.
+* **Custom FlashAttention + Sequence Packing:** an in-house FlashAttention implementation and sequence packing provided significant speedups (training on A100 GPUs with PyTorch 2.0).
 * **Fully Sharded Data Parallel (FSDP):** This technique was used to distribute the model and optimizer states across GPUs, enabling training of the largest ViT models.
 * **Mixed-Precision Training:** Using `bfloat16` precision reduced memory usage and further accelerated training.
 
