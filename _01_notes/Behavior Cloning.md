@@ -2,7 +2,7 @@
 # **Behavior Cloning**
 
 **Tags**:: #rl
-**Links**:: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[RLHF]]
+**Links**:: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[RLHF]] · [[VLA]]
 
 
 **Behavior Cloning (BC)** is the simplest form of imitation learning: treat expert demonstrations as supervised learning data and train a policy $\pi_\theta$ to mimic observed actions.
@@ -76,3 +76,4 @@ In [[RLHF]], BC is used as the **initialization step**: a language model is firs
 - **Diffusion policies**: model $\pi_\theta(a \mid o)$ as a denoising diffusion process over action space, enabling multimodal action distributions
 - **Data quality over quantity**: BC is highly sensitive to demonstration quality; noisy or inconsistent demonstrators hurt more than helping
 - **Observation design**: the robot's observation $o_t$ must contain enough information for the task — partial observability causes systematic BC failures even with perfect demonstrations
+- **Foundation-model scale**: [[VLA]] models (RT-2, OpenVLA, π0) are BC scaled up — a pretrained VLM fine-tuned on large cross-embodiment demonstration corpora, with action chunking and diffusion/flow action heads as standard ingredients

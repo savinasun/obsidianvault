@@ -36,7 +36,7 @@ limit 10
 
 The evolution from RNNs → Transformers → SSMs, plus the full LLM stack: tokenization, positional encoding, efficient scaling, retrieval, and reasoning.
 
-Key notes: [[Transformer]] · [[Attention]] · [[Linear Attention]] · [[RNN]] · [[Mamba]] · [[LLMs]] · [[LLaMA]] · [[GPTs]] · [[BPE]] · [[RoPE]] · [[MoE]] · [[RAG]] · [[CoT Prompting]] · [[PPL]] · [[Cluster Training Glossary]] · [[VLM]] · [[LLaVA]] · [[Cambrian]]
+Key notes: [[Transformer]] · [[Attention]] · [[Linear Attention]] · [[RNN]] · [[Mamba]] · [[LLMs]] · [[LLaMA]] · [[GPTs]] · [[BPE]] · [[RoPE]] · [[MoE]] · [[RAG]] · [[CoT Prompting]] · [[PPL]] · [[Cluster Training Glossary]] · [[VLM]] · [[LLaVA]] · [[Cambrian]] · [[VLA]]
 
 ```dataview
 table tags as "Tags"
@@ -81,7 +81,7 @@ limit 10
 
 Policy optimization, imitation learning, model-based RL, and the path toward autonomous embodied agents.
 
-Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]]
+Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]] · [[VLA]]
 
 ```dataview
 table tags as "Tags"
