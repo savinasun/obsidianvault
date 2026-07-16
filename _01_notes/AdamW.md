@@ -2,7 +2,7 @@
 # **AdamW**
 
 **Tags**:: #dl_theo #learning
-**Links**:: [[Optimization Algorithms]] · [[LLMs]] · [[Normalization]] · [[Muon]] · [[SOAP]]
+**Links**:: [[Optimization Algorithms]] · [[LLMs]] · [[Normalization]] · [[Muon]] · [[SOAP]] · [[Learning Rate Annealing]]
 
 ---
 

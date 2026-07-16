@@ -2,7 +2,7 @@
 # **Optimization Algorithms**
 
 **Tags**:: #dl_theo
-**Links**:: [[LLMs]] · [[Neural Network Initialization]] · [[Double Descent]] · [[Scaling Laws]] · [[AdamW]] · [[Shampoo]] · [[SOAP]] · [[Muon]]
+**Links**:: [[LLMs]] · [[Neural Network Initialization]] · [[Double Descent]] · [[Scaling Laws]] · [[AdamW]] · [[Shampoo]] · [[SOAP]] · [[Muon]] · [[Learning Rate Annealing]]
 
 
 Optimization algorithms update model parameters $\theta$ to minimize a loss $\mathcal{L}(\theta)$. The choice of optimizer, learning rate schedule, and regularization critically affects both training stability and final performance.
@@ -247,7 +247,7 @@ $$
 
 ## Learning Rate Schedules
 ---
-The learning rate $\eta$ is typically varied during training:
+The learning rate $\eta$ is typically varied during training (deep dive: [[Learning Rate Annealing]] — WSD/trapezoidal schedules, warm restarts, one-cycle, annealing-as-averaging, and LLM practice):
 
 ### Linear Warmup
 Ramp $\eta$ from $0$ to $\eta_\text{max}$ over the first $T_\text{warmup}$ steps. Prevents instability early in training when parameter gradients are noisy and the model is far from any solution.
