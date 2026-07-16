@@ -2,7 +2,7 @@
 # **Reinforcement Learning from Human Feedback (RLHF)**
 
 **Tags**:: #rl #llm
-**Links**:: [[Policy Gradient Methods]] · [[Reinforcement Learning]] · [[Behavior Cloning]] · [[LLMs]]
+**Links**:: [[Policy Gradient Methods]] · [[Reinforcement Learning]] · [[Behavior Cloning]] · [[LLMs]] · [[Elo Score]]
 
 
 **RLHF** is the technique used to align language models with human intent by incorporating human preference judgments into the training loop. It is the method behind InstructGPT, ChatGPT, Claude, and most modern instruction-following LLMs.
@@ -31,6 +31,8 @@ $$
 \mathcal{L}_\text{RM}(\phi) = -\mathbb{E}_{(x, y_w, y_l)}\left[\log \sigma(r_\phi(x, y_w) - r_\phi(x, y_l))\right]
 $$
 The reward model is typically initialized from the SFT model with the final token prediction head replaced by a scalar reward head.
+
+Bradley-Terry is the same paired-comparison model that underlies the [[Elo Score]] — the reward model effectively learns a per-response Elo rating (an analogy made explicitly by Christiano et al., 2017).
 
 ### Stage 3: RL Fine-Tuning with PPO
 Use [[Policy Gradient Methods#Proximal Policy Optimization (PPO)|PPO]] to maximize expected reward while staying close to the SFT model:
