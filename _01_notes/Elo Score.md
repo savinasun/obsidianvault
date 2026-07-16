@@ -60,7 +60,7 @@ The displayed "Elo score" (now "**Arena Score**") is therefore a BT coefficient 
 
 ## Connection to RLHF Reward Models
 ---
-The preference model in [[RLHF]] **is Bradley-Terry, i.e. Elo's model**. Christiano et al. ([2017](https://arxiv.org/abs/1706.03741)) made the analogy explicit: "just as the difference in Elo points of two chess players estimates the probability of one defeating the other... the difference in predicted reward of two trajectory segments estimates the probability that one is chosen over the other." InstructGPT's reward-model loss
+The preference model in [[RLHF]] **is Bradley-Terry, i.e. Elo's model**. Christiano et al. ([2017](https://arxiv.org/abs/1706.03741)) made the analogy explicit: "just as the difference in Elo points of two chess players estimates the probability of one player defeating the other... the difference in predicted reward of two trajectory segments estimates the probability that one is chosen over the other." InstructGPT's reward-model loss
 $$
 \mathcal{L}(\theta) = -\frac{1}{\binom{K}{2}}\,\mathbb{E}_{(x, y_w, y_l)}\big[\log \sigma\big(r_\theta(x, y_w) - r_\theta(x, y_l)\big)\big]
 $$
@@ -90,7 +90,7 @@ DeepMind's AlphaGo Zero / AlphaZero training curves report Elo fit by **BayesElo
 | **BayesElo** (Coulom) | batch MAP Elo with explicit draw + first-move-advantage parameters | — |
 | **WHR** (Coulom, 2008) | whole-history MAP: Bradley-Terry + Wiener-process prior on each rating trajectory; order-independent, principled uncertainty growth $\propto \sqrt{t}$ | full history |
 
-On a 2.3M-game KGS Go test set, prediction accuracy ordered: Elo 55.12% < Glicko 55.52% < TrueSkill 55.54% < BayesElo 55.67% < WHR 55.79% — small-looking but statistically significant gaps.
+On a 2.3M-game KGS Go test set, prediction accuracy ordered: Elo 55.12% < Glicko 55.52% < TrueSkill 55.54% < BayesElo 55.67% < WHR 55.79% — small-looking gaps, but mostly statistically significant (Coulom's 95%-confidence threshold is a 0.091% test-set difference, which every adjacent gap clears except Glicko → TrueSkill at 0.014%).
 
 ## Chess Anchors (for intuition)
 ---
