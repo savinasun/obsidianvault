@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Elo Score.md",
+                "file": "_01_notes/Optimization Algorithms.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Elo Score"
+              "title": "Optimization Algorithms"
             }
           }
         ]
@@ -217,6 +217,7 @@
   },
   "active": "3a9cef6698daacf2",
   "lastOpenFiles": [
+    "_01_notes/Learning Rate Annealing.md",
     "_00_maps_of_contents/dl_moc.md",
     "_01_notes/Elo Score.md",
     "_01_notes/VLA.md",
@@ -242,7 +243,6 @@
     "_01_notes/DiT.md",
     "_01_notes/GAN.md",
     "_01_notes/VAE.md",
-    "_01_notes/DINO.md",
     "_04_images/bokeh_plot.png",
     "_04_images/policy_gradient_grpo_loss.png",
     "_04_images/optimization_minibatch_tips.png",

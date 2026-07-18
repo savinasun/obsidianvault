@@ -1,4 +1,4 @@
-### [[dl_moc]]  
+`### [[dl_moc]]  
 # **Optimization Algorithms**
 
 **Tags**:: #dl_theo
