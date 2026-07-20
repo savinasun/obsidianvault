@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 ## **Denoising Diffusion Probabilistic Model**
 **Tags**:: #generative
-**Links**:: [[Score-Based Generative Modeling Methods]] · [[MCMC]] · [[LDM]] · [[VAE]] · [[ELBO]] · [[FID]]
+**Links**:: [[Score-Based Generative Modeling Methods]] · [[Flow Matching]] · [[MCMC]] · [[LDM]] · [[VAE]] · [[ELBO]] · [[FID]]
 
 DDPM; [Ho et al. 2020](https://arxiv.org/abs/2006.11239) defines a Markov chain of diffusion steps to slowly add random noise to data and then learn to reverse the diffusion process to construct desired data samples from the noise.
 ![[ddpm_forward_backward.png]]
@@ -73,7 +73,7 @@ Setting $\sigma_t = 0$ makes the process **deterministic** (no random $\epsilon_
 - **Latent interpolation**: since the mapping is deterministic and invertible, you can encode real images to their latent $x_T$ and interpolate between them
 - **Consistency**: same starting $x_T$ always gives the same image
 
-DDIM's deterministic sampler is equivalent to integrating the probability flow ODE of the corresponding SDE — see [[Score-Based Generative Modeling Methods]] for the SDE unification.
+DDIM's deterministic sampler is equivalent to integrating the probability flow ODE of the corresponding SDE — see [[Score-Based Generative Modeling Methods]] for the SDE unification. In the [[Flow Matching]] view, this ODE is exactly the FM marginal velocity for the corresponding Gaussian probability path — DDPM training is FM with noise-prediction parameterization and inverted time.
 
 ## Variance Schedule
 ---
