@@ -2,7 +2,7 @@
 # **Flow Matching**
 
 **Tags**:: #generative #dl_theo #diffusion
-**Links**:: [[DDPM]] · [[Score-Based Generative Modeling Methods]] · [[LDM]] · [[DiT]] · [[VAE]] · [[ELBO]] · [[MCMC]] · [[FID]] · [[RAE]] · [[VLA]]
+**Links**:: [[DDPM]] · [[Score-Based Generative Modeling Methods]] · [[Divergence Theorem]] · [[LDM]] · [[DiT]] · [[VAE]] · [[ELBO]] · [[MCMC]] · [[FID]] · [[RAE]] · [[VLA]]
 
 
 **Flow Matching (FM)** is a simulation-free framework for training generative models: pick a probability path $p_t$ that interpolates a source distribution $p$ (noise) into the data distribution $q$, then train a neural velocity field to generate that path by simple regression. Sampling is ODE integration. It was introduced concurrently by [Lipman et al., 2022](https://arxiv.org/abs/2210.02747) (Flow Matching), [Liu et al., 2022](https://arxiv.org/abs/2209.03003) (Rectified Flow), and [Albergo & Vanden-Eijnden, 2022](https://arxiv.org/abs/2209.15571) (stochastic interpolants), and now powers state-of-the-art systems for images (SD3, [Esser et al., 2024](https://arxiv.org/abs/2403.03206)), video (Movie Gen), speech/audio (Voicebox, Audiobox), protein backbones (SE(3) FM), and robot policies (π0 — see [[VLA]]).
@@ -47,7 +47,7 @@ $$
 \frac{d}{dt} p_t(x) + \mathrm{div}\big(p_t u_t\big)(x) = 0,
 $$
 
-(plus local Lipschitzness and integrability of $u_t$). Intuition: the change of probability mass in any region equals minus the net probability flux $j_t = p_t u_t$ leaving through its boundary.
+(plus local Lipschitzness and integrability of $u_t$). Intuition: the change of probability mass in any region equals minus the net probability flux $j_t = p_t u_t$ leaving through its boundary — the [[Divergence Theorem]] in integral form.
 
 **Exact likelihoods**: the Continuity Equation implies the *instantaneous change of variables* ([Chen et al., 2018](https://arxiv.org/abs/1806.07366), Neural ODEs):
 

@@ -6,7 +6,7 @@ A living index organized by research direction.
 
 Pure mathematical machinery — information theory, linear algebra, probability, and dimensionality reduction — that underpins all of deep learning.
 
-Key notes: [[Linear Algebra]] · [[SVD]] · [[Spectral Analysis]] · [[Entropy]] · [[KL Divergence]] · [[ELBO]] · [[MCMC]] · [[Manifold Hypothesis]] · [[t-SNE]] · [[UMAP]] · [[Hamming Loss]] · [[Elo Score]]
+Key notes: [[Linear Algebra]] · [[SVD]] · [[Spectral Analysis]] · [[Divergence Theorem]] · [[Entropy]] · [[KL Divergence]] · [[ELBO]] · [[MCMC]] · [[Manifold Hypothesis]] · [[t-SNE]] · [[UMAP]] · [[Hamming Loss]] · [[Elo Score]]
 
 ```dataview
 table tags as "Tags"
