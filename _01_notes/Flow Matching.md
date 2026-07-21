@@ -33,18 +33,13 @@ for t in torch.linspace(0, 1, steps + 1)[:-1]:
 
 ## Background: Flows, Velocity Fields, and the Continuity Equation
 ---
-Trajectory:
+Trajectory
 
 Vector Field
 
 ODE
 
-Flow:
-
-
-
-
-A **flow** $\psi_t : \mathbb{R}^d \to \mathbb{R}^d$ is a time-dependent diffeomorphism defined by a velocity field $u_t$ through the ODE
+**Flow**: A **flow** $\psi_t : \mathbb{R}^d \to \mathbb{R}^d$ is a time-dependent diffeomorphism defined by a velocity field $u_t$ through the ODE
 
 $$
 \frac{d}{dt}\psi_t(x) = u_t(\psi_t(x)), \qquad \psi_0(x) = x.
@@ -52,8 +47,18 @@ $$
 
 A **flow model** is $X_t = \psi_t(X_0)$ with $X_0 \sim p$ — a deterministic, Markov, continuous-time process. Flows and velocity fields are equivalent: $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$. We say $u_t$ **generates** the probability path $p_t$ if $X_t = \psi_t(X_0) \sim p_t$ for all $t \in [0,1)$.
 
-Lipschitz Condition: **A vector field $u: \mathbb{R}^d \to \mathbb{R}^d$ is Lipschitz** (globally) if there is a constant $L$ such that
+**Lipschitz Condition**: **A vector field $u: \mathbb{R}^d \to \mathbb{R}^d$ is Lipschitz** (globally) if there is a constant $L$ such that
 $$|u(x) - u(y)| \le L,|x - y| \quad \forall x, y$$
+Stochastic Process
+
+Diffusion Coefficient
+
+SDE
+Probability Paths
+Conditional Probability Paths
+Marginal Probability Paths
+
+Conditional Vector Field
 
 
 
