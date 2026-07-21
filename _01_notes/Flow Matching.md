@@ -7,7 +7,7 @@
 
 **Flow Matching (FM)** is a simulation-free framework for training generative models: pick a probability path $p_t$ that interpolates a source distribution $p$ (noise) into the data distribution $q$, then train a neural velocity field to generate that path by simple regression. Sampling is ODE integration. It was introduced concurrently by [Lipman et al., 2022](https://arxiv.org/abs/2210.02747) (Flow Matching), [Liu et al., 2022](https://arxiv.org/abs/2209.03003) (Rectified Flow), and [Albergo & Vanden-Eijnden, 2022](https://arxiv.org/abs/2209.15571) (stochastic interpolants), and now powers state-of-the-art systems for images (SD3, [Esser et al., 2024](https://arxiv.org/abs/2403.03206)), video (Movie Gen), speech/audio (Voicebox, Audiobox), protein backbones (SE(3) FM), and robot policies (π0 — see [[VLA]]).
 
-This note follows the comprehensive treatment in **"Flow Matching Guide and Code"** ([Lipman et al., 2024, arXiv 2412.06264](https://arxiv.org/abs/2412.06264), FAIR/MIT/Weizmann), which comes with the [`flow_matching` PyTorch library](https://github.com/facebookresearch/flow_matching).
+This note follows the comprehensive treatment in **"Flow Matching Guide and Code"** ([Lipman et al., 2024, arXiv 2412.06264](https://arxiv.org/abs/2412.06264), FAIR/MIT/Weizmann), which comes with the [`flow_matching` PyTorch library](https://github.com/facebookresearch/flow_matching). The background section follows the more introductory **MIT 6.S184 lecture notes** ([Holderrieth & Erives, *An Introduction to Flow Matching and Diffusion Models*](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf)).
 
 **Time convention (important!)**: FM uses $t=0$ for **noise/source** and $t=1$ for **data/target** — the *opposite* of the diffusion convention in [[DDPM]] where $x_0$ is data. Diffusion time $r$ relates to FM time by a decreasing reparameterization $r = k(t)$, with data at $r=0$ and noise at $r \to \infty$.
 
@@ -31,46 +31,92 @@ for t in torch.linspace(0, 1, steps + 1)[:-1]:
     x = x + (1 / steps) * model(x, t)   # Euler; midpoint works better
 ```
 
+*This background follows the MIT 6.S184 lecture notes ([Holderrieth & Erives, "An Introduction to Flow Matching and Diffusion Models"](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf), §2–4; [course site](https://diffusion.csail.mit.edu/) with recordings and labs) — a gentler build-up of the same machinery as Ch. 3 of the FM guide. Dictionary: their $p_\text{init}, p_\text{data}$ are this note's $p, q$; their data point $z$ is our $x_1$; their noise schedulers $(\alpha_t, \beta_t)$ are the guide's $(\alpha_t, \sigma_t)$.*
+
 ## Background: Flows, Velocity Fields, and the Continuity Equation
 ---
-Trajectory
-
-Vector Field
-
-ODE
-
-**Flow**: A **flow** $\psi_t : \mathbb{R}^d \to \mathbb{R}^d$ is a time-dependent diffeomorphism defined by a velocity field $u_t$ through the ODE
-
+**Trajectory**. A time-dependent **vector field** $u : \mathbb{R}^d \times [0,1] \to \mathbb{R}^d$, $(x,t) \mapsto u_t(x)$, assigns a velocity to every point and time. It defines an **ODE**, whose solution from a start point $x_0$ is a **trajectory** $t \mapsto X_t$:
 $$
-\frac{d}{dt}\psi_t(x) = u_t(\psi_t(x)), \qquad \psi_0(x) = x.
+\frac{d}{dt}X_t = u_t(X_t), \qquad X_0 = x_0 .
 $$
 
-A **flow model** is $X_t = \psi_t(X_0)$ with $X_0 \sim p$ — a deterministic, Markov, continuous-time process. Flows and velocity fields are equivalent: $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$. We say $u_t$ **generates** the probability path $p_t$ if $X_t = \psi_t(X_0) \sim p_t$ for all $t \in [0,1)$.
+**Flow**. Collecting the solutions from *every* start point into a single map gives the **flow** $\psi : \mathbb{R}^d \times [0,1] \to \mathbb{R}^d$:
+$$
+\frac{d}{dt}\psi_t(x_0) = u_t(\psi_t(x_0)), \qquad \psi_0(x_0) = x_0, \qquad X_t = \psi_t(X_0).
+$$
+Conversely a flow determines its field via $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$. In the 6.S184 slogan: ==*vector fields define ODEs whose solutions are flows*.== 
 
-**Lipschitz Condition**: **A vector field $u: \mathbb{R}^d \to \mathbb{R}^d$ is Lipschitz** (globally) if there is a constant $L$ such that
-$$|u(x) - u(y)| \le L,|x - y| \quad \forall x, y$$
-Stochastic Process
+**Flow model**. A **flow model** turns this into a generative model by making *only the initial condition* random: $X_0 \sim p$, $\frac{d}{dt}X_t = u_t^\theta(X_t)$, with the goal $X_1 = \psi_1^\theta(X_0) \sim q$. The network parameterizes the **vector field, never the flow itself** — evaluating $\psi_t^\theta$ always means simulating the ODE.
 
-Diffusion Coefficient
+**Lipschitz condition, existence, uniqueness.** A vector field is **Lipschitz** (globally) if $\|u_t(x) - u_t(y)\| \le L\,\|x - y\|$ for all $x, y$ — it changes at most linearly in space. This is precisely the hypothesis of the classical well-posedness theorem for ODEs:
 
-SDE
-Probability Paths
-Conditional Probability Paths
-Marginal Probability Paths
+**Picard–Lindelöf theorem** (Cauchy–Lipschitz; existence & uniqueness): *Let $u_t(x)$ be continuous in $t$ and Lipschitz in $x$ with constant $L$ uniform in $t$. Then for every initial condition $X_{t_0} = x_0$, the ODE $\frac{d}{dt}X_t = u_t(X_t)$ has **exactly one** solution — defined on all of $[0,1]$ in the globally Lipschitz case; if $u$ is only **locally** Lipschitz, the unique solution exists on a maximal time interval around $t_0$, which may end in finite-time blow-up.*
 
-Conditional Vector Field
-
-
-
-**Mass Conservation Theorem**: $u_t$ generates $p_t$ ⟺ the pair satisfies the **Continuity Equation**
+*Proof idea*: rewrite the initial-value problem as a fixed-point equation $X = \Phi X$ for the integral operator
 
 $$
-\frac{d}{dt} p_t(x) + \mathrm{div}\big(p_t u_t\big)(x) = 0,
+(\Phi X)_t = x_0 + \int_{t_0}^{t} u_s(X_s)\, ds .
 $$
 
-(plus local Lipschitzness and integrability of $u_t$). Intuition: the change of probability mass in any region equals minus the net probability flux $j_t = p_t u_t$ leaving through its boundary — the [[Divergence Theorem]] in integral form.
+On a time window of length $h < 1/L$, $\Phi$ is a contraction on the space of continuous trajectories ($\|\Phi X - \Phi Y\|_\infty \le Lh\,\|X - Y\|_\infty$), so the Banach fixed-point theorem gives a unique fixed point, and the **Picard iteration** $X^{(k+1)} = \Phi X^{(k)}$ converges to it from any initial guess; chaining windows covers $[0,1]$. (Grönwall's inequality gives the same uniqueness plus the stability bound $\|\psi_t(x_0) - \psi_t(y_0)\| \le e^{Lt}\|x_0 - y_0\|$.)
 
-**Exact likelihoods**: the Continuity Equation implies the *instantaneous change of variables* ([Chen et al., 2018](https://arxiv.org/abs/1806.07366), Neural ODEs):
+Both hypotheses earn their keep. Weaken Lipschitz to mere continuity and existence survives (Peano's theorem) but **uniqueness fails**: $\dot x = \sqrt{|x|}$, $x(0) = 0$ is solved by both $x \equiv 0$ and $x(t) = t^2/4$ — the field has infinite slope at the origin. Keep only *local* Lipschitzness and solutions can **blow up** before $t=1$: $\dot x = x^2$, $x(0) = 1$ gives $x(t) = 1/(1-t)$, which escapes to infinity at $t = 1$.
+
+6.S184's Thm 3 is the specialization used in the course: if $u_t(x)$ is continuously differentiable with bounded derivative (which implies Lipschitz with $L = \sup\|\partial_x u\|$), the ODE has a unique solution and $\psi_t$ is a **diffeomorphism**. Uniqueness is what makes flows well-behaved: two trajectories can never cross or merge at the same time — they would be two solutions of one initial-value problem — which is why $\psi_t$ is a bijection, and why the *marginal* FM velocity must average conditional velocities wherever conditional paths cross. Neural networks with Lipschitz activations satisfy the condition automatically, so the theorem is "good news rather than a concern" (6.S184). The FM guide's weaker hypothesis — *local* Lipschitzness plus integrability $\int_0^1 \mathbb{E}\|u_t(X_t)\|\,dt < \infty$ — rules out blow-up for almost every trajectory instead, which is what's needed near $t = 1$, where conditional velocities like $(x_1 - x)/(1-t)$ blow up (hence "generates" on $[0,1)$). Worked example (6.S184 Ex. 4): $u_t(x) = -\theta x$ has the explicit flow $\psi_t(x_0) = e^{-\theta t}x_0$.
+
+**Simulation.** The **Euler method** updates $X_{t+h} = X_t + h\,u_t(X_t)$ with step size $h = 1/n$ ($o(h)$ local error). One rung up, **Heun's method** takes an Euler "guess" $X'_{t+h} = X_t + h\,u_t(X_t)$, then averages velocities at the current and guessed states: $X_{t+h} = X_t + \frac{h}{2}\big(u_t(X_t) + u_{t+h}(X'_{t+h})\big)$ — a predictor–corrector scheme; the FM guide's library defaults to the similar midpoint method. Higher-order solvers pay off exactly when trajectories curve.
+
+**Stochastic process, diffusion coefficient, SDE.** A **stochastic process** $(X_t)_{0\le t\le 1}$ is a random trajectory — each simulation gives a different path. The building block is **Brownian motion** $W_t$ (a continuous random walk): $W_0 = 0$, Gaussian increments $W_t - W_s \sim \mathcal{N}(0, (t-s)I_d)$, independent across disjoint intervals. An **SDE** adds Brownian noise, scaled by a **diffusion coefficient** $\sigma_t \ge 0$, to the ODE's infinitesimal update — the symbolic notation
+
+$$
+dX_t = u_t(X_t)\,dt + \sigma_t\,dW_t
+$$
+
+is shorthand for $X_{t+h} = X_t + h\,u_t(X_t) + \sigma_t(W_{t+h} - W_t) + h\,R_t(h)$ with a vanishing error term. Simulation by **Euler–Maruyama**: $X_{t+h} = X_t + h\,u_t(X_t) + \sqrt{h}\,\sigma_t\,\epsilon_t$, $\epsilon_t \sim \mathcal{N}(0, I_d)$. Randomness now enters the dynamics themselves, so there is no flow map. **Every ODE is an SDE with $\sigma_t = 0$** — in 6.S184's framing, a "diffusion model" is literally a flow model plus a diffusion coefficient. (Canonical example: the Ornstein–Uhlenbeck process $dX_t = -\theta X_t\,dt + \sigma\,dW_t$, which relaxes toward $\mathcal{N}(0, \tfrac{\sigma^2}{2\theta})$.)
+
+**Probability paths: conditional and marginal.** A **probability path** $(p_t)_{0 \le t \le 1}$ is a time-indexed family of distributions — a trajectory in the space of distributions, prescribing *what distribution $X_t$ should have at each time*. A **conditional probability path** interpolates noise into a *single data point*:
+
+$$
+p_0(\cdot|z) = p, \qquad p_1(\cdot|z) = \delta_z \qquad \text{for all } z,
+$$
+
+and induces the **marginal probability path** by mixing over the data: $p_t(x) = \int p_t(x|z)\, q(z)\, dz$, which interpolates $p_0 = p$ to $p_1 = q$. Sampling from $p_t$ is easy (draw $z \sim q$, then $x \sim p_t(\cdot|z)$) even though its density is intractable. The dominant example is the **Gaussian path** with noise schedulers $(\alpha_t, \beta_t)$, $\alpha_0 = \beta_1 = 0$, $\alpha_1 = \beta_0 = 1$:
+
+$$
+p_t(\cdot|z) = \mathcal{N}(\alpha_t z,\, \beta_t^2 I_d), \qquad x_t = \alpha_t z + \beta_t \epsilon, \quad \epsilon \sim \mathcal{N}(0, I_d).
+$$
+
+**Conditional vector field.** A conditional vector field $u_t^\text{target}(x|z)$ is any field whose ODE transports $p$ along the conditional path: $X_0 \sim p,\ \frac{d}{dt}X_t = u_t^\text{target}(X_t|z) \Rightarrow X_t \sim p_t(\cdot|z)$. It can typically be derived *by hand*: for the Gaussian path, the conditional flow $\psi_t(x|z) = \alpha_t z + \beta_t x$ gives (6.S184 Ex. 10)
+
+$$
+u_t^\text{target}(x|z) = \Big(\dot\alpha_t - \frac{\dot\beta_t}{\beta_t}\alpha_t\Big) z + \frac{\dot\beta_t}{\beta_t}\, x .
+$$
+
+Alone it is useless — its ODE just collapses everything onto $z$ — but it is the *building block* of the marginal field: the next section shows the marginal velocity is the posterior-weighted average of conditional ones (the Marginalization Trick), and that is what FM trains.
+
+**The Continuity Equation (Mass Conservation).** Say $u_t$ **generates** $p_t$ if $X_t \sim p_t$ for all $t$ whenever $X_0 \sim p_0$. The central characterization (6.S184 Thm 11; = the guide's Mass Conservation theorem) is: this holds **if and only if**
+
+$$
+\partial_t\, p_t(x) = -\,\mathrm{div}\big(p_t u_t\big)(x) \qquad \text{for all } x,\ t.
+$$
+
+Intuition (6.S184): $\partial_t p_t(x)$ is the local change of probability at $x$; divergence measures net *outflow* of a field, so $-\mathrm{div}(p_t u_t)$ is the **net inflow of probability mass** carried by the probability flux $j_t = p_t u_t$; since total mass is conserved (always integrates to 1), the two sides must agree — the [[Divergence Theorem]] in differential form. This single PDE licenses everything that follows: the Marginalization Trick is proven by checking that the marginal pair $(p_t, u_t)$ satisfies it.
+
+**Fokker–Planck: the SDE generalization.** For $dX_t = u_t(X_t)\,dt + \sigma_t\,dW_t$: $X_t \sim p_t$ for all $t$ **iff**
+
+$$
+\partial_t\, p_t = -\,\mathrm{div}(p_t u_t) + \frac{\sigma_t^2}{2}\Delta p_t ,
+$$
+
+where the Laplacian $\Delta = \mathrm{div}\,\nabla$ contributes a heat-equation term for the added noise; $\sigma_t = 0$ recovers the Continuity Equation (6.S184 Thm 19). Immediate payoff (their Thm 17): rewriting $\frac{\sigma_t^2}{2}\Delta p_t = \mathrm{div}\big(p_t \frac{\sigma_t^2}{2}\nabla\log p_t\big)$ shows that
+
+$$
+dX_t = \Big[u_t(X_t) + \frac{\sigma_t^2}{2}\nabla \log p_t(X_t)\Big]dt + \sigma_t\,dW_t
+$$
+
+has the **same marginals $p_t$ for every noise level $\sigma_t \ge 0$** — Langevin dynamics ([[MCMC]]) is the special case of a static path. This is where diffusion's stochastic samplers come from (see *Diffusion Models as a Special Case*); in theory $\sigma_t$ is a free knob, and a practically "optimal" $\sigma_t$ exists only because of training and simulation error.
+
+**Exact likelihoods.** The Continuity Equation implies the *instantaneous change of variables* ([Chen et al., 2018](https://arxiv.org/abs/1806.07366), Neural ODEs; guide §3.6 — not covered in 6.S184):
 
 $$
 \frac{d}{dt}\log p_t(\psi_t(x)) = -\,\mathrm{div}(u_t)(\psi_t(x)),
