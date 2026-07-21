@@ -48,9 +48,9 @@ Conversely a flow determines its field via $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$
 
 **Flow model**. A **flow model** turns this into a generative model by making *only the initial condition* random: $X_0 \sim p$, $\frac{d}{dt}X_t = u_t^\theta(X_t)$, with the goal $X_1 = \psi_1^\theta(X_0) \sim q$. The network parameterizes the **vector field, never the flow itself** — evaluating $\psi_t^\theta$ always means simulating the ODE.
 
-**Lipschitz condition, existence, uniqueness.** A vector field is **Lipschitz** (globally) if $\|u_t(x) - u_t(y)\| \le L\,\|x - y\|$ for all $x, y$ — it changes at most linearly in space. This is precisely the hypothesis of the classical well-posedness theorem for ODEs:
+**Lipschitz condition.** A vector field is global **Lipschitz** if $$\|u_t(x) - u_t(y)\| \le L\,\|x - y\|, \forall x, y$$it changes at most linearly in space. This is precisely the hypothesis of the classical well-posedness theorem for ODEs:
 
-**Picard–Lindelöf theorem** (Cauchy–Lipschitz; existence & uniqueness): *Let $u_t(x)$ be continuous in $t$ and Lipschitz in $x$ with constant $L$ uniform in $t$. Then for every initial condition $X_{t_0} = x_0$, the ODE $\frac{d}{dt}X_t = u_t(X_t)$ has **exactly one** solution — defined on all of $[0,1]$ in the globally Lipschitz case; if $u$ is only **locally** Lipschitz, the unique solution exists on a maximal time interval around $t_0$, which may end in finite-time blow-up.*
+**Picard–Lindelöf theorem** (Cauchy–Lipschitz; existence & uniqueness). *Let $u_t(x)$ be continuous in $t$ and Lipschitz in $x$ with constant $L$ uniform in $t$. Then for every initial condition $X_{t_0} = x_0$, the ODE $\frac{d}{dt}X_t = u_t(X_t)$ has **exactly one** solution — defined on all of $[0,1]$ in the globally Lipschitz case; if $u$ is only **locally** Lipschitz, the unique solution exists on a maximal time interval around $t_0$, which may end in finite-time blow-up.*
 
 *Proof idea*: rewrite the initial-value problem as a fixed-point equation $X = \Phi X$ for the integral operator
 
