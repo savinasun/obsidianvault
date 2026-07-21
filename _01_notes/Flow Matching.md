@@ -41,6 +41,14 @@ $$
 
 A **flow model** is $X_t = \psi_t(X_0)$ with $X_0 \sim p$ — a deterministic, Markov, continuous-time process. Flows and velocity fields are equivalent: $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$. We say $u_t$ **generates** the probability path $p_t$ if $X_t = \psi_t(X_0) \sim p_t$ for all $t \in [0,1)$.
 
+
+Vector Field:
+
+**A vector field $u: \mathbb{R}^d \to \mathbb{R}^d$ is Lipschitz** (globally) if there is a constant $L$ such that
+$$|u(x) - u(y)| \le L,|x - y| \quad \forall x, y$$
+
+
+
 **Mass Conservation Theorem**: $u_t$ generates $p_t$ ⟺ the pair satisfies the **Continuity Equation**
 
 $$
