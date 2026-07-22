@@ -31,7 +31,7 @@ for t in torch.linspace(0, 1, steps + 1)[:-1]:
 
 *This background follows the MIT 6.S184 lecture notes ([Holderrieth & Erives, "An Introduction to Flow Matching and Diffusion Models"](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf), §2–4; [course site](https://diffusion.csail.mit.edu/) with recordings and labs) — a gentler build-up of the same machinery as Ch. 3 of the FM guide.*
 
-## Math Background
+## Background
 ---
 **Time convention (important!)**: FM uses $t=0$ for **noise/source** and $t=1$ for **data/target** — the *opposite* of the diffusion convention in [[DDPM]] where $x_0$ is data. Diffusion time $r$ relates to FM time by a decreasing reparameterization $r = k(t)$, with data at $r=0$ and noise at $r \to \infty$.
 
