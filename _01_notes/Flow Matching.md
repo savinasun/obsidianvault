@@ -9,10 +9,6 @@
 
 This note follows the comprehensive treatment in **"Flow Matching Guide and Code"** ([Lipman et al., 2024, arXiv 2412.06264](https://arxiv.org/abs/2412.06264), FAIR/MIT/Weizmann), which comes with the [`flow_matching` PyTorch library](https://github.com/facebookresearch/flow_matching). The background section follows the more introductory **MIT 6.S184 lecture notes** ([Holderrieth & Erives, *An Introduction to Flow Matching and Diffusion Models*](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf)).
 
-**Time convention (important!)**: FM uses $t=0$ for **noise/source** and $t=1$ for **data/target** — the *opposite* of the diffusion convention in [[DDPM]] where $x_0$ is data. Diffusion time $r$ relates to FM time by a decreasing reparameterization $r = k(t)$, with data at $r=0$ and noise at $r \to \infty$.
-
-**Notation** (this note uses MIT 6.S184 notation throughout): source $p_\text{init}$, data $p_\text{data}$; data point $z \sim p_\text{data}$; Gaussian noise $\epsilon \sim p_\text{init} = \mathcal{N}(0, I_d)$; noise schedulers $(\alpha_t, \beta_t)$; ground-truth marginal velocity $u_t^\text{target}(x)$, conditional velocity $u_t^\text{target}(x|z)$, neural network $u_t^\theta$. The FM guide instead writes $p, q$; $x_1$; $x_0$; $(\alpha_t, \sigma_t)$; $u_t(x)$, $u_t(x|x_1)$ — translate accordingly when reading it.
-
 ## The FM Blueprint
 ---
 1. **Choose** a probability path $(p_t)_{0\le t\le 1}$ with boundary conditions $p_0 = p_\text{init}$ (known source, e.g. $\mathcal{N}(0,I_d)$) and $p_1 = p_\text{data}$.
@@ -35,55 +31,64 @@ for t in torch.linspace(0, 1, steps + 1)[:-1]:
 
 *This background follows the MIT 6.S184 lecture notes ([Holderrieth & Erives, "An Introduction to Flow Matching and Diffusion Models"](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf), §2–4; [course site](https://diffusion.csail.mit.edu/) with recordings and labs) — a gentler build-up of the same machinery as Ch. 3 of the FM guide.*
 
-## Background: Flows, Velocity Fields, and the Continuity Equation
+## Math Background
 ---
-**Trajectory**. A time-dependent **vector field** $u : \mathbb{R}^d \times [0,1] \to \mathbb{R}^d$, $(x,t) \mapsto u_t(x)$, assigns a velocity to every point and time. It defines an **ODE**, whose solution from a start point $x_0$ is a **trajectory** $t \mapsto X_t$:
+**Time convention (important!)**: FM uses $t=0$ for **noise/source** and $t=1$ for **data/target** — the *opposite* of the diffusion convention in [[DDPM]] where $x_0$ is data. Diffusion time $r$ relates to FM time by a decreasing reparameterization $r = k(t)$, with data at $r=0$ and noise at $r \to \infty$.
+
+**Notation**: source $p_\text{init}$, data $p_\text{data}$; data point $z \sim p_\text{data}$; Gaussian noise $\epsilon \sim p_\text{init} = \mathcal{N}(0, I_d)$; noise schedulers $(\alpha_t, \beta_t)$; ground-truth marginal velocity $u_t^\text{target}(x)$, conditional velocity $u_t^\text{target}(x|z)$, neural network $u_t^\theta$. The FM guide instead writes $p, q$; $x_1$; $x_0$; $(\alpha_t, \sigma_t)$; $u_t(x)$, $u_t(x|x_1)$ — translate accordingly when reading it.
+
++ **Trajectory**. A time-dependent **vector field** $u : \mathbb{R}^d \times [0,1] \to \mathbb{R}^d$, $(x,t) \mapsto u_t(x)$, assigns a velocity to every point and time. It defines an **ODE**, whose solution from a start point $x_0$ is a **trajectory** $t \mapsto X_t$:
 $$
 \frac{d}{dt}X_t = u_t(X_t), \qquad X_0 = x_0 .
 $$
 
-**Flow**. Collecting the solutions from *every* start point into a single map gives the **flow** $\psi : \mathbb{R}^d \times [0,1] \to \mathbb{R}^d$:
++ **Flow**. Collecting the solutions from *every* start point into a single map gives the **flow** $\psi : \mathbb{R}^d \times [0,1] \to \mathbb{R}^d$:
 $$
 \frac{d}{dt}\psi_t(x_0) = u_t(\psi_t(x_0)), \qquad \psi_0(x_0) = x_0, \qquad X_t = \psi_t(X_0).
 $$
-Conversely a flow determines its field via $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$. In the 6.S184 slogan: ==*vector fields define ODEs whose solutions are flows*.== 
+	Conversely a flow determines its field via $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$. In the 6.S184 slogan: ==*vector fields define ODEs whose solutions are flows*.== 
 
-**Flow model**. A **flow model** turns this into a generative model by making *only the initial condition* random: $X_0 \sim p_\text{init}$, $\frac{d}{dt}X_t = u_t^\theta(X_t)$, with the goal $X_1 = \psi_1^\theta(X_0) \sim p_\text{data}$. The network parameterizes the **vector field, never the flow itself** — evaluating $\psi_t^\theta$ always means simulating the ODE.
++ **Flow model**. A **flow model** turns this into a generative model by making *only the initial condition* random: $X_0 \sim p_\text{init}$, $\frac{d}{dt}X_t = u_t^\theta(X_t)$, with the goal $X_1 = \psi_1^\theta(X_0) \sim p_\text{data}$. The network parameterizes the **vector field, never the flow itself** — evaluating $\psi_t^\theta$ always means simulating the ODE.
 
-**Lipschitz condition.** A vector field is global **Lipschitz** if $$\|u_t(x) - u_t(y)\| \le L\,\|x - y\|, \forall x, y.$$
-**Picard–Lindelöf theorem** (Cauchy–Lipschitz; existence & uniqueness of the solution). *Let $u_t(x)$ be continuous in $t$ and Lipschitz in $x$ with constant $L$ uniform in $t$. Then for every initial condition $X_{t_0} = x_0$, the ODE $\frac{d}{dt}X_t = u_t(X_t)$ has **exactly one** solution, defined on all of $[0,1]$ in the globally Lipschitz case
++ **Lipschitz condition.** A vector field is global **Lipschitz** if $$\|u_t(x) - u_t(y)\| \le L\,\|x - y\|, \forall x, y.$$
+	**Picard–Lindelöf theorem** (Cauchy–Lipschitz; existence & uniqueness of the solution). *Let $u_t(x)$ be continuous in $t$ and Lipschitz in $x$ with constant $L$ uniform in $t$. Then for every initial condition $X_{t_0} = x_0$, the ODE $\frac{d}{dt}X_t = u_t(X_t)$ has **exactly one** solution, defined on all of $[0,1]$ in the globally Lipschitz case.
+	
 	If $u$ is only **locally** Lipschitz, the unique solution exists on a maximal time interval around $t_0$, which may end in finite-time blow-up. Both hypotheses earn their keep. Weaken Lipschitz to mere continuity and existence survives (Peano's theorem) but **uniqueness fails**: $\dot x = \sqrt{|x|}$, $x(0) = 0$ is solved by both $x \equiv 0$ and $x(t) = t^2/4$ — the field has infinite slope at the origin. Keep only *local* Lipschitzness and solutions can **blow up** before $t=1$: $\dot x = x^2$, $x(0) = 1$ gives $x(t) = 1/(1-t)$, which escapes to infinity at $t = 1$.
+	
 	Specially, if $u_t(x)$ is continuously differentiable with bounded derivative (which implies Lipschitz with $L = \sup\|\partial_x u\|$), the ODE has a unique solution and $\psi_t$ is a **diffeomorphism**. ==Uniqueness is what makes flows well-behaved: two trajectories can never cross or merge at the same time== — they would be two solutions of one initial-value problem — ==which is why $\psi_t$ is a bijection==, and why the *marginal* FM velocity must average conditional velocities wherever conditional paths cross. Neural networks with Lipschitz activations satisfy the condition automatically, so the theorem is "good news rather than a concern" (6.S184). The FM guide's weaker hypothesis — *local* Lipschitzness plus integrability $\int_0^1 \mathbb{E}\|u_t(X_t)\|\,dt < \infty$ — rules out blow-up for almost every trajectory instead, which is what's needed near $t = 1$, where conditional velocities like $(z - x)/(1-t)$ blow up (hence "generates" on $[0,1)$). Worked example (6.S184 Ex. 4): $u_t(x) = -\theta x$ has the explicit flow $\psi_t(x_0) = e^{-\theta t}x_0$.
 
-**Simulation.** The **Euler method** updates $X_{t+h} = X_t + h\,u_t(X_t)$ with step size $h = 1/n$ ($o(h)$ local error). 
++ **Simulation.** The **Euler method** updates $X_{t+h} = X_t + h\,u_t(X_t)$ with step size $h = 1/n$ ($o(h)$ local error). 
 	**Heun's method**: a predictor-corrector scheme, first predicts $X'_{t+h} = X_t + h\,u_t(X_t)$, then averages velocities at the current and guessed states $X_{t+h} = X_t + \frac{h}{2}\big(u_t(X_t) + u_{t+h}(X'_{t+h})\big)$ (mid-point method).  
 
-**Stochastic process, diffusion coefficient, SDE.** A **stochastic process** $(X_t)_{0\le t\le 1}$ is a random trajectory — each simulation gives a different path. An **SDE** adds Brownian noise, scaled by a **diffusion coefficient** $\sigma_t \ge 0$, to the ODE's infinitesimal update
++ **Stochastic process, diffusion coefficient, SDE.** A **stochastic process** $(X_t)_{0\le t\le 1}$ is a random trajectory — each simulation gives a different path. An **SDE** adds Brownian noise, scaled by a **diffusion coefficient** $\sigma_t \ge 0$, to the ODE's infinitesimal update
 $$
 dX_t = u_t(X_t)\,dt + \sigma_t\,dW_t
 $$
-is shorthand for $X_{t+h} = X_t + h\,u_t(X_t) + \sigma_t(W_{t+h} - W_t) + h\,R_t(h)$ with a vanishing error term. 
+	is shorthand for $X_{t+h} = X_t + h\,u_t(X_t) + \sigma_t(W_{t+h} - W_t) + h\,R_t(h)$ with a vanishing error term. 
 	**Euler–Maruyama Simulation**: $X_{t+h} = X_t + h\,u_t(X_t) + \sqrt{h}\,\sigma_t\,\epsilon_t$, $\epsilon_t \sim \mathcal{N}(0, I_d)$. Randomness now enters the dynamics themselves, so there is no flow map. **Every ODE is an SDE with $\sigma_t = 0$** — in 6.S184's framing, a "diffusion model" is literally a flow model plus a diffusion coefficient. 
 
-**Probability path.** A **probability path** $(p_t)_{0 \le t \le 1}$ is a time-indexed family of distributions — a trajectory in the space of distributions, prescribing *what distribution $X_t$ should have at each time*. 
++ **Probability path.** A **probability path** $(p_t)_{0 \le t \le 1}$ is a time-indexed family of distributions — a trajectory in the space of distributions, prescribing *what distribution $X_t$ should have at each time*. 
 
-**Conditional probability path**. A conditional probability path interpolates noise into a *single data point* $z$ with Dirac distribution
++ **Conditional probability path**. A conditional probability path interpolates noise into a *single data point* $z$ with Dirac distribution
 $$
 p_0(\cdot|z) = p_\text{init}, \qquad p_1(\cdot|z) = \delta_z \qquad \forall z,
 $$
-**Marginal probability path.** A marginal probability path is by mixing over the data: $p_t(x) = \int p_t(x|z)\, p_\text{data}(z)\, dz$, which interpolates $p_0 = p_\text{init}$ to $p_1 = p_\text{data}$. Sampling from $p_t$ is easy (draw $z \sim p_\text{data}$, then $x \sim p_t(\cdot|z)$) even though its density is intractable. The dominant example is the **Gaussian path** with noise schedulers $(\alpha_t, \beta_t)$, $\alpha_0 = \beta_1 = 0$, $\alpha_1 = \beta_0 = 1$:
-
-$$
++ **Marginal probability path.** A marginal probability path is by mixing over the data: $p_t(x) = \int p_t(x|z)\, p_\text{data}(z)\, dz$, which interpolates $p_0 = p_\text{init}$ to $p_1 = p_\text{data}$. Sampling from $p_t$ is easy (draw $z \sim p_\text{data}$, then $x \sim p_t(\cdot|z)$) even though its density is intractable. 
+	Eg. **Gaussian path** with noise schedulers $(\alpha_t, \beta_t)$, $\alpha_0 = \beta_1 = 0$, $\alpha_1 = \beta_0 = 1$:$$
 p_t(\cdot|z) = \mathcal{N}(\alpha_t z,\, \beta_t^2 I_d), \qquad x_t = \alpha_t z + \beta_t \epsilon, \quad \epsilon \sim \mathcal{N}(0, I_d).
 $$
-
-**Conditional vector field.** A conditional vector field $u_t^\text{target}(x|z)$ is any field whose ODE transports $p_\text{init}$ along the conditional path: $X_0 \sim p_\text{init},\ \frac{d}{dt}X_t = u_t^\text{target}(X_t|z) \Rightarrow X_t \sim p_t(\cdot|z)$. It can typically be derived *by hand*: for the Gaussian path, the conditional flow $\psi_t(x|z) = \alpha_t z + \beta_t x$ gives (6.S184 Ex. 10)
-
-$$
++ **Conditional vector field.** A conditional vector field $u_t^\text{target}(x|z)$ is any field whose ODE transports $p_\text{init}$ along the conditional path $$X_0 \sim p_\text{init},\ \frac{d}{dt}X_t = u_t^\text{target}(X_t|z) \Rightarrow X_t \sim p_t(\cdot|z).$$
+	It can typically be derived *by hand*: for the Gaussian path, the conditional flow $\psi_t(x|z) = \alpha_t z + \beta_t x$ gives$$
 u_t^\text{target}(x|z) = \Big(\dot\alpha_t - \frac{\dot\beta_t}{\beta_t}\alpha_t\Big) z + \frac{\dot\beta_t}{\beta_t}\, x .
 $$
 
-Alone it is useless — its ODE just collapses everything onto $z$ — but it is the *building block* of the marginal field: the next section shows the marginal velocity is the posterior-weighted average of conditional ones (the Marginalization Trick), and that is what FM trains.
+Marginal vector field. 
+
+	The flow corresponds to the marginal vector field, and it is what we plan to train for.
+
+Marginalization Trick. 
+
+
 
 **The Continuity Equation (Mass Conservation).** Say $u_t$ **generates** $p_t$ if $X_t \sim p_t$ for all $t$ whenever $X_0 \sim p_0$. The central characterization (6.S184 Thm 11; = the guide's Mass Conservation theorem) is: this holds **if and only if**
 
