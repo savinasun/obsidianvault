@@ -82,15 +82,15 @@ $$
 u_t^\text{target}(x|z) = \Big(\dot\alpha_t - \frac{\dot\beta_t}{\beta_t}\alpha_t\Big) z + \frac{\dot\beta_t}{\beta_t}\, x .
 $$
 
-Marginal vector field. 
++ Marginal vector field. 
 
 	The flow corresponds to the marginal vector field, and it is what we plan to train for.
 
-Marginalization Trick. 
++ Marginalization Trick. 
 
 
 
-**The Continuity Equation (Mass Conservation).** Say $u_t$ **generates** $p_t$ if $X_t \sim p_t$ for all $t$ whenever $X_0 \sim p_0$. The central characterization (6.S184 Thm 11; = the guide's Mass Conservation theorem) is: this holds **if and only if**
++ **Continuity Equation (Mass Conservation).** Say $u_t$ **generates** $p_t$ if $X_t \sim p_t$ for all $t$ whenever $X_0 \sim p_0$. The central characterization (6.S184 Thm 11; = the guide's Mass Conservation theorem) is: this holds **if and only if**
 
 $$
 \partial_t\, p_t(x) = -\,\mathrm{div}\big(p_t u_t\big)(x) \qquad \text{for all } x,\ t.
