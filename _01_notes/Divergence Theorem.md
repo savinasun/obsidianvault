@@ -2,7 +2,7 @@
 # **Divergence Theorem**
 
 **Tags**:: #math #dl_theo
-**Links**:: [[Flow Matching]] · [[Score-Based Generative Modeling Methods]] · [[DDPM]] · [[MCMC]] · [[Linear Algebra]] · [[KL Divergence]]
+**Links**:: [[Flow Matching]] · [[Score Matching]] · [[Score-Based Generative Modeling Methods]] · [[DDPM]] · [[MCMC]] · [[Linear Algebra]] · [[KL Divergence]]
 
 
 The **Divergence Theorem** (also **Gauss's theorem** or the **Gauss–Ostrogradsky theorem**) is the fundamental bridge between the *local* behavior of a vector field (its divergence at each point) and its *global* behavior (net flux through a closed surface):
@@ -126,7 +126,7 @@ $$
 \mathcal{J}(\theta) = \mathbb{E}_{p}\Big[\tfrac{1}{2}\|s_\theta(x)\|^2 + \mathrm{div}\big(s_\theta\big)(x)\Big] + \text{const},
 $$
 
-which needs **no ground-truth score** — only your model and data samples. The $\mathrm{div}(s_\theta) = \mathrm{tr}[\partial_x s_\theta]$ term is the expensive part (Hessian trace of $\log p_\theta$), motivating sliced score matching (Hutchinson-style projections) and denoising score matching (which avoids the divergence entirely and became the diffusion-model loss — [[DDPM]]).
+which needs **no ground-truth score** — only your model and data samples. The $\mathrm{div}(s_\theta) = \mathrm{tr}[\partial_x s_\theta]$ term is the expensive part (Hessian trace of $\log p_\theta$), motivating sliced score matching (Hutchinson-style projections) and denoising score matching (which avoids the divergence entirely and became the diffusion-model loss — see [[Score Matching]] and [[DDPM]]).
 
 ## Fokker–Planck and Divergence-Free Langevin
 ---

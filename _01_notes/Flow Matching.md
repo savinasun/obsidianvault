@@ -2,34 +2,14 @@
 # **Flow Matching**
 
 **Tags**:: #generative #dl_theo #diffusion
-**Links**:: [[DDPM]] · [[Score-Based Generative Modeling Methods]] · [[Divergence Theorem]] · [[LDM]] · [[DiT]] · [[VAE]] · [[ELBO]] · [[MCMC]] · [[FID]] · [[RAE]] · [[VLA]]
+**Links**:: [[DDPM]] · [[Score Matching]] · [[Score-Based Generative Modeling Methods]] · [[Divergence Theorem]] · [[LDM]] · [[DiT]] · [[VAE]] · [[ELBO]] · [[MCMC]] · [[FID]] · [[RAE]] · [[VLA]]
 
 
+## Literature
+---
 **Flow Matching (FM)** is a simulation-free framework for training generative models: pick a probability path $p_t$ that interpolates a source distribution $p_\text{init}$ (noise) into the data distribution $p_\text{data}$, then train a neural velocity field to generate that path by simple regression. Sampling is ODE integration. It was introduced concurrently by [Lipman et al., 2022](https://arxiv.org/abs/2210.02747) (Flow Matching), [Liu et al., 2022](https://arxiv.org/abs/2209.03003) (Rectified Flow), and [Albergo & Vanden-Eijnden, 2022](https://arxiv.org/abs/2209.15571) (stochastic interpolants), and now powers state-of-the-art systems for images (SD3, [Esser et al., 2024](https://arxiv.org/abs/2403.03206)), video (Movie Gen), speech/audio (Voicebox, Audiobox), protein backbones (SE(3) FM), and robot policies (π0 — see [[VLA]]).
 
-This note follows the comprehensive treatment in **"Flow Matching Guide and Code"** ([Lipman et al., 2024, arXiv 2412.06264](https://arxiv.org/abs/2412.06264), FAIR/MIT/Weizmann), which comes with the [`flow_matching` PyTorch library](https://github.com/facebookresearch/flow_matching). The background section follows the more introductory **MIT 6.S184 lecture notes** ([Holderrieth & Erives, *An Introduction to Flow Matching and Diffusion Models*](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf)).
-
-## The FM Blueprint
----
-1. **Choose** a probability path $(p_t)_{0\le t\le 1}$ with boundary conditions $p_0 = p_\text{init}$ (known source, e.g. $\mathcal{N}(0,I_d)$) and $p_1 = p_\text{data}$.
-2. **Train** a velocity field $u_t^\theta$ (neural network) to match the velocity $u_t^\text{target}$ known to generate $p_t$, via regression.
-3. **Sample** by drawing $X_0 \sim p_\text{init}$ and solving the ODE $\frac{d}{dt}X_t = u_t^\theta(X_t)$ from $t=0$ to $1$.
-
-The simplest instantiation fits in ~10 lines (6.S184 Alg. 3):
-
-```python
-# training step (linear / cond-OT path)
-z = sample_data(); eps = torch.randn_like(z); t = torch.rand(b, 1)
-x_t  = t * z + (1 - t) * eps
-loss = ((model(x_t, t) - (z - eps))**2).mean()
-
-# sampling: integrate dx/dt = model(x, t) from t=0 to 1 (Euler / midpoint)
-x = torch.randn(n, d)
-for t in torch.linspace(0, 1, steps + 1)[:-1]:
-    x = x + (1 / steps) * model(x, t)   # Euler; midpoint works better
-```
-
-*This background follows the MIT 6.S184 lecture notes ([Holderrieth & Erives, "An Introduction to Flow Matching and Diffusion Models"](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf), §2–4; [course site](https://diffusion.csail.mit.edu/) with recordings and labs) — a gentler build-up of the same machinery as Ch. 3 of the FM guide.*
+This note follows the comprehensive treatment in **"Flow Matching Guide and Code"** ([Lipman et al., 2024, arXiv 2412.06264](https://arxiv.org/abs/2412.06264), FAIR/MIT/Weizmann), which comes with the [`flow_matching` PyTorch library](https://github.com/facebookresearch/flow_matching). The background section follows the more introductory **MIT 6.S184 lecture notes** ([Holderrieth & Erives, *An Introduction to Flow Matching and Diffusion Models*](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf), §2–4; [course site](https://diffusion.csail.mit.edu/) with recordings and labs) — a gentler build-up of the same machinery as Ch. 3 of the FM guide.
 
 ## Background
 ---
@@ -210,7 +190,7 @@ a_t = \beta_t^2\frac{\dot\alpha_t}{\alpha_t} - \dot\beta_t\beta_t, \quad
 b_t = \frac{\dot\alpha_t}{\alpha_t}.
 $$
 
-This expression is a **gradient field** plus a radial term, hence kinetically optimal *for that fixed Gaussian path* (it's the minimum-energy velocity generating $p_t$ — guide §4.8.3); and it means a trained velocity model contains the score for free, and vice versa.
+This expression is a **gradient field** plus a radial term, hence kinetically optimal *for that fixed Gaussian path* (it's the minimum-energy velocity generating $p_t$ — guide §4.8.3); and it means a trained velocity model contains the score for free, and vice versa — see [[Score Matching]] for the score-side view.
 
 **Post-training scheduler change (guide).** Any two affine paths with the same coupling are related by a **scale-time transformation** $\bar\psi_r = s_r\,\psi_{t_r}$ with $t_r = \rho^{-1}(\bar\rho(r))$ matched via the signal-to-noise ratio $\rho_t = \alpha_t/\beta_t$, giving $\bar u_r(x) = \frac{\dot s_r}{s_r}x + s_r \dot t_r\, u_{t_r}(x / s_r)$. Consequences: a trained model's scheduler can be **swapped at inference** (e.g. VP → cond-OT), and *all schedulers produce the same final map* $\psi_1$ in continuous time — scheduler choice matters only through discretization error and learning dynamics.
 
@@ -238,7 +218,7 @@ with guidance scale $w > 1$, training with condition dropout $\xi \sim \text{Ber
 The guide's unifying claim (§10): **a diffusion model is an FM model with a specific Gaussian path and score parameterization** (plus inverted time).
 
 - The **forward noising SDE** $dX_r = a_r X_r\,dr + g_r\,dW_r$ (affine drift, so marginals are Gaussian in closed form) is just a way of *constructing* the probability path: $p_t(x|z) = \mathcal{N}(\alpha_t z, \beta_t^2 I_d)$ with $\alpha, \beta$ determined by $a, g$.
-- **Denoising score matching** (the DDPM loss; 6.S184's $\mathcal{L}_\text{CSM}$) is precisely the conditional matching loss for ε-prediction, reparameterized by $s_t^\theta = -\hat\epsilon_t^\theta / \beta_t$; its minimizer is the marginal score $\nabla \log p_t$.
+- **Denoising score matching** ([[Score Matching]]; the DDPM loss, 6.S184's $\mathcal{L}_\text{CSM}$) is precisely the conditional matching loss for ε-prediction, reparameterized by $s_t^\theta = -\hat\epsilon_t^\theta / \beta_t$; its minimizer is the marginal score $\nabla \log p_t$.
 - The **probability-flow ODE** of [Song et al., 2021](https://arxiv.org/abs/2011.13456) is exactly the FM marginal velocity written via the score (Prop. 1); deterministic diffusion sampling = FM sampling.
 - **Stochastic (SDE) sampling** = adding **Langevin dynamics** $\tfrac{\sigma_t^2}{2} \nabla \log p_t\,dt + \sigma_t dW_t$, which is *divergence-free* w.r.t. $p_t$: any $\sigma_t \ge 0$ preserves the marginals (6.S184 Thm 17). The classical Anderson time-reversal is one particular $\sigma_t$ — with a perfect model all choices are equivalent; with errors, an empirically tuned noise level can help (Karras et al., 2022).
 - **Time-reversal is not needed**: "find a process with the forward marginals reversed" ≡ "find a velocity generating $p_t$" ≡ "solve the Continuity/Fokker–Planck equation" — FM solves the third problem directly.
@@ -306,6 +286,7 @@ Because generators are **linear** and the KFE is a linear equation, trained mode
 ## Relationship to Other Notes
 ---
 - [[DDPM]] — diffusion = FM with a Gaussian path built from a forward SDE + score parameterization + inverted time; DDIM/probability-flow sampling = FM's ODE sampling
+- [[Score Matching]] — the score-side training algorithm (6.S184 §4): $\mathcal{L}_\text{SM}/\mathcal{L}_\text{CSM}$ mirror $\mathcal{L}_\text{FM}/\mathcal{L}_\text{CFM}$ theorem-for-theorem, and Prop. 1 converts the trained models into each other
 - [[Score-Based Generative Modeling Methods]] — the score is one of several equivalent parameterizations of the FM velocity for Gaussian paths (6.S184 Prop. 1); denoising score matching = conditional matching with ε-prediction; Fokker–Planck = the diffusion KFE
 - [[LDM]] / [[DiT]] — SD3/FLUX pair FM objectives with DiT backbones in VAE latent space; the backbone is orthogonal to the objective
 - [[VLA]] — π0 uses a flow-matching action expert to model continuous action chunks; the same CFM math with actions as the data point $z$

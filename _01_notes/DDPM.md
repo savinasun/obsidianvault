@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 ## **Denoising Diffusion Probabilistic Model**
 **Tags**:: #generative
-**Links**:: [[Score-Based Generative Modeling Methods]] · [[Flow Matching]] · [[MCMC]] · [[LDM]] · [[VAE]] · [[ELBO]] · [[FID]]
+**Links**:: [[Score-Based Generative Modeling Methods]] · [[Score Matching]] · [[Flow Matching]] · [[MCMC]] · [[LDM]] · [[VAE]] · [[ELBO]] · [[FID]]
 
 DDPM; [Ho et al. 2020](https://arxiv.org/abs/2006.11239) defines a Markov chain of diffusion steps to slowly add random noise to data and then learn to reverse the diffusion process to construct desired data samples from the noise.
 ![[ddpm_forward_backward.png]]
@@ -58,7 +58,7 @@ $$
 
 This is a simple MSE loss: the U-Net $\epsilon_\theta(x_t, t)$ predicts the noise $\epsilon$ that was added to $x_0$ to get $x_t$. At inference, the predicted noise is used to compute $\mu_\theta(x_t, t)$ for the reverse step.
 
-**Connection to score matching**: $\epsilon_\theta(x_t, t) = -\sqrt{1-\bar\alpha_t}\, s_\theta(x_t, t)$, where $s_\theta \approx \nabla_{x_t} \log q(x_t)$. See [[Score-Based Generative Modeling Methods]] for the full score matching framework.
+**Connection to score matching**: $\epsilon_\theta(x_t, t) = -\sqrt{1-\bar\alpha_t}\, s_\theta(x_t, t)$, where $s_\theta \approx \nabla_{x_t} \log q(x_t)$. See [[Score-Based Generative Modeling Methods]] for the full score matching framework, and [[Score Matching]] for the denoising-score-matching derivation of $\mathcal{L}_\text{simple}$ (this same relation in flow-matching time reads $\epsilon_t^\theta = -\beta_t s_t^\theta$).
 
 ## DDIM: Deterministic Sampling
 ---

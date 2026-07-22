@@ -66,7 +66,7 @@ limit 10
 
 Learning to synthesize: score-based methods, denoising diffusion, latent diffusion, and variational autoencoders.
 
-Key notes: [[Autoencoder]] · [[VAE]] · [[VQ-VAE]] · [[RAE]] · [[Score-Based Generative Modeling Methods]] · [[DDPM]] · [[Flow Matching]] · [[LDM]] · [[U-Net]] · [[FID]]
+Key notes: [[Autoencoder]] · [[VAE]] · [[VQ-VAE]] · [[RAE]] · [[Score-Based Generative Modeling Methods]] · [[Score Matching]] · [[DDPM]] · [[Flow Matching]] · [[LDM]] · [[U-Net]] · [[FID]]
 
 ```dataview
 table tags as "Tags"

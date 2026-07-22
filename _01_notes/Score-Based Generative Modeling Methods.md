@@ -2,7 +2,7 @@
 # **Score-Based Generative Modeling Methods**
 
 **Tags**:: #generative #dl_theo
-**Links**:: [[Autoencoder]] · [[DDPM]] · [[Flow Matching]] · [[Divergence Theorem]] · [[MCMC]] · [[Manifold Hypothesis]] · [[ELBO]] · [Score-Based Generative Modeling](https://yang-song.net/blog/2021/score/)
+**Links**:: [[Autoencoder]] · [[DDPM]] · [[Score Matching]] · [[Flow Matching]] · [[Divergence Theorem]] · [[MCMC]] · [[Manifold Hypothesis]] · [[ELBO]] · [Score-Based Generative Modeling](https://yang-song.net/blog/2021/score/)
 
 ## Score Matching
 ---
@@ -36,7 +36,7 @@ $$
 $$
 
 #### Score Matching Method
-Score Matching is a family of methods which minimizes the Fisher divergence without knowledge of the ground-truth data score $\nabla_x \log p(x)$. The trick is integration by parts (Stein's identity, see [[Divergence Theorem]]): the cross term $-\mathbb{E}_p\langle s_\theta, \nabla\log p\rangle$ equals $\mathbb{E}_p[\mathrm{div}(s_\theta)]$, yielding Hyvärinen's tractable objective $\mathbb{E}_p\big[\tfrac{1}{2}\|s_\theta(x)\|^2 + \mathrm{div}(s_\theta)(x)\big] + \text{const}$, which depends only on the model and data samples.
+Score Matching is a family of methods which minimizes the Fisher divergence without knowledge of the ground-truth data score $\nabla_x \log p(x)$. The trick is integration by parts (Stein's identity, see [[Divergence Theorem]]): the cross term $-\mathbb{E}_p\langle s_\theta, \nabla\log p\rangle$ equals $\mathbb{E}_p[\mathrm{div}(s_\theta)]$, yielding Hyvärinen's tractable objective $\mathbb{E}_p\big[\tfrac{1}{2}\|s_\theta(x)\|^2 + \mathrm{div}(s_\theta)(x)\big] + \text{const}$, which depends only on the model and data samples. The **denoising** variant — regressing on the tractable *conditional* score along a probability path, which is the loss that actually trains diffusion models — is covered in depth in [[Score Matching]].
 
 **Score matching objectives** can directly be estimated on a dataset and optimized with SGD, analogous to the log-likelihood objective for training likelihood-based models **(with known normalizing constants)**. 
 
