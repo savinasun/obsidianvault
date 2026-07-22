@@ -5,25 +5,27 @@
 **Links**:: [[DDPM]] · [[Score-Based Generative Modeling Methods]] · [[Divergence Theorem]] · [[LDM]] · [[DiT]] · [[VAE]] · [[ELBO]] · [[MCMC]] · [[FID]] · [[RAE]] · [[VLA]]
 
 
-**Flow Matching (FM)** is a simulation-free framework for training generative models: pick a probability path $p_t$ that interpolates a source distribution $p$ (noise) into the data distribution $q$, then train a neural velocity field to generate that path by simple regression. Sampling is ODE integration. It was introduced concurrently by [Lipman et al., 2022](https://arxiv.org/abs/2210.02747) (Flow Matching), [Liu et al., 2022](https://arxiv.org/abs/2209.03003) (Rectified Flow), and [Albergo & Vanden-Eijnden, 2022](https://arxiv.org/abs/2209.15571) (stochastic interpolants), and now powers state-of-the-art systems for images (SD3, [Esser et al., 2024](https://arxiv.org/abs/2403.03206)), video (Movie Gen), speech/audio (Voicebox, Audiobox), protein backbones (SE(3) FM), and robot policies (π0 — see [[VLA]]).
+**Flow Matching (FM)** is a simulation-free framework for training generative models: pick a probability path $p_t$ that interpolates a source distribution $p_\text{init}$ (noise) into the data distribution $p_\text{data}$, then train a neural velocity field to generate that path by simple regression. Sampling is ODE integration. It was introduced concurrently by [Lipman et al., 2022](https://arxiv.org/abs/2210.02747) (Flow Matching), [Liu et al., 2022](https://arxiv.org/abs/2209.03003) (Rectified Flow), and [Albergo & Vanden-Eijnden, 2022](https://arxiv.org/abs/2209.15571) (stochastic interpolants), and now powers state-of-the-art systems for images (SD3, [Esser et al., 2024](https://arxiv.org/abs/2403.03206)), video (Movie Gen), speech/audio (Voicebox, Audiobox), protein backbones (SE(3) FM), and robot policies (π0 — see [[VLA]]).
 
 This note follows the comprehensive treatment in **"Flow Matching Guide and Code"** ([Lipman et al., 2024, arXiv 2412.06264](https://arxiv.org/abs/2412.06264), FAIR/MIT/Weizmann), which comes with the [`flow_matching` PyTorch library](https://github.com/facebookresearch/flow_matching). The background section follows the more introductory **MIT 6.S184 lecture notes** ([Holderrieth & Erives, *An Introduction to Flow Matching and Diffusion Models*](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf)).
 
 **Time convention (important!)**: FM uses $t=0$ for **noise/source** and $t=1$ for **data/target** — the *opposite* of the diffusion convention in [[DDPM]] where $x_0$ is data. Diffusion time $r$ relates to FM time by a decreasing reparameterization $r = k(t)$, with data at $r=0$ and noise at $r \to \infty$.
 
+**Notation** (this note uses MIT 6.S184 notation throughout): source $p_\text{init}$, data $p_\text{data}$; data point $z \sim p_\text{data}$; Gaussian noise $\epsilon \sim p_\text{init} = \mathcal{N}(0, I_d)$; noise schedulers $(\alpha_t, \beta_t)$; ground-truth marginal velocity $u_t^\text{target}(x)$, conditional velocity $u_t^\text{target}(x|z)$, neural network $u_t^\theta$. The FM guide instead writes $p, q$; $x_1$; $x_0$; $(\alpha_t, \sigma_t)$; $u_t(x)$, $u_t(x|x_1)$ — translate accordingly when reading it.
+
 ## The FM Blueprint
 ---
-1. **Choose** a probability path $(p_t)_{0\le t\le 1}$ with boundary conditions $p_0 = p$ (known source, e.g. $\mathcal{N}(0,I)$) and $p_1 = q$ (data).
-2. **Train** a velocity field $u_t^\theta$ (neural network) to match the velocity $u_t$ known to generate $p_t$, via regression.
-3. **Sample** by drawing $X_0 \sim p$ and solving the ODE $\frac{d}{dt}X_t = u_t^\theta(X_t)$ from $t=0$ to $1$.
+1. **Choose** a probability path $(p_t)_{0\le t\le 1}$ with boundary conditions $p_0 = p_\text{init}$ (known source, e.g. $\mathcal{N}(0,I_d)$) and $p_1 = p_\text{data}$.
+2. **Train** a velocity field $u_t^\theta$ (neural network) to match the velocity $u_t^\text{target}$ known to generate $p_t$, via regression.
+3. **Sample** by drawing $X_0 \sim p_\text{init}$ and solving the ODE $\frac{d}{dt}X_t = u_t^\theta(X_t)$ from $t=0$ to $1$.
 
-The simplest instantiation fits in ~10 lines:
+The simplest instantiation fits in ~10 lines (6.S184 Alg. 3):
 
 ```python
 # training step (linear / cond-OT path)
-x_1 = sample_data(); x_0 = torch.randn_like(x_1); t = torch.rand(b, 1)
-x_t  = (1 - t) * x_0 + t * x_1
-loss = ((model(x_t, t) - (x_1 - x_0))**2).mean()
+z = sample_data(); eps = torch.randn_like(z); t = torch.rand(b, 1)
+x_t  = t * z + (1 - t) * eps
+loss = ((model(x_t, t) - (z - eps))**2).mean()
 
 # sampling: integrate dx/dt = model(x, t) from t=0 to 1 (Euler / midpoint)
 x = torch.randn(n, d)
@@ -31,7 +33,7 @@ for t in torch.linspace(0, 1, steps + 1)[:-1]:
     x = x + (1 / steps) * model(x, t)   # Euler; midpoint works better
 ```
 
-*This background follows the MIT 6.S184 lecture notes ([Holderrieth & Erives, "An Introduction to Flow Matching and Diffusion Models"](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf), §2–4; [course site](https://diffusion.csail.mit.edu/) with recordings and labs) — a gentler build-up of the same machinery as Ch. 3 of the FM guide. Dictionary: their $p_\text{init}, p_\text{data}$ are this note's $p, q$; their data point $z$ is our $x_1$; their noise schedulers $(\alpha_t, \beta_t)$ are the guide's $(\alpha_t, \sigma_t)$.*
+*This background follows the MIT 6.S184 lecture notes ([Holderrieth & Erives, "An Introduction to Flow Matching and Diffusion Models"](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf), §2–4; [course site](https://diffusion.csail.mit.edu/) with recordings and labs) — a gentler build-up of the same machinery as Ch. 3 of the FM guide.*
 
 ## Background: Flows, Velocity Fields, and the Continuity Equation
 ---
@@ -46,40 +48,36 @@ $$
 $$
 Conversely a flow determines its field via $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$. In the 6.S184 slogan: ==*vector fields define ODEs whose solutions are flows*.== 
 
-**Flow model**. A **flow model** turns this into a generative model by making *only the initial condition* random: $X_0 \sim p$, $\frac{d}{dt}X_t = u_t^\theta(X_t)$, with the goal $X_1 = \psi_1^\theta(X_0) \sim q$. The network parameterizes the **vector field, never the flow itself** — evaluating $\psi_t^\theta$ always means simulating the ODE.
+**Flow model**. A **flow model** turns this into a generative model by making *only the initial condition* random: $X_0 \sim p_\text{init}$, $\frac{d}{dt}X_t = u_t^\theta(X_t)$, with the goal $X_1 = \psi_1^\theta(X_0) \sim p_\text{data}$. The network parameterizes the **vector field, never the flow itself** — evaluating $\psi_t^\theta$ always means simulating the ODE.
 
-**Lipschitz condition.** A vector field is global **Lipschitz** if $$\|u_t(x) - u_t(y)\| \le L\,\|x - y\|, \forall x, y$$it changes at most linearly in space. This is precisely the hypothesis of the classical well-posedness theorem for ODEs:
+**Lipschitz condition.** A vector field is global **Lipschitz** if $$\|u_t(x) - u_t(y)\| \le L\,\|x - y\|, \forall x, y.$$
+**Picard–Lindelöf theorem** (Cauchy–Lipschitz; existence & uniqueness of the solution). *Let $u_t(x)$ be continuous in $t$ and Lipschitz in $x$ with constant $L$ uniform in $t$. Then for every initial condition $X_{t_0} = x_0$, the ODE $\frac{d}{dt}X_t = u_t(X_t)$ has **exactly one** solution, defined on all of $[0,1]$ in the globally Lipschitz case
+	If $u$ is only **locally** Lipschitz, the unique solution exists on a maximal time interval around $t_0$, which may end in finite-time blow-up. Both hypotheses earn their keep. Weaken Lipschitz to mere continuity and existence survives (Peano's theorem) but **uniqueness fails**: $\dot x = \sqrt{|x|}$, $x(0) = 0$ is solved by both $x \equiv 0$ and $x(t) = t^2/4$ — the field has infinite slope at the origin. Keep only *local* Lipschitzness and solutions can **blow up** before $t=1$: $\dot x = x^2$, $x(0) = 1$ gives $x(t) = 1/(1-t)$, which escapes to infinity at $t = 1$.
+	Specially, if $u_t(x)$ is continuously differentiable with bounded derivative (which implies Lipschitz with $L = \sup\|\partial_x u\|$), the ODE has a unique solution and $\psi_t$ is a **diffeomorphism**. ==Uniqueness is what makes flows well-behaved: two trajectories can never cross or merge at the same time== — they would be two solutions of one initial-value problem — ==which is why $\psi_t$ is a bijection==, and why the *marginal* FM velocity must average conditional velocities wherever conditional paths cross. Neural networks with Lipschitz activations satisfy the condition automatically, so the theorem is "good news rather than a concern" (6.S184). The FM guide's weaker hypothesis — *local* Lipschitzness plus integrability $\int_0^1 \mathbb{E}\|u_t(X_t)\|\,dt < \infty$ — rules out blow-up for almost every trajectory instead, which is what's needed near $t = 1$, where conditional velocities like $(z - x)/(1-t)$ blow up (hence "generates" on $[0,1)$). Worked example (6.S184 Ex. 4): $u_t(x) = -\theta x$ has the explicit flow $\psi_t(x_0) = e^{-\theta t}x_0$.
 
-**Picard–Lindelöf theorem** (Cauchy–Lipschitz; existence & uniqueness of the solution). 
-*Let $u_t(x)$ be continuous in $t$ and Lipschitz in $x$ with constant $L$ uniform in $t$. Then for every initial condition $X_{t_0} = x_0$, the ODE $\frac{d}{dt}X_t = u_t(X_t)$ has **exactly one** solution, defined on all of $[0,1]$ in the globally Lipschitz case
+**Simulation.** The **Euler method** updates $X_{t+h} = X_t + h\,u_t(X_t)$ with step size $h = 1/n$ ($o(h)$ local error). 
+	**Heun's method**: a predictor-corrector scheme, first predicts $X'_{t+h} = X_t + h\,u_t(X_t)$, then averages velocities at the current and guessed states $X_{t+h} = X_t + \frac{h}{2}\big(u_t(X_t) + u_{t+h}(X'_{t+h})\big)$ (mid-point method).  
 
-Remark. If $u$ is only **locally** Lipschitz, the unique solution exists on a maximal time interval around $t_0$, which may end in finite-time blow-up. Both hypotheses earn their keep. Weaken Lipschitz to mere continuity and existence survives (Peano's theorem) but **uniqueness fails**: $\dot x = \sqrt{|x|}$, $x(0) = 0$ is solved by both $x \equiv 0$ and $x(t) = t^2/4$ — the field has infinite slope at the origin. Keep only *local* Lipschitzness and solutions can **blow up** before $t=1$: $\dot x = x^2$, $x(0) = 1$ gives $x(t) = 1/(1-t)$, which escapes to infinity at $t = 1$.
-
-Specially, if $u_t(x)$ is continuously differentiable with bounded derivative (which implies Lipschitz with $L = \sup\|\partial_x u\|$), the ODE has a unique solution and $\psi_t$ is a **diffeomorphism**. ==Uniqueness is what makes flows well-behaved: two trajectories can never cross or merge at the same time== — they would be two solutions of one initial-value problem — ==which is why $\psi_t$ is a bijection==, and why the *marginal* FM velocity must average conditional velocities wherever conditional paths cross. Neural networks with Lipschitz activations satisfy the condition automatically, so the theorem is "good news rather than a concern" (6.S184). The FM guide's weaker hypothesis — *local* Lipschitzness plus integrability $\int_0^1 \mathbb{E}\|u_t(X_t)\|\,dt < \infty$ — rules out blow-up for almost every trajectory instead, which is what's needed near $t = 1$, where conditional velocities like $(x_1 - x)/(1-t)$ blow up (hence "generates" on $[0,1)$). Worked example (6.S184 Ex. 4): $u_t(x) = -\theta x$ has the explicit flow $\psi_t(x_0) = e^{-\theta t}x_0$.
-
-**Simulation.** The **Euler method** updates $X_{t+h} = X_t + h\,u_t(X_t)$ with step size $h = 1/n$ ($o(h)$ local error). One rung up, **Heun's method** takes an Euler "guess" $X'_{t+h} = X_t + h\,u_t(X_t)$, then averages velocities at the current and guessed states: $X_{t+h} = X_t + \frac{h}{2}\big(u_t(X_t) + u_{t+h}(X'_{t+h})\big)$ — a predictor–corrector scheme; the FM guide's library defaults to the similar midpoint method. Higher-order solvers pay off exactly when trajectories curve.
-
-**Stochastic process, diffusion coefficient, SDE.** A **stochastic process** $(X_t)_{0\le t\le 1}$ is a random trajectory — each simulation gives a different path. The building block is **Brownian motion** $W_t$ (a continuous random walk): $W_0 = 0$, Gaussian increments $W_t - W_s \sim \mathcal{N}(0, (t-s)I_d)$, independent across disjoint intervals. An **SDE** adds Brownian noise, scaled by a **diffusion coefficient** $\sigma_t \ge 0$, to the ODE's infinitesimal update — the symbolic notation
-
+**Stochastic process, diffusion coefficient, SDE.** A **stochastic process** $(X_t)_{0\le t\le 1}$ is a random trajectory — each simulation gives a different path. An **SDE** adds Brownian noise, scaled by a **diffusion coefficient** $\sigma_t \ge 0$, to the ODE's infinitesimal update
 $$
 dX_t = u_t(X_t)\,dt + \sigma_t\,dW_t
 $$
+is shorthand for $X_{t+h} = X_t + h\,u_t(X_t) + \sigma_t(W_{t+h} - W_t) + h\,R_t(h)$ with a vanishing error term. 
+	**Euler–Maruyama Simulation**: $X_{t+h} = X_t + h\,u_t(X_t) + \sqrt{h}\,\sigma_t\,\epsilon_t$, $\epsilon_t \sim \mathcal{N}(0, I_d)$. Randomness now enters the dynamics themselves, so there is no flow map. **Every ODE is an SDE with $\sigma_t = 0$** — in 6.S184's framing, a "diffusion model" is literally a flow model plus a diffusion coefficient. 
 
-is shorthand for $X_{t+h} = X_t + h\,u_t(X_t) + \sigma_t(W_{t+h} - W_t) + h\,R_t(h)$ with a vanishing error term. Simulation by **Euler–Maruyama**: $X_{t+h} = X_t + h\,u_t(X_t) + \sqrt{h}\,\sigma_t\,\epsilon_t$, $\epsilon_t \sim \mathcal{N}(0, I_d)$. Randomness now enters the dynamics themselves, so there is no flow map. **Every ODE is an SDE with $\sigma_t = 0$** — in 6.S184's framing, a "diffusion model" is literally a flow model plus a diffusion coefficient. (Canonical example: the Ornstein–Uhlenbeck process $dX_t = -\theta X_t\,dt + \sigma\,dW_t$, which relaxes toward $\mathcal{N}(0, \tfrac{\sigma^2}{2\theta})$.)
+**Probability path.** A **probability path** $(p_t)_{0 \le t \le 1}$ is a time-indexed family of distributions — a trajectory in the space of distributions, prescribing *what distribution $X_t$ should have at each time*. 
 
-**Probability paths: conditional and marginal.** A **probability path** $(p_t)_{0 \le t \le 1}$ is a time-indexed family of distributions — a trajectory in the space of distributions, prescribing *what distribution $X_t$ should have at each time*. A **conditional probability path** interpolates noise into a *single data point*:
-
+**Conditional probability path**. A conditional probability path interpolates noise into a *single data point* $z$ with Dirac distribution
 $$
-p_0(\cdot|z) = p, \qquad p_1(\cdot|z) = \delta_z \qquad \text{for all } z,
+p_0(\cdot|z) = p_\text{init}, \qquad p_1(\cdot|z) = \delta_z \qquad \forall z,
 $$
-
-and induces the **marginal probability path** by mixing over the data: $p_t(x) = \int p_t(x|z)\, q(z)\, dz$, which interpolates $p_0 = p$ to $p_1 = q$. Sampling from $p_t$ is easy (draw $z \sim q$, then $x \sim p_t(\cdot|z)$) even though its density is intractable. The dominant example is the **Gaussian path** with noise schedulers $(\alpha_t, \beta_t)$, $\alpha_0 = \beta_1 = 0$, $\alpha_1 = \beta_0 = 1$:
+**Marginal probability path.** A marginal probability path is by mixing over the data: $p_t(x) = \int p_t(x|z)\, p_\text{data}(z)\, dz$, which interpolates $p_0 = p_\text{init}$ to $p_1 = p_\text{data}$. Sampling from $p_t$ is easy (draw $z \sim p_\text{data}$, then $x \sim p_t(\cdot|z)$) even though its density is intractable. The dominant example is the **Gaussian path** with noise schedulers $(\alpha_t, \beta_t)$, $\alpha_0 = \beta_1 = 0$, $\alpha_1 = \beta_0 = 1$:
 
 $$
 p_t(\cdot|z) = \mathcal{N}(\alpha_t z,\, \beta_t^2 I_d), \qquad x_t = \alpha_t z + \beta_t \epsilon, \quad \epsilon \sim \mathcal{N}(0, I_d).
 $$
 
-**Conditional vector field.** A conditional vector field $u_t^\text{target}(x|z)$ is any field whose ODE transports $p$ along the conditional path: $X_0 \sim p,\ \frac{d}{dt}X_t = u_t^\text{target}(X_t|z) \Rightarrow X_t \sim p_t(\cdot|z)$. It can typically be derived *by hand*: for the Gaussian path, the conditional flow $\psi_t(x|z) = \alpha_t z + \beta_t x$ gives (6.S184 Ex. 10)
+**Conditional vector field.** A conditional vector field $u_t^\text{target}(x|z)$ is any field whose ODE transports $p_\text{init}$ along the conditional path: $X_0 \sim p_\text{init},\ \frac{d}{dt}X_t = u_t^\text{target}(X_t|z) \Rightarrow X_t \sim p_t(\cdot|z)$. It can typically be derived *by hand*: for the Gaussian path, the conditional flow $\psi_t(x|z) = \alpha_t z + \beta_t x$ gives (6.S184 Ex. 10)
 
 $$
 u_t^\text{target}(x|z) = \Big(\dot\alpha_t - \frac{\dot\beta_t}{\beta_t}\alpha_t\Big) z + \frac{\dot\beta_t}{\beta_t}\, x .
@@ -93,7 +91,7 @@ $$
 \partial_t\, p_t(x) = -\,\mathrm{div}\big(p_t u_t\big)(x) \qquad \text{for all } x,\ t.
 $$
 
-Intuition (6.S184): $\partial_t p_t(x)$ is the local change of probability at $x$; divergence measures net *outflow* of a field, so $-\mathrm{div}(p_t u_t)$ is the **net inflow of probability mass** carried by the probability flux $j_t = p_t u_t$; since total mass is conserved (always integrates to 1), the two sides must agree — the [[Divergence Theorem]] in differential form. This single PDE licenses everything that follows: the Marginalization Trick is proven by checking that the marginal pair $(p_t, u_t)$ satisfies it.
+Intuition (6.S184): $\partial_t p_t(x)$ is the local change of probability at $x$; divergence measures net *outflow* of a field, so $-\mathrm{div}(p_t u_t)$ is the **net inflow of probability mass** carried by the probability flux $j_t = p_t u_t$; since total mass is conserved (always integrates to 1), the two sides must agree — the [[Divergence Theorem]] in differential form. This single PDE licenses everything that follows: the Marginalization Trick is proven by checking that the marginal pair $(p_t, u_t^\text{target})$ satisfies it.
 
 **Fokker–Planck: the SDE generalization.** For $dX_t = u_t(X_t)\,dt + \sigma_t\,dW_t$: $X_t \sim p_t$ for all $t$ **iff**
 
@@ -121,126 +119,130 @@ Classical CNFs trained by maximum likelihood need full ODE simulation (and its d
 
 ## FM and Conditional FM Losses
 ---
-The FM loss regresses onto the target velocity along the path:
+The FM loss regresses onto the target velocity along the path (6.S184 Eq. 24):
 
 $$
-\mathcal{L}_\text{FM}(\theta) = \mathbb{E}_{t \sim \mathcal{U}[0,1],\, X_t \sim p_t}\, D\big(u_t(X_t),\, u_t^\theta(X_t)\big),
+\mathcal{L}_\text{FM}(\theta) = \mathbb{E}_{t \sim \text{Unif},\, x \sim p_t}\, \big\|u_t^\theta(x) - u_t^\text{target}(x)\big\|^2 .
 $$
 
-with $D$ a dissimilarity like $\|u - v\|^2$. This is intractable — $u_t$ marginalizes over the whole dataset. The fix is **conditioning**.
+This is intractable — $u_t^\text{target}$ marginalizes over the whole dataset. The fix is **conditioning**.
 
-**Marginal path from conditional paths.** Condition on any random variable $Z$ (typically $Z = X_1$, but also $Z = X_0$ or $Z = (X_0, X_1)$ — all essentially equivalent):
-
-$$
-p_t(x) = \int p_{t|Z}(x|z)\, p_Z(z)\, dz, \qquad
-u_t(x) = \mathbb{E}\big[u_t(X_t|Z)\,\big|\,X_t = x\big],
-$$
-
-i.e. the marginal velocity is the **posterior-weighted average** of conditional velocities $u_t(x|z)$, each of which generates its simple conditional path $p_{t|Z}(\cdot|z)$.
-
-**Marginalization Trick (Theorem 3 of the guide)**: under mild regularity (C¹ conditional paths/velocities, bounded support of $p_Z$, $p_t > 0$), if $u_t(\cdot|z)$ generates $p_{t|Z}(\cdot|z)$, then the marginal $u_t$ generates the marginal $p_t$. Proof: plug into the Continuity Equation and swap integral/divergence.
-
-**Conditional FM loss** — the tractable objective:
+**Marginal field from conditional fields.** The marginal path and its generating field are posterior mixtures over the data point $z$:
 
 $$
-\mathcal{L}_\text{CFM}(\theta) = \mathbb{E}_{t,\,Z,\,X_t \sim p_{t|Z}}\, D\big(u_t(X_t|Z),\, u_t^\theta(X_t)\big),
-\qquad \nabla_\theta \mathcal{L}_\text{FM} = \nabla_\theta \mathcal{L}_\text{CFM}.
+p_t(x) = \int p_t(x|z)\, p_\text{data}(z)\, dz, \qquad
+u_t^\text{target}(x) = \int u_t^\text{target}(x|z)\, \frac{p_t(x|z)\,p_\text{data}(z)}{p_t(x)}\, dz = \mathbb{E}\big[u_t^\text{target}(x_t|z)\,\big|\,x_t = x\big],
 $$
 
-**Why gradients coincide — Bregman divergences.** The equality holds for any **Bregman divergence** $D(u,v) = \Phi(u) - \Phi(v) - \langle u - v, \nabla\Phi(v)\rangle$ ($\Phi$ strictly convex; squared Euclidean is $\Phi = \|\cdot\|^2$). Bregman divergences have affine-invariant gradients in the second argument, so $\nabla_v D(\mathbb{E}[Y], v) = \mathbb{E}[\nabla_v D(Y, v)]$ — expectation and gradient can be swapped. General principle (Proposition 1): for any $f_t(X_0, X_1)$, the conditional matching loss $\mathbb{E}\, D(f_t(X_0,X_1), g_t^\theta(X_t))$ has minimizer $g_t^\theta(x) = \mathbb{E}[f_t(X_0,X_1) \mid X_t = x]$ — **regression targets can be single samples; the network learns their conditional expectation**. Notably, Bregman-ness is *necessary* for this property (Holderrieth et al., 2024).
+i.e. the marginal velocity is the **posterior-weighted average** of conditional velocities $u_t^\text{target}(x|z)$ — for each $z$, the direction that would carry $x$ toward $z$, weighted by "how much we believe $x$ came from $z$" (6.S184).
+
+**Marginalization Trick (6.S184 Thm 9; guide Thm 3)**: under mild regularity (C¹ conditional paths/velocities, bounded data support, $p_t > 0$), if $u_t^\text{target}(\cdot|z)$ generates $p_t(\cdot|z)$, then the marginal $u_t^\text{target}$ generates the marginal $p_t$. Proof: plug into the Continuity Equation and swap integral/divergence. The guide generalizes the conditioning from $z$ to any variable $Z$ — source samples, or two-sided pairs $(x_0, z)$ — all essentially equivalent.
+
+**Conditional FM loss** — the tractable objective (6.S184 Eq. 26):
+
+$$
+\mathcal{L}_\text{CFM}(\theta) = \mathbb{E}_{t \sim \text{Unif},\, z \sim p_\text{data},\, x \sim p_t(\cdot|z)}\, \big\|u_t^\theta(x) - u_t^\text{target}(x|z)\big\|^2 ,
+\qquad \mathcal{L}_\text{FM}(\theta) = \mathcal{L}_\text{CFM}(\theta) + C,
+$$
+
+equal up to a $\theta$-independent constant (6.S184 Thm 12, by expanding the square), so gradients coincide: $\nabla_\theta \mathcal{L}_\text{FM} = \nabla_\theta \mathcal{L}_\text{CFM}$, and the minimizer is $u_t^{\theta^*} = u_t^\text{target}$.
+
+**Why this works in general — Bregman divergences (guide).** The gradient equality holds not just for MSE but for any **Bregman divergence** $D(u,v) = \Phi(u) - \Phi(v) - \langle u - v, \nabla\Phi(v)\rangle$ ($\Phi$ strictly convex; squared Euclidean is $\Phi = \|\cdot\|^2$). Bregman divergences have affine-invariant gradients in the second argument, so $\nabla_v D(\mathbb{E}[Y], v) = \mathbb{E}[\nabla_v D(Y, v)]$ — expectation and gradient can be swapped. General principle: for any $f_t(x_0, z)$, the conditional matching loss $\mathbb{E}\, D(f_t(x_0, z), g_t^\theta(x_t))$ has minimizer $g_t^\theta(x) = \mathbb{E}[f_t(x_0, z) \mid x_t = x]$ — **regression targets can be single samples; the network learns their conditional expectation**. Notably, Bregman-ness is *necessary* for this property (Holderrieth et al., 2024).
 
 **Time weighting**: $t$ need not be uniform — training with $t \sim \omega(t)$ (equivalently reweighting the loss) changes nothing mathematically, but sampling $t$ non-uniformly (e.g. SD3's logit-normal) works better in practice at scale.
 
 ## Designing Paths via Conditional Flows
 ---
-Rather than hand-designing $p_{t|1}$, define a **conditional flow** $\psi_t(x|x_1)$ with boundary conditions $\psi_0(x|x_1) = x$, $\psi_1(x|x_1) = x_1$ (smooth, diffeomorphic in $x$). Then $X_{t|1} = \psi_t(X_0|x_1)$ defines both the conditional path and its velocity, and the CFM loss simplifies to
+Rather than hand-designing $p_t(\cdot|z)$, define a **conditional flow** $\psi_t(x|z)$ with boundary conditions $\psi_0(x|z) = x$, $\psi_1(x|z) = z$ (smooth, diffeomorphic in $x$). Then $X_t = \psi_t(X_0|z)$ defines both the conditional path and its velocity, and the CFM loss simplifies to
 
 $$
-\mathcal{L}_\text{CFM}(\theta) = \mathbb{E}_{t,\,(X_0,X_1) \sim \pi_{0,1}}\, D\big(\dot\psi_t(X_0|X_1),\, u_t^\theta(X_t)\big),
+\mathcal{L}_\text{CFM}(\theta) = \mathbb{E}_{t,\,(x_0,\,z) \sim \pi}\, \big\|u_t^\theta(x_t) - \dot\psi_t(x_0|z)\big\|^2 ,
 $$
 
-— the regression target is just the **time-derivative of the interpolant**, no densities needed.
+— the regression target is just the **time-derivative of the interpolant**, no densities needed. ($\pi$ is the coupling of source and data samples; independent by default — see *Data Couplings*.)
 
 ### The conditional-OT (linear) path
-Minimizing a Jensen upper bound on the **kinetic energy** $\int_0^1 \mathbb{E}\|u_t(X_t)\|^2 dt$ over conditional flows gives (Euler–Lagrange: $\ddot\gamma_t = 0$) straight lines:
+Minimizing a Jensen upper bound on the **kinetic energy** $\int_0^1 \mathbb{E}\|u_t^\text{target}(X_t)\|^2 dt$ over conditional flows gives (Euler–Lagrange: $\ddot\gamma_t = 0$) straight lines:
 
 $$
-\psi_t(x|x_1) = t\,x_1 + (1-t)\,x
+\psi_t(x|z) = t\,z + (1-t)\,x
 \;\;\Rightarrow\;\;
-X_t = t X_1 + (1-t) X_0, \quad
-u_t(x|x_1) = \frac{x_1 - x}{1-t}, \quad
-\dot\psi_t(X_0|X_1) = X_1 - X_0.
+x_t = t z + (1-t)\epsilon, \quad
+u_t^\text{target}(x|z) = \frac{z - x}{1-t}, \quad
+\dot\psi_t(\epsilon|z) = z - \epsilon.
 $$
 
-With Gaussian source this makes $p_{t|1}(x|x_1) = \mathcal{N}(x \mid t x_1, (1-t)^2 I)$ and yields the simplest FM loss $\mathbb{E}\|u_t^\theta(X_t) - (X_1 - X_0)\|^2$.
+With Gaussian source this makes $p_t(x|z) = \mathcal{N}(x \mid t z, (1-t)^2 I_d)$ (schedulers $\alpha_t = t$, $\beta_t = 1-t$) and yields the simplest FM loss $\mathbb{E}\|u_t^\theta(x_t) - (z - \epsilon)\|^2$.
 
 Facts worth remembering:
-- If $q = \delta_{x_1}$ (single point), the linear conditional flow **is** the exact dynamic optimal transport solution.
-- In general the *marginal* flow is **not** OT — the linear choice only minimizes a bound; the marginal kinetic energy is bounded by the coupling cost $\mathbb{E}\|X_1 - X_0\|^2$.
+- If $p_\text{data} = \delta_z$ (single point), the linear conditional flow **is** the exact dynamic optimal transport solution.
+- In general the *marginal* flow is **not** OT — the linear choice only minimizes a bound; the marginal kinetic energy is bounded by the coupling cost $\mathbb{E}\|z - x_0\|^2$.
 - **Conditional** straight lines ≠ **marginal** straight trajectories: marginal paths of independent couplings still curve (conditional lines cross), which is what multisample couplings and reflow address (below).
 
 ## Affine Paths, Schedulers, and Parameterizations
 ---
-The linear path generalizes to **affine conditional flows** $\psi_t(x|x_1) = \alpha_t x_1 + \sigma_t x$ with a **scheduler** $(\alpha_t, \sigma_t)$ satisfying $\alpha_0 = 0,\ \alpha_1 = 1,\ \sigma_0 = 1,\ \sigma_1 = 0$, $\dot\alpha_t > 0$, $\dot\sigma_t < 0$. The CFM target becomes $\dot\alpha_t X_1 + \dot\sigma_t X_0$. Examples: cond-OT ($\alpha_t = t, \sigma_t = 1-t$), polynomial ($t^n$), LinearVP ($\alpha_t = t, \sigma_t = \sqrt{1-t^2}$), cosine ($\alpha_t = \sin\tfrac{\pi t}{2}, \sigma_t = \cos\tfrac{\pi t}{2}$). Diffusion's VP/VE schedules are (approximate) members: VP has $\alpha_t^2 + \sigma_t^2 = 1$ with exponential form; VE has $\alpha_t \equiv 1$, $\sigma_0 \gg 1$ — both only *approximately* hit a Gaussian at $t = 0$.
+The linear path generalizes to **affine conditional flows** $\psi_t(x|z) = \alpha_t z + \beta_t x$ with a **scheduler** $(\alpha_t, \beta_t)$ satisfying $\alpha_0 = 0,\ \alpha_1 = 1,\ \beta_0 = 1,\ \beta_1 = 0$, $\dot\alpha_t > 0$, $\dot\beta_t < 0$. The CFM target becomes $\dot\alpha_t z + \dot\beta_t \epsilon$. Examples: cond-OT ($\alpha_t = t, \beta_t = 1-t$), polynomial ($t^n$), LinearVP ($\alpha_t = t, \beta_t = \sqrt{1-t^2}$), cosine ($\alpha_t = \sin\tfrac{\pi t}{2}, \beta_t = \cos\tfrac{\pi t}{2}$). Diffusion's VP/VE schedules are (approximate) members: VP has $\alpha_t^2 + \beta_t^2 = 1$ with exponential form; VE has $\alpha_t \equiv 1$, $\beta_0 \gg 1$ — both only *approximately* hit a Gaussian at $t = 0$.
 
-**Equivalent parameterizations.** Using $X_t = \alpha_t X_1 + \sigma_t X_0$, the marginal velocity $u_t(x) = \dot\alpha_t\,\mathbb{E}[X_1|X_t{=}x] + \dot\sigma_t\,\mathbb{E}[X_0|X_t{=}x]$ can be rewritten via:
-- **$x_1$-prediction** (denoiser / target prediction): $u_t(x) = \frac{\dot\sigma_t}{\sigma_t}x + \big(\dot\alpha_t - \alpha_t\frac{\dot\sigma_t}{\sigma_t}\big)\,x_{1|t}(x)$
-- **$x_0$-prediction** (= diffusion's noise/ε-prediction): $u_t(x) = \frac{\dot\alpha_t}{\alpha_t}x + \big(\dot\sigma_t - \sigma_t\frac{\dot\alpha_t}{\alpha_t}\big)\,x_{0|t}(x)$
+**Equivalent parameterizations.** Using $x_t = \alpha_t z + \beta_t \epsilon$, the marginal velocity $u_t^\text{target}(x) = \dot\alpha_t\,\mathbb{E}[z|x_t{=}x] + \dot\beta_t\,\mathbb{E}[\epsilon|x_t{=}x]$ can be rewritten via:
+- **denoiser / $z$-prediction** (6.S184's $D_t(x) := \mathbb{E}[z|x_t = x]$, the posterior mean): $u_t^\text{target}(x) = \frac{\dot\beta_t}{\beta_t}x + \big(\dot\alpha_t - \alpha_t\frac{\dot\beta_t}{\beta_t}\big)\,D_t(x)$
+- **noise / $\epsilon$-prediction** ($\hat\epsilon_t(x) := \mathbb{E}[\epsilon|x_t = x]$; diffusion's ε-prediction): $u_t^\text{target}(x) = \frac{\dot\alpha_t}{\alpha_t}x + \big(\dot\beta_t - \beta_t\frac{\dot\alpha_t}{\alpha_t}\big)\,\hat\epsilon_t(x)$
 - **score** (Gaussian paths): see below.
 
-All are related by closed-form conversions (Table 1 of the guide) and each is learnable with a conditional matching loss ($f_t(X_0,X_1) = X_1$, $X_0$, etc.). Caveat: the conversions have **singularities** at the endpoints ($x_1$-pred blows up as $t \to 1$, $x_0$-pred/score as $t \to 0$); direct velocity prediction avoids them.
+All are related by closed-form conversions (Table 1 of the guide; 6.S184 Remark 16 — any quantity recovering the posterior mean $\mathbb{E}[z|x]$ works) and each is learnable with a conditional matching loss ($f_t(\epsilon, z) = z$, $\epsilon$, etc.). Caveat: the conversions have **singularities** at the endpoints (denoiser blows up as $t \to 1$, ε-pred/score as $t \to 0$); direct velocity prediction avoids them.
 
-**Gaussian paths and the score.** For $p_{t|1}(x|x_1) = \mathcal{N}(x|\alpha_t x_1, \sigma_t^2 I)$:
-
-$$
-\nabla \log p_{t|1}(x|x_1) = -\frac{x - \alpha_t x_1}{\sigma_t^2}, \qquad
-\nabla \log p_t(x) = -\frac{x_{0|t}(x)}{\sigma_t},
-$$
-
-so the score is just rescaled noise-prediction, and the marginal velocity is
+**Gaussian paths and the score.** For $p_t(x|z) = \mathcal{N}(x|\alpha_t z, \beta_t^2 I_d)$:
 
 $$
-u_t(x) = \frac{\dot\alpha_t}{\alpha_t}\,x + \Big(\frac{\dot\alpha_t}{\alpha_t}\sigma_t^2 - \dot\sigma_t \sigma_t\Big) \nabla \log p_t(x).
+\nabla \log p_t(x|z) = -\frac{x - \alpha_t z}{\beta_t^2}, \qquad
+\nabla \log p_t(x) = -\frac{\hat\epsilon_t(x)}{\beta_t},
 $$
 
-This expression is a **gradient field**, hence kinetically optimal *for that fixed Gaussian path* (it's the minimum-energy velocity generating $p_t$).
+so the score is just rescaled noise-prediction, and velocity and score convert into each other (6.S184 Prop. 1):
 
-**Post-training scheduler change.** Any two affine paths with the same coupling are related by a **scale-time transformation** $\bar\psi_r = s_r\,\psi_{t_r}$ with $t_r = \rho^{-1}(\bar\rho(r))$ matched via the signal-to-noise ratio $\rho_t = \alpha_t/\sigma_t$, giving $\bar u_r(x) = \frac{\dot s_r}{s_r}x + s_r \dot t_r\, u_{t_r}(x / s_r)$. Consequences: a trained model's scheduler can be **swapped at inference** (e.g. VP → cond-OT), and *all schedulers produce the same final map* $\psi_1$ in continuous time — scheduler choice matters only through discretization error and learning dynamics.
+$$
+u_t^\text{target}(x) = a_t\,\nabla \log p_t(x) + b_t\, x, \qquad
+a_t = \beta_t^2\frac{\dot\alpha_t}{\alpha_t} - \dot\beta_t\beta_t, \quad
+b_t = \frac{\dot\alpha_t}{\alpha_t}.
+$$
+
+This expression is a **gradient field** plus a radial term, hence kinetically optimal *for that fixed Gaussian path* (it's the minimum-energy velocity generating $p_t$ — guide §4.8.3); and it means a trained velocity model contains the score for free, and vice versa.
+
+**Post-training scheduler change (guide).** Any two affine paths with the same coupling are related by a **scale-time transformation** $\bar\psi_r = s_r\,\psi_{t_r}$ with $t_r = \rho^{-1}(\bar\rho(r))$ matched via the signal-to-noise ratio $\rho_t = \alpha_t/\beta_t$, giving $\bar u_r(x) = \frac{\dot s_r}{s_r}x + s_r \dot t_r\, u_{t_r}(x / s_r)$. Consequences: a trained model's scheduler can be **swapped at inference** (e.g. VP → cond-OT), and *all schedulers produce the same final map* $\psi_1$ in continuous time — scheduler choice matters only through discretization error and learning dynamics.
 
 ## Data Couplings
 ---
-FM trains on pairs $(X_0, X_1) \sim \pi_{0,1}$; the default is the **independent coupling** $\pi_{0,1} = p \otimes q$, but this is a design axis:
+FM trains on pairs $(x_0, z) \sim \pi$; the default is the **independent coupling** $\pi = p_\text{init} \otimes p_\text{data}$ (draw $\epsilon$ and $z$ separately), but this is a design axis:
 
-- **Paired data** ([Liu et al., 2023](https://arxiv.org/abs/2302.05872) I²SB; Albergo et al., 2024): for inpainting/super-resolution/deblurring, build $\pi_{0,1}(x_0, x_1) = \pi_{0|1}(x_0|x_1)q(x_1)$ by corrupting data samples (+ noise so the source has a density). FM then learns the restoration map directly — no guidance needed.
+- **Paired data** ([Liu et al., 2023](https://arxiv.org/abs/2302.05872) I²SB; Albergo et al., 2024): for inpainting/super-resolution/deblurring, build $\pi(x_0, z) = \pi(x_0|z)\,p_\text{data}(z)$ by corrupting data samples (+ noise so the source has a density). FM then learns the restoration map directly — no guidance needed.
 - **Multisample / minibatch-OT couplings** ([Pooladian et al., 2023](https://arxiv.org/abs/2304.14772); [Tong et al., 2023](https://arxiv.org/abs/2302.00482)): draw $k$ source and $k$ target samples, solve the discrete OT assignment within the batch, train on matched pairs. This provably lowers transport cost vs. independent coupling and **straightens marginal trajectories** (→ fewer ODE steps); as $k \to \infty$ it approaches true OT.
 
-Related (beyond the guide): **Rectified Flow's reflow** ([Liu et al., 2022](https://arxiv.org/abs/2209.03003)) replaces the coupling with $(X_0, \hat X_1)$ pairs generated by simulating the trained model, iteratively straightening paths toward 1–2-step generation; this underlies SD3's and FLUX's fast variants.
+Related (beyond the guide): **Rectified Flow's reflow** ([Liu et al., 2022](https://arxiv.org/abs/2209.03003)) replaces the coupling with $(x_0, \hat z)$ pairs generated by simulating the trained model, iteratively straightening paths toward 1–2-step generation; this underlies SD3's and FLUX's fast variants.
 
 ## Guidance
 ---
-With labels/conditioning $y$, train a **guided velocity** $u_t^\theta(x|y)$ with the same CFM loss (the theory carries through per-$y$). For Gaussian paths, velocity ↔ score conversions transfer classifier and classifier-free guidance from diffusion ([Zheng et al., 2023](https://arxiv.org/abs/2311.13443)):
+With labels/conditioning $y$, train a **guided velocity** $u_t^\theta(x|y)$ with the same CFM loss (the theory carries through per-$y$; "vanilla guidance" in 6.S184 §5). To *reinforce* the prompt, use the velocity ↔ score conversion (Prop. 1): Bayes' rule gives $\nabla\log p_t(x|y) = \nabla\log p_t(x) + \nabla\log p_t(y|x)$, so **classifier guidance** scales up the classifier term, $\tilde u_t(x|y) = u_t^\text{target}(x) + w\,a_t \nabla \log p_t(y|x)$, and **classifier-free guidance** eliminates the classifier ([Ho & Salimans, 2021](https://arxiv.org/abs/2207.12598); for flows [Zheng et al., 2023](https://arxiv.org/abs/2311.13443)):
 
 $$
 \tilde u_t^\theta(x|y) = (1 - w)\, u_t^\theta(x|\varnothing) + w\, u_t^\theta(x|y),
 $$
 
-with guidance scale $w > 1$, training with condition dropout $\xi \sim \text{Bernoulli}(p_\text{uncond})$ — exactly CFG, applied to velocities. (What distribution CFG actually samples remains theoretically murky; it is nonetheless the standard for large-scale text-to-image FM like SD3.)
+with guidance scale $w > 1$, training with condition dropout $\xi \sim \text{Bernoulli}(p_\text{uncond})$ — exactly CFG, applied to velocities. (For $w \ne 1$ this is a heuristic — it is *not* the true guided field, and what distribution it samples remains theoretically murky; it is nonetheless the standard for large-scale text-to-image FM like SD3.)
 
 ## Diffusion Models as a Special Case
 ---
 The guide's unifying claim (§10): **a diffusion model is an FM model with a specific Gaussian path and score parameterization** (plus inverted time).
 
-- The **forward noising SDE** $dX_r = a_r X_r\,dr + g_r\,dW_r$ (affine drift, so marginals are Gaussian in closed form) is just a way of *constructing* the probability path: $p_{t|1}(x|x_1) = \mathcal{N}(\alpha_t x_1, \sigma_t^2 I)$ with $\alpha, \sigma$ determined by $a, g$.
-- **Denoising score matching** (the DDPM loss) is precisely the conditional matching loss for $x_0$-prediction, reparameterized by $s_t^\theta = -x_{0|t}^\theta / \sigma_t$; its minimizer is the marginal score $\nabla \log p_t$.
-- The **probability-flow ODE** of [Song et al., 2021](https://arxiv.org/abs/2011.13456) is exactly the FM marginal velocity written via the score; deterministic diffusion sampling = FM sampling.
-- **Stochastic (SDE) sampling** = adding **Langevin dynamics** $\tfrac{1}{2}\beta_t^2 \nabla \log p_t\,dt + \beta_t dW_t$, which is *divergence-free* w.r.t. $p_t$: any $\beta_t \ge 0$ preserves the marginals. The classical Anderson time-reversal is one particular $\beta_t$ — with a perfect model all choices are equivalent; with errors, an empirically tuned noise level can help (Karras et al., 2022).
+- The **forward noising SDE** $dX_r = a_r X_r\,dr + g_r\,dW_r$ (affine drift, so marginals are Gaussian in closed form) is just a way of *constructing* the probability path: $p_t(x|z) = \mathcal{N}(\alpha_t z, \beta_t^2 I_d)$ with $\alpha, \beta$ determined by $a, g$.
+- **Denoising score matching** (the DDPM loss; 6.S184's $\mathcal{L}_\text{CSM}$) is precisely the conditional matching loss for ε-prediction, reparameterized by $s_t^\theta = -\hat\epsilon_t^\theta / \beta_t$; its minimizer is the marginal score $\nabla \log p_t$.
+- The **probability-flow ODE** of [Song et al., 2021](https://arxiv.org/abs/2011.13456) is exactly the FM marginal velocity written via the score (Prop. 1); deterministic diffusion sampling = FM sampling.
+- **Stochastic (SDE) sampling** = adding **Langevin dynamics** $\tfrac{\sigma_t^2}{2} \nabla \log p_t\,dt + \sigma_t dW_t$, which is *divergence-free* w.r.t. $p_t$: any $\sigma_t \ge 0$ preserves the marginals (6.S184 Thm 17). The classical Anderson time-reversal is one particular $\sigma_t$ — with a perfect model all choices are equivalent; with errors, an empirically tuned noise level can help (Karras et al., 2022).
 - **Time-reversal is not needed**: "find a process with the forward marginals reversed" ≡ "find a velocity generating $p_t$" ≡ "solve the Continuity/Fokker–Planck equation" — FM solves the third problem directly.
 
 | | Diffusion ([[DDPM]]) | Flow Matching (cond-OT) |
 |---|---|---|
 | **Path construction** | forward noising SDE, closed-form marginals | direct choice of conditional flow |
-| **Network target** | noise $\epsilon$ / score | velocity $X_1 - X_0$ (or any parameterization) |
-| **Boundary at noise end** | Gaussian only as $r \to \infty$ (approx.) | exactly $p$ at $t = 0$ |
+| **Network target** | noise $\epsilon$ / score | velocity $z - \epsilon$ (or any parameterization) |
+| **Boundary at noise end** | Gaussian only as $r \to \infty$ (approx.) | exactly $p_\text{init}$ at $t = 0$ |
 | **Schedule** | required, baked into training | scheduler swappable post-training |
 | **Sampling** | reverse SDE or prob-flow ODE | ODE (SDE optional via Langevin) |
 | **Likelihood** | ELBO (SDE) / exact (ODE) | exact, unbiased estimator |
@@ -253,20 +255,20 @@ Practical upshot: with straight(er) conditional paths, Euler/midpoint integratio
 FM transfers to Riemannian manifolds $\mathcal{M}$ (sphere, tori, SE(3) — proteins, molecules, geoscience) ([Chen & Lipman, 2024](https://arxiv.org/abs/2302.03660)). Velocities live in tangent spaces, the continuity equation uses the Riemannian divergence, and the Marginalization Trick + CFM gradient equivalence hold verbatim with tangent-space Bregman divergences. The conditional flow generalizes straight lines to **geodesic interpolation**:
 
 $$
-\psi_t(x_0|x_1) = \exp_{x_0}\!\big(\kappa(t)\, \log_{x_0}(x_1)\big), \qquad \kappa(0)=0,\ \kappa(1)=1,
+\psi_t(x|z) = \exp_{x}\!\big(\kappa(t)\, \log_{x}(z)\big), \qquad \kappa(0)=0,\ \kappa(1)=1,
 $$
 
-which is **simulation-free** whenever exp/log maps are closed-form (simple manifolds) — a real advantage over Riemannian diffusion, which needs in-training simulation and score approximations. For hard geometries, geodesics can be replaced by any smooth **premetric** $d(x, y)$ (e.g. spectral distances) with the minimal-norm velocity $u_t(x|x_1) = \frac{d \log \bar\kappa(t)}{dt}\, d(x, x_1) \frac{\nabla d(x, x_1)}{\|\nabla d(x, x_1)\|_g^2}$.
+which is **simulation-free** whenever exp/log maps are closed-form (simple manifolds) — a real advantage over Riemannian diffusion, which needs in-training simulation and score approximations. For hard geometries, geodesics can be replaced by any smooth **premetric** $d(x, z)$ (e.g. spectral distances) with the minimal-norm velocity $u_t^\text{target}(x|z) = \frac{d \log \bar\kappa(t)}{dt}\, d(x, z) \frac{\nabla d(x, z)}{\|\nabla d(x, z)\|_g^2}$.
 
 ## Extension: Discrete Flow Matching (CTMC)
 ---
-For discrete data $x = (x^1, \dots, x^d) \in \mathcal{T}^d$ (tokens, vocabulary size $K$), the flow is replaced by a **Continuous-Time Markov Chain** ([Campbell et al., 2024](https://arxiv.org/abs/2402.04997); [Gat et al., 2024](https://arxiv.org/abs/2407.15595)): transitions $p_{t+h|t}(y|x) = \delta(y,x) + h\,u_t(y,x) + o(h)$, where the velocities are now **rates** satisfying $u_t(y,x) \ge 0$ for $y \ne x$ and $\sum_y u_t(y,x) = 0$. The Continuity Equation becomes the **Kolmogorov equation** $\frac{d}{dt}p_t(y) = \sum_x u_t(y,x)\,p_t(x)$, and the whole FM recipe transfers: marginalization trick, conditional velocities, Bregman CFM loss.
+For discrete data $x = (x^1, \dots, x^d) \in \mathcal{V}^d$ (tokens, vocabulary size $V$; 6.S184 §7), the flow is replaced by a **Continuous-Time Markov Chain** ([Campbell et al., 2024](https://arxiv.org/abs/2402.04997); [Gat et al., 2024](https://arxiv.org/abs/2407.15595)): transitions $p_{t+h|t}(y|x) = \delta_x(y) + h\,Q_t(y|x) + o(h)$, where the velocity is now a **rate matrix** $Q_t$ satisfying $Q_t(y|x) \ge 0$ for $y \ne x$ and $\sum_y Q_t(y|x) = 0$. The Continuity Equation becomes the **Kolmogorov equation** $\frac{d}{dt}p_t(y) = \sum_x Q_t(y|x)\,p_t(x)$, and the whole FM recipe transfers: marginalization trick, conditional rates, Bregman CFM loss.
 
 Key design points:
-- **Factorized velocities**: modeling rates over all $K^d$ states is infeasible; restrict to transitions changing **at most one token**, $u_t(y,x) = \sum_i \delta(y^{\bar i}, x^{\bar i})\,u_t^i(y^i, x)$ — output dimension $d \cdot K$, and coordinate-wise Euler sampling is valid to $o(h)$.
-- **Mixture paths**: per token, $X_t^i = x_1^i$ with probability $\kappa_t$, else $x_0^i$ ($\kappa_0 = 0, \kappa_1 = 1$), with closed-form conditional rates $u_t^i(y^i, x^i|x_0, x_1) = \frac{\dot\kappa_t}{1-\kappa_t}\big[\delta(y^i, x_1^i) - \delta(y^i, x^i)\big]$. Source: uniform noise or a **mask token** $m$ (mask-DFM is the discrete analog of noise→data).
-- **Posterior parameterization**: learn $p_{1|t}^{\theta,i}(x_1^i | x)$ — a per-token denoiser predicting clean tokens given the current sequence, i.e. discrete $x_1$-prediction. Trained with cross-entropy (KL Bregman) or **generalized KL**, which doubles as an [[ELBO]] on target likelihood for evaluation.
-- **Sampling**: at each step, per token, sample $X_1^i \sim p^{\theta,i}_{1|t}(\cdot|x)$, then take the CTMC Euler step (decide jump-to-target vs. stay). Divergence-free rate components can be added freely (corrector-style noise ↔ un-masking/re-masking trade-offs).
+- **Factorized rates**: modeling rates over all $V^d$ states is infeasible; restrict to transitions changing **at most one token** (neighbors $N(x)$), parameterized per position as $Q_t(v, i \mid x)$ — output dimension $d \cdot V$ (a transformer with a $V$-way head), and per-token parallel Euler sampling is valid to $o(h)$ (6.S184 Alg. 7).
+- **Mixture paths**: per token, $X_t^i = z^i$ with probability $\kappa_t$, else $x_0^i$ ($\kappa_0 = 0, \kappa_1 = 1$), with closed-form conditional rates $Q_t(v, i \mid x; x_0, z) = \frac{\dot\kappa_t}{1-\kappa_t}\big[\delta_{z^i}(v) - \delta_{x^i}(v)\big]$. Source: uniform noise or a **mask token** $m$ (mask-DFM is the discrete analog of noise→data).
+- **Posterior parameterization**: learn $p_{1|t}^{\theta,i}(z^i | x)$ — a per-token denoiser predicting clean tokens given the current sequence (the discrete analog of $D_t$). Trained with cross-entropy (KL Bregman) or **generalized KL**, which doubles as an [[ELBO]] on target likelihood for evaluation.
+- **Sampling**: at each step, per token, sample $z^i \sim p^{\theta,i}_{1|t}(\cdot|x)$, then take the CTMC Euler step (decide jump-to-target vs. stay). Divergence-free rate components can be added freely (corrector-style noise ↔ un-masking/re-masking trade-offs).
 
 This is the FM view of "discrete diffusion" language models and multimodal protein co-design.
 
@@ -279,29 +281,29 @@ This is the FM view of "discrete diffusion" language models and multimodal prote
 | Flow (ODE) | $\nabla f^\top u_t$ | velocity $u_t$ | Continuity Eq. |
 | Diffusion (SDE) | $\frac{1}{2}\sigma_t^2 \cdot \nabla^2 f$ | diffusion coeff $\sigma_t^2$ | Fokker–Planck Eq. |
 | Jump process | $\int (f(y) - f(x))\,Q_t(dy, x)$ | jump kernel $Q_t$ | Jump continuity Eq. |
-| CTMC (discrete) | $f^\top u_t$ | rate matrix $u_t$ | Kolmogorov Eq. |
+| CTMC (discrete) | $f^\top Q_t$ | rate matrix $Q_t$ | Kolmogorov Eq. |
 
 The marginals of any such process obey the **Kolmogorov Forward Equation** $\frac{d}{dt}\langle p_t, f\rangle = \langle p_t, \mathcal{L}_t f \rangle$, which unifies all the "mass conservation" PDEs above. The FM recipe then holds in full generality: conditional generators (found by solving the KFE analytically for simple conditional paths) marginalize under the posterior $\mathbb{E}_{Z \sim p_{Z|t}(\cdot|x)}$, and a conditional Bregman loss on the generator's linear parameterization has unbiased gradients — FM, diffusion, and discrete FM are all instances.
 
 Because generators are **linear** and the KFE is a linear equation, trained models can be *combined*:
-1. **Markov superposition**: $\alpha_t \mathcal{L}_t + (1-\alpha_t)\mathcal{L}_t'$ of two generators for the same path still generates it (e.g. jump + flow hybrids).
+1. **Markov superposition**: $\lambda_t \mathcal{L}_t + (1-\lambda_t)\mathcal{L}_t'$ of two generators for the same path still generates it (e.g. jump + flow hybrids).
 2. **Divergence-free components**: add any $\mathcal{L}^\text{div}_t$ with $\langle p_t, \mathcal{L}^\text{div}_t f\rangle = 0$ — Langevin dynamics and Metropolis–Hastings kernels ([[MCMC]]) are exactly such components, which is where diffusion's stochastic samplers and predictor–corrector schemes come from.
 3. **Multimodal models**: factorized paths over product state spaces let continuous FM (images) and discrete FM (text) train jointly in one model.
 
 ## Practical Summary
 ---
-**Training** (cond-OT, the default): sample $x_1 \sim q$, $x_0 \sim \mathcal{N}(0,I)$, $t$ (uniform or logit-normal); regress $u^\theta(x_t, t)$ onto $x_1 - x_0$ at $x_t = t x_1 + (1-t) x_0$. No noise schedule, no SNR weighting; any architecture ([[U-Net]], [[DiT]]) works — only the target changes.
+**Training** (cond-OT, the default): sample $z \sim p_\text{data}$, $\epsilon \sim \mathcal{N}(0,I_d)$, $t$ (uniform or logit-normal); regress $u_t^\theta(x_t)$ onto $z - \epsilon$ at $x_t = t z + (1-t) \epsilon$. No noise schedule, no SNR weighting; any architecture ([[U-Net]], [[DiT]]) works — only the target changes.
 
-**Sampling**: any ODE solver; midpoint typically beats Euler at equal NFE; typical budgets 5–50 steps, 1–4 after distillation/reflow. Optional stochasticity via Langevin addition; optional post-hoc scheduler swap.
+**Sampling**: any ODE solver; midpoint/Heun typically beats Euler at equal NFE; typical budgets 5–50 steps, 1–4 after distillation/reflow. Optional stochasticity via Langevin addition; optional post-hoc scheduler swap.
 
 **Where it's used**: SD3 / FLUX (rectified-flow [[DiT]] in [[LDM]]-style latent space), Movie Gen (video), Voicebox / Audiobox / F5-TTS (speech & audio), SE(3) FM for protein backbones (FoldFlow, FrameFlow, Multiflow), π0's flow-matching action expert for robot control ([[VLA]]), discrete FM for text.
 
 ## Relationship to Other Notes
 ---
 - [[DDPM]] — diffusion = FM with a Gaussian path built from a forward SDE + score parameterization + inverted time; DDIM/probability-flow sampling = FM's ODE sampling
-- [[Score-Based Generative Modeling Methods]] — the score is one of several equivalent parameterizations of the FM velocity for Gaussian paths; denoising score matching = conditional matching with $x_0$-prediction; Fokker–Planck = the diffusion KFE
+- [[Score-Based Generative Modeling Methods]] — the score is one of several equivalent parameterizations of the FM velocity for Gaussian paths (6.S184 Prop. 1); denoising score matching = conditional matching with ε-prediction; Fokker–Planck = the diffusion KFE
 - [[LDM]] / [[DiT]] — SD3/FLUX pair FM objectives with DiT backbones in VAE latent space; the backbone is orthogonal to the objective
-- [[VLA]] — π0 uses a flow-matching action expert to model continuous action chunks; the same CFM math with actions as $x_1$
+- [[VLA]] — π0 uses a flow-matching action expert to model continuous action chunks; the same CFM math with actions as the data point $z$
 - [[ELBO]] — flows give exact unbiased likelihoods (vs. ELBOs); discrete FM's generalized-KL loss *is* an ELBO
 - [[MCMC]] — Langevin and Metropolis–Hastings are divergence-free generator components; adding them to any FM/GM model preserves marginals (predictor–corrector sampling)
 - [[VAE]] / [[RAE]] / [[FID]] — latent-space FM and evaluation of generative quality
