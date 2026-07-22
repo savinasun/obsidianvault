@@ -5,7 +5,7 @@
 **Links**:: [[Flow Matching]] · [[Score Matching]] · [[Score-Based Generative Modeling Methods]] · [[DDPM]] · [[MCMC]] · [[Linear Algebra]] · [[KL Divergence]]
 
 
-The **Divergence Theorem** (also **Gauss's theorem** or the **Gauss–Ostrogradsky theorem**) is the fundamental bridge between the *local* behavior of a vector field (its divergence at each point) and its *global* behavior (net flux through a closed surface):
+The **Divergence Theorem** (also **Gauss's theorem** or the **Gauss–Ostrogradsky theorem**) is the fundamental bridge between the *local* behavior of a **vector field** (its divergence at each point) and its *global* behavior (net flux through a closed surface):
 
 $$
 \int_V \mathrm{div}(F)(x)\, dV \;=\; \oint_{\partial V} \langle F(y), n(y)\rangle\, dS_y ,
@@ -22,7 +22,7 @@ In deep learning this theorem is the engine behind the continuity equation of [[
 For $F : \mathbb{R}^d \to \mathbb{R}^d$,
 
 $$
-\mathrm{div}(F)(x) \;=\; \sum_{i=1}^d \frac{\partial F_i}{\partial x_i}(x) \;=\; \mathrm{tr}\big[\partial_x F(x)\big],
+\mathrm{div}(F)(x) \;=\; \nabla\cdot F(x) \;=\; \sum_{i=1}^d \frac{\partial F_i}{\partial x_i}(x) \;=\; \mathrm{tr}\big[\partial_x F(x)\big],
 $$
 
 the **trace of the Jacobian** — only the $d$ diagonal entries matter, not the full $d \times d$ matrix. Equivalent coordinate-free definition as *local flux density*:
