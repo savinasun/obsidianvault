@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -272,10 +272,10 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "05100ce8be938a69",
+  "active": "d8c0f7482614c7fc",
   "lastOpenFiles": [
-    "_04_images/kl_divergence.png",
     "_01_notes/KL Divergence.md",
+    "_04_images/kl_divergence.png",
     "_04_images/entropy_01.png",
     "_01_notes/Autoencoder.md",
     "_00_maps_of_contents/dl_moc.md",

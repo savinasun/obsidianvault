@@ -30,69 +30,13 @@ The bottleneck forbids the trivial identity map — the model must keep only the
 
 ## Variational Autoencoder
 ---
-**Probabilistic encoder/decoder.** Relax determinism ([[VAE]]; Kingma & Welling, 2013):
+The [[VAE]] (Kingma & Welling, 2013) fixes this by making encoder and decoder **probabilistic** — $q_\phi(z|x) = \mathcal{N}(\mu_\phi(x), \mathrm{diag}(\sigma_\phi^2(x)))$, $p_\theta(x|z) = \mathcal{N}(\mu_\theta(z), \sigma_\theta^2(z) I_d)$, with $\sigma_\phi = \sigma_\theta = 0$ recovering the standard autoencoder — and adding a [[KL Divergence]] penalty pushing each encoding toward the prior $p_\text{prior} = \mathcal{N}(0, I_k)$:
 
 $$
-q_\phi(z|x) = \mathcal{N}\big(z;\, \mu_\phi(x),\, \mathrm{diag}(\sigma_\phi^2(x))\big), \qquad
-p_\theta(x|z) = \mathcal{N}\big(x;\, \mu_\theta(z),\, \sigma_\theta^2(z) I_d\big),
+\mathcal{L}_\text{VAE} = \underbrace{-\,\mathbb{E}_{x,\, z \sim q_\phi(\cdot|x)}\big[\log p_\theta(x|z)\big]}_{\text{reconstruction}} \;+\; \beta\, \underbrace{\mathbb{E}_{x}\big[D_\text{KL}\big(q_\phi(\cdot|x)\,\|\, p_\text{prior}\big)\big]}_{\text{prior enforcement}} .
 $$
 
-with $\sigma_\phi = \sigma_\theta = 0$ recovering the standard autoencoder. Encoding/decoding become sampling.
-
-**Two losses.** Reconstruction = negative log-likelihood of $x$ under encode-then-decode; prior enforcement = [[KL Divergence]] of the encoder to $p_\text{prior} = \mathcal{N}(0, I_k)$:
-
-$$
-\mathcal{L}_\text{VAE-Recon} = -\mathbb{E}_{x \sim p_\text{data},\, z \sim q_\phi(\cdot|x)}\big[\log p_\theta(x|z)\big],
-\qquad
-\mathcal{L}_\text{VAE-Prior} = \mathbb{E}_{x \sim p_\text{data}}\big[D_\text{KL}\big(q_\phi(\cdot|x)\,\|\, p_\text{prior}\big)\big].
-$$
-
-With the closed-form Gaussian KL, $D_\text{KL}(q\|p) = \tfrac{1}{2}\big(K(\sigma_q^2/\sigma_p^2) + \|\mu_q - \mu_p\|^2/\sigma_p^2\big)$ where $K(\alpha) = \sum_i (\alpha_i - \log\alpha_i - 1)$ (minimized at $\alpha = 1$), the **β-VAE loss** $\mathcal{L}_\text{VAE} = \mathcal{L}_\text{VAE-Recon} + \beta\, \mathcal{L}_\text{VAE-Prior}$ has four intuitive terms (6.S184 Eq. 83):
-
-$$
-\mathcal{L}_\text{VAE} = \mathbb{E}_{x,\, z \sim q_\phi}\Big[
-\underbrace{\tfrac{1}{2\sigma_\theta^2(z)}\|x - \mu_\theta(z)\|^2}_{\text{recon. error}}
-+ \underbrace{\tfrac{d}{2}\log \sigma_\theta^2(z)}_{\text{decoder confidence}}
-+ \underbrace{\tfrac{\beta}{2}K(\sigma_\phi^2(x))}_{\text{latent variance} \to 1}
-+ \underbrace{\tfrac{\beta}{2}\|\mu_\phi(x)\|^2}_{\text{latent mean} \to 0}
-\Big].
-$$
-
-**Reparameterization trick.** The expectation is over $q_\phi$, which depends on $\phi$; rewrite $z = \mu_\phi(x) + \sigma_\phi(x)\,\epsilon$ with $\epsilon \sim \mathcal{N}(0, I_k)$ so all randomness is $\phi$-independent and SGD applies. Training loop (6.S184 Alg. 6, fixed decoder variance):
-
-```python
-# beta-VAE training step
-x = sample_data()
-mu, log_var = encoder(x)                                   # q_phi(z|x)
-z = mu + torch.exp(0.5 * log_var) * torch.randn_like(mu)   # reparameterization
-recon = ((x - decoder(z))**2).sum(-1) / (2 * sigma2)
-kl    = 0.5 * (mu**2 + log_var.exp() - log_var - 1).sum(-1)
-loss  = (recon + beta * kl).mean()
-```
-
-**Practical remarks** (6.S184): (1) large $\beta$ hurts reconstructions and can cause **posterior collapse** ($q_\phi(z|x) \approx \mathcal{N}(0,I_k)$ ignoring $x$) — use KL warm-up, and modern autoencoders use $\beta \ll 1$; (2) learned decoder variance is numerically delicate — most implementations fix $\sigma_\theta^2$ constant, making reconstruction ∝ MSE; (3) pixel MSE gives blurry outputs — add **perceptual losses**; (4) optionally add an **adversarial loss** (VAE-GAN / VQGAN style) for sharpness at the cost of stability.
-
-## Theory: Joint KL, ELBO, and the Amortization Gap
----
-**One-line identity** (6.S184 App. D, $\beta = 1$): with $q_\phi(x,z) = p_\text{data}(x)\,q_\phi(z|x)$ and $p_\theta(x,z) = p_\text{prior}(z)\,p_\theta(x|z)$,
-
-$$
-\mathcal{L}_\text{VAE}(\phi, \theta) = D_\text{KL}\big(q_\phi(x, z)\,\|\,p_\theta(x, z)\big) + \text{const}
-$$
-
-— the VAE minimizes a KL **in the joint data–latent space**. The KL chain rule $D_\text{KL}(q(z,x)\|p(z,x)) = D_\text{KL}(q(x)\|p(x)) + \mathbb{E}[D_\text{KL}(q(z|x)\|p(z|x))]$ (data-processing inequality) then gives two upper bounds:
-
-$$
-\mathcal{L}_\text{VAE} \ge D_\text{KL}\big(p_\text{data}\,\|\,p_\theta(x)\big) + \text{const},
-\qquad
-\mathcal{L}_\text{VAE} \ge D_\text{KL}\big(q_\phi(z)\,\|\,p_\text{prior}\big) + \text{const},
-$$
-
-so training simultaneously (i) makes the VAE a **generative model in its own right** ($z \sim p_\text{prior}$, $x \sim p_\theta(\cdot|z)$) and (ii) pushes the **aggregate latent** $q_\phi(z)$ toward the prior.
-
-**ELBO view.** Rearranging via Bayes gives $\text{ELBO}(x) = \mathbb{E}_{z\sim q_\phi(\cdot|x)}\big[\log\tfrac{p_\theta(x|z)\,p_\text{prior}(z)}{q_\phi(z|x)}\big] \le \log p_\theta(x)$, and $\mathcal{L}_\text{VAE} = -\mathbb{E}_{x}[\text{ELBO}(x)] + \text{const}$ — the VAE maximizes the expected [[ELBO]]. The "variational" in VAE: $q_\phi(\cdot|x)$ is a tractable **variational approximation** of the intractable posterior $p_\theta(z|x)$ (6.S184 Rem. 43).
-
-**Amortization gap — why not stop at VAEs?** The bounds are tight iff $q_\phi(z|x) = p_\theta(z|x)$; in practice a gap remains, so $q_\phi(z) \ne p_\text{prior}$, and the decoder was trained to reconstruct from $q_\phi(z)$ — sampling from $p_\text{prior}$ at inference is out-of-distribution. The fix *is* latent generative modeling: train a flow/diffusion model to sample $q_\phi(z)$ exactly, and let the (weaker, convolutional) decoder do less generative work.
+The latent distribution becomes Gaussian-like *by construction* — exactly the "nice" latent a downstream generative model needs. Full treatment in [[VAE]]: the four-term β-VAE loss, reparameterization trick and training code, posterior collapse and practical remarks, and the joint-KL / [[ELBO]] / amortization-gap theory (6.S184 §6.2.2 + App. D).
 
 ## Latent Generative Modeling
 ---
