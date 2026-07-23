@@ -5,15 +5,15 @@
 **Links**:: [[Entropy]] · [[ELBO]] · [[VAE]] · [[Score-Based Generative Modeling Methods]] · [[Policy Gradient Methods]]
 
 
-**KL divergence** (relative entropy) measures how much one probability distribution $q$ differs from a reference distribution $p$. It is fundamental to variational inference, generative models, and policy optimization.
+**KL divergence** (**relative entropy**) measures how much one probability distribution $q$ differs from a reference distribution $p$. It is fundamental to variational inference, generative models, and policy optimization.
 
 ## Definition
 ---
 $$
-D_\text{KL}(q \| p) = \mathbb{E}_q\!\left[\log \frac{q(X)}{p(X)}\right] = \int q(x) \log \frac{q(x)}{p(x)}\, dx \ge 0
+D_\text{KL}(q \| p) = \mathbb{E}_{X\sim q}\!\left[\log \frac{q(X)}{p(X)}\right] = \int q(x) \log \frac{q(x)}{p(x)}\, dx \ge 0
 $$
 
-**Always non-negative** (Gibbs' inequality): $D_\text{KL}(q \| p) = 0$ if and only if $q = p$ almost everywhere.
+**Always non-negative** (**Gibbs' inequality**): $D_\text{KL}(q \| p) = 0$ if and only iff $q = p$ almost everywhere.
 
 **Proof sketch**: by Jensen's inequality applied to the convex function $-\log$:
 $$
@@ -26,6 +26,15 @@ $$
 2. **Relationship to entropy**: $D_\text{KL}(p \| q) = H(p, q) - H(p)$ where $H(p,q)$ is cross entropy (see [[Entropy]])
 3. **Information gain**: $D_\text{KL}(p \| q)$ measures the information gained when updating from prior $q$ to posterior $p$
 4. **Undefined when $p(x) > 0$ but $q(x) = 0$**: the KL term diverges to $+\infty$; $q$ must cover the support of $p$
+
+
+## KL-Divergence of Two Normal Distributions
+---
+$$q(x)\sim\mathcal{N}(x;\mu_q,\sigma_q^2 I^d), \quad p(x)\sim\mathcal{N}(x;\mu_p,\sigma_p^2 I^d)$$
+$$
+D_{KL}(q\|p)=\frac 1 2 \left[\kappa \bigg(\frac{\sigma_q^2}{\sigma_p^2}\bigg) + \frac{\|\mu_q - \mu_p\|^2}{\sigma_p^2} \right],
+$$
+where $\kappa(\alpha) = \sum_i \alpha_i - \log\alpha_i -1$.
 
 ## Forward KL vs. Backward KL
 ---

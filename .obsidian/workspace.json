@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_00_maps_of_contents/dl_moc.md",
+                "file": "_01_notes/KL Divergence.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "dl_moc"
+              "title": "KL Divergence"
             }
           }
         ],
@@ -275,12 +275,12 @@
   },
   "active": "c46df8cb98452eaa",
   "lastOpenFiles": [
+    "_00_maps_of_contents/dl_moc.md",
     "_01_notes/VAE.md",
     "_01_notes/DDPM.md",
     "_01_notes/Divergence Theorem.md",
     "_01_notes/Flow Matching.md",
     "_01_notes/Autoencoder.md",
-    "_00_maps_of_contents/dl_moc.md",
     "_04_images/autoencoder.png",
     "_01_notes/Double Descent.md",
     "_01_notes/Score Matching.md",
