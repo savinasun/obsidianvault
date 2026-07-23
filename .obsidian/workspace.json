@@ -261,6 +261,7 @@
   "active": "e6a717473fe8f42b",
   "lastOpenFiles": [
     "_00_maps_of_contents/dl_moc.md",
+    "_01_notes/Autoencoder.md",
     "_01_notes/Flow Matching.md",
     "_01_notes/Divergence Theorem.md",
     "_01_notes/Double Descent.md",
@@ -285,7 +286,6 @@
     "_01_notes/CLS Token.md",
     "_01_notes/SOAP.md",
     "_01_notes/Shampoo.md",
-    "_01_notes/Autoencoder.md",
     "_04_images/bokeh_plot.png",
     "_04_images/policy_gradient_grpo_loss.png",
     "_04_images/optimization_minibatch_tips.png",
