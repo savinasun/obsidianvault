@@ -4,8 +4,7 @@
 **Tags**:: #generative #learning
 **Links**:: [[VAE]] · [[VQ-VAE]] · [[RAE]] · [[MAE]] · [[LDM]] · [[Flow Matching]] · [[Score Matching]] · [[DiT]] · [[ELBO]] · [[KL Divergence]] · [[Manifold Hypothesis]] · [[Contrastive Learning]] · [[t-SNE]] · [[UMAP]] · [[FID]]
 
-Autoencoder = Encoder + Decoder
-
+![[autoencoder.png|500]]
 
 An **autoencoder** compresses data into a low-dimensional **latent code** and reconstructs it back — learning a compact, lossy representation **without supervision**. Over four decades it evolved from a dimensionality-reduction tool into the **compression backbone of modern generative models**: nearly all state-of-the-art image/video generators train a flow or diffusion model *inside* an autoencoder's latent space.
 
