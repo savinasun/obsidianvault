@@ -47,7 +47,7 @@ The direction of KL divergence determines the mode behavior of the approximating
 $$
 D_\text{KL}(p \| q) = \int p(x) \log \frac{p(x)}{q(x)}\, dx
 $$
-- **Zero-avoiding** (mass-covering): when $p(x) > 0$, the term $p(x)\log(p(x)/q(x))$ blows up if $q(x) \to 0$. So $q$ is forced to place probability mass everywhere $p$ is non-zero.
+- **Zero-avoiding** (mode-covering): when $p(x) > 0$, the term $p(x)\log(p(x)/q(x))$ blows up if $q(x) \to 0$. So $q$ is forced to place probability mass everywhere $p$ is non-zero.
 - **Result**: $q$ tends to be **overdispersed** — it covers all modes of $p$, potentially spreading mass in low-probability regions between modes.
 - **Used in**: maximum likelihood estimation (minimizing $D_\text{KL}(p_\text{data} \| p_\theta)$), expectation propagation.
 

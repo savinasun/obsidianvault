@@ -64,7 +64,7 @@
             }
           },
           {
-            "id": "c46df8cb98452eaa",
+            "id": "d7e5ca2454019ef1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -273,14 +273,15 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "c46df8cb98452eaa",
+  "active": "d7e5ca2454019ef1",
   "lastOpenFiles": [
+    "_01_notes/Autoencoder.md",
+    "_01_notes/KL Divergence.md",
     "_00_maps_of_contents/dl_moc.md",
     "_01_notes/VAE.md",
     "_01_notes/DDPM.md",
     "_01_notes/Divergence Theorem.md",
     "_01_notes/Flow Matching.md",
-    "_01_notes/Autoencoder.md",
     "_04_images/autoencoder.png",
     "_01_notes/Double Descent.md",
     "_01_notes/Score Matching.md",
@@ -301,7 +302,6 @@
     "_01_notes/AdamW.md",
     "_01_notes/Attention.md",
     "_01_notes/CLS Token.md",
-    "_01_notes/SOAP.md",
     "_04_images/bokeh_plot.png",
     "_04_images/policy_gradient_grpo_loss.png",
     "_04_images/optimization_minibatch_tips.png",
