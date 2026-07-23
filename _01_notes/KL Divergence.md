@@ -24,7 +24,7 @@ $$
 ---
 1. **Asymmetry**: $D_\text{KL}(q \| p) \neq D_\text{KL}(p \| q)$ in general — KL divergence is **not a metric**
 2. **Relationship to entropy**: $D_\text{KL}(p \| q) = H(p, q) - H(p)$ where $H(p,q)$ is cross entropy (see [[Entropy]])
-3. **Information gain**: $D_\text{KL}(p \| q)$ measures the information gained when updating from prior $q$ to posterior $p$
+3. **Information gain**: $D_\text{KL}(p \| q)$ measures the information gained when updating from **prior** $q$ to **posterior** $p$
 4. **Undefined when $p(x) > 0$ but $q(x) = 0$**: the KL term diverges to $+\infty$; $q$ must cover the support of $p$
 
 
@@ -35,6 +35,7 @@ $$
 D_{KL}(q\|p)=\frac 1 2 \left[\kappa \bigg(\frac{\sigma_q^2}{\sigma_p^2}\bigg) + \frac{\|\mu_q - \mu_p\|^2}{\sigma_p^2} \right],
 $$
 where $\kappa(\alpha) = \sum_i \alpha_i - \log\alpha_i -1$.
+
 
 ## Forward KL vs. Backward KL
 ---
@@ -85,7 +86,6 @@ $$
 
 ## Applications in Deep Learning
 ---
-
 ### Variational Inference / VAE
 The [[ELBO]] objective contains a backward KL term that regularizes the encoder:
 $$
