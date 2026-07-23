@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_00_maps_of_contents/dl_moc.md",
+                "file": "_01_notes/Autoencoder.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "dl_moc"
+              "title": "Autoencoder"
             }
           },
           {
@@ -64,27 +64,7 @@
             }
           }
         ],
-        "currentTab": 3
-      },
-      {
-        "id": "87d2ef85ff26cabb",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "3a9cef6698daacf2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_01_notes/Score Matching.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Score Matching"
-            }
-          }
-        ]
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -278,14 +258,14 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "b4600de1ac9dd3bb",
+  "active": "e6a717473fe8f42b",
   "lastOpenFiles": [
+    "_00_maps_of_contents/dl_moc.md",
+    "_01_notes/Flow Matching.md",
     "_01_notes/Divergence Theorem.md",
     "_01_notes/Double Descent.md",
-    "_01_notes/Flow Matching.md",
     "_01_notes/Score Matching.md",
     "_01_notes/DDPM.md",
-    "_00_maps_of_contents/dl_moc.md",
     "_01_notes/FID.md",
     "_01_notes/Hamming Loss.md",
     "_01_notes/Optimization Algorithms.md",

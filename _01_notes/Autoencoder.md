@@ -4,8 +4,15 @@
 **Tags**:: #generative #learning
 **Links**:: [[VAE]] · [[VQ-VAE]] · [[RAE]] · [[MAE]] · [[LDM]] · [[ELBO]] · [[KL Divergence]] · [[Manifold Hypothesis]] · [[Contrastive Learning]] · [[t-SNE]] · [[UMAP]] · [[FID]]
 
+Autoencoder = Encoder + Decoder
+
 
 An **autoencoder** is a neural network trained to compress input data into a low-dimensional **latent code** and **reconstruct it back** — learning a compact, lossy representation **without supervision**. The reconstruction objective forces the model to discover the most informative structure in the data. Over four decades, autoencoders evolved from dimensionality reduction tools into the **compression backbone of modern generative models**.
+
+## Latent Space
+---
+
+
 
 ## Core Architecture
 ---
