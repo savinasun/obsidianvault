@@ -14,15 +14,19 @@ This note follows §6.2 and Appendix D of the MIT 6.S184 lecture notes ([Holderr
 
 ## Standard Autoencoder
 ---
-**Architecture.** An encoder–decoder pair $\mu_\phi : \mathbb{R}^d \to \mathbb{R}^k$, $\mu_\theta : \mathbb{R}^k \to \mathbb{R}^d$ ($k \ll d$, the **bottleneck**; e.g. $3{\times}1024^2 \to 3\times\tfrac{1024}{16}\times\tfrac{1024}{16}$), trained with the **reconstruction loss**
-
+**Input data**: $x \in \mathbb{R}^d$, 
+**Latent variable**: $z \in \mathbb{R}^k$ with $k \ll d$; 
+**Encoder**: $\mu_\phi : \mathbb{R}^d \to \mathbb{R}^k$ or stochastic $q_\phi(z|x)$
+**Decoder**: $\mu_\theta : \mathbb{R}^k \to \mathbb{R}^d$ or $p_\theta(x|z)$ 
+**Latent prior**: $p_\text{prior} = \mathcal{N}(0, I_k)$, weight $\beta \ge 0$
+**Autoencoder.** An encoder–decoder pair $(\mu_{\phi}, \mu_{\theta})$ with $k \ll d$, trained with the **reconstruction loss**
 $$
 \mathcal{L}_\text{Recon}(\phi, \theta) = \mathbb{E}_{x \sim p_\text{data}}\big\|\mu_\theta(\mu_\phi(x)) - x\big\|^2 .
 $$
 
 The bottleneck forbids the trivial identity map — the model must keep only the most informative structure. By the [[Manifold Hypothesis]], real data lies near a low-dimensional manifold; the autoencoder learns to parameterize it.
 
-**Why reconstruction alone is not enough** (6.S184 §6.2.1). The eventual goal is to train a generative model on the **latent distribution** $p_\text{latent}(z)$, $z = \mu_\phi(x)$, $x \sim p_\text{data}$. Pure reconstruction gives *no control over $p_\text{latent}$* — compression may have warped the data into an arbitrarily hard-to-learn latent distribution. We need to **regularize the latent distribution toward something "nice"** — which leads to the VAE.
+**Why reconstruction alone is not enough**. The eventual goal is to train a generative model on the **latent distribution** $p_\text{latent}(z)$, $z = \mu_\phi(x)$, $x \sim p_\text{data}$. Pure reconstruction gives *no control over $p_\text{latent}$* — compression may have warped the data into an arbitrarily hard-to-learn latent distribution. We need to **regularize the latent distribution toward something "nice"** — which leads to the VAE.
 
 ## Variational Autoencoder
 ---
