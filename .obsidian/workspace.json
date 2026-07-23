@@ -64,7 +64,7 @@
             }
           },
           {
-            "id": "d7e5ca2454019ef1",
+            "id": "05100ce8be938a69",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -90,7 +90,7 @@
       {
         "id": "b8e2a895956801b3",
         "type": "tabs",
-        "dimension": 52.99647473560517,
+        "dimension": 51.7490952955368,
         "children": [
           {
             "id": "31f305f0b8239a5f",
@@ -120,7 +120,7 @@
       {
         "id": "a9a455c0b9c6b057",
         "type": "tabs",
-        "dimension": 23.501762632197416,
+        "dimension": 24.125452352231605,
         "children": [
           {
             "id": "f4bdddf87b272eb0",
@@ -144,7 +144,7 @@
       {
         "id": "a1144893fcc3c039",
         "type": "tabs",
-        "dimension": 23.501762632197416,
+        "dimension": 24.125452352231605,
         "children": [
           {
             "id": "feb9ad2b5567d3d1",
@@ -175,8 +175,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 246.5,
-    "collapsed": true
+    "width": 246.5
   },
   "right": {
     "id": "c823ba97a1de4d3e",
@@ -273,10 +272,12 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "d7e5ca2454019ef1",
+  "active": "05100ce8be938a69",
   "lastOpenFiles": [
-    "_01_notes/Autoencoder.md",
+    "_04_images/kl_divergence.png",
     "_01_notes/KL Divergence.md",
+    "_04_images/entropy_01.png",
+    "_01_notes/Autoencoder.md",
     "_00_maps_of_contents/dl_moc.md",
     "_01_notes/VAE.md",
     "_01_notes/DDPM.md",
@@ -301,7 +302,6 @@
     "_01_notes/Muon.md",
     "_01_notes/AdamW.md",
     "_01_notes/Attention.md",
-    "_01_notes/CLS Token.md",
     "_04_images/bokeh_plot.png",
     "_04_images/policy_gradient_grpo_loss.png",
     "_04_images/optimization_minibatch_tips.png",
@@ -309,8 +309,6 @@
     "_04_images/nn_init_xavier_he.png",
     "_04_images/nn_init_variance_analysis.png",
     "_04_images/mcmc_sampling.png",
-    "_04_images/transformer_attention_complexity.png",
-    "_04_images/transformer_architecture.png",
     "Untitled.base",
     "Untitled 1.base",
     "Untitled.canvas",

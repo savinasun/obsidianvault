@@ -39,9 +39,9 @@ where $\kappa(\alpha) = \sum_i \alpha_i - \log\alpha_i -1$.
 
 ## Forward KL vs. Backward KL
 ---
-![[entropy_01.png]]
+![[kl_divergence.png]]
 
-The direction of KL divergence determines the mode behavior of the approximating distribution $q$:
+The direction of KL divergence determines the mode behavior of the approximating distribution $q$.
 
 ### Forward KL: $D_\text{KL}(p \| q)$
 $$
@@ -49,7 +49,7 @@ D_\text{KL}(p \| q) = \int p(x) \log \frac{p(x)}{q(x)}\, dx
 $$
 - **Mean-Seeking** (mass-covering): when $p(x) > 0$, the term $p(x)\log(p(x)/q(x))$ blows up if $q(x) \to 0$. So $q$ is forced to place probability mass everywhere $p$ is non-zero.
 - **Result**: $q$ tends to be **overdispersed** — it covers all modes of $p$, potentially spreading mass in low-probability regions between modes.
-- **Used in**: maximum likelihood estimation (minimizing $D_\text{KL}(p_\text{data} \| p_\theta)$), expectation propagation.
+- **Used in**: maximum likelihood estimation (minimizing $\textrm{argmin}_{\theta} D_\text{KL}(p_\text{data} \| p_\theta)$), expectation propagation.
 
 ### Backward KL: $D_\text{KL}(q \| p)$
 $$
