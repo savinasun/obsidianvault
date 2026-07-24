@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/IMLE.md",
+                "file": "_01_notes/Generative Modeling.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "IMLE"
+              "title": "Generative Modeling"
             }
           },
           {
@@ -288,12 +288,14 @@
   },
   "active": "d8c0f7482614c7fc",
   "lastOpenFiles": [
+    "_01_notes/Flow Matching.md",
+    "_01_notes/Generative Modeling.md",
+    "_01_notes/Score Matching.md",
+    "_01_notes/IMLE.md",
     "_01_notes/KL Divergence.md",
     "_01_notes/VLA.md",
-    "_01_notes/Generative Modeling.md",
     "_01_notes/Discrete Flow Matching Policy.md",
     "_00_maps_of_contents/dl_moc.md",
-    "_01_notes/IMLE.md",
     "_01_notes/DiT.md",
     "_01_notes/VAE.md",
     "_04_images/beta_vae.png",
@@ -302,10 +304,8 @@
     "_04_images/entropy_01.png",
     "_01_notes/DDPM.md",
     "_01_notes/Divergence Theorem.md",
-    "_01_notes/Flow Matching.md",
     "_04_images/autoencoder.png",
     "_01_notes/Double Descent.md",
-    "_01_notes/Score Matching.md",
     "_01_notes/FID.md",
     "_01_notes/Hamming Loss.md",
     "_01_notes/Optimization Algorithms.md",

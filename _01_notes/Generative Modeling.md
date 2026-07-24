@@ -5,7 +5,7 @@
 **Links**:: [[Flow Matching]] · [[Score Matching]] · [[DDPM]] · [[Score-Based Generative Modeling Methods]] · [[VAE]] · [[Autoencoder]] · [[GAN]] · [[IMLE]] · [[VQ-VAE]] · [[RAE]] · [[LDM]] · [[DiT]] · [[GPTs]] · [[LLMs]] · [[ELBO]] · [[FID]] · [[MCMC]]
 
 
-**Generative modeling** is the task of learning to *sample* from an unknown data distribution $p_\text{data}$, given only a finite dataset of examples. This hub note defines the problem, maps the **model families** and their landmark literature to the vault's notes, and summarizes 6.S184's guide to reading the (confusingly multi-dialect) diffusion/flow literature. Framing follows §1.3 and Appendix E of the MIT 6.S184 lecture notes ([Holderrieth & Erives](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf)).
+**Generative modeling** is the task of learning to *sample* from an *unknown* data distribution $p_\text{data}$, given only a finite dataset of examples. This hub note defines the problem, maps the **model families** and their landmark literature to the vault's notes, and summarizes 6.S184's guide to reading the (confusingly multi-dialect) diffusion/flow literature. Framing follows §1.3 and Appendix E of the [MIT 6.S184](https://diffusion.csail.mit.edu/2026/index.html) lecture notes ([Holderrieth & Erives](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf)).
 
 ## Generation as Sampling
 ---
