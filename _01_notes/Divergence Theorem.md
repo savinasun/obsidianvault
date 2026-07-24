@@ -15,8 +15,6 @@ for a compact region $V \subset \mathbb{R}^d$ with piecewise-smooth boundary $\p
 
 In deep learning this theorem is the engine behind the continuity equation of [[Flow Matching]], exact likelihoods of continuous normalizing flows, Hyvärinen's tractable score matching objective, Stein's identity, and the Fokker–Planck equation — anywhere a **velocity field** transports probability mass.
 
-> **Naming caution**: the divergence of a *vector field* ($\mathrm{div}\,F$, this note) and a *statistical divergence* between distributions ([[KL Divergence]], Bregman, Fisher) are unrelated concepts that share a word.
-
 ## Divergence of a Vector Field
 ---
 For $F : \mathbb{R}^d \to \mathbb{R}^d$,

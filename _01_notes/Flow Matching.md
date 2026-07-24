@@ -16,34 +16,34 @@ This note follows **"Flow Matching Guide and Code"** ([Lipman et al., 2024, arXi
 ### Probability Paths
 A **probability path** $(p_t)_{0\le t\le 1}$ is a time-indexed family of distributions — a trajectory in distribution space, prescribing what law $X_t$ should have at each time.
 
-**Conditional probability path.** Interpolates noise into a *single data point* $z$, ending at the Dirac $\delta_z$:
+**<span style="color:rgb(255, 255, 0)"><b>Conditional probability path.</b></span>** Interpolates noise into a *single data point* $z$, ending at the Dirac $\delta_z$:
 $$
 p_0(\cdot|z) = p_\text{init}, \qquad p_1(\cdot|z) = \delta_z \qquad \forall z .
 $$
 
-**Marginal probability path.** Mix over the data: $p_t(x) = \int p_t(x|z)\, p_\text{data}(z)\, dz$, interpolating $p_\text{init} \to p_\text{data}$. Sampling from $p_t$ is easy ($z \sim p_\text{data}$, then $x \sim p_t(\cdot|z)$) even though its density is intractable. E.g. the **Gaussian path** with schedulers $(\alpha_t, \beta_t)$, $\alpha_0 = \beta_1 = 0$, $\alpha_1 = \beta_0 = 1$:
+**<span style="color:rgb(255, 255, 0)"><b>Marginal probability path.</b></span>** Mix over the data: $p_t(x) = \int p_t(x|z)\, p_\text{data}(z)\, dz$, interpolating $p_\text{init} \to p_\text{data}$. Sampling from $p_t$ is easy ($z \sim p_\text{data}$, then $x \sim p_t(\cdot|z)$) even though its density is intractable. E.g. the **Gaussian path** with schedulers $(\alpha_t, \beta_t)$, $\alpha_0 = \beta_1 = 0$, $\alpha_1 = \beta_0 = 1$:
 $$
 p_t(\cdot|z) = \mathcal{N}(\alpha_t z,\, \beta_t^2 I_d), \qquad x_t = \alpha_t z + \beta_t \epsilon .
 $$
 
-### ODEs, Flows, and Flow Models
-**Trajectory, vector field, ODE.** A time-dependent **vector field** $u : \mathbb{R}^d \times [0,1] \to \mathbb{R}^d$ defines an **ODE**; its solution from a start point is a **trajectory** $t \mapsto X_t$:
+### Flow Models
+**<span style="color:rgb(255, 255, 0)"><b>Vector field.</b></span>** A time-dependent **vector field** $u : \mathbb{R}^d \times [0,1] \to \mathbb{R}^d$ defines an **ODE**; its solution from a start point is a <span style="color:rgb(255, 255, 0)"><b>trajectory</b></span> $t \mapsto X_t$:
 $$
 \frac{d}{dt}X_t = u_t(X_t), \qquad X_0 = x_0 .
 $$
 
-**Flow.** Collecting solutions from *every* start point gives the **flow** $\psi_t$, with $X_t = \psi_t(X_0)$:
+<span style="color:rgb(255, 255, 0)"><b><span style="color:rgb(255, 255, 0)">Flow.</b></span></span> Collecting solutions from *every* start point gives the **flow** $\psi_t$, with $X_t = \psi_t(X_0)$:
 $$
 \frac{d}{dt}\psi_t(x_0) = u_t(\psi_t(x_0)), \qquad \psi_0(x_0) = x_0 .
 $$
-Conversely $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$. The 6.S184 slogan: ==*vector fields define ODEs whose solutions are flows*.==
+Conversely $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$. Vector fields define ODEs whose solutions are flows.
 
-**Flow model.** Make *only the initial condition* random: $X_0 \sim p_\text{init}$, $\frac{d}{dt}X_t = u_t^\theta(X_t)$, goal $X_1 = \psi_1^\theta(X_0) \sim p_\text{data}$. The network parameterizes the **vector field, never the flow** — evaluating $\psi_t^\theta$ always means simulating the ODE.
+<span style="color:rgb(255, 255, 0)"><b>Flow model.</b></span> Make *only the initial condition* random: $X_0 \sim p_\text{init}$, $\frac{d}{dt}X_t = u_t^\theta(X_t)$, goal $X_1 = \psi_1^\theta(X_0) \sim p_\text{data}$. The network parameterizes the **vector field, never the flow** — evaluating $\psi_t^\theta$ always means simulating the ODE.
 
-### Well-Posedness: the Lipschitz Condition
-**Lipschitz condition.** $u_t$ is globally **Lipschitz** if $\|u_t(x) - u_t(y)\| \le L\,\|x - y\|$ for all $x, y$.
+### Lipschitz Condition
+<span style="color:rgb(255, 255, 0)"><b>Lipschitz condition.</b></span> $u_t$ is globally **Lipschitz** if $\|u_t(x) - u_t(y)\| \le L\,\|x - y\|$ for all $x, y$.
 
-**Picard–Lindelöf theorem** (Cauchy–Lipschitz). *If $u_t(x)$ is continuous in $t$ and Lipschitz in $x$ (constant $L$ uniform in $t$), the ODE has **exactly one** solution through every initial condition — on all of $[0,1]$ in the globally Lipschitz case; only on a maximal interval (possible finite-time blow-up) if merely locally Lipschitz.*
+<span style="color:rgb(255, 255, 0)"><b>Picard–Lindelöf theorem.</b></span> If $u_t(x)$ is continuous in $t$ and Lipschitz in $x$ (constant $L$ uniform in $t$), the ODE has exactly one solution through every initial condition — on all of $[0,1]$ in the globally Lipschitz case; only on a maximal interval (possible finite-time blow-up) if merely locally Lipschitz.
 
 Both hypotheses earn their keep: mere continuity keeps existence (Peano) but **uniqueness fails** ($\dot x = \sqrt{|x|},\ x(0)=0$ is solved by $x \equiv 0$ *and* $x = t^2/4$); local-only Lipschitzness allows **blow-up** ($\dot x = x^2,\ x(0)=1$ gives $x = 1/(1-t)$, gone at $t=1$).
 
