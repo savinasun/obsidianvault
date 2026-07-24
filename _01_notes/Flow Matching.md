@@ -5,14 +5,14 @@
 **Links**:: [[Generative Modeling]] · [[DDPM]] · [[Score Matching]] · [[Score-Based Generative Modeling Methods]] · [[Divergence Theorem]] · [[LDM]] · [[DiT]] · [[VAE]] · [[ELBO]] · [[MCMC]] · [[FID]] · [[RAE]] · [[VLA]]
 
 
-**Flow Matching (FM)** is a simulation-free framework for training generative models: pick a probability path $p_t$ interpolating a source $p_\text{init}$ (noise) into the data $p_\text{data}$, train a neural velocity field to generate that path by simple regression, and sample by ODE integration. Introduced concurrently by [Lipman et al., 2022](https://arxiv.org/abs/2210.02747) (Flow Matching), [Liu et al., 2022](https://arxiv.org/abs/2209.03003) (Rectified Flow), and [Albergo & Vanden-Eijnden, 2022](https://arxiv.org/abs/2209.15571) (stochastic interpolants), it now powers SD3 ([Esser et al., 2024](https://arxiv.org/abs/2403.03206)), Movie Gen (video), Voicebox/Audiobox (speech/audio), SE(3) FM (protein backbones), and π0 (robot policies — [[VLA]]).
+**Flow Matching (FM)** is a *simulation-free* framework for training generative models: pick a probability path $p_t$ interpolating a source distribution (noise) $p_\text{init}$ into the data distribution $p_\text{data}$, train a neural velocity field to generate that path by simple regression, and sample by ODE integration. Introduced concurrently by [Lipman et al., 2022](https://arxiv.org/abs/2210.02747) (Flow Matching), [Liu et al., 2022](https://arxiv.org/abs/2209.03003) (Rectified Flow), and [Albergo & Vanden-Eijnden, 2022](https://arxiv.org/abs/2209.15571) (stochastic interpolants), it now powers Stable Diffusion 3 ([Esser et al., 2024](https://arxiv.org/abs/2403.03206)), Movie Gen (video), Voicebox/Audiobox (speech/audio), SE(3) FM (protein backbones), and π0 (robot policies — [[VLA]]).
 
 This note follows **"Flow Matching Guide and Code"** ([Lipman et al., 2024, arXiv 2412.06264](https://arxiv.org/abs/2412.06264), with the [`flow_matching` library](https://github.com/facebookresearch/flow_matching)) and, for the background, the **[MIT 6.S184](https://diffusion.csail.mit.edu/2026/index.html) lecture notes** ([Holderrieth & Erives](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf)). 
 
-**Notation** (6.S184; matches [[Score Matching]]): source $p_\text{init} = \mathcal{N}(0, I_d)$, data $p_\text{data}$; data point $z \sim p_\text{data}$, noise $\epsilon \sim \mathcal{N}(0, I_d)$; schedulers $(\alpha_t, \beta_t)$; target fields $u_t^\text{target}(x)$, $u_t^\text{target}(x|z)$; network $u_t^\theta$. **FM time runs noise → data** ($t=0$ noise, $t=1$ data) — the *reverse* of [[DDPM]] time, related by a decreasing reparameterization $r = k(t)$. The FM guide writes $p, q$; $x_1$; $x_0$; $(\alpha_t, \sigma_t)$; $u_t(x|x_1)$ — translate when reading it.
-
 ## Background
 ---
+Source $X_0 \sim p_\text{init} = \mathcal{N}(0, I_d)$, data point $z\sim p_\text{data}$; noise $\epsilon \sim \mathcal{N}(0, I_d)$; schedulers $(\alpha_t, \beta_t)$; target fields $u_t^\text{target}(x)$, $u_t^\text{target}(x|z)$; network $u_t^\theta$.  **FM time runs noise → data** ($t=0$ noise, $t=1$ data) — the *reverse* of [[DDPM]] time, related by a decreasing reparameterization $r = k(t)$. The FM guide writes $p, q$; $x_1$; $x_0$; $(\alpha_t, \sigma_t)$; $u_t(x|x_1)$ — translate when reading it.
+
 ### Probability Paths
 A **probability path** $(p_t)_{0\le t\le 1}$ is a time-indexed family of distributions — a trajectory in distribution space, prescribing what law $X_t$ should have at each time.
 
@@ -38,19 +38,21 @@ $$
 $$
 Conversely $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$. Vector fields define ODEs whose solutions are flows.
 
-<span style="color:rgb(255, 255, 0)"><b>Flow model.</b></span> Make *only the initial condition* random: $X_0 \sim p_\text{init}$, $\frac{d}{dt}X_t = u_t^\theta(X_t)$, goal $X_1 = \psi_1^\theta(X_0) \sim p_\text{data}$. The network parameterizes the **vector field, never the flow** — evaluating $\psi_t^\theta$ always means simulating the ODE.
+<span style="color:rgb(255, 255, 0)"><b>Flow model.</b></span> Make *only the initial condition* random: $$X_0 \sim p_\text{init},\quad \frac{d}{dt}X_t = u_t^\theta(X_t)$$goal $X_1 = \psi_1^\theta(X_0) \sim p_\text{data}$. The network parameterizes the **vector field, never the flow** — evaluating $\psi_t^\theta$ always means simulating the ODE.
 
 ### Lipschitz Condition
 <span style="color:rgb(255, 255, 0)"><b>Lipschitz condition.</b></span> $u_t$ is globally **Lipschitz** if $\|u_t(x) - u_t(y)\| \le L\,\|x - y\|$ for all $x, y$.
 
 <span style="color:rgb(255, 255, 0)"><b>Picard–Lindelöf theorem.</b></span> If $u_t(x)$ is continuous in $t$ and Lipschitz in $x$ (constant $L$ uniform in $t$), the ODE has exactly one solution through every initial condition — on all of $[0,1]$ in the globally Lipschitz case; only on a maximal interval (possible finite-time blow-up) if merely locally Lipschitz.
+	Both hypotheses earn their keep: mere continuity keeps existence (Peano) but **uniqueness fails** ($\dot x = \sqrt{|x|},\ x(0)=0$ is solved by $x \equiv 0$ *and* $x = t^2/4$); local-only Lipschitzness allows **blow-up** ($\dot x = x^2,\ x(0)=1$ gives $x = 1/(1-t)$, gone at $t=1$).
 
-Both hypotheses earn their keep: mere continuity keeps existence (Peano) but **uniqueness fails** ($\dot x = \sqrt{|x|},\ x(0)=0$ is solved by $x \equiv 0$ *and* $x = t^2/4$); local-only Lipschitzness allows **blow-up** ($\dot x = x^2,\ x(0)=1$ gives $x = 1/(1-t)$, gone at $t=1$).
-
-Consequences: if $u_t$ is $C^1$ with bounded derivative (⟹ Lipschitz, $L = \sup\|\partial_x u\|$), the flow exists, is unique, and $\psi_t$ is a **diffeomorphism** (微分同胚). ==Uniqueness is what makes flows well-behaved: two trajectories can never cross or merge at the same time== — they would be two solutions of one initial-value problem — ==which is why $\psi_t$ is a bijection==, and why the *marginal* FM velocity must average conditional velocities wherever conditional paths cross. Neural networks with Lipschitz activations satisfy this automatically ("good news rather than a concern", 6.S184). The FM guide's weaker hypothesis — *local* Lipschitzness + integrability $\int_0^1 \mathbb{E}\|u_t(X_t)\|\,dt < \infty$ — rules out blow-up for almost every trajectory instead, which is what's needed near $t=1$ where conditional velocities like $(z-x)/(1-t)$ blow up (hence "generates" on $[0,1)$). Worked example (6.S184 Ex. 4): $u_t(x) = -\theta x$ has flow $\psi_t(x_0) = e^{-\theta t}x_0$.
+<span style="color:rgb(255, 255, 0)"><b>Diffeomorphism</b></span> (微分同胚): if $u_t$ is $C^1$ with bounded derivative (⟹ Lipschitz, $L = \sup\|\partial_x u\|$), the flow exists, is unique, and $\psi_t$ is a **diffeomorphism**. 
+	<span style="color:rgb(0, 176, 240)">Uniqueness is what makes flows well-behaved: two trajectories can never cross or merge at the same time</span> — they would be two solutions of one initial-value problem — <span style="color:rgb(0, 176, 240)">which is why</span> $\psi_t$ <span style="color:rgb(0, 176, 240)">is a bijection</span>, and why the *marginal* FM velocity must average conditional velocities wherever conditional paths cross. Neural networks with Lipschitz activations satisfy this automatically. 
+	The FM guide's weaker hypothesis — *local* Lipschitzness + integrability $\int_0^1 \mathbb{E}\|u_t(X_t)\|\,dt < \infty$ — rules out blow-up for almost every trajectory instead, which is what's needed near $t=1$ where conditional velocities like $(z-x)/(1-t)$ blow up (hence "generates" on $[0,1)$).
 
 ### Numerical Simulation
-**Euler**: $X_{t+h} = X_t + h\,u_t(X_t)$, $h = 1/n$ ($o(h)$ local error). **Heun** (predictor–corrector): predict $X'_{t+h} = X_t + h\,u_t(X_t)$, then average velocities, $X_{t+h} = X_t + \frac{h}{2}\big(u_t(X_t) + u_{t+h}(X'_{t+h})\big)$ — second-order, like the midpoint method used in the guide's library.
+<span style="color:rgb(255, 255, 0)"><b>Euler.</b></span> $X_{t+h} = X_t + h\,u_t(X_t)$, $h = 1/n$ ($o(h)$ local error). 
+<span style="color:rgb(255, 255, 0)"><b>Heun.</b></span> <span style="color:rgb(255, 255, 0)">(predictor–corrector)</span> predict $X'_{t+h} = X_t + h\,u_t(X_t)$, then average velocities, $X_{t+h} = X_t + \frac{h}{2}\big(u_t(X_t) + u_{t+h}(X'_{t+h})\big)$ — second-order, like the midpoint method used in the guide's library.
 
 ### From ODEs to SDEs
 **Stochastic process, diffusion coefficient, SDE.** A **stochastic process** $(X_t)$ is a random trajectory. An **SDE** adds Brownian noise, scaled by a **diffusion coefficient** $\sigma_t \ge 0$:
