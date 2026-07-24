@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/VAE.md",
+                "file": "_01_notes/IMLE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "VAE"
+              "title": "IMLE"
             }
           },
           {
@@ -75,6 +75,20 @@
               },
               "icon": "lucide-file",
               "title": "KL Divergence"
+            }
+          },
+          {
+            "id": "931144adf7ae3526",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_01_notes/VLA.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "VLA"
             }
           }
         ],
@@ -274,13 +288,18 @@
   },
   "active": "d8c0f7482614c7fc",
   "lastOpenFiles": [
+    "_01_notes/KL Divergence.md",
+    "_01_notes/VLA.md",
+    "_01_notes/Generative Modeling.md",
+    "_01_notes/Discrete Flow Matching Policy.md",
+    "_00_maps_of_contents/dl_moc.md",
+    "_01_notes/IMLE.md",
+    "_01_notes/DiT.md",
+    "_01_notes/VAE.md",
     "_04_images/beta_vae.png",
     "_01_notes/Autoencoder.md",
-    "_01_notes/KL Divergence.md",
     "_04_images/kl_divergence.png",
     "_04_images/entropy_01.png",
-    "_00_maps_of_contents/dl_moc.md",
-    "_01_notes/VAE.md",
     "_01_notes/DDPM.md",
     "_01_notes/Divergence Theorem.md",
     "_01_notes/Flow Matching.md",
@@ -292,7 +311,6 @@
     "_01_notes/Optimization Algorithms.md",
     "_01_notes/Learning Rate Annealing.md",
     "_01_notes/Elo Score.md",
-    "_01_notes/VLA.md",
     "_01_notes/VLM.md",
     "_01_notes/Behavior Cloning.md",
     "_01_notes/JEPA.md",
@@ -300,16 +318,12 @@
     "_01_notes/CLIP.md",
     "_01_notes/RAE.md",
     "_01_notes/LLaVA.md",
-    "_01_notes/Muon.md",
-    "_01_notes/AdamW.md",
-    "_01_notes/Attention.md",
     "_04_images/bokeh_plot.png",
     "_04_images/policy_gradient_grpo_loss.png",
     "_04_images/optimization_minibatch_tips.png",
     "_04_images/normalization_layer_mapping.png",
     "_04_images/nn_init_xavier_he.png",
     "_04_images/nn_init_variance_analysis.png",
-    "_04_images/mcmc_sampling.png",
     "Untitled.base",
     "Untitled 1.base",
     "Untitled.canvas",

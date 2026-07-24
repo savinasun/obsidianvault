@@ -66,7 +66,7 @@ limit 10
 
 Learning to synthesize: score-based methods, denoising diffusion, latent diffusion, and variational autoencoders.
 
-Key notes: [[Autoencoder]] · [[VAE]] · [[VQ-VAE]] · [[RAE]] · [[Score-Based Generative Modeling Methods]] · [[Score Matching]] · [[DDPM]] · [[Flow Matching]] · [[LDM]] · [[U-Net]] · [[FID]]
+Key notes: [[Generative Modeling]] (hub) · [[Autoencoder]] · [[VAE]] · [[VQ-VAE]] · [[RAE]] · [[GAN]] · [[IMLE]] · [[Score-Based Generative Modeling Methods]] · [[Score Matching]] · [[DDPM]] · [[Flow Matching]] · [[LDM]] · [[U-Net]] · [[FID]]
 
 ```dataview
 table tags as "Tags"
@@ -81,7 +81,7 @@ limit 10
 
 Policy optimization, imitation learning, model-based RL, and the path toward autonomous embodied agents.
 
-Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]] · [[VLA]]
+Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]] · [[VLA]] · [[Discrete Flow Matching Policy]]
 
 ```dataview
 table tags as "Tags"
