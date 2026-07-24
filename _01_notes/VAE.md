@@ -5,9 +5,9 @@
 **Links**:: [[Autoencoder]] · [[VQ-VAE]] · [[ELBO]] · [[KL Divergence]] · [[LDM]] · [[RAE]] · [[Flow Matching]] · [[Score-Based Generative Modeling Methods]] · [[Manifold Hypothesis]]
 
 
-A **VAE** ([Kingma & Welling, 2013](https://arxiv.org/abs/1312.6114)) is a latent-variable generative model that encodes data into a structured latent space and decodes back. Unlike standard [[Autoencoder|autoencoders]], the latent space is **probabilistic** and **regularized** toward a prior — which makes it both a generative model in its own right and the standard compression stage for latent generative modeling ([[LDM]], SD3, Movie Gen). This note incorporates the treatment in §6.2.2 and Appendix D of the MIT 6.S184 lecture notes ([Holderrieth & Erives](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf)).
+A **VAE** ([Kingma & Welling, 2013](https://arxiv.org/abs/1312.6114)) is a latent-variable generative model that encodes data into a structured latent space and decodes back. Unlike standard [[Autoencoder|autoencoders]], the latent space is **probabilistic** and **regularized** toward a prior — which makes it both a generative model in its own right and the standard compression stage for latent generative modeling ([[LDM]], SD3, Movie Gen).
 
-**Notation** (6.S184): data $x \in \mathbb{R}^d$, latent $z \in \mathbb{R}^k$ ($k \ll d$); encoder $q_\phi(z|x)$, decoder $p_\theta(x|z)$; prior $p_\text{prior} = \mathcal{N}(0, I_k)$; KL weight $\beta \ge 0$. ⚠️ *Symbol clash*: here $z$ is the **latent code** — in [[Flow Matching]]/[[Score Matching]] notes $z$ is the data point.
+**Notation** (6.S184): data $x \in \mathbb{R}^d$, latent $z \in \mathbb{R}^k$ ($k \ll d$); encoder $q_\phi(z|x)$, decoder $p_\theta(x|z)$; prior $p_\text{prior} = \mathcal{N}(0, I_k)$; KL weight $\beta \ge 0$.
 
 ## Generative Model
 ---
@@ -31,7 +31,7 @@ Maximizing the ELBO (i) makes the decoder reconstruct $x$ well from encoder samp
 
 ## The β-VAE Loss (6.S184 formulation)
 ---
-**Probabilistic encoder/decoder.** The standard Gaussian choice — with $\sigma_\phi = \sigma_\theta = 0$ recovering the deterministic [[Autoencoder]]:
+![[beta_vae.png]]**Probabilistic encoder/decoder.** The standard Gaussian choice — with $\sigma_\phi = \sigma_\theta = 0$ recovering the deterministic [[Autoencoder]]:
 
 $$
 q_\phi(z|x) = \mathcal{N}\big(z;\, \mu_\phi(x),\, \mathrm{diag}(\sigma_\phi^2(x))\big), \qquad
