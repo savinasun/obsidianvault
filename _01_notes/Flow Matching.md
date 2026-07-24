@@ -62,30 +62,30 @@ $$
 shorthand for $X_{t+h} = X_t + h\,u_t(X_t) + \sigma_t(W_{t+h} - W_t) + h\,R_t(h)$. Simulate with **Euler–Maruyama**: $X_{t+h} = X_t + h\,u_t(X_t) + \sqrt{h}\,\sigma_t\,\epsilon_t$. Randomness enters the dynamics, so there is no flow map. **Every ODE is an SDE with $\sigma_t = 0$** — a "diffusion model" is literally a flow model plus a diffusion coefficient.
 
 ### Vector Fields
-**Conditional vector field.** Any field whose ODE transports $p_\text{init}$ along the conditional path: $X_0 \sim p_\text{init},\ \frac{d}{dt}X_t = u_t^\text{target}(X_t|z) \Rightarrow X_t \sim p_t(\cdot|z)$. Typically derivable *by hand*: the Gaussian conditional flow $\psi_t(x|z) = \alpha_t z + \beta_t x$ gives (6.S184 Ex. 10)
+<span style="color:rgb(255, 255, 0)"><b>Conditional vector field.</b></span> Any field whose ODE transports $p_\text{init}$ along the conditional path: $X_0 \sim p_\text{init},\ \frac{d}{dt}X_t = u_t^\text{target}(X_t|z) \Rightarrow X_t \sim p_t(\cdot|z)$. Typically derivable *by hand*: the Gaussian conditional flow $\psi_t(x|z) = \alpha_t z + \beta_t x$ gives (6.S184 Ex. 10)
 $$
 u_t^\text{target}(x|z) = \Big(\dot\alpha_t - \frac{\dot\beta_t}{\beta_t}\alpha_t\Big) z + \frac{\dot\beta_t}{\beta_t}\, x .
 $$
 Alone it just collapses everything onto $z$ — but it is the building block of what we actually train.
 
-**Marginal vector field.** The posterior-weighted average of conditional fields — for each $z$, the direction toward $z$, weighted by how much we believe $x$ came from $z$:
+<span style="color:rgb(255, 255, 0)"><b>Marginal vector field.</b></span> The posterior-weighted average of conditional fields — for each $z$, the direction toward $z$, weighted by how much we believe $x$ came from $z$:
 $$
 u_t^\text{target}(x) = \int u_t^\text{target}(x|z)\, \frac{p_t(x|z)\,p_\text{data}(z)}{p_t(x)}\, dz = \mathbb{E}\big[u_t^\text{target}(x_t|z)\,\big|\,x_t = x\big].
 $$
 This is the training target: its flow turns noise into data.
 
-**Marginalization Trick** (6.S184 Thm 9; guide Thm 3). *If $u_t^\text{target}(\cdot|z)$ generates $p_t(\cdot|z)$, then the marginal $u_t^\text{target}$ generates the marginal $p_t$* (under mild regularity: C¹ paths/velocities, bounded data support, $p_t > 0$). Proof: plug the mixture into the Continuity Equation and swap integral/divergence. The guide generalizes the conditioning from $z$ to any $Z$ — source samples or two-sided pairs $(x_0, z)$ — all essentially equivalent.
+<span style="color:rgb(255, 255, 0)"><b>Marginalization trick.</b></span> If $u_t^\text{target}(\cdot|z)$ generates $p_t(\cdot|z)$, then the marginal $u_t^\text{target}$ generates the marginal $p_t$ (under mild regularity: C¹ paths/velocities, bounded data support, $p_t > 0$). Proof: plug the mixture into the Continuity Equation and swap integral/divergence. The guide generalizes the conditioning from $z$ to any $Z$ — source samples or two-sided pairs $(x_0, z)$ — all essentially equivalent.
 
-### The Continuity Equation and Fokker–Planck
-**Continuity Equation (Mass Conservation).** Say $u_t$ **generates** $p_t$ if $X_t \sim p_t$ for all $t$ whenever $X_0 \sim p_0$. This holds **iff** (6.S184 Thm 11)
+### The Continuity Equation and Fokker–Planck Equation
+<span style="color:rgb(255, 255, 0)"><b>Continuity Equation (Mass Conservation).</b></span> Say $u_t$ **generates** $p_t$ if $X_t \sim p_t$ for all $t$ whenever $X_0 \sim p_0$. This holds **iff**
 $$
 \partial_t\, p_t(x) = -\,\mathrm{div}\big(p_t u_t\big)(x) \qquad \forall x, t .
 $$
 Intuition: $\partial_t p_t$ is the local change of probability; $-\mathrm{div}(p_t u_t)$ is the **net inflow** of probability mass carried by the flux $j_t = p_t u_t$; conservation of total mass forces them equal — the [[Divergence Theorem]] in differential form. This single PDE licenses everything above.
 
-**Fokker–Planck (SDE generalization).** For $dX_t = u_t\,dt + \sigma_t\,dW_t$: $X_t \sim p_t$ **iff**
+**Fokker–Planck (SDE generalization).** For $dX_t = u_t\,dt + \sigma_t\,dW_t$,
 $$
-\partial_t\, p_t = -\,\mathrm{div}(p_t u_t) + \frac{\sigma_t^2}{2}\Delta p_t ,
+X_t\sim p_t\quad \mathrm{iff.}\quad \partial_t\, p_t = -\,\mathrm{div}(p_t u_t) + \frac{\sigma_t^2}{2}\Delta p_t ,
 $$
 with the Laplacian $\Delta = \mathrm{div}\,\nabla$ as heat-equation term; $\sigma_t = 0$ recovers the Continuity Equation (6.S184 Thm 19). Payoff (Thm 17): since $\frac{\sigma_t^2}{2}\Delta p_t = \mathrm{div}(p_t \frac{\sigma_t^2}{2}\nabla\log p_t)$, the SDE
 $$
