@@ -33,7 +33,7 @@ A **generative model** is any algorithm that (approximately) returns such sample
 
 **Flow matching & stochastic interpolants.** Regress a velocity field generating a chosen probability path — simulation-free CNF training ([Lipman et al., 2022](https://arxiv.org/abs/2210.02747); [Liu et al., 2022](https://arxiv.org/abs/2209.03003); [Albergo & Vanden-Eijnden, 2022](https://arxiv.org/abs/2209.15571)). Subsumes diffusion as a special case, allows arbitrary source distributions, ODE sampling. Vault: [[Flow Matching]] (the full treatment), current backbone of SD3/FLUX/Movie Gen/π0.
 
-**Discrete diffusion / discrete FM.** CTMC-based generation for tokens (masking/uniform noising with rate matrices) — the diffusion-style route to language modeling and multimodal generation; see [[Flow Matching]] (Discrete FM section).
+**Discrete diffusion / discrete FM.** [[CTMC]]-based generation for tokens (masking/uniform noising with rate matrices) — the diffusion-style route to language modeling and multimodal generation; see [[Flow Matching]] (Discrete FM section).
 
 **Generator Matching** ([Holderrieth et al., 2024](https://arxiv.org/abs/2410.20587)) unifies flows, diffusions, jumps, and CTMCs as one framework — any Markov generator, one conditional-Bregman training recipe (see [[Flow Matching]]).
 

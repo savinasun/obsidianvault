@@ -228,7 +228,7 @@ $$
 
 ## Extension: Discrete Flow Matching (CTMC)
 ---
-For discrete data $x = (x^1, \dots, x^d) \in \mathcal{V}^d$ (tokens, vocabulary size $V$; 6.S184 §7), the flow becomes a **Continuous-Time Markov Chain** ([Campbell et al., 2024](https://arxiv.org/abs/2402.04997); [Gat et al., 2024](https://arxiv.org/abs/2407.15595)): transitions $p_{t+h|t}(y|x) = \delta_x(y) + h\,Q_t(y|x) + o(h)$ with a **rate matrix** $Q_t$ ($Q_t(y|x) \ge 0$ for $y \ne x$, rows summing to zero). The Continuity Equation becomes the **Kolmogorov equation** $\frac{d}{dt}p_t(y) = \sum_x Q_t(y|x)\,p_t(x)$, and the whole FM recipe transfers.
+For discrete data $x = (x^1, \dots, x^d) \in \mathcal{V}^d$ (tokens, vocabulary size $V$; 6.S184 §7), the flow becomes a **Continuous-Time Markov Chain** ([[CTMC]]; [Campbell et al., 2024](https://arxiv.org/abs/2402.04997); [Gat et al., 2024](https://arxiv.org/abs/2407.15595)): transitions $p_{t+h|t}(y|x) = \delta_x(y) + h\,Q_t(y|x) + o(h)$ with a **rate matrix** $Q_t$ ($Q_t(y|x) \ge 0$ for $y \ne x$, $\sum_y Q_t(y|x) = 0$). The Continuity Equation becomes the **Kolmogorov equation** $\frac{d}{dt}p_t(y) = \sum_x Q_t(y|x)\,p_t(x)$, and the whole FM recipe transfers.
 
 - **Factorized rates**: all-$V^d$-states rates are infeasible; allow only single-token transitions, parameterized per position as $Q_t(v, i \mid x)$ — output dimension $d \cdot V$; per-token parallel Euler sampling is valid to $o(h)$ (6.S184 Alg. 7).
 - **Mixture paths**: per token, $X_t^i = z^i$ w.p. $\kappa_t$, else $x_0^i$; conditional rates $Q_t(v, i \mid x; x_0, z) = \frac{\dot\kappa_t}{1-\kappa_t}\big[\delta_{z^i}(v) - \delta_{x^i}(v)\big]$. Source: uniform noise or a **mask token** (mask-DFM = discrete noise→data).

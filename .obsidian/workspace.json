@@ -287,6 +287,7 @@
   },
   "active": "61ee8753b0c40531",
   "lastOpenFiles": [
+    "_01_notes/CTMC.md",
     "_01_notes/Divergence Theorem.md",
     "_01_notes/DDPM.md",
     "_01_notes/IMLE.md",
@@ -316,7 +317,6 @@
     "_01_notes/Cambrian.md",
     "_01_notes/CLIP.md",
     "_01_notes/RAE.md",
-    "_01_notes/LLaVA.md",
     "_04_images/bokeh_plot.png",
     "_04_images/policy_gradient_grpo_loss.png",
     "_04_images/optimization_minibatch_tips.png",
