@@ -81,20 +81,20 @@ This is the training target: its flow turns noise into data.
 $$
 \partial_t\, p_t(x) = -\,\mathrm{div}\big(p_t u_t\big)(x) \qquad \forall x, t .
 $$
-Intuition: $\partial_t p_t$ is the local change of probability; $-\mathrm{div}(p_t u_t)$ is the **net inflow** of probability mass carried by the flux $j_t = p_t u_t$; conservation of total mass forces them equal — the [[Divergence Theorem]] in differential form. This single PDE licenses everything above.
+**Intuition**: $\partial_t p_t$ is the local change of probability; $-\mathrm{div}(p_t u_t)$ is the **net inflow** of probability mass carried by the flux $j_t = p_t u_t$; conservation of total mass forces them equal — the [[Divergence Theorem]] in differential form. This single PDE licenses everything above.
 
-**Fokker–Planck (SDE generalization).** For $dX_t = u_t\,dt + \sigma_t\,dW_t$,
+<span style="color:rgb(255, 255, 0)"><b>Fokker–Planck (SDE generalization).</b></span> For $dX_t = u_t\,dt + \sigma_t\,dW_t$,
 $$
 X_t\sim p_t\quad \mathrm{iff.}\quad \partial_t\, p_t = -\,\mathrm{div}(p_t u_t) + \frac{\sigma_t^2}{2}\Delta p_t ,
 $$
-with the Laplacian $\Delta = \mathrm{div}\,\nabla$ as heat-equation term; $\sigma_t = 0$ recovers the Continuity Equation (6.S184 Thm 19). Payoff (Thm 17): since $\frac{\sigma_t^2}{2}\Delta p_t = \mathrm{div}(p_t \frac{\sigma_t^2}{2}\nabla\log p_t)$, the SDE
+with the Laplacian $\Delta = \nabla\cdot \nabla = \mathrm{div}\,\nabla$ as heat-equation term; $\sigma_t = 0$ recovers the Continuity Equation. Since $\frac{\sigma_t^2}{2}\Delta p_t = \mathrm{div}(p_t \frac{\sigma_t^2}{2}\nabla\log p_t)$, the SDE
 $$
 dX_t = \Big[u_t(X_t) + \frac{\sigma_t^2}{2}\nabla \log p_t(X_t)\Big]dt + \sigma_t\,dW_t
 $$
 has the **same marginals for every $\sigma_t \ge 0$** — Langevin dynamics ([[MCMC]]) is the static-path special case. This is where diffusion's stochastic samplers come from; the "optimal" $\sigma_t$ exists only because of training and simulation error. See [[Score Matching]].
 
 ### Exact Likelihoods
-The Continuity Equation implies the *instantaneous change of variables* ([Chen et al., 2018](https://arxiv.org/abs/1806.07366); guide §3.6, not in 6.S184):
+The Continuity Equation implies the *instantaneous change of variables* ([Chen et al., 2018](https://arxiv.org/abs/1806.07366); guide §3.6):
 $$
 \frac{d}{dt}\log p_t(\psi_t(x)) = -\,\mathrm{div}(u_t)(\psi_t(x)),
 $$
@@ -102,22 +102,18 @@ so $\log p_1$ is an integral of the divergence along the trajectory; Hutchinson'
 
 ## FM and Conditional FM Losses
 ---
-Regress the network onto the (intractable) marginal field, then swap in the tractable conditional target:
-
+Regress the network onto the *intractable* marginal field, then swap in the tractable conditional target:
 $$
 \mathcal{L}_\text{FM}(\theta) = \mathbb{E}_{t \sim \text{Unif},\, x \sim p_t} \big\|u_t^\theta(x) - u_t^\text{target}(x)\big\|^2
 \qquad \text{(flow matching loss — intractable)}
 $$
-
 $$
 \mathcal{L}_\text{CFM}(\theta) = \mathbb{E}_{t \sim \text{Unif},\, z \sim p_\text{data},\, x \sim p_t(\cdot|z)} \big\|u_t^\theta(x) - u_t^\text{target}(x|z)\big\|^2
 \qquad \text{(conditional flow matching)}
-$$
+$$$$\mathcal{L}_\text{FM}(\theta) = \mathcal{L}_\text{CFM}(\theta) + \text{const} \qquad \text{(relationship)}$$so gradients coincide, and the minimizer is $u_t^{\theta^*} = u_t^\text{target}$.
 
-**Theorem (6.S184 Thm 12).** $\mathcal{L}_\text{FM}(\theta) = \mathcal{L}_\text{CFM}(\theta) + C$ with $C$ independent of $\theta$, so gradients coincide, and the minimizer is $u_t^{\theta^*} = u_t^\text{target}$. (Same statement for scores = [[Score Matching]] Thm 22.)
-
-**Why this works in general — Bregman divergences (guide).** The gradient equality holds for any **Bregman divergence** $D(u,v) = \Phi(u) - \Phi(v) - \langle u - v, \nabla\Phi(v)\rangle$ ($\Phi$ strictly convex; MSE is $\Phi = \|\cdot\|^2$): their gradients are affine-invariant in the second argument, so $\nabla_v D(\mathbb{E}[Y], v) = \mathbb{E}[\nabla_v D(Y, v)]$. General principle: for any $f_t(x_0, z)$, minimizing $\mathbb{E}\, D(f_t(x_0, z), g_t^\theta(x_t))$ yields $g_t^\theta(x) = \mathbb{E}[f_t(x_0, z) \mid x_t = x]$ — **regression on single-sample targets learns their conditional expectation**. Bregman-ness is *necessary* for this (Holderrieth et al., 2024).
-
+<span style="color:rgb(255, 255, 0)"><b>Bregman divergences.</b></span> The gradient equality holds for any **Bregman divergence** $$D(u,v) = \Phi(u) - \Phi(v) - \langle u - v, \nabla\Phi(v)\rangle$$ ($\Phi$ strictly convex; MSE is $\Phi = \|\cdot\|^2$): their gradients are affine-invariant in the second argument, so $\nabla_v D(\mathbb{E}[Y], v) = \mathbb{E}[\nabla_v D(Y, v)]$. General principle: for any $f_t(x_0, z)$, minimizing $\mathbb{E}\, D(f_t(x_0, z), g_t^\theta(x_t))$ yields $g_t^\theta(x) = \mathbb{E}[f_t(x_0, z) \mid x_t = x]$ — **regression on single-sample targets learns their conditional expectation**. Bregman-ness is *necessary* for this (Holderrieth et al., 2024).
+ 
 **Time weighting.** Training with $t \sim \omega(t)$ (equivalently, reweighting) changes nothing mathematically, but non-uniform sampling (e.g. SD3's logit-normal) works better at scale.
 
 ## Designing Paths via Conditional Flows
