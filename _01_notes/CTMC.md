@@ -98,7 +98,7 @@ $$
 p_0(\cdot|z) = p_\text{init}, \qquad p_1(\cdot|z) = \delta_z \qquad \forall z \in S .
 $$
 
-The standard choice is the **factorized mixture path** — each token independently revealed with probability $\kappa_t$ (a monotone schedule with $\kappa_0 = 0$, $\kappa_1 = 1$):
+The standard choice is the <span style="color:rgb(255, 255, 0)"><b>factorized mixture path</b></span> — each token independently revealed with probability $\kappa_t$ (a monotone schedule with $\kappa_0 = 0$, $\kappa_1 = 1$):
 
 $$
 p_t(x \mid z) = \prod_{j=1}^{d} \Big[ \kappa_t\, \delta_{z^j}(x^j) + (1-\kappa_t)\, p_\text{init}(x^j) \Big],
@@ -120,7 +120,7 @@ $$
 Q^z_t(v, j \mid x) = \frac{\dot\kappa_t}{1-\kappa_t}\,\big(\delta_{z^j}(v) - \delta_{x^j}(v)\big).
 $$
 
-**Theorem (discrete marginalization trick).** *Let $Q_t^z$ generate the conditional path $p_t(\cdot|z)$ for every $z \in S$. Then the **marginal rate matrix***
+<span style="color:rgb(255, 255, 0)"><b>Theorem (discrete marginalization trick).</b></span> *Let $Q_t^z$ generate the conditional path $p_t(\cdot|z)$ for every $z \in S$. Then the <span style="color:rgb(255, 255, 0)"><b>marginal rate matrix</b></span>*
 
 $$
 Q_t(y|x) := \sum_{z \in S} Q_t^z(y|x)\; p_{1|t}(z|x),
