@@ -287,12 +287,12 @@
   },
   "active": "61ee8753b0c40531",
   "lastOpenFiles": [
+    "_01_notes/Flow Matching.md",
+    "_01_notes/CTMC.md",
     "_01_notes/CTMC.md.tmp.47154.c4409373ac1f",
     "_01_notes/CoT Prompting.md",
-    "_01_notes/CTMC.md",
     "_04_images/CTMC_algorithm.png",
     "_04_images/Screenshot 2026-07-23 at 4.46.42 PM.png",
-    "_01_notes/Flow Matching.md",
     "_01_notes/Discrete Flow Matching Policy.md",
     "_01_notes/Divergence Theorem.md",
     "_01_notes/DDPM.md",
@@ -332,7 +332,6 @@
     "_02_references/wei2023",
     "_02_references/suRoFormerEnhancedTransformerRotaryPositionEmbedding2023",
     "_02_references/baLayerNormalization2016",
-    "_02_references/xiaoEfficientStreamingLanguageModelsAttentionSinks2024",
-    "_02_references/vaswani2017"
+    "_02_references/xiaoEfficientStreamingLanguageModelsAttentionSinks2024"
   ]
 }

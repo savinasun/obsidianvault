@@ -85,9 +85,54 @@ $$
 \;=\; \underbrace{\sum_{x \ne y} Q_t(y|x)\,p_t(x)}_{\text{incoming flux}} \;-\; \underbrace{\sum_{x \ne y} Q_t(x|y)\,p_t(y)}_{\text{outgoing flux}},
 $$
 
-and conversely (as with Mass Conservation / Fokker–Planck in [[Flow Matching]]): $X_t \sim p_t$ for all $t$ **iff** the KFE holds — necessity by differentiating, sufficiency by linear-ODE uniqueness. Two standard consequences:
-- **Marginalization trick**: if conditional rate matrices $Q^z_t$ generate conditional paths $p_t(\cdot|z)$, their posterior average $Q_t(y|x) = \sum_z Q_t^z(y|x)\,p_{1|t}(z|x)$ generates the marginal path — verified by plugging into the KFE, exactly as in continuous FM.
+and conversely (as with Mass Conservation / Fokker–Planck in [[Flow Matching]]): $X_t \sim p_t$ for all $t$ **iff** the KFE holds — necessity by differentiating, sufficiency by linear-ODE uniqueness. A standard consequence:
 - **Probability-preserving rates**: any $R_t$ with $\sum_x R_t(y|x)p_t(x) = 0$ (and valid rates) can be added without changing the marginals — the discrete divergence-free freedom behind re-masking correctors and Metropolis–Hastings-style components.
+
+## Probability Paths and the Marginalization Trick
+---
+The generative construction mirrors continuous [[Flow Matching]], with PMFs replacing densities.
+
+**Conditional probability path.** A family of PMFs $p_t(\cdot|z)$ on $S$, indexed by a data point $z \in S$ and $t \in [0,1]$, interpolating noise into that single data point:
+
+$$
+p_0(\cdot|z) = p_\text{init}, \qquad p_1(\cdot|z) = \delta_z \qquad \forall z \in S .
+$$
+
+The standard choice is the **factorized mixture path** — each token independently revealed with probability $\kappa_t$ (a monotone schedule with $\kappa_0 = 0$, $\kappa_1 = 1$):
+
+$$
+p_t(x \mid z) = \prod_{j=1}^{d} \Big[ \kappa_t\, \delta_{z^j}(x^j) + (1-\kappa_t)\, p_\text{init}(x^j) \Big],
+$$
+
+with the **masked** special case $p_\text{init} = \delta_{[\text{mask}]}$ (masked diffusion: tokens are either revealed or `[mask]`).
+
+**Marginal probability path.** Mix the conditional paths over the data:
+
+$$
+p_t(x) = \sum_{z \in S} p_t(x \mid z)\, p_\text{data}(z),
+$$
+
+so that $p_0 = p_\text{init}$ and $p_1 = p_\text{data}$. Sampling from $p_t$ is easy ($z \sim p_\text{data}$, then $x \sim p_t(\cdot|z)$) even though the sum itself is intractable.
+
+**Conditional rate matrix.** Any rate matrix $Q_t^z$ whose CTMC follows the conditional path: $X_0 \sim p_\text{init}$, $X_t$ CTMC of $Q_t^z$ $\Rightarrow$ $X_t \sim p_t(\cdot|z)$. For the mixture path it exists in closed form and only permits jumps straight to the data token:
+
+$$
+Q^z_t(v, j \mid x) = \frac{\dot\kappa_t}{1-\kappa_t}\,\big(\delta_{z^j}(v) - \delta_{x^j}(v)\big).
+$$
+
+**Theorem (discrete marginalization trick).** *Let $Q_t^z$ generate the conditional path $p_t(\cdot|z)$ for every $z \in S$. Then the **marginal rate matrix***
+
+$$
+Q_t(y|x) := \sum_{z \in S} Q_t^z(y|x)\; p_{1|t}(z|x),
+\qquad
+p_{1|t}(z|x) := \frac{p_t(x|z)\, p_\text{data}(z)}{p_t(x)},
+$$
+
+*is a valid rate matrix, and the CTMC it defines follows the marginal path: $X_0 \sim p_\text{init} \Rightarrow X_t \sim p_t$ for all $t \in [0,1]$ — in particular $X_1 \sim p_\text{data}$.*
+
+*Proof sketch.* The rate conditions survive the convex combination (posterior weights are non-negative and sum to one over $z$). For the path property, differentiate $p_t(x) = \sum_z p_t(x|z)\,p_\text{data}(z)$, apply the conditional KFE to each term, multiply-and-divide by $p_t(x)$, and recognize the marginal KFE for $Q_t$; sufficiency then follows from linear-ODE uniqueness. $\square$
+
+This theorem is the training target of discrete FM: the posterior average $\sum_z (\cdot)\, p_{1|t}(z|x)$ is a conditional expectation, so it can be learned from single data samples — and for the mixture path it collapses to per-position denoising posteriors $p_{1|t}(z^j = v \mid x)$, i.e. a classifier per token.
 
 ## CTMC as a Generative Model
 ---
