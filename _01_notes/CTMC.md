@@ -6,11 +6,19 @@
 
 
 A **Continuous-Time Markov Chain** is a memoryless stochastic process on a **discrete state space** — the discrete-state analog of the ODEs and SDEs behind [[Flow Matching]], and the process class powering discrete diffusion / discrete FM (language models, protein co-design, token-action robot policies — [[Discrete Flow Matching Policy]]). This note follows §7.1 and Appendix C of the MIT 6.S184 lecture notes ([Holderrieth & Erives, *An Introduction to Flow Matching and Diffusion Models*](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf); [course site](https://diffusion.csail.mit.edu/)), with the FM-guide view (jump processes, generators) noted at the end.
-## Markov Chains in Continuous Time
+
+## Notations
 ---
 **State space**: $S = \mathcal{V}^d$, sequences of $d$ tokens from a vocabulary $\mathcal{V}$ of size $V$, e.g. DNA bases, text tokens, action bins
 **Transition probabilities**: $p_{t+h|t}(y|x) := p(X_{t+h} = y \mid X_t = x)$
-**Transition-rate matrix**: a bounded function $Q : S \times S \times [0,1] \to \mathbb{R}$, $(x, y, t) \mapsto Q_t(y|x)$, continuous in $t$, defined entrywise as the derivative of the transition probabilities at zero time-lag,
+**Transition-rate matrix**: a bounded function 
+$$
+\begin{aligned}
+Q : S \times S \times [0,1] &\to \mathbb{R} \\
+(x, y, t) &\mapsto Q_t(y|x)
+\end{aligned}
+$$
+continuous in $t$, defined entry-wise as the derivative of the transition probabilities at zero time-lag,
 $$
 Q_t(y|x) := \frac{d}{dh}\Big|_{h=0}\, p_{t+h|t}(y \mid x),
 $$
@@ -19,9 +27,11 @@ $$
 \text{(1)}\;\; Q_t(y|x) \ge 0 \quad (y \ne x), \qquad
 \text{(2)}\;\; Q_t(x|x) = -\sum_{y \ne x} Q_t(y|x) \le 0,
 $$
-so $Q_t(y|x)$ is the instantaneous rate of jumping $x \to y$, and each column sums to zero, $\sum_{y} Q_t(y|x) = 0$ (probability conservation).
+so $Q_t(y|x)$ is the instantaneous rate of jumping $x \to y$, and each column sums to zero, $\sum_{y} Q_t(y|x) = 0$.
 **Dirac-delta function**: $\delta_z(x) = 1$ iff $x = z$.
 
+## Markov Chains in Continuous Time
+---
 A stochastic process $(X_t)_{0 \le t \le 1}$ on $S$ is **Markov** if the future depends on the past only through the present:
 
 $$
@@ -33,13 +43,11 @@ ODEs and SDEs are Markov too; on a *discrete* space such a process is a **Markov
 ## Rate Matrices — the Discrete Velocity Field
 ---
 On a discrete space there are no directions, only **jumps**, so the analog of a velocity field is a **rate matrix** $Q_t(y|x)$ — the instantaneous rate of switching $x \to y$ — subject to two **rate conditions**:
-
 $$
 \text{(1)}\;\; Q_t(y|x) \ge 0 \;\; (y \ne x), \qquad
 \text{(2)}\;\; Q_t(x|x) = -\sum_{y \ne x} Q_t(y|x),
 $$
-
-i.e. off-diagonal entries are non-negative (a rate of leaving can't be negative) and each diagonal entry cancels its column's outflow (you either stay or leave — probability is conserved). The analog of "the trajectory follows the ODE" is the condition that transition probabilities *change at the rates prescribed by $Q_t$* (6.S184 Eq. 87):
+i.e. off-diagonal entries are non-negative (a rate of leaving can't be negative) and each diagonal entry cancels its column's outflow (you either stay or leave — probability is conserved). The analog of "the trajectory follows the ODE" is the condition that transition probabilities *change at the rates prescribed by $Q_t$*:
 
 $$
 \frac{d}{dh}\Big|_{h=0}\, p_{t+h|t}(y \mid x) = Q_t(y|x)
@@ -59,6 +67,10 @@ The dictionary between the continuous and discrete worlds:
 | **Well-posedness** | Picard–Lindelöf (nonlinear; local) | linear ODE (global, no extra conditions) |
 | **Generative training** | [[Flow Matching]] (regression) / [[Score Matching]] (denoising) | discrete FM (cross-entropy classification) |
 
+## Sampling with CTMC Algorithm
+---
+![[CTMC_algorithm.png|500]]
+$p_{\text{init}}=\text{Unif}_{S}$
 ## Existence and Uniqueness
 ---
 **Theorem (6.S184 Thm 33).** *For any rate matrix $Q_t$ (bounded, continuous in $t$), there exists a **unique** CTMC — a unique transition kernel — satisfying Eq. 87.*
