@@ -27,7 +27,7 @@ $$
 \text{(1)}\;\; Q_t(y|x) \ge 0 \quad (y \ne x), \qquad
 \text{(2)}\;\; Q_t(x|x) = -\sum_{y \ne x} Q_t(y|x) \le 0,
 $$
-so $Q_t(y|x)$ is the instantaneous rate of jumping $x \to y$, and each column sums to zero, $\sum_{y} Q_t(y|x) = 0$.
+so $Q_t(y|x)$ is the instantaneous rate of jumping $x \to y$, and each column sums to zero, $\sum_{y} Q_t(y|x) = 0$ (probability conservation).
 **Dirac-delta function**: $\delta_z(x) = 1$ iff $x = z$.
 
 ## Markov Chains in Continuous Time
@@ -42,13 +42,7 @@ ODEs and SDEs are Markov too; on a *discrete* space such a process is a **Markov
 
 ## Rate Matrices — the Discrete Velocity Field
 ---
-On a discrete space there are no directions, only **jumps**, so the analog of a velocity field is a **rate matrix** $Q_t(y|x)$ — the instantaneous rate of switching $x \to y$ — subject to two **rate conditions**:
-$$
-\text{(1)}\;\; Q_t(y|x) \ge 0 \;\; (y \ne x), \qquad
-\text{(2)}\;\; Q_t(x|x) = -\sum_{y \ne x} Q_t(y|x),
-$$
-i.e. off-diagonal entries are non-negative (a rate of leaving can't be negative) and each diagonal entry cancels its column's outflow (you either stay or leave — probability is conserved). The analog of "the trajectory follows the ODE" is the condition that transition probabilities *change at the rates prescribed by $Q_t$*:
-
+On a discrete space there are no directions, only **jumps**, so the analog of a velocity field is a **rate matrix** $Q_t(y|x)$ — the instantaneous rate of switching $x \to y$. Derive from Taylor expansion,
 $$
 \frac{d}{dh}\Big|_{h=0}\, p_{t+h|t}(y \mid x) = Q_t(y|x)
 \qquad\Longleftrightarrow\qquad
@@ -57,20 +51,17 @@ $$
 
 The dictionary between the continuous and discrete worlds:
 
-| | Continuous state ($\mathbb{R}^d$) | Discrete state ($S = \mathcal{V}^d$) |
-|---|---|---|
-| **Dynamics object** | velocity field $u_t(x)$ (+ diffusion $\sigma_t$) | rate matrix $Q_t(y\|x)$ |
-| **Defining equation** | ODE / SDE | transition-rate condition (Eq. 87) |
-| **Solution** | flow $\psi_t$ / process | transition kernel $p_{t+h\|t}$ |
-| **Marginal law evolves by** | Continuity / Fokker–Planck ([[Divergence Theorem]]) | Kolmogorov Forward Equation |
-| **Simulation** | Euler / Euler–Maruyama | categorical Euler step |
-| **Well-posedness** | Picard–Lindelöf (nonlinear; local) | linear ODE (global, no extra conditions) |
-| **Generative training** | [[Flow Matching]] (regression) / [[Score Matching]] (denoising) | discrete FM (cross-entropy classification) |
-
-## Sampling with CTMC Algorithm
----
+|                             | Continuous state ($\mathbb{R}^d$)                               | Discrete state ($S = \mathcal{V}^d$)       |
+| --------------------------- | --------------------------------------------------------------- | ------------------------------------------ |
+| **Dynamics object**         | velocity field $u_t(x)$ (+ diffusion $\sigma_t$)                | rate matrix $Q_t(y\|x)$                    |
+| **Defining equation**       | ODE / SDE                                                       | transition-rate condition                  |
+| **Solution**                | flow $\psi_t$ / process                                         | transition kernel $p_{t+h\|t}$             |
+| **Marginal law evolves by** | Continuity / Fokker–Planck ([[Divergence Theorem]])             | Kolmogorov Forward Equation                |
+| **Simulation**              | Euler / Euler–Maruyama                                          | categorical Euler step                     |
+| **Well-posedness**          | Picard–Lindelöf (nonlinear; local)                              | linear ODE (global, no extra conditions)   |
+| **Generative training**     | [[Flow Matching]] (regression) / [[Score Matching]] (denoising) | discrete FM (cross-entropy classification) |
 ![[CTMC_algorithm.png|500]]
-$p_{\text{init}}=\text{Unif}_{S}$
+
 ## Existence and Uniqueness
 ---
 **Theorem (6.S184 Thm 33).** *For any rate matrix $Q_t$ (bounded, continuous in $t$), there exists a **unique** CTMC — a unique transition kernel — satisfying Eq. 87.*
