@@ -75,20 +75,8 @@ $$
 a valid categorical distribution for small $h$ by the rate conditions (the FM guide's variant with $\exp[h\,Q_t(x|x)]$ staying-probability is valid for *every* $h$). Each step is just sampling from a discrete distribution.
 
 ![[CTMC_algorithm.png|500]]
- 
-## The Kolmogorov Forward Equation
----
-The marginals $p_t$ of a CTMC evolve by the **KFE** — the discrete continuity equation:
 
-$$
-\frac{d}{dt} p_t(y) = \sum_{x \in S} Q_t(y|x)\, p_t(x)
-\;=\; \underbrace{\sum_{x \ne y} Q_t(y|x)\,p_t(x)}_{\text{incoming flux}} \;-\; \underbrace{\sum_{x \ne y} Q_t(x|y)\,p_t(y)}_{\text{outgoing flux}},
-$$
-
-and conversely (as with Mass Conservation / Fokker–Planck in [[Flow Matching]]): $X_t \sim p_t$ for all $t$ **iff** the KFE holds — necessity by differentiating, sufficiency by linear-ODE uniqueness. A standard consequence:
-- **Probability-preserving rates**: any $R_t$ with $\sum_x R_t(y|x)p_t(x) = 0$ (and valid rates) can be added without changing the marginals — the discrete divergence-free freedom behind re-masking correctors and Metropolis–Hastings-style components.
-
-## Probability Paths and the Marginalization Trick
+## Probability Paths
 ---
 The generative construction mirrors continuous [[Flow Matching]], with PMFs replacing densities.
 
@@ -117,10 +105,29 @@ so that $p_0 = p_\text{init}$ and $p_1 = p_\text{data}$. Sampling from $p_t$ is 
 **Conditional rate matrix.** Any rate matrix $Q_t^z$ whose CTMC follows the conditional path: $X_0 \sim p_\text{init}$, $X_t$ CTMC of $Q_t^z$ $\Rightarrow$ $X_t \sim p_t(\cdot|z)$. For the mixture path it exists in closed form and only permits jumps straight to the data token:
 
 $$
-Q^z_t(v, j \mid x) = \frac{\dot\kappa_t}{1-\kappa_t}\,\big(\delta_{z^j}(v) - \delta_{x^j}(v)\big).
+\begin{aligned}
+Q_t^z (y|x) &= (Q_t^z (v_i, j|x_j))_{v_i,j}, \\
+Q^z_t(v, j \mid x) &= \frac{\dot\kappa_t}{1-\kappa_t}\,\big(\delta_{z^j}(v) - \delta_{x^j}(v)\big).
+\end{aligned}
 $$
 
-<span style="color:rgb(255, 255, 0)"><b>Theorem (discrete marginalization trick).</b></span> *Let $Q_t^z$ generate the conditional path $p_t(\cdot|z)$ for every $z \in S$. Then the <span style="color:rgb(255, 255, 0)"><b>marginal rate matrix</b></span>*
+## The Kolmogorov Forward Equation
+---
+A CTMC with rate matrix $Q_t$ follows the probability path $X_t\sim p_t$, $t\in [0,1]$ if and only if the KFE holds,
+
+$$
+\frac{d}{dt} p_t(y) = \sum_{x \in S} Q_t(y|x)\, p_t(x)
+\;=\; \underbrace{\sum_{x \ne y} Q_t(y|x)\,p_t(x)}_{\text{incoming flux}} \;-\; \underbrace{\sum_{x \ne y} Q_t(x|y)\,p_t(y)}_{\text{outgoing flux}},
+$$
+
+i.e., the change of probability is equal to the probability net inflow. 
+
+The Kolmogorov forward equation is the [[Flow Matching#The Continuity Equation and Fokker–Planck Equation|Continuity equation]] under discrete state space. A standard consequence:
+- **Probability-preserving rates**: any $R_t$ with $\sum_x R_t(y|x)p_t(x) = 0$ (and valid rates) can be added without changing the marginals — the discrete divergence-free freedom behind re-masking correctors and Metropolis–Hastings-style components.
+
+## Discrete Marginalization Trick
+---
+**Theorem (discrete marginalization trick).** *Let $Q_t^z$ generate the conditional path $p_t(\cdot|z)$ for every $z \in S$. Then the <span style="color:rgb(255, 255, 0)"><b>marginal rate matrix</b></span>*
 
 $$
 Q_t(y|x) := \sum_{z \in S} Q_t^z(y|x)\; p_{1|t}(z|x),
@@ -130,7 +137,17 @@ $$
 
 *is a valid rate matrix, and the CTMC it defines follows the marginal path: $X_0 \sim p_\text{init} \Rightarrow X_t \sim p_t$ for all $t \in [0,1]$ — in particular $X_1 \sim p_\text{data}$.*
 
-*Proof sketch.* The rate conditions survive the convex combination (posterior weights are non-negative and sum to one over $z$). For the path property, differentiate $p_t(x) = \sum_z p_t(x|z)\,p_\text{data}(z)$, apply the conditional KFE to each term, multiply-and-divide by $p_t(x)$, and recognize the marginal KFE for $Q_t$; sufficiency then follows from linear-ODE uniqueness. $\square$
+Proof. 
+$$
+\begin{aligned}
+\frac{d}{dt}p_t(x) &= \frac{d}{dt} \sum\limits_{z\in S} p_t(x|z) p_{\text{data}}(z) \\
+&= \sum_{z\in S} \frac{d}{dt} p_t(x|z) p_{\text{data}}(z) \quad \textit{(apply convexity)}\\
+&= \sum_{z\in S} \left[\sum\limits_{y\in S} Q^z_t (x|y) p_t(y) \right] p_{\text{data}}(z)   \quad (\textit{apply Kolmogorov forward equation})\\
+&= \sum\limits_{y\in S} \left[\sum\limits_{z\in S} Q^z_t(x|y) \cdot \frac{p_t(y)p_{\text{data}}(z)}{p_t(y)}\right] \cdot p_t(y) \\
+&= \sum\limits_{y\in S} Q_t(x|y) \cdot p_t(y)\quad \textit{(apply marginal prob. path definition)}
+\end{aligned}
+$$
+therefore $X_t \sim p_t$.$\square$
 
 This theorem is the training target of discrete FM: the posterior average $\sum_z (\cdot)\, p_{1|t}(z|x)$ is a conditional expectation, so it can be learned from single data samples — and for the mixture path it collapses to per-position denoising posteriors $p_{1|t}(z^j = v \mid x)$, i.e. a classifier per token.
 
