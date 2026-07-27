@@ -91,7 +91,7 @@ and conversely (as with Mass Conservation / Fokker–Planck in [[Flow Matching]]
 
 ## CTMC as a Generative Model
 ---
-A **CTMC model** (= "discrete diffusion model") is $p_\text{init}=\text{Uniform}(S)$ plus a network $Q_t^\theta$ that outputs, for input $x$, one column $\{Q_t^\theta(y|x)\}_y$ of the rate matrix. The catch: $|S| = V^d$, so a full column can't even be stored. The fix is **factorization**, a sparsity constraint.
+A **CTMC model** (also called "discrete diffusion model" sometimes) is $p_\text{init}=\text{Uniform}(S)$ plus a network $Q_t^\theta$ that outputs, for input $x$, one column $\{Q_t^\theta(y|x)\}_y$ of the rate matrix. The catch: $|S| = V^d$, so a full column can't even be stored. The fix is **factorization**, a sparsity constraint.
 
 <span style="color:rgb(255, 255, 0)"><b>Factorization condition.</b></span> A CTMC model is **factorized** if, for all $x = (x^1, \dots, x^d),\ y = (y^1, \dots, y^d) \in S$,
 
