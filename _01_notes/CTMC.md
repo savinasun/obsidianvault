@@ -2,10 +2,10 @@
 # **CTMC (Continuous-Time Markov Chain)**
 
 **Tags**:: #math #generative #dl_theo
-**Links**:: [[Flow Matching]] · [[Discrete Flow Matching Policy]] · [[MCMC]] · [[Generative Modeling]] · [[LLMs]]
+**Links**:: [[Flow Matching]] · [[Discrete Flow Matching]] · [[MCMC]] · [[Generative Modeling]] · [[LLMs]]
 
 
-A **Continuous-Time Markov Chain** is a memoryless stochastic process on a **discrete state space** — the discrete-state analog of the ODEs and SDEs behind [[Flow Matching]], and the process class powering discrete diffusion / discrete FM (language models, protein co-design, token-action robot policies — [[Discrete Flow Matching Policy]]). This note follows §7.1 and Appendix C of the MIT 6.S184 lecture notes ([Holderrieth & Erives, *An Introduction to Flow Matching and Diffusion Models*](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf); [course site](https://diffusion.csail.mit.edu/)), with the FM-guide view (jump processes, generators) noted at the end.
+A **Continuous-Time Markov Chain** is a memoryless stochastic process on a **discrete state space** — the discrete-state analog of the ODEs and SDEs behind [[Flow Matching]], and the process class powering discrete diffusion / [[Discrete Flow Matching]] (language models, protein co-design, token-action robot policies). This note follows §7.1 and Appendix C of the MIT 6.S184 lecture notes ([Holderrieth & Erives, *An Introduction to Flow Matching and Diffusion Models*](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf); [course site](https://diffusion.csail.mit.edu/)), with the FM-guide view (jump processes, generators) noted at the end.
 
 ## Notations
 ---
@@ -190,7 +190,7 @@ $$
 
 each obeying the rate conditions per position: $Q_t^\theta(v, i \mid x) \ge 0$ for $v \ne x^i$ and $Q_t^\theta(x^i, i \mid x) = -\sum_{v \ne x^i} Q_t^\theta(v, i \mid x)$. The network output shrinks from $V^d$ to a tractable $d \times V$ matrix (a [[Transformer]] with a $V$-way head), and per-token parallel Euler steps agree with the full CTMC step to first order in $h$.
 
-Training uses the discrete FM recipe (see [[Flow Matching]], Discrete FM section): choose a mixture/masked path, derive the conditional rate matrix in closed form, and learn the per-position denoising posteriors $p_{1|t}^{\theta}(z^j|x)$ with plain **cross-entropy** — generative modeling reduced to per-token classification. Applications: masked diffusion language models ([[LLMs]] beyond autoregression), multimodal protein co-design, and token-action robot policies ([[Discrete Flow Matching Policy]]).
+Training uses the discrete FM recipe (see [[Discrete Flow Matching]]): choose a mixture/masked path, derive the conditional rate matrix in closed form, and learn the per-position denoising posteriors $p_{1|t}^{\theta}(z^j|x)$ with plain **cross-entropy** — generative modeling reduced to per-token classification. Applications: masked diffusion language models ([[LLMs]] beyond autoregression), multimodal protein co-design, and token-action robot policies.
 
 **FM-guide view**: a CTMC is a **jump process** on a discrete space; its generator is $\mathcal{L}_t f(x) = \sum_y f(y) Q_t(y|x)$, sitting in the same Generator Matching table as flows ($\nabla f^\top u_t$) and diffusions ($\tfrac{1}{2}\sigma_t^2 \cdot \nabla^2 f$) — one framework, four process classes.
 
@@ -201,7 +201,7 @@ Both are Markov chains used for sampling, with opposite designs: [[MCMC]] runs a
 ## Relationship to Other Notes
 ---
 - [[Flow Matching]] — the continuous-state parent framework; its Discrete FM section is the training recipe for CTMC models, and its Background (Picard–Lindelöf, continuity equation) is the continuous mirror of this note
-- [[Discrete Flow Matching Policy]] — CTMC action decoding for robots; masked mixture paths and re-masking correctors in action
+- [[Discrete Flow Matching]] — the generative training framework built on CTMCs: masked mixture paths, cross-entropy loss, re-masking correctors, and applications (LLMs, robot policies)
 - [[MCMC]] — the stationary-sampler cousin; mixing intuition, detailed balance, Metropolis–Hastings as divergence-free component
 - [[Divergence Theorem]] — the KFE is the discrete continuity equation; flux in/out reading
 - [[Generative Modeling]] — where CTMC-based discrete diffusion sits in the family taxonomy

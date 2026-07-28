@@ -81,7 +81,7 @@ limit 10
 
 Policy optimization, imitation learning, model-based RL, and the path toward autonomous embodied agents.
 
-Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]] · [[VLA]] · [[Discrete Flow Matching Policy]]
+Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]] · [[VLA]] · [[Discrete Flow Matching]]
 
 ```dataview
 table tags as "Tags"

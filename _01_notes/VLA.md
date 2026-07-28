@@ -32,7 +32,7 @@ Training maximizes likelihood of demonstrated chunks — standard [[Behavior Clo
 | **Continuous regression** (L1/MSE head, parallel decode) | OpenVLA-OFT | single forward pass; fast | unimodal — averages over multimodal demos |
 | **Diffusion head** | Octo, RDT-1B (cf. Diffusion Policy, [Chi et al., 2023](https://arxiv.org/abs/2303.04137)) | captures multimodal action distributions | iterative denoising at inference |
 | **Flow-matching action expert** | π0, GR00T N1 | multimodal + few (~10) integration steps | extra expert weights; training interference with backbone |
-| **Discrete diffusion / FM over tokens** (masked, parallel refinement) | Discrete Diffusion VLA ([2508.20072](https://arxiv.org/abs/2508.20072)) | backbone-native CE loss; any-order parallel decoding + re-masking error correction | quantization; multi-round inference — see [[Discrete Flow Matching Policy]] |
+| **Discrete diffusion / FM over tokens** (masked, parallel refinement) | Discrete Diffusion VLA ([2508.20072](https://arxiv.org/abs/2508.20072)) | backbone-native CE loss; any-order parallel decoding + re-masking error correction | quantization; multi-round inference — see [[Discrete Flow Matching]] |
 
 RT-2 mapped bins to number strings (PaLI-X) or overwrote rarely-used vocabulary tokens; OpenVLA likewise overwrites the 256 least-used Llama tokens. OpenVLA-OFT ([Kim et al., 2025](https://arxiv.org/abs/2502.19645)) showed that swapping AR discrete decoding for **parallel decoding + action chunking + continuous L1 regression** raises LIBERO success from 76.5% → **97.1%** with **26×** inference throughput — evidence that the action-representation choice, not backbone quality, was the bottleneck in early VLAs.
 

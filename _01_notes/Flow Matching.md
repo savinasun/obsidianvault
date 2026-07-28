@@ -235,7 +235,7 @@ For discrete data $x = (x^1, \dots, x^d) \in \mathcal{V}^d$ (tokens, vocabulary 
 - **Posterior parameterization**: learn a per-token denoiser $p_{1|t}^{\theta,i}(z^i | x)$ (discrete analog of $D_t$); train with cross-entropy or **generalized KL**, which doubles as an [[ELBO]] for evaluation.
 - **Sampling**: per token, draw $z^i \sim p^{\theta,i}_{1|t}(\cdot|x)$, then a CTMC Euler step (jump-to-target vs. stay); divergence-free rate components add corrector-style noise (un-/re-masking trade-offs).
 
-This is the FM view of "discrete diffusion" language models and multimodal protein co-design — and, over tokenized action chunks, of robot policies ([[Discrete Flow Matching Policy]]).
+This is the FM view of "discrete diffusion" language models and multimodal protein co-design — and, over tokenized action chunks, of robot policies. Full treatment: [[Discrete Flow Matching]].
 
 ## Extension: Generator Matching — One Framework for Everything
 ---
