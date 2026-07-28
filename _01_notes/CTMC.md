@@ -125,9 +125,9 @@ i.e., the change of probability is equal to the probability net inflow.
 The Kolmogorov forward equation is the [[Flow Matching#The Continuity Equation and Fokker–Planck Equation|Continuity equation]] under discrete state space. A standard consequence:
 - **Probability-preserving rates**: any $R_t$ with $\sum_x R_t(y|x)p_t(x) = 0$ (and valid rates) can be added without changing the marginals — the discrete divergence-free freedom behind re-masking correctors and Metropolis–Hastings-style components.
 
-## Discrete Marginalization Trick
+## Marginal Rate Matrix
 ---
-**Theorem (discrete marginalization trick).** *Let $Q_t^z$ generate the conditional path $p_t(\cdot|z)$ for every $z \in S$. Then the <span style="color:rgb(255, 255, 0)"><b>marginal rate matrix</b></span>*
+<span style="color:rgb(255, 255, 0)"><b>Theorem (discrete marginalization trick).</b></span> *Let $Q_t^z$ generate the conditional path $p_t(\cdot|z)$ for every $z \in S$. Then the <span style="color:rgb(255, 255, 0)"><b>marginal rate matrix</b></span>*
 
 $$
 Q_t(y|x) := \sum_{z \in S} Q_t^z(y|x)\; p_{1|t}(z|x),
@@ -149,7 +149,28 @@ $$
 $$
 therefore $X_t \sim p_t$.$\square$
 
-This theorem is the training target of discrete FM: the posterior average $\sum_z (\cdot)\, p_{1|t}(z|x)$ is a conditional expectation, so it can be learned from single data samples — and for the mixture path it collapses to per-position denoising posteriors $p_{1|t}(z^j = v \mid x)$, i.e. a classifier per token.
+This theorem is the training target of discrete FM: the posterior average $\sum_z (\cdot)\, p_{1|t}(z|x)$ is a conditional expectation, so it can be learned from single data samples. For the factorized mixture path it collapses into closed form:
+
+<span style="color:rgb(255, 255, 0)"><b>Theorem (marginal rate matrix of the factorized mixture path).</b></span> *For the factorized mixture path with conditional rates $Q^z_t(v, j \mid x) = \frac{\dot\kappa_t}{1-\kappa_t}\big(\delta_{z^j}(v) - \delta_{x^j}(v)\big)$, the marginal rate matrix is itself factorized, with per-position entries*
+
+$$
+Q_t(v, j \mid x) = \frac{\dot\kappa_t}{1-\kappa_t}\,\Big( p_{1|t}(z^j = v \mid x) \;-\; \delta_{x^j}(v) \Big),
+$$
+
+*where $p_{1|t}(z^j = v \mid x) := \sum_{z \,:\, z^j = v} p_{1|t}(z|x)$ is the posterior probability that the clean token at position $j$ equals $v$, given the noisy sequence $x$.*
+
+Proof. (i) *Factorization*: whenever $y$ and $x$ differ in more than one position, $Q_t^z(y|x) = 0$ for every $z$, so the posterior average vanishes there too — the marginal rate matrix is supported on neighbors. (ii) *Per position*:
+
+$$
+\begin{aligned}
+Q_t(v, j \mid x)
+&= \sum_{z \in S} Q_t^z(v, j \mid x)\; p_{1|t}(z|x) \\
+&= \frac{\dot\kappa_t}{1-\kappa_t} \Bigg( \sum_{z \in S} \delta_{z^j}(v)\, p_{1|t}(z|x) \;-\; \delta_{x^j}(v)\, \underbrace{\sum_{z \in S} p_{1|t}(z|x)}_{=\,1} \Bigg) \quad \textit{(plug in conditional rates)}\\
+&= \frac{\dot\kappa_t}{1-\kappa_t}\,\Big( p_{1|t}(z^j = v \mid x) - \delta_{x^j}(v) \Big). \quad \textit{(marginalize the posterior over positions $\ne j$)} \qquad \square
+\end{aligned}
+$$
+
+**Why it matters.** The marginal rate matrix is a pure **reparameterization of per-position denoising posteriors** — learning the generative model reduces to training a classifier per token position, a network $x \mapsto \big(p^\theta_{1|t}(z^j = v \mid x)\big)_{j \le d,\, v \in \mathcal{V}}$ with output shape $d \times V$ (softmax per position), trained by cross-entropy $\mathbb{E}\big[-\sum_j \log p^\theta_{1|t}(z^j \mid x)\big]$. As continuous FM reduces to regression and score matching to denoising, **discrete FM reduces to classification**.
 
 ## CTMC as a Generative Model
 ---
