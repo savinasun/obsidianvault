@@ -91,7 +91,8 @@
               "title": "VLA"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -285,11 +286,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "61ee8753b0c40531",
+  "active": "05100ce8be938a69",
   "lastOpenFiles": [
+    "_01_notes/CTMC.md",
     "_04_images/CTMC_algo.png",
     "_01_notes/CoT Prompting.md",
-    "_01_notes/CTMC.md",
     "_01_notes/Discrete Flow Matching.md",
     "_01_notes/Discrete Flow Matching Policy.md",
     "_01_notes/Flow Matching.md",
@@ -323,7 +324,6 @@
     "_04_images/bokeh_plot.png",
     "_04_images/policy_gradient_grpo_loss.png",
     "_04_images/optimization_minibatch_tips.png",
-    "_04_images/normalization_layer_mapping.png",
     "Untitled.base",
     "Untitled 1.base",
     "Untitled.canvas",

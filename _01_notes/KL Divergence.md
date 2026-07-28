@@ -41,15 +41,16 @@ where $\kappa(\alpha) = \sum_i \alpha_i - \log\alpha_i -1$.
 ---
 ![[kl_divergence.png]]
 
-The direction of KL divergence determines the mode behavior of the approximating distribution $q$.
+The direction of KL divergence determines the mode behavior of the approximating distribution $q$. Usually $p$ denotes the empirical data distribution and $q$ denotes the model distribution.
 
 ### Forward KL: $D_\text{KL}(p \| q)$
 $$
 D_\text{KL}(p \| q) = \int p(x) \log \frac{p(x)}{q(x)}\, dx
 $$
 - **Mean-Seeking** (mass-covering): when $p(x) > 0$, the term $p(x)\log(p(x)/q(x))$ blows up if $q(x) \to 0$. So $q$ is forced to place probability mass everywhere $p$ is non-zero.
+- $D_{KL}(p\|q)$ is defined and finite only if $p$ is absolutely continuous w.r.t. $q$, $$\left\{x:q(x)=0\right\}\subseteq \left\{x:p(x)=0\right\}.$$i.e. the support of the model distribution $q$ is contained in the support of the empirical data distribution $p$)
 - **Result**: $q$ tends to be **overdispersed** — it covers all modes of $p$, potentially spreading mass in low-probability regions between modes.
-- **Used in**: maximum likelihood estimation (minimizing $\textrm{argmin}_{\theta} D_\text{KL}(p_\text{data} \| p_\theta)$), expectation propagation.
+- <span style="color:rgb(255, 255, 0)"><b>Equivalent to MLE</b></span> (equivalent to $\textrm{argmin}_{\theta} D_\text{KL}(p_\text{data} \| p_\theta)$), expectation propagation.
 
 ### Backward KL: $D_\text{KL}(q \| p)$
 $$
