@@ -74,7 +74,7 @@ $$
 
 a valid categorical distribution for small $h$ by the rate conditions (the FM guide's variant with $\exp[h\,Q_t(x|x)]$ staying-probability is valid for *every* $h$). Each step is just sampling from a discrete distribution.
 
-![[CTMC_algorithm.png|500]]
+![[CTMC_sampling.png|500]]
 
 ## Probability Paths
 ---
@@ -191,6 +191,8 @@ $$
 each obeying the rate conditions per position: $Q_t^\theta(v, i \mid x) \ge 0$ for $v \ne x^i$ and $Q_t^\theta(x^i, i \mid x) = -\sum_{v \ne x^i} Q_t^\theta(v, i \mid x)$. The network output shrinks from $V^d$ to a tractable $d \times V$ matrix (a [[Transformer]] with a $V$-way head), and per-token parallel Euler steps agree with the full CTMC step to first order in $h$.
 
 Training uses the discrete FM recipe (see [[Discrete Flow Matching]]): choose a mixture/masked path, derive the conditional rate matrix in closed form, and learn the per-position denoising posteriors $p_{1|t}^{\theta}(z^j|x)$ with plain **cross-entropy** — generative modeling reduced to per-token classification. Applications: masked diffusion language models ([[LLMs]] beyond autoregression), multimodal protein co-design, and token-action robot policies.
+
+![[CTMC_algo.png|500]]
 
 **FM-guide view**: a CTMC is a **jump process** on a discrete space; its generator is $\mathcal{L}_t f(x) = \sum_y f(y) Q_t(y|x)$, sitting in the same Generator Matching table as flows ($\nabla f^\top u_t$) and diffusions ($\tfrac{1}{2}\sigma_t^2 \cdot \nabla^2 f$) — one framework, four process classes.
 
