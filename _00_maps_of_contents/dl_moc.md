@@ -21,7 +21,7 @@ limit 10
 
 How neural networks are built and trained: optimization, generalization, normalization, regularization, initialization, and learning paradigms.
 
-Key notes: [[Basics of Neural Network]] · [[Activation Functions]] · [[Neural Network Initialization]] · [[Normalization]] · [[Layer Normalization]] · [[RMSNorm]] · [[Internal Covariate Shift]] · [[Optimization Algorithms]] · [[AdamW]] · [[Shampoo]] · [[SOAP]] · [[Muon]] · [[Learning Rate Annealing]] · [[Regularization]] · [[Double Descent]] · [[Scaling Laws]] · [[Pre-training]] · [[FLOPs]] · [[FSL]] · [[Word Embeddings]] · [[Benchmark Datasets]]
+Key notes: [[Basics of Neural Network]] · [[Activation Functions]] · [[Neural Network Initialization]] · [[Normalization]] · [[Layer Normalization]] · [[RMSNorm]] · [[FiLM]] · [[Internal Covariate Shift]] · [[Optimization Algorithms]] · [[AdamW]] · [[Shampoo]] · [[SOAP]] · [[Muon]] · [[Learning Rate Annealing]] · [[Regularization]] · [[Double Descent]] · [[Scaling Laws]] · [[Pre-training]] · [[FLOPs]] · [[FSL]] · [[Word Embeddings]] · [[Benchmark Datasets]]
 
 ```dataview
 table tags as "Tags"

@@ -2,7 +2,7 @@
 # **Diffusion Transformer (DiT)**
 
 **Tags**:: #generative #dl_arch #diffusion
-**Links**:: [[DDPM]] · [[LDM]] · [[ViT]] · [[VAE]] · [[RAE]] · [[FID]] · [[Attention]] · [[Layer Normalization]] · [[ImageNet]]
+**Links**:: [[DDPM]] · [[LDM]] · [[ViT]] · [[VAE]] · [[RAE]] · [[FID]] · [[Attention]] · [[Layer Normalization]] · [[FiLM]] · [[ImageNet]]
 
 
 **DiT** ([Peebles & Xie, 2023](https://arxiv.org/abs/2212.09748)) replaces the U-Net backbone in latent diffusion models with a Vision Transformer, demonstrating that Gflops — not parameter count alone — determine generation quality, and that transformers scale more predictably than U-Nets.
@@ -28,7 +28,7 @@ Patch size $p$ is the dominant compute knob:
 - Smaller patches → more tokens → better FID (at higher cost)
 
 ### Conditioning: adaLN-Zero
-DiT conditions on the denoising timestep $t$ and class label $y$ (for class-conditional generation). Four strategies were evaluated; **adaLN-Zero** won:
+DiT conditions on the denoising timestep $t$ and class label $y$ (for class-conditional generation) — an instance of [[FiLM]]-style feature-wise modulation. Four strategies were evaluated; **adaLN-Zero** won:
 
 $$
 h = \text{LayerNorm}(x), \quad h' = (1 + \gamma) \odot h + \beta

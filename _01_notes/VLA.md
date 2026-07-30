@@ -40,7 +40,7 @@ RT-2 mapped bins to number strings (PaLI-X) or overwrote rarely-used vocabulary 
 ---
 | Model | Year | Backbone → Actions | Key fact |
 |---|---|---|---|
-| [RT-1](https://arxiv.org/abs/2212.06817) | 2022 | 35M EfficientNet+FiLM, TokenLearner → binned tokens | pre-VLM precursor; 130k episodes, 700+ tasks, 13 robots, 3 Hz |
+| [RT-1](https://arxiv.org/abs/2212.06817) | 2022 | 35M EfficientNet+[[FiLM]], TokenLearner → binned tokens | pre-VLM precursor; 130k episodes, 700+ tasks, 13 robots, 3 Hz |
 | [PaLM-E](https://arxiv.org/abs/2303.03378) | 2023 | 562B embodied multimodal LM → text plans | showed VLM scale transfers to embodied reasoning |
 | [RT-2](https://arxiv.org/abs/2307.15818) | 2023 | PaLI-X 5B/55B, PaLM-E 12B → actions-as-text | coined "VLA"; co-fine-tuning with web data → emergent semantic skills; 1–3 Hz |
 | [Open X-Embodiment](https://arxiv.org/abs/2310.08864) | 2023 | (dataset + RT-X models) | 1M+ trajectories, 22 embodiments; positive cross-embodiment transfer |

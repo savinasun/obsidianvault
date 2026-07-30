@@ -2,7 +2,7 @@
 # **Normalization**
 
 **Tags**:: #dl_theo #architecture
-**Links**:: [[Layer Normalization]] · [[RMSNorm]] · [[Internal Covariate Shift]] · [[LLMs]] · [[Activation Functions]]
+**Links**:: [[Layer Normalization]] · [[RMSNorm]] · [[FiLM]] · [[Internal Covariate Shift]] · [[LLMs]] · [[Activation Functions]]
 
 
 Normalization techniques stabilize and accelerate deep network training by controlling the distribution of activations. Different methods differ in *what* they normalize over (batch, layer, group, or instance).
