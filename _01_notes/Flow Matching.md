@@ -185,8 +185,8 @@ FM trains on pairs $(x_0, z) \sim \pi$; the default is the **independent couplin
 ---
 Train a **guided velocity** $u_t^\theta(x|y)$ with the same CFM loss ("vanilla guidance", 6.S184 §5). To *reinforce* the prompt, use the score conversion and Bayes' rule $\nabla\log p_t(x|y) = \nabla\log p_t(x) + \nabla\log p_t(y|x)$:
 
-- **Classifier guidance**: $\tilde u_t(x|y) = u_t^\text{target}(x) + w\,a_t \nabla \log p_t(y|x)$ — scale up a noised-data classifier's gradient.
-- **Classifier-free guidance** ([Ho & Salimans, 2021](https://arxiv.org/abs/2207.12598); for flows [Zheng et al., 2023](https://arxiv.org/abs/2311.13443)) eliminates the classifier:
+- <span style="color:rgb(255, 255, 0)"><b>Classifier guidance</b></span>: $\tilde u_t(x|y) = u_t^\text{target}(x) + w\,a_t \nabla \log p_t(y|x)$ — scale up a noised-data classifier's gradient.
+- <span style="color:rgb(255, 255, 0)"><b>Classifier-free guidance</b></span> ([Ho & Salimans, 2021](https://arxiv.org/abs/2207.12598); for flows [Zheng et al., 2023](https://arxiv.org/abs/2311.13443)) eliminates the classifier:
 
 $$
 \tilde u_t^\theta(x|y) = (1 - w)\, u_t^\theta(x|\varnothing) + w\, u_t^\theta(x|y),
