@@ -60,6 +60,16 @@ $$where $\Phi(x)$ is the c.d.f. of standard Gaussian distribution.
 
 
 
+## Mish
+---
+$$
+\textrm{Mish}(x) = x\cdot\tanh(\textrm{softplus}(x)) = x\cdot\tanh(\ln(1+e^{x}))
+$$
++ Proposed in [Misra, 2019](https://arxiv.org/abs/1908.08681) as a **self-regularized non-monotonic** activation; it is a self-gated function like Swish, but replaces the sigmoid gate with a $\tanh(\textrm{softplus}(\cdot))$ gate.
++ Properties shared with GELU/Swish: **smooth** (infinitely differentiable, unlike ReLU) and **non-monotonic** — unbounded above, bounded below with a minimum of $\approx -0.31$ at $x\approx-1.19$, so small negative inputs are preserved rather than zeroed, which helps gradient flow.
++ Compared to Swish it has a slightly wider negative dip and stronger empirical regularization effect in the original paper's vision experiments, at somewhat higher compute cost than ReLU/Swish.
++ Notable models using Mish: YOLOv4 (in its CSPDarknet53 backbone)
+
 ## Swish Gated Linear Unit (SwiGLU)
 ---
  + SwiGLU together with GeGLU were first developed as variants of Gated Linear Unit (GLU) in [Shazeer, 2020](https://arxiv.org/abs/2002.05202). The basic idea is to simply combine GLU with Swish or GELU, replacing the sigmoid gate with either a Swish gate or a GELU gate
