@@ -1,6 +1,14 @@
-/* Centers all internal images in reading and editing view */
-.internal-embed img {
+/* Forces all internal images to center and centers their text captions */
+.markdown-preview-view .internal-embed img,
+.markdown-rendered .internal-embed img,
+.cm-embed-block.markdown-embed .internal-embed img {
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+/* Optional: Centers the container box itself */
+.internal-embed {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
+    width: 100%;
 }
