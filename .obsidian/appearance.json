@@ -1,7 +1,8 @@
 {
   "enabledCssSnippets": [
     "callouts",
-    "literature-css-snippet"
+    "literature-css-snippet",
+    "center-images"
   ],
   "cssTheme": "",
   "theme": "obsidian",

@@ -41,12 +41,14 @@ $$\textrm{FF}(x) = \max(0, xW_1)W_2$$
 + it is fast for learning since there is no gradient vanish as the output closes to 1
     - LeNet uses sigmoid, AlexNet uses ReLu
 - Image of ReLU and Swish function and their derivative functions 
-	![[activation_functions_03.png]]
+	![[relu_graph.png|500]]
 + Notable models using ReLU: [[Transformer|original transformer]], T5
 + **Swish**:  A derived modification from SiLU$$\textrm{Swish}_{\beta}(x) = x\cdot \sigma(\beta x) = \frac{x}{1+e^{-\beta x}}$$
 
 ## Gaussian Error Linear Unit (GELU)
 ---
+![[gelu_graph.png|600]]
+
 $$
 \textrm{GELU}(x) = x\cdot\Phi(x),
 $$
@@ -56,12 +58,13 @@ $$where $\Phi(x)$ is the c.d.f. of standard Gaussian distribution.
 + Notable models using GELU: [[GPTs|GPTs]], Bloom
 + **GELU has a significantly smoother gradient transition than the sharp and abrupt ReLU.**
 + For negative values, GELU function is not monotonic, instead, it decreases at first then increases as it becomes close to zero.
-![[activation_functions_06.png|800]]
-
 
 
 ## Mish
 ---
+
+![[mish_graph.png|500]]
+
 $$
 \textrm{Mish}(x) = x\cdot\tanh(\textrm{softplus}(x)) = x\cdot\tanh(\ln(1+e^{x}))
 $$
@@ -80,7 +83,7 @@ $$
 \textrm{FF}_{\textrm{SwiGLU}}(x, W, V, \beta, W_2) = \textrm{Swish}_{\beta}(xW) \otimes (xV)W_2.
 $$
 + SwiGLU has since been adopted in a number of prominent LLMs including Google’s PaLM ([Chowdhery et al., 2022](https://arxiv.org/abs/2204.02311)) and Meta’s Llama 2 ([Touvron et al., 2023](https://arxiv.org/abs/2307.09288)) — see also [[LLaMA]]
-![[activation_functions_05.png]]
+![[swiglu.png|500]]
 + Notable models using SwiGLU: LLaMA, PaLM, Mistral, most models post 2023
 
 
