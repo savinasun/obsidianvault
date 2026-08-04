@@ -51,8 +51,8 @@ Conversely $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$. Vector fields define ODEs whos
 	The FM guide's weaker hypothesis — *local* Lipschitzness + integrability $\int_0^1 \mathbb{E}\|u_t(X_t)\|\,dt < \infty$ — rules out blow-up for almost every trajectory instead, which is what's needed near $t=1$ where conditional velocities like $(z-x)/(1-t)$ blow up (hence "generates" on $[0,1)$).
 
 ### Numerical Simulation
-<span style="color:rgb(255, 255, 0)"><b>Euler.</b></span> $X_{t+h} = X_t + h\,u_t(X_t)$, $h = 1/n$ ($o(h)$ local error). 
-<span style="color:rgb(255, 255, 0)"><b>Heun.</b></span> <span style="color:rgb(255, 255, 0)">(predictor–corrector)</span> predict $X'_{t+h} = X_t + h\,u_t(X_t)$, then average velocities, $X_{t+h} = X_t + \frac{h}{2}\big(u_t(X_t) + u_{t+h}(X'_{t+h})\big)$ — second-order, like the midpoint method used in the guide's library.
+<span style="color:rgb(255, 255, 0)"><b>Euler method.</b></span> $X_{t+h} = X_t + h\,u_t(X_t)$, $h = 1/n$ ($o(h)$ local error). 
+<span style="color:rgb(255, 255, 0)"><b>Heun method.</b></span> <span style="color:rgb(255, 255, 0)">(predictor–corrector)</span> predict $X'_{t+h} = X_t + h\,u_t(X_t)$, then average velocities, $X_{t+h} = X_t + \frac{h}{2}\big(u_t(X_t) + u_{t+h}(X'_{t+h})\big)$ — second-order, like the midpoint method used in the guide's library.
 
 ### From ODEs to SDEs
 **Stochastic process, diffusion coefficient, SDE.** A **stochastic process** $(X_t)$ is a random trajectory. An **SDE** adds Brownian noise, scaled by a **diffusion coefficient** $\sigma_t \ge 0$:

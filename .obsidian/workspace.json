@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Activation Functions.md",
+                "file": "_01_notes/Flow Matching.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Activation Functions"
+              "title": "Flow Matching"
             }
           },
           {
@@ -289,13 +289,14 @@
   },
   "active": "61ee8753b0c40531",
   "lastOpenFiles": [
+    "_01_notes/FiLM.md",
+    "_01_notes/Flow Matching.md",
+    "_01_notes/Activation Functions.md",
     "_04_images/mish_graph.png",
     "_04_images/Screenshot 2026-08-04 at 3.19.27 PM.png",
-    "_01_notes/Flow Matching.md",
     "_01_notes/World Models.md",
     "_01_notes/VLA.md",
     "_01_notes/VLM.md",
-    "_01_notes/FiLM.md",
     "_01_notes/DDPM.md",
     "_01_notes/CTMC.md",
     "_01_notes/Discrete Flow Matching.md",
@@ -325,7 +326,6 @@
     "_01_notes/Optimization Algorithms.md",
     "_01_notes/Learning Rate Annealing.md",
     "_04_images/bokeh_plot.png",
-    "_04_images/policy_gradient_grpo_loss.png",
     "Untitled.base",
     "Untitled 1.base",
     "Untitled.canvas",
