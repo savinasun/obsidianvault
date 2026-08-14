@@ -106,7 +106,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -302,10 +302,10 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "6e14ae3b2008c72a",
+  "active": "05100ce8be938a69",
   "lastOpenFiles": [
-    "_01_notes/Flow Matching.md",
     "CC Harness Notes.md",
+    "_01_notes/Flow Matching.md",
     "Untitled",
     "_01_notes/FiLM.md",
     "_01_notes/Activation Functions.md",
