@@ -2,7 +2,7 @@
 # **Muon**
 
 **Tags**:: #dl_theo #learning
-**Links**:: [[Optimization Algorithms]] · [[AdamW]] · [[SOAP]] · [[Shampoo]]
+**Links**:: [[Optimization Algorithms]] · [[AdamW]] · [[SOAP]] · [[Shampoo]] · [[muTransfer]]
 
 ---
 

@@ -2,7 +2,7 @@
 # **Scaling Laws**
 
 **Tags**:: #dl_theo
-**Links**:: [[LLMs]] · [[Optimization Algorithms]] · [[MoE]] · [[Double Descent]] · [[FLOPs]]
+**Links**:: [[LLMs]] · [[Optimization Algorithms]] · [[MoE]] · [[Double Descent]] · [[FLOPs]] · [[muTransfer]]
 
 
 **Scaling laws** describe how model performance (typically measured by loss) changes as a function of model size $N$, training data $D$, and compute budget $C$. Understanding these relationships guides decisions about model architecture, training duration, and resource allocation.

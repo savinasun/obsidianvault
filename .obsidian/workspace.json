@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Linux Cheat Sheet.md",
+                "file": "_01_notes/muTransfer.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Linux Cheat Sheet"
+              "title": "muTransfer"
             }
           }
         ],
@@ -88,7 +88,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "initialization",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -234,9 +234,11 @@
   },
   "active": "6e14ae3b2008c72a",
   "lastOpenFiles": [
+    "_01_notes/Neural Network Initialization.md",
+    "_01_notes/muTransfer.md",
+    "Linux Cheat Sheet.md",
     "_04_images/linux_cmd_cheatsheet.webp",
     "CC Harness Notes.md",
-    "Linux Cheat Sheet.md",
     "_01_notes/DDPM.md",
     "_01_notes/Flow Matching.md",
     "_01_notes/IMLE.md",
@@ -270,8 +272,6 @@
     "_04_images/entropy_01.png",
     "_04_images/autoencoder.png",
     "_01_notes/Double Descent.md",
-    "_01_notes/FID.md",
-    "_04_images/bokeh_plot.png",
     "Untitled.base",
     "Untitled 1.base",
     "Untitled.canvas",

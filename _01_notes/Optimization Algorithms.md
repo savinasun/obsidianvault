@@ -2,7 +2,7 @@
 # **Optimization Algorithms**
 
 **Tags**:: #dl_theo
-**Links**:: [[LLMs]] · [[Neural Network Initialization]] · [[Double Descent]] · [[Scaling Laws]] · [[AdamW]] · [[Shampoo]] · [[SOAP]] · [[Muon]] · [[Learning Rate Annealing]]
+**Links**:: [[LLMs]] · [[Neural Network Initialization]] · [[Double Descent]] · [[Scaling Laws]] · [[AdamW]] · [[Shampoo]] · [[SOAP]] · [[Muon]] · [[Learning Rate Annealing]] · [[muTransfer]]
 
 
 Optimization algorithms update model parameters $\theta$ to minimize a loss $\mathcal{L}(\theta)$. The choice of optimizer, learning rate schedule, and regularization critically affects both training stability and final performance.

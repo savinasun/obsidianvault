@@ -2,7 +2,7 @@
 # **Learning Rate Annealing**
 
 **Tags**:: #dl_theo #learning
-**Links**:: [[Optimization Algorithms]] · [[AdamW]] · [[LLMs]] · [[Scaling Laws]] · [[Pre-training]] · [[Neural Network Initialization]]
+**Links**:: [[Optimization Algorithms]] · [[AdamW]] · [[LLMs]] · [[Scaling Laws]] · [[Pre-training]] · [[Neural Network Initialization]] · [[muTransfer]]
 
 
 **Learning rate annealing** is the practice of varying the step size $\eta_t$ over training — typically a **warmup** ramp, a long high-LR phase, and a **decay** to (near) zero. The LR is the single most consequential optimizer hyperparameter, and its *schedule* often matters as much as its peak value. This note is the deep-dive companion to the schedules overview in [[Optimization Algorithms#Learning Rate Schedules|Optimization Algorithms]].

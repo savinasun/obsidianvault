@@ -2,7 +2,7 @@
 # **Neural Network Initialization**
 
 **Tags**:: #dl_theo
-**Links**:: [[Activation Functions]] · [[Normalization]] · [[LLMs]] · [[Double Descent]]
+**Links**:: [[Activation Functions]] · [[Normalization]] · [[LLMs]] · [[Double Descent]] · [[muTransfer]]
 
 
 Proper weight initialization prevents **vanishing and exploding gradients** at the start of training, enabling stable and fast convergence from the very first step. The goal is to preserve signal variance through the forward pass and gradient variance through the backward pass.
