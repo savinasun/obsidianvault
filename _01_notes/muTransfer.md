@@ -39,11 +39,13 @@ Classify weights by whether their dimensions grow with width: **input weights** 
 
 ### What Transfers (Table 1)
 ---
-| | Examples | Status |
-|---|---|---|
-| **μTransferable** | learning rate, LR schedule, momentum / Adam $\beta$s, per-layer init scales, parameter multipliers (output/embedding, attention temperature) | transfer across width — theoretically justified |
-| **Transferred across (empirical)** | depth, batch size, sequence length, training steps | works in practice with caveats, no width-style theory |
-| **Not μTransferable** | regularization HPs: dropout, weight decay | depend on both model *and data* size, not just width |
+The paper sorts hyperparameters into three groups:
+
+| Category                           | Examples                                                                                                                                     | Status                                                |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| **μTransferable**                  | learning rate, LR schedule, momentum / Adam $\beta$s, per-layer init scales, parameter multipliers (output/embedding, attention temperature) | transfer across width — theoretically justified       |
+| **Transferred across (empirical)** | depth, batch size, sequence length, training steps                                                                                           | works in practice with caveats, no width-style theory |
+| **Not μTransferable**              | regularization HPs: dropout, weight decay                                                                                                    | depend on both model *and data* size, not just width  |
 
 Minimums for reliable transfer (paper's rule of thumb): proxy width ≥ 256, depth ≥ 4, batch ≥ 32, sequence length ≥ 128, ≥ 5000 training steps.
 
