@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/muTransfer.md",
+                "file": "_01_notes/Flow Matching.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "muTransfer"
+              "title": "Flow Matching"
             }
           }
         ],
@@ -234,8 +234,8 @@
   },
   "active": "6e14ae3b2008c72a",
   "lastOpenFiles": [
-    "_01_notes/Neural Network Initialization.md",
     "_01_notes/muTransfer.md",
+    "_01_notes/Neural Network Initialization.md",
     "Linux Cheat Sheet.md",
     "_04_images/linux_cmd_cheatsheet.webp",
     "CC Harness Notes.md",
