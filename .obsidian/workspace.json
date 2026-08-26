@@ -248,6 +248,7 @@
   },
   "active": "8a6e0e63a43ac114",
   "lastOpenFiles": [
+    "_04_images/gpu_memory_b200.png",
     "_01_notes/GPTs.md",
     "_01_notes/GPU Architecture.md",
     "_01_notes/Generative Modeling.md",
@@ -279,7 +280,6 @@
     "_01_notes/KL Divergence.md",
     "_04_images/CTMC_algo.png",
     "_01_notes/CoT Prompting.md",
-    "_01_notes/Discrete Flow Matching Policy.md",
     "_01_notes/CTMC.md.tmp.47154.c4409373ac1f",
     "_04_images/CTMC_sampling.png",
     "_04_images/Screenshot 2026-07-23 at 4.46.42 PM.png",

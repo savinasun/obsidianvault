@@ -165,6 +165,7 @@ Full list of generations in [[#7. NVIDIA Architecture Timeline]]. NVIDIA's CUDA-
 
 ## GPU Memory
 ---
+![[gpu_memory_b200.png|600]]
 The GPU, like a CPU, relies on a **hierarchy from RAM through cache levels** to keep its processing engines fed; an SM, like a CPU core, can only compute on data that reach its [[#^registers|registers]].
 
 ### Memory Levels (B200 numbers)
