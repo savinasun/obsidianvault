@@ -81,7 +81,7 @@ This note follows the Cornell Virtual Workshop roadmap [*Understanding GPU Archi
 - **Flash Attention** — IO-aware exact attention that tiles $Q,K,V$ into SRAM and never materializes the $T\times T$ matrix in HBM. → [[#Flash Attention]] ^flash-attention
 - **Top500** — twice-yearly ranking of the fastest supercomputers (LINPACK); NVIDIA accelerators in 87 % of entries as of Nov 2025. → [[#Context and Peak Rates]] ^top500
 
-## 1. GPU Characteristics
+## GPU Characteristics
 ---
 ### Design: GPU vs. CPU
 GPUs were built to **render graphics** — shading, texturing, and rasterizing thousands of independent polygons — while CPUs were built to **control the logical flow** of arbitrary programs. The roles dictate the silicon budget:
@@ -163,7 +163,7 @@ A version number ([[#^cc|CC]]) summarizing the SM's technical properties / suppo
 
 Full list of generations in [[#7. NVIDIA Architecture Timeline]]. NVIDIA's CUDA-enabled GPU list gives each card's CC, which indexes the full feature/spec tables in the CUDA Programming Guide (e.g. instruction throughput per SM per cycle, Table 3).
 
-## 2. GPU Memory
+## GPU Memory
 ---
 The GPU, like a CPU, relies on a **hierarchy from RAM through cache levels** to keep its processing engines fed; an SM, like a CPU core, can only compute on data that reach its [[#^registers|registers]].
 
@@ -227,7 +227,7 @@ The GPU concentrates capacity at the *closest* levels; the CPU wins further out.
 - **Caches**: V100 SM: 128 KB L1 + 64 KB constant + 6/80 = 0.075 MB L2 → 0.26 MB per SM → **0.0041 MB per CUDA core**. Xeon core: 32 KB L1 + 1 MB L2 + 1.375 MB L3 share → 2.4 MB → **0.75 MB per vector lane** — two orders of magnitude more.
 - **[[#^cache-line|Cache lines]]**: GPU 128-byte lines are **four 32-byte sectors**; on a miss only the needed sectors are filled, so 4 sectors from 4 different lines cost the same as 1 full line (the 32 B sector persists even though V100's HBM2 has a 64 B interface). Intel moves full 64-byte lines all the way from RAM to registers.
 
-## 3. Horizon GPUs: Blackwell B200
+## Horizon GPUs: Blackwell B200
 ---
 ### Context and Peak Rates
 NVIDIA met scientific computing's **FP64** need in 2007 with the Tesla line; as of Nov 2025 NVIDIA accelerators are in **87 % of [[#^top500|Top500]] systems** and account for 55 % of total performance. TACC's **Horizon** contributes 4,000 GPUs in [[#^grace|Grace Blackwell]] nodes: a GB200 Superchip = **2 × B200 GPUs + 1 × 72-core Grace CPU**; two superchips per **GB200 NVL4** server, configured as 2 nodes each with 2 B200s (185 GiB HBM3 per GPU) + 1 Grace (120 GiB LPDDR5X). Horizon uses the **B200** rather than the Blackwell Ultra **B300** because the B300 trades FP64 for reduced-precision AI throughput.
@@ -274,7 +274,7 @@ Compare V100: 640 tensor cores (8/SM × 80), 64 FMA/clock each → 1024 flop/SM/
 
 > **Bottom line.** High flop/s only matters if host↔device and memory data rates keep up; NVLink-C2C + NVLink 5.0 + HBM3e are what let data-heavy applications use the B200's full speed.
 
-## 4. Frontera GPUs: Quadro RTX 5000
+## Frontera GPUs: Quadro RTX 5000
 ---
 ### Device and Peak Rate
 Frontera's remaining GPU subsystem: **360 Quadro RTX 5000** cards (Turing **TU104**, [[#^cc|CC]] 7.5) in Dell/Intel Broadwell servers, 4 per node. A Turing [[#^sm|SM]] has the *same* 64 FP32 + 64 INT32 [[#^cuda-core|CUDA cores]] as Volta, but **no FP64 CUDA cores**, and the chip has only **48 SMs** (vs 80):
@@ -325,7 +325,7 @@ Original Frontera had two: **Longhorn** (400+ V100s in 100+ IBM POWER9 AC922 ser
 
 Measured on Frontera, the Quadro's NVLink peer link often runs *slower* in bandwidth than its PCIe host link (though with better latency). Mitigations: **maximize on-device memory residency** and **overlap transfers with compute** ([[#^streams|streams]]) — stream data in while other tasks run (hence "*streaming* multiprocessor").
 
-## 5. GPU Example: Tesla V100
+## GPU Example: Tesla V100
 ---
 ### Device and Peak Rates
 Volta **GV100**, [[#^cc|CC]] 7.0; by 2021 Volta devices were in 20 % of [[#^top500|Top500]] systems. **2560 FP64 [[#^cuda-core|CUDA cores]]**, each doing an [[#^fma|FMA]] per cycle:
@@ -351,11 +351,8 @@ Full GV100: **6 [[#^tpc-gpc|GPCs × 7 TPCs]] × 2 = 84 SMs**; the V100 product e
 - [[#^unified-memory|Unified Memory]] via `cudaMallocManaged()`; multiple [[#^streams|streams]] to overlap transfer and compute.
 - [[#^pcie|**PCIe 3.0 x16**]]: 1 GB/s/lane/direction → **32 GB/s** bidirectional. In Longhorn's IBM AC922, **POWER9** CPUs spoke [[#^nvlink|NVLink 2.0]] directly: each of the two CPUs connects to two V100s at **150 GB/s** each, and those two V100s share a 150 GB/s link (a lone GPU could get the full 300 GB/s).
 
-## 6. Exercises
----
-The roadmap's exercises compile and run CUDA Toolkit sample programs (e.g. `deviceQuery`, `bandwidthTest`, p2p bandwidth/latency tests) to **interrogate the attached device**: SM count, [[#^cc|CC]], clock, memory sizes, and measured host↔device / peer↔peer bandwidth and latency. Written for Frontera but applicable to any CUDA-capable system.
 
-## 7. NVIDIA Architecture Timeline *(beyond the tutorial)*
+## NVIDIA Architecture Timeline *(beyond the tutorial)*
 ---
 Tutorial architectures in bold. CC = [[#^cc|compute capability]]; tensor-core generation per NVIDIA's numbering; "flagship" = the data-center part (consumer example in parentheses).
 
@@ -394,18 +391,9 @@ Tutorial devices in bold; P100/A100/H100 from NVIDIA whitepapers.
 | GPU↔GPU link | NVLink 1.0, 160 GB/s | NVLink 2.0, 300 GB/s | NVLink 2.0, 50 GB/s | NVLink 3.0, 600 GB/s | NVLink 4.0, 900 GB/s | NVLink 5.0, 1.8 TB/s |
 | Peak FP64 / FP32 | 5.3 / 10.6 T | 7.8 / 15.7 T | ~0.35 / 11.2 T | 9.7 / 19.5 T | 34 / 67 T | 40 / 80 T |
 
-## 8. Beyond the Tutorial
+
+## Flash Attention
 ---
-### Memory hierarchy for DL (fast → slow)
-
-| Level | Name | Size | Speed |
-| --- | --- | --- | --- |
-| 1 | [[#^registers|**Registers**]] | 256 KB per SM | Fastest |
-| 2 | [[#^sram|**SRAM**]] / [[#^shared-memory|**Shared Memory**]] (L1) | 128–256 KB per SM | Very fast |
-| 3 | [[#^l2|**L2 Cache**]] | 6 MB (V100) → 40–50 MB (A100/H100) → ~126 MB (B200) | Fast |
-| 4 | [[#^hbm|**HBM**]] ([[#^global-memory|Global Memory]] / [[#^vram|VRAM]]) | 16–192 GB | Slowest, but highest aggregate bandwidth |
-
-### Flash Attention
 Standard [[Attention]] computes `softmax(Q @ K.T / scale) @ V`, materializing the full $T\times T$ attention matrix in [[#^hbm|HBM]] — $O(T^2)$ memory and, more importantly, $O(T^2)$ HBM reads/writes. [[#^flash-attention|**Flash Attention**]] ([Dao et al. 2022](https://arxiv.org/abs/2205.14135)) computes the *exact same result* with a **tiling algorithm** that:
 - processes $Q, K, V$ in blocks sized to fit in [[#^sram|SRAM]] / [[#^shared-memory|shared memory]] (the per-SM L1 region),
 - uses the **online softmax** trick to accumulate the normalizer incrementally so the full $T\times T$ matrix is never written to HBM,
