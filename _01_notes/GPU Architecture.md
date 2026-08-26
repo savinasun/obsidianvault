@@ -1,5 +1,5 @@
 ### [[dl_moc]]
-# **Cluster Training**
+# **GPU Architecture**
 
 **Tags**:: #llm
 **Links**:: [[LLMs]] · [[Optimization Algorithms]]

@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Generative Modeling.md",
+                "file": "_01_notes/GPU Architecture.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Generative Modeling"
+              "title": "GPU Architecture"
             }
           }
         ],
@@ -116,7 +116,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "initialization",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -260,12 +260,12 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "59152b88a30e73e5",
+  "active": "31f305f0b8239a5f",
   "lastOpenFiles": [
+    "_01_notes/Generative Modeling.md",
     "_01_notes/DDIM.md",
     "_01_notes/DDPM.md",
     "_01_notes/ELBO.md",
-    "_01_notes/Generative Modeling.md",
     "_01_notes/Flow Matching.md",
     "_04_images/ddpm_forward_diffusion.png",
     "_01_notes/VAE.md",

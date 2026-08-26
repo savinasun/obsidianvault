@@ -36,7 +36,7 @@ limit 10
 
 The evolution from RNNs → Transformers → SSMs, plus the full LLM stack: tokenization, positional encoding, efficient scaling, retrieval, and reasoning.
 
-Key notes: [[Transformer]] · [[Attention]] · [[Linear Attention]] · [[RNN]] · [[Mamba]] · [[LLMs]] · [[LLaMA]] · [[GPTs]] · [[BPE]] · [[RoPE]] · [[MoE]] · [[RAG]] · [[CoT Prompting]] · [[PPL]] · [[Cluster Training Glossary]] · [[VLM]] · [[LLaVA]] · [[Cambrian]] · [[VLA]]
+Key notes: [[Transformer]] · [[Attention]] · [[Linear Attention]] · [[RNN]] · [[Mamba]] · [[LLMs]] · [[LLaMA]] · [[GPTs]] · [[BPE]] · [[RoPE]] · [[MoE]] · [[RAG]] · [[CoT Prompting]] · [[PPL]] · [[GPU Architecture]] · [[VLM]] · [[LLaVA]] · [[Cambrian]] · [[VLA]]
 
 ```dataview
 table tags as "Tags"
