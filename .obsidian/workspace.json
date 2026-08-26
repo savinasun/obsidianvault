@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/ELBO.md",
+                "file": "_01_notes/Generative Modeling.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ELBO"
+              "title": "Generative Modeling"
             }
           }
         ],
@@ -262,10 +262,10 @@
   },
   "active": "59152b88a30e73e5",
   "lastOpenFiles": [
-    "_01_notes/DDPM.md",
-    "_01_notes/Generative Modeling.md",
     "_01_notes/DDIM.md",
+    "_01_notes/DDPM.md",
     "_01_notes/ELBO.md",
+    "_01_notes/Generative Modeling.md",
     "_01_notes/Flow Matching.md",
     "_04_images/ddpm_forward_diffusion.png",
     "_01_notes/VAE.md",
