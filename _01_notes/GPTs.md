@@ -16,7 +16,7 @@
 	
 - self-supervised learning + next-token prediction (uses [[BPE]] tokenization)
 	
-	![[gpt_architecture.png]]
+	![[gpt_architecture.png|500]]
 	
 - ~110M parameters
 
