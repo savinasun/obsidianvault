@@ -272,7 +272,7 @@ for t in torch.linspace(0, 1, steps + 1)[:-1]:
 
 ## Relationship to Other Notes
 ---
-- [[DDPM]] — diffusion = FM with a Gaussian path from a forward SDE + score parameterization + inverted time; DDIM/prob-flow sampling = FM's ODE sampling
+- [[DDPM]] — diffusion = FM with a Gaussian path from a forward SDE + score parameterization + inverted time; [[DDIM]]/prob-flow sampling = FM's ODE sampling
 - [[Score Matching]] — the score-side training algorithm (6.S184 §4): $\mathcal{L}_\text{SM}/\mathcal{L}_\text{CSM}$ mirror $\mathcal{L}_\text{FM}/\mathcal{L}_\text{CFM}$ theorem-for-theorem; Prop. 1 converts the trained models into each other
 - [[Score-Based Generative Modeling Methods]] — the broader score-based picture: EBMs, Langevin/annealed Langevin, the SDE unification
 - [[Divergence Theorem]] — the continuity equation is its differential form; instantaneous change of variables and Hutchinson's estimator run on divergences

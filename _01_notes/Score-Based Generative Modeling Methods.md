@@ -91,7 +91,7 @@ $$
 
 Both DDPM and score-based models are instances of the same diffusion-score framework. The SDE formulation also enables:
 - **Probability flow ODE**: deterministic sampling (no stochastic noise), enabling exact likelihood computation
-- **DDIM**: faster sampling by taking larger steps along the probability flow ODE (see [[DDPM]])
+- **[[DDIM]]**: faster sampling by taking larger steps along the probability flow ODE (see also [[DDPM]])
 
 ## Denoising Score Matching
 ---

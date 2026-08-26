@@ -1,10 +1,15 @@
 ### [[dl_moc]]  
 ## **Denoising Diffusion Probabilistic Model**
 **Tags**:: #generative
-**Links**:: [[Score-Based Generative Modeling Methods]] · [[Score Matching]] · [[Flow Matching]] · [[MCMC]] · [[LDM]] · [[VAE]] · [[ELBO]] · [[FID]]
+**Links**:: [[DDIM]] · [[Score-Based Generative Modeling Methods]] · [[Score Matching]] · [[Flow Matching]] · [[MCMC]] · [[LDM]] · [[VAE]] · [[ELBO]] · [[FID]]
 
 DDPM; [Ho et al. 2020](https://arxiv.org/abs/2006.11239) defines a Markov chain of diffusion steps to slowly add random noise to data and then learn to reverse the diffusion process to construct desired data samples from the noise.
-![[ddpm_forward_backward.png]]
+
+**Diffusion Process (Forward Diffusion) $q_{\phi}$**
+![[ddpm_forward_diffusion.png|500]]
+
+**Denoise Process (Backward Diffusion) $p_{\theta}$**
+![[ddpm_backward_diffusion.png|500]]
 
 ## Forward Diffusion Process
 ---
@@ -62,18 +67,7 @@ This is a simple MSE loss: the U-Net $\epsilon_\theta(x_t, t)$ predicts the nois
 
 ## DDIM: Deterministic Sampling
 ---
-Standard DDPM sampling is stochastic (requires $T = 1000$ steps). **DDIM** (Denoising Diffusion Implicit Models, [Song et al., 2020](https://arxiv.org/abs/2010.02502)) gives a **deterministic** mapping from noise to image using a non-Markovian forward process that shares the same marginals $q(x_t \mid x_0)$:
-
-$$
-x_{t-1} = \sqrt{\bar\alpha_{t-1}} \underbrace{\left(\frac{x_t - \sqrt{1-\bar\alpha_t}\,\epsilon_\theta(x_t,t)}{\sqrt{\bar\alpha_t}}\right)}_{\text{predicted }x_0} + \sqrt{1-\bar\alpha_{t-1} - \sigma_t^2}\,\epsilon_\theta(x_t, t) + \sigma_t\epsilon_t
-$$
-
-Setting $\sigma_t = 0$ makes the process **deterministic** (no random $\epsilon_t$). This enables:
-- **Fewer steps**: skip to every $S$-th timestep, e.g., 50 steps instead of 1000 (same network, same weights)
-- **Latent interpolation**: since the mapping is deterministic and invertible, you can encode real images to their latent $x_T$ and interpolate between them
-- **Consistency**: same starting $x_T$ always gives the same image
-
-DDIM's deterministic sampler is equivalent to integrating the probability flow ODE of the corresponding SDE — see [[Score-Based Generative Modeling Methods]] for the SDE unification. In the [[Flow Matching]] view, this ODE is exactly the FM marginal velocity for the corresponding Gaussian probability path — DDPM training is FM with noise-prediction parameterization and inverted time.
+Standard DDPM sampling is stochastic (requires $T = 1000$ steps). **[[DDIM]]** ([Song et al., 2020](https://arxiv.org/abs/2010.02502)) reuses the same trained network with a non-Markovian forward process sharing the marginals $q(x_t \mid x_0)$, giving a **deterministic** noise-to-image mapping that enables few-step sampling (e.g. 50 instead of 1000), latent interpolation via inversion, and consistent outputs — see [[DDIM]] for the sampling rule and the probability-flow-ODE view.
 
 ## Variance Schedule
 ---
