@@ -48,6 +48,8 @@ r_0 = \sum\limits_{i=1}^L \left((k_i -1)\prod\limits_{j=1}^{i-1}s_j \right)+1
 $$
 ![[cnn_receptive_field_diagram.png|186]]
 
+![[cnn_imagenet_receptive_field.png|328]]
+
 **Translation equivariance**: applying the same filter at every position → a shifted input produces a shifted output. (Pooling breaks exact equivariance → approximate translation *invariance*.)
 
 **Parameter sharing**: the same filter weights are applied at every spatial location — dramatically reduces parameters vs. a fully-connected layer.
@@ -79,6 +81,10 @@ y = F(x, W) + x
 $$
 ![[nested_function_class.png|400]]
 
+![[resnet_block.png|500]]
+
+![[resnet18_architecture.png|500]]
+
 The layer only needs to learn the **residual** $F(x) = y - x$ rather than the full transformation. This solves the **degradation problem**: adding more layers without skip connections hurts training (not overfitting — the training loss itself worsens). ResNets trained with 50, 101, and 152 layers.
 
 ![[cnn_residual_depth_accuracy.png|208]]
@@ -93,8 +99,8 @@ d = \alpha^\phi, \quad w = \beta^\phi, \quad r = \gamma^\phi, \quad \text{s.t.} 
 $$
 The constraint ensures compute doubles with each $\phi$ increment. Achieves better accuracy-efficiency tradeoff than scaling any single dimension.
 
-ImageNet accuracy vs. receptive field size and accuracy vs. throughput across major architectures:
-![[cnn_imagenet_receptive_field.png|328]]
+ImageNet accuracy vs accuracy vs. throughput across major architectures
+
 ![[cnn_architecture_throughput.png|450]]
 
 ## Object Detection
@@ -102,6 +108,8 @@ ImageNet accuracy vs. receptive field size and accuracy vs. throughput across ma
 Detection extends classification to predicting **bounding boxes** and **class labels** for multiple objects.
 
 **YOLO** ([Redmon et al., 2015](https://arxiv.org/abs/1506.02640)): divide image into $S \times S$ grid; each cell predicts $B$ bounding boxes + class probabilities in a **single forward pass** — enabling real-time detection.
+
+![[yolo.png|600]]
 
 **Non-Max Suppression (NMS)**: after prediction, discard overlapping boxes:
 1. Keep box with highest confidence $p_c$
@@ -139,4 +147,4 @@ where $\alpha$ controls content fidelity and $\beta$ controls style strength. Op
 | Scaling | Limited | Excellent |
 | Long-range | Limited (by receptive field) | Full (global attention from layer 1) |
 
-Modern vision models like [[DINO]]/DINOv2 use ViT backbones. **CNNs remain competitive for small-data regimes**, mobile deployment (MobileNet), and medical imaging ([[U-Net]]).
+Modern vision models like [[DINO]] / DINOv2 use ViT backbones. **CNNs remain competitive for small-data regimes**, mobile deployment (MobileNet), and medical imaging ([[U-Net]]).
