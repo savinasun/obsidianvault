@@ -5,7 +5,7 @@
 **Links**:: [[Flow Matching]] · [[CTMC]] · [[Generative Modeling]] · [[LLMs]] · [[Transformer]] · [[Score Matching]] · [[VLA]]
 
 
-**Discrete Flow Matching (DFM)** transfers the [[Flow Matching]] recipe to **discrete data** — token sequences instead of vectors: pick a probability path interpolating noise (typically all-`[mask]`) into the data distribution, derive its conditional rate matrix in closed form, learn the marginal dynamics by posterior averaging, and sample by simulating a [[CTMC]]. The punchline mirrors the continuous story: as continuous FM reduces to *regression* and [[Score Matching]] to *denoising*, **discrete FM reduces to classification** — the loss is the **same cross-entropy as language modeling**. This note follows **§7 of the MIT 6.S184 lecture notes** ([Holderrieth & Erives, *An Introduction to Flow Matching and Diffusion Models*](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf); [course site](https://diffusion.csail.mit.edu/)); original papers: [Gat et al., 2024](https://arxiv.org/abs/2407.15595) (Discrete Flow Matching) and [Campbell et al., 2024](https://arxiv.org/abs/2402.04997) (generative flows on discrete spaces).
+**Discrete Flow Matching (DFM)** ([Gat et al., 2024](https://arxiv.org/abs/2407.15595) / Discrete Flow Matching and [Campbell et al., 2024](https://arxiv.org/abs/2402.04997) / generative flows on discrete spaces) transfers the [[Flow Matching]] recipe to **discrete data** — token sequences instead of vectors: pick a probability path interpolating noise (typically all -`[mask]`) into the data distribution, derive its conditional rate matrix in closed form, learn the marginal dynamics by posterior averaging, and sample by simulating a [[CTMC]]. The punchline mirrors the continuous story: as continuous FM reduces to *regression* and [[Score Matching]] to *denoising*, **discrete FM reduces to classification** — the loss is the **same cross-entropy as language modeling**.
 
 **Notation** (6.S184 §7; matches the [[Flow Matching]]/[[Score Matching]] notes' $z$-for-data convention): vocabulary $\mathcal{V}$ (size $V$), state space $S = \mathcal{V}^d$, data point $z = (z^1, \dots, z^d) \in S$; CTMC $(X_t)$ with rate matrix $Q_t(y|x)$; schedule $\kappa_t$ monotone with $\kappa_0 = 0, \kappa_1 = 1$; posterior $p_{1|t}(z|x)$. The process machinery — rate conditions, Kolmogorov Forward Equation, existence/uniqueness, categorical Euler sampling — lives in [[CTMC]]; this note is the *generative training framework* built on top of it.
 
@@ -27,7 +27,7 @@ $$
 Q_t^z(v, j \mid x) = \frac{\dot\kappa_t}{1-\kappa_t}\,\big(\delta_{z^j}(v) - \delta_{x^j}(v)\big).
 $$
 
-**3. Conditional → marginal** (6.S184 Thm 36, the **discrete Marginalization Trick** — statement and proof in [[CTMC]]): the marginal rate matrix is the posterior average $Q_t(y|x) = \sum_z Q_t^z(y|x)\, p_{1|t}(z|x)$, and for the factorized mixture path it collapses to a **per-position classifier** (Thm 38):
+**3. Conditional → marginal** (the **discrete Marginalization Trick** — statement and proof in [[CTMC]]): the marginal rate matrix is the posterior average $Q_t(y|x) = \sum_z Q_t^z(y|x)\, p_{1|t}(z|x)$, and for the factorized mixture path it collapses to a **per-position classifier** (Thm 38):
 
 $$
 Q_t(v, j \mid x) = \frac{\dot\kappa_t}{1-\kappa_t}\Big( p_{1|t}(z^j = v \mid x) - \delta_{x^j}(v) \Big),

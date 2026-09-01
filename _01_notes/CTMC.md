@@ -2,7 +2,7 @@
 # **CTMC (Continuous-Time Markov Chain)**
 
 **Tags**:: #math #generative #dl_theo
-**Links**:: [[Flow Matching]] · [[Discrete Flow Matching]] · [[MCMC]] · [[Generative Modeling]] · [[LLMs]]
+**Links**:: [[Flow Matching]] · [[Discrete Flow Matching]] · [[ODEs, SDEs, and Probability Paths]] · [[MCMC]] · [[Generative Modeling]] · [[LLMs]]
 
 
 A **Continuous-Time Markov Chain** is a memoryless stochastic process on a **discrete state space** — the discrete-state analog of the ODEs and SDEs behind [[Flow Matching]], and the process class powering discrete diffusion / [[Discrete Flow Matching]] (language models, protein co-design, token-action robot policies). This note follows §7.1 and Appendix C of the MIT 6.S184 lecture notes ([Holderrieth & Erives, *An Introduction to Flow Matching and Diffusion Models*](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf); [course site](https://diffusion.csail.mit.edu/)), with the FM-guide view (jump processes, generators) noted at the end.
@@ -35,6 +35,7 @@ $$
 ODEs and SDEs are Markov too; on a *discrete* space such a process is a **Markov chain**, and in continuous time a **CTMC**. It is fully determined by its transition probabilities $p_{t+h|t}(y|x)$ plus the initial distribution $X_0 \sim p_\text{init}$.
 
 #### Rate Matrices — the Discrete Velocity Field
+
 On a discrete space there are no directions, only **jumps**, so *the analog of a velocity field is a **rate matrix*** $Q_t(y|x)$ — the instantaneous rate of switching $x \to y$. Derive from Taylor expansion,
 $$
 \frac{d}{dh}\Big|_{h=0}\, p_{t+h|t}(y \mid x) = Q_t(y|x)
@@ -53,9 +54,10 @@ $$
 | **Well-posedness**          | Picard–Lindelöf (nonlinear; local)                              | linear ODE (global, no extra conditions)   |
 | **Generative training**     | [[Flow Matching]] (regression) / [[Score Matching]] (denoising) | discrete FM (cross-entropy classification) |
 #### Existence and Uniqueness
+
 **Theorem (existence & uniqueness).** *For any rate matrix $Q_t$ (bounded, continuous in $t$), there exists a **unique** CTMC — a unique transition kernel — whose transition probabilities change at the rates prescribed by $Q_t$.*
 
-The proof is pure **linear ODE theory**, and simpler than the flow case: for fixed $(x, t)$, the kernel $t' \mapsto p_{t'|t}(\cdot|x)$ satisfies the linear ODE $\frac{d}{dt'} p_{t'|t}(y|x) = \sum_z Q_{t'}(y|z)\, p_{t'|t}(z|x)$ with initial condition $\delta_x$ — uniqueness follows as in the Picard–Lindelöf theorem ([[Flow Matching]] Background), and *because the ODE is linear, solutions exist globally with no Lipschitz caveats or blow-up*. One then checks the solution is a valid kernel: rows stay normalized (columns of $Q_t$ sum to zero), probabilities stay non-negative (at $p = 0$ the derivative is $\ge 0$, so zero is a barrier), and Chapman–Kolmogorov holds (both sides solve the same linear ODE). For ML purposes: **any neural-network rate matrix defines a unique, well-behaved CTMC.**
+The proof is pure **linear ODE theory**, and simpler than the flow case: for fixed $(x, t)$, the kernel $t' \mapsto p_{t'|t}(\cdot|x)$ satisfies the linear ODE $\frac{d}{dt'} p_{t'|t}(y|x) = \sum_z Q_{t'}(y|z)\, p_{t'|t}(z|x)$ with initial condition $\delta_x$ — uniqueness follows as in the Picard–Lindelöf theorem ([[ODEs, SDEs, and Probability Paths]]), and *because the ODE is linear, solutions exist globally with no Lipschitz caveats or blow-up*. One then checks the solution is a valid kernel: rows stay normalized (columns of $Q_t$ sum to zero), probabilities stay non-negative (at $p = 0$ the derivative is $\ge 0$, so zero is a barrier), and Chapman–Kolmogorov holds (both sides solve the same linear ODE). For ML purposes: **any neural-network rate matrix defines a unique, well-behaved CTMC.**
 
 **Worked example** — two states $S = \{a, b\}$, constant flip rate $\lambda > 0$: $Q = \begin{pmatrix} -\lambda & \lambda \\ \lambda & -\lambda \end{pmatrix}$ gives the closed-form kernel
 $$
@@ -76,54 +78,13 @@ a valid categorical distribution for small $h$ by the rate conditions (the FM gu
 
 ![[CTMC_sampling.png|500]]
 
-## Probability Paths
+## Probability Paths and the Kolmogorov Forward Equation
 ---
-The generative construction mirrors continuous [[Flow Matching]], with PMFs replacing densities.
+The generative construction — conditional/marginal probability paths over $S$, the factorized mixture path, conditional rate matrices, and the **Kolmogorov Forward Equation** (the discrete continuity equation) — lives in [[ODEs, SDEs, and Probability Paths]], alongside its continuous mirror. What the rest of this note relies on:
 
-**Conditional probability path.** A family of PMFs $p_t(\cdot|z)$ on $S$, indexed by a data point $z \in S$ and $t \in [0,1]$, interpolating noise into that single data point:
-
-$$
-p_0(\cdot|z) = p_\text{init}, \qquad p_1(\cdot|z) = \delta_z \qquad \forall z \in S .
-$$
-
-The standard choice is the <span style="color:rgb(255, 255, 0)"><b>factorized mixture path</b></span> — each token independently revealed with probability $\kappa_t$ (a monotone schedule with $\kappa_0 = 0$, $\kappa_1 = 1$):
-
-$$
-p_t(x \mid z) = \prod_{j=1}^{d} \Big[ \kappa_t\, \delta_{z^j}(x^j) + (1-\kappa_t)\, p_\text{init}(x^j) \Big],
-$$
-
-with the **masked** special case $p_\text{init} = \delta_{[\text{mask}]}$ (masked diffusion: tokens are either revealed or `[mask]`).
-
-**Marginal probability path.** Mix the conditional paths over the data:
-
-$$
-p_t(x) = \sum_{z \in S} p_t(x \mid z)\, p_\text{data}(z),
-$$
-
-so that $p_0 = p_\text{init}$ and $p_1 = p_\text{data}$. Sampling from $p_t$ is easy ($z \sim p_\text{data}$, then $x \sim p_t(\cdot|z)$) even though the sum itself is intractable.
-
-**Conditional rate matrix.** Any rate matrix $Q_t^z$ whose CTMC follows the conditional path: $X_0 \sim p_\text{init}$, $X_t$ CTMC of $Q_t^z$ $\Rightarrow$ $X_t \sim p_t(\cdot|z)$. For the mixture path it exists in closed form and only permits jumps straight to the data token:
-
-$$
-\begin{aligned}
-Q_t^z (y|x) &= (Q_t^z (v_i, j|x_j))_{v_i,j}, \\
-Q^z_t(v, j \mid x) &= \frac{\dot\kappa_t}{1-\kappa_t}\,\big(\delta_{z^j}(v) - \delta_{x^j}(v)\big).
-\end{aligned}
-$$
-
-## The Kolmogorov Forward Equation
----
-A CTMC with rate matrix $Q_t$ follows the probability path $X_t\sim p_t$, $t\in [0,1]$ if and only if the KFE holds,
-
-$$
-\frac{d}{dt} p_t(y) = \sum_{x \in S} Q_t(y|x)\, p_t(x)
-\;=\; \underbrace{\sum_{x \ne y} Q_t(y|x)\,p_t(x)}_{\text{incoming flux}} \;-\; \underbrace{\sum_{x \ne y} Q_t(x|y)\,p_t(y)}_{\text{outgoing flux}},
-$$
-
-i.e., the change of probability is equal to the probability net inflow. 
-
-The Kolmogorov forward equation is the [[Flow Matching#The Continuity Equation and Fokker–Planck Equation|Continuity equation]] under discrete state space. A standard consequence:
-- **Probability-preserving rates**: any $R_t$ with $\sum_x R_t(y|x)p_t(x) = 0$ (and valid rates) can be added without changing the marginals — the discrete divergence-free freedom behind re-masking correctors and Metropolis–Hastings-style components.
+- **Factorized mixture path** (conditional path $p_\text{init} \to \delta_z$, schedule $\kappa_0 = 0$, $\kappa_1 = 1$): $p_t(x|z) = \prod_j \big[\kappa_t\, \delta_{z^j}(x^j) + (1-\kappa_t)\, p_\text{init}(x^j)\big]$, with the **masked** special case $p_\text{init} = \delta_{[\text{mask}]}$; marginal path $p_t(x) = \sum_z p_t(x|z)\, p_\text{data}(z)$, interpolating $p_\text{init} \to p_\text{data}$.
+- **Conditional rate matrix** generating the mixture path (only jumps straight to the data token): $Q^z_t(v, j \mid x) = \frac{\dot\kappa_t}{1-\kappa_t}\,\big(\delta_{z^j}(v) - \delta_{x^j}(v)\big)$.
+- **KFE**: a CTMC with rates $Q_t$ follows $X_t \sim p_t$ **iff** $\frac{d}{dt} p_t(y) = \sum_x Q_t(y|x)\, p_t(x)$ — change of probability = net inflow; **probability-preserving rates** $R_t$ with $\sum_x R_t(y|x)\,p_t(x) = 0$ can be added freely (re-masking correctors, Metropolis–Hastings-style components).
 
 ## Marginal Rate Matrix
 ---
@@ -202,7 +163,8 @@ Both are Markov chains used for sampling, with opposite designs: [[MCMC]] runs a
 
 ## Relationship to Other Notes
 ---
-- [[Flow Matching]] — the continuous-state parent framework; its Discrete FM section is the training recipe for CTMC models, and its Background (Picard–Lindelöf, continuity equation) is the continuous mirror of this note
+- [[Flow Matching]] — the continuous-state parent framework; its Discrete FM section is the training recipe for CTMC models
+- [[ODEs, SDEs, and Probability Paths]] — the continuous mirror of this note (Picard–Lindelöf, continuity equation); now also holds this note's former Probability Paths and Kolmogorov Forward Equation sections
 - [[Discrete Flow Matching]] — the generative training framework built on CTMCs: masked mixture paths, cross-entropy loss, re-masking correctors, and applications (LLMs, robot policies)
 - [[MCMC]] — the stationary-sampler cousin; mixing intuition, detailed balance, Metropolis–Hastings as divergence-free component
 - [[Divergence Theorem]] — the KFE is the discrete continuity equation; flux in/out reading

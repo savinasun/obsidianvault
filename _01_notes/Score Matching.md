@@ -2,7 +2,7 @@
 # **Score Matching**
 
 **Tags**:: #generative #dl_theo #diffusion
-**Links**:: [[Generative Modeling]] · [[Flow Matching]] · [[Score-Based Generative Modeling Methods]] · [[DDPM]] · [[Divergence Theorem]] · [[MCMC]]
+**Links**:: [[Generative Modeling]] · [[Flow Matching]] · [[ODEs, SDEs, and Probability Paths]] · [[Score-Based Generative Modeling Methods]] · [[DDPM]] · [[Divergence Theorem]] · [[MCMC]]
 
 
 **Score Matching** is the training algorithm of diffusion models: regress a neural network $s_t^\theta$ onto the **score function** $\nabla \log p_t$ of a probability path. This note follows §4 of the MIT 6.S184 lecture notes ([Holderrieth & Erives, *An Introduction to Flow Matching and Diffusion Models*](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf); [course site](https://diffusion.csail.mit.edu/)), which presents score matching as the exact stochastic sibling of [[Flow Matching]]: the same conditional-path machinery, the same "conditional loss has the same gradients" theorem — plus one extra reward, since a learned score unlocks **SDE sampling** and **guidance**.
