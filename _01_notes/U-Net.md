@@ -7,7 +7,9 @@
 ## U-Net Architecture
 ---
 The U-net architecture. 
-![[unet_architecture.png]]
+
+![[unet_architecture.png|600]]
+
 Each blue square is a feature map with the number of channels labeled on top and the height x width dimension labeled on the left bottom side. The gray arrows mark the shortcut connections. (Image source: [Ronneberger et al., 2015](https://arxiv.org/abs/1505.04597), U-Net: Convolutional Networks for Biomedical Image Segmentation)
 
 #### Downsampling

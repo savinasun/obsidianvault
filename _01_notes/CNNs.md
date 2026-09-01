@@ -5,7 +5,7 @@
 **Links**:: [[ViT]] · [[U-Net]] · [[Neural Network Initialization]] · [[Normalization]] · [[Activation Functions]] · [[Regularization]] · [[ImageNet]]
 
 
-**CNNs** (Convolutional Neural Networks) dominated computer vision from ~2012 to ~2020. Their core [[CNNs#Inductive Biases|inductive biases]] — **locality** and **translation invariance** — are hard-coded into the architecture, making them highly data-efficient for image tasks. [[ViT|Vision Transformers]] have since matched or exceeded CNNs on **large-scale datasets** by *learning these biases from data*.
+**CNNs** (Convolutional Neural Networks) dominated computer vision from ~2012 to ~2020. Their core [[CNNs#Inductive Biases|inductive biases]] — **locality** and **translation equivariance** — are hard-coded into the architecture, making them highly data-efficient for image tasks. [[ViT|Vision Transformers]] have since matched or exceeded CNNs on **large-scale datasets** by *learning these biases from data*.
 
 ![[cnn_architecture_overview.png|600]]
 
@@ -31,9 +31,9 @@ Reduces spatial resolution with no learned parameters:
 
 ### $1 \times 1$ Convolution
 
-A $1 \times 1$ filter applies a learned linear combination across channels at each spatial position — effectively a per-pixel fully-connected layer. Used to:
+A $1 \times 1$ filter applies a learned linear combination across channels at each spatial position — effectively as a per-pixel fully-connected layer. Used to:
 - **Change channel dimension** ($C_\text{in} \to C_\text{out}$) without touching spatial dimensions
-- Add non-linearity between depthwise convolutions (MobileNet)
+- Add non-linearity between depth-wise convolutions (MobileNet)
 - Reduce computation (bottleneck in ResNet, Inception)
 
 ## Inductive Biases
@@ -42,7 +42,7 @@ CNNs hard-code two inductive biases:
 
 **Locality**: each output unit depends on a small *receptive field* of the input. Filters learn local features (edges, textures) that are compositioned hierarchically into global features (objects).
 
-The receptive field $r_0$ of the final layer feature map with respect to the input is computed as:
+The **receptive field** $r_0$ of the final layer feature map with respect to the input is computed as:
 $$
 r_0 = \sum\limits_{i=1}^L \left((k_i -1)\prod\limits_{j=1}^{i-1}s_j \right)+1
 $$
@@ -52,9 +52,9 @@ $$
 
 **Parameter sharing**: the same filter weights are applied at every spatial location — dramatically reduces parameters vs. a fully-connected layer.
 
-These biases explain why CNNs work well with limited data. [[ViT|Vision Transformers]] lack them but learn analogous patterns given enough data.
+These biases explain *why CNNs work well with limited data*. [[ViT|Vision Transformers]] lack them but learn analogous patterns given enough data.
 
-## Classic Architectures
+## Classic CNN Architectures
 ---
 ### LeNet-5 ([LeCun et al., 1998](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf))
 The original CNN. ~60K parameters. `Conv → Pool → Conv → Pool → FC → FC → output`. Demonstrated that learned features outperform hand-crafted features for digit recognition.
@@ -89,6 +89,7 @@ The constraint ensures compute doubles with each $\phi$ increment. Achieves bett
 ImageNet accuracy vs. receptive field size and accuracy vs. throughput across major architectures:
 ![[cnn_imagenet_receptive_field.png|328]]
 ![[cnn_architecture_throughput.png|450]]
+
 ## Object Detection
 ---
 Detection extends classification to predicting **bounding boxes** and **class labels** for multiple objects.
