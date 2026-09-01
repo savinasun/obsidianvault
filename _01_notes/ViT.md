@@ -4,7 +4,7 @@
 **Tags**:: #vision #architecture
 **Links**:: [[Transformer]] · [[DINO]] · [[CLIP]] · [[Attention]] · [[Contrastive Learning]] · [[ImageNet]]
 
-Prior to ViT, Convolutional Neural Networks (CNNs) were the undisputed standard for image recognition. CNNs use filters with local receptive fields to build up a hierarchical representation of an image.
+Prior to ViT, [[CNNs|CNNs]] were the undisputed standard for image recognition. CNNs use filters with local receptive fields to build up a hierarchical representation of an image.
 
 The ViT paper ([Dosovitskiy et al., 2021](https://arxiv.org/abs/2010.11929)) challenged this convention by asking: Can we apply a standard Transformer directly to an image with minimal modifications? To do this, they had to solve one key problem: Transformers expect a 1D sequence of tokens (like words), but images are 2D grids of pixels.
 
@@ -13,7 +13,9 @@ The solution was to **reshape the image into a sequence of flattened patches**.
 ## Architecture
 ---
 The ViT architecture can be broken down into a few key steps:
-![[vit_architecture.png]]
+
+![[vit_architecture.png|600]]
+
 ### A. Image Patching and Embedding
 
 1.  **Split into Patches:** An input image is divided into a grid of fixed-size, non-overlapping patches. For example, a 224x224 image might be split into a 14x14 grid of 16x16 pixel patches.

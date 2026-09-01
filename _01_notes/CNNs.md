@@ -5,14 +5,15 @@
 **Links**:: [[ViT]] · [[U-Net]] · [[Neural Network Initialization]] · [[Normalization]] · [[Activation Functions]] · [[Regularization]] · [[ImageNet]]
 
 
-**CNNs** (Convolutional Neural Networks) dominated computer vision from ~2012 to ~2020. Their core [[CNNs#Inductive Biases|inductive biases]] — **locality** and **translation equivariance** — are hard-coded into the architecture, making them highly data-efficient for image tasks. [[ViT|Vision Transformers]] have since matched or exceeded CNNs on large-scale datasets by learning these biases from data.
+**CNNs** (Convolutional Neural Networks) dominated computer vision from ~2012 to ~2020. Their core [[CNNs#Inductive Biases|inductive biases]] — **locality** and **translation invariance** — are hard-coded into the architecture, making them highly data-efficient for image tasks. [[ViT|Vision Transformers]] have since matched or exceeded CNNs on **large-scale datasets** by *learning these biases from data*.
 
-![[cnn_architecture_overview.png|700]]
+![[cnn_architecture_overview.png|600]]
 
 ## Core Operations
 ---
 ### Convolution
-A filter $W \in \mathbb{R}^{f \times f \times C_\text{in}}$ slides across the input and computes dot products at each location:
+
+A filter $W \in \mathbb{R}^{f \times f \times C_\text{in}}$ slides across the input and computes *dot products* at each location:
 $$
 Z[i,j,k] = \sum_{u=0}^{f-1}\sum_{v=0}^{f-1}\sum_{c=0}^{C_\text{in}-1} X[si+u,\, sj+v,\, c] \cdot W_k[u,v,c]
 $$
@@ -23,11 +24,13 @@ $$
 - **Output size**: $\lfloor(n + 2p - f)/s\rfloor + 1$
 
 ### Pooling
+
 Reduces spatial resolution with no learned parameters:
 - **Max pooling**: $\max$ over each $f \times f$ window — preserves strongest activations
 - **Average pooling**: average over the window — used in global average pooling at the end of a network to collapse spatial dims
 
 ### $1 \times 1$ Convolution
+
 A $1 \times 1$ filter applies a learned linear combination across channels at each spatial position — effectively a per-pixel fully-connected layer. Used to:
 - **Change channel dimension** ($C_\text{in} \to C_\text{out}$) without touching spatial dimensions
 - Add non-linearity between depthwise convolutions (MobileNet)
