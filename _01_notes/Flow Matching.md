@@ -145,7 +145,7 @@ $$
 
 **simulation-free** whenever exp/log maps are closed-form — a real advantage over Riemannian diffusion (in-training simulation, approximate scores). For hard geometries, replace geodesics with any smooth **premetric** $d(x,z)$ (e.g. spectral distances), with minimal-norm velocity $u_t^\text{target}(x|z) = \frac{d \log \bar\kappa(t)}{dt}\, d(x, z) \frac{\nabla d(x, z)}{\|\nabla d(x, z)\|_g^2}$.
 
-## Extension: Discrete Flow Matching (CTMC)
+## Discrete Flow Matching (CTMC)
 ---
 For discrete data $x = (x^1, \dots, x^d) \in \mathcal{V}^d$ (tokens, vocabulary size $V$; 6.S184 §7), the flow becomes a **Continuous-Time Markov Chain** ([[CTMC]]; [Campbell et al., 2024](https://arxiv.org/abs/2402.04997); [Gat et al., 2024](https://arxiv.org/abs/2407.15595)): transitions $p_{t+h|t}(y|x) = \delta_x(y) + h\,Q_t(y|x) + o(h)$ with a **rate matrix** $Q_t$ ($Q_t(y|x) \ge 0$ for $y \ne x$, $\sum_y Q_t(y|x) = 0$). The Continuity Equation becomes the **Kolmogorov equation** $\frac{d}{dt}p_t(y) = \sum_x Q_t(y|x)\,p_t(x)$, and the whole FM recipe transfers.
 
@@ -156,7 +156,7 @@ For discrete data $x = (x^1, \dots, x^d) \in \mathcal{V}^d$ (tokens, vocabulary 
 
 This is the FM view of "discrete diffusion" language models and multimodal protein co-design — and, over tokenized action chunks, of robot policies. Full treatment: [[Discrete Flow Matching]].
 
-## Extension: Generator Matching — One Framework for Everything
+## Generator Matching — One Framework for Everything
 ---
 **Generator Matching (GM)** ([Holderrieth et al., 2024](https://arxiv.org/abs/2410.20587)) abstracts FM to *any* Continuous-Time Markov Process on *any* state space via the **generator** $\mathcal{L}_t$, the first-order derivative of the transition kernel on test functions: $\mathbb{E}[f(X_{t+h})|X_t = x] = f(x) + h\,[\mathcal{L}_t f](x) + o(h)$.
 

@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Discrete Flow Matching.md",
+                "file": "_01_notes/Flow Matching.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Discrete Flow Matching"
+              "title": "Flow Matching"
+            }
+          },
+          {
+            "id": "c047d6d5e6cd434b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_01_notes/ODEs, SDEs, and Probability Paths.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "ODEs, SDEs, and Probability Paths"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -107,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_01_notes/Discrete Flow Matching.md",
+                "file": "_01_notes/ODEs, SDEs, and Probability Paths.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -218,14 +233,14 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "6e14ae3b2008c72a",
+  "active": "c047d6d5e6cd434b",
   "lastOpenFiles": [
-    "CLAUDE.md",
     "_01_notes/Flow Matching.md",
+    "_01_notes/ODEs, SDEs, and Probability Paths.md",
+    "_01_notes/Discrete Flow Matching.md",
+    "CLAUDE.md",
     "_01_notes/CTMC.md",
     "_01_notes/DDIM.md",
-    "_01_notes/Discrete Flow Matching.md",
-    "_01_notes/ODEs, SDEs, and Probability Paths.md",
     "_01_notes/Generative Modeling.md",
     "_01_notes/ViT.md",
     "_01_notes/CNNs.md",

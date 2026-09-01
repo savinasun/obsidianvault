@@ -25,7 +25,7 @@ $$
 
 ## Flow Models
 ---
-**<span style="color:rgb(255, 255, 0)"><b>Vector field.</b></span>** A time-dependent **vector field** $u : \mathbb{R}^d \times [0,1] \to \mathbb{R}^d$ defines an **ODE**; its solution from a start point is a <span style="color:rgb(255, 255, 0)"><b>trajectory</b></span> $t \mapsto X_t$:
+**<span style="color:rgb(255, 255, 0)"><b>Vector field.</b></span>** A time-dependent **vector field** $u : \mathbb{R}^d \times [0,1] \to \mathbb{R}^d$ defines an <b><span style="color:rgb(255, 255, 0)">ODE</span></b> (瞬时位移=瞬时速度$\times$时间); its solution from a start point is a <span style="color:rgb(255, 255, 0)"><b>trajectory</b></span> $t \mapsto X_t$:
 $$
 \frac{d}{dt}X_t = u_t(X_t), \qquad X_0 = x_0 .
 $$
@@ -37,6 +37,12 @@ $$
 Conversely $u_t(x) = \dot\psi_t(\psi_t^{-1}(x))$. Vector fields define ODEs whose solutions are flows.
 
 <span style="color:rgb(255, 255, 0)"><b>Flow model.</b></span> Make *only the initial condition* random: $$X_0 \sim p_\text{init},\quad \frac{d}{dt}X_t = u_t^\theta(X_t)$$goal $X_1 = \psi_1^\theta(X_0) \sim p_\text{data}$. The network parameterizes the **vector field, never the flow** — evaluating $\psi_t^\theta$ always means simulating the ODE.
+
+<span style="color:rgb(255, 255, 0)"><b>Continuous Normalizing Flow (CNF).</b></span> The flow model seen as a **normalizing flow** — a model that pushes $p_\text{init}$ through an invertible map $f^\theta$ and evaluates densities by change of variables,
+$$
+\log p_1(x) = \log p_\text{init}\big((f^\theta)^{-1}(x)\big) + \log \big|\det \partial_x (f^\theta)^{-1}(x)\big| ,
+$$
+which in discrete normalizing flows ([Rezende & Mohamed, 2015](https://arxiv.org/abs/1505.05770)) forces architectures with cheap Jacobian determinants (coupling layers; $O(d^3)$ in general). A **CNF** ([Chen et al., 2018](https://arxiv.org/abs/1806.07366), Neural ODEs) instead takes $f^\theta = \psi_1^\theta$, the flow of a learned ODE: invertibility comes for free (Picard–Lindelöf — invert by running the ODE backwards in time), $u_t^\theta$ is architecturally unconstrained, and the Jacobian log-determinant collapses into a divergence integral along the trajectory — the *instantaneous change of variables* of [[#Exact Likelihoods]]. Classical CNFs (FFJORD, [Grathwohl et al., 2018](https://arxiv.org/abs/1810.01367)) are trained by maximizing this exact likelihood, which puts ODE simulation + divergence estimation *inside* the training loop; [[Flow Matching]] trains the very same model class simulation-free — an FM model **is** a CNF, only the training signal differs.
 
 ## Lipschitz Condition
 ---
@@ -151,7 +157,7 @@ The Continuity Equation implies the *instantaneous change of variables* ([Chen e
 $$
 \frac{d}{dt}\log p_t(\psi_t(x)) = -\,\mathrm{div}(u_t)(\psi_t(x)),
 $$
-so $\log p_1$ is an integral of the divergence along the trajectory; Hutchinson's estimator $\mathrm{div}(u_t)(x) = \mathbb{E}_Z\,\mathrm{tr}[Z^\top \partial_x u_t(x) Z]$ makes it an **unbiased** estimate at one vector–Jacobian product per step — an advantage over stochastic processes, which only admit lower bounds ([[ELBO]]). Classical CNFs trained by maximum likelihood needed this ODE *inside* the training loop — exactly what FM eliminates.
+so $\log p_1$ is an integral of the divergence along the trajectory; Hutchinson's estimator $\mathrm{div}(u_t)(x) = \mathbb{E}_Z\,\mathrm{tr}[Z^\top \partial_x u_t(x) Z]$ makes it an **unbiased** estimate at one vector–Jacobian product per step — an advantage over stochastic processes, which only admit lower bounds ([[ELBO]]). Classical CNFs ([[#Flow Models|defined above]]) trained by maximum likelihood needed this ODE *inside* the training loop — exactly what FM eliminates.
 
 ## Relationship to Other Notes
 ---
