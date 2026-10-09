@@ -82,11 +82,11 @@ See [[DPO]] for the full derivation, the gradient, and adoption in Zephyr and Ll
 
 ## GRPO (Group Relative Policy Optimization)
 ---
-Used in [DeepSeek-R1](https://arxiv.org/abs/2501.12948) and other reasoning models. Rather than a separate reward model, GRPO uses **verifiable rewards** (e.g., math answer correctness) and groups $G$ responses to the same prompt:
+Introduced in [DeepSeekMath](https://arxiv.org/abs/2402.03300) and used in [DeepSeek-R1](https://arxiv.org/abs/2501.12948) and other reasoning models. GRPO groups $G$ responses to the same prompt and scores each with a scalar reward; the reward can come from a trained reward model (DeepSeekMath) or from **verifiable rewards** such as math answer correctness (DeepSeek-R1-Zero), which avoids reward-model hacking:
 $$
 \hat{A}_i = \frac{r_i - \text{mean}(r_{1:G})}{\text{std}(r_{1:G})}
 $$
-This normalizes advantages within the group, removing the need for a critic network. See [[GRPO]] for the full GRPO loss (GRPO itself is agnostic to the reward source: DeepSeekMath used a trained reward model, while DeepSeek-R1-Zero used rule-based verifiable rewards) and [[Policy Gradient Methods]] for the comparison with PPO and DPO.
+This normalizes advantages within the group, removing the need for a critic network. See [[GRPO]] for the full GRPO loss and [[Policy Gradient Methods]] for the comparison with PPO and DPO.
 
 ## Comparison
 
@@ -94,5 +94,5 @@ This normalizes advantages within the group, removing the need for a critic netw
 |--------|--------------|----------------|-----------|
 | **RLHF (PPO)** | Learned reward model | PPO | High |
 | **DPO** | Implicit (from preferences) | Supervised loss | Low |
-| **GRPO** | Verifiable (rule-based) | Policy gradient | Medium |
+| **GRPO** | Reward model or verifiable (rule-based) | Policy gradient | Medium |
 | **CAI / RLAIF** | AI-generated preferences | PPO or DPO | Medium |

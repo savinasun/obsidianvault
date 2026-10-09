@@ -45,6 +45,8 @@ $$\mathcal{J}_\text{GRPO}(\theta)=\mathbb{E}\Big[\frac1G\sum_{i=1}^G\Big(\min\bi
 with the per-token estimator $\mathbb{D}_\text{KL}[\pi_\theta\|\pi_\text{ref}]=\frac{\pi_\text{ref}}{\pi_\theta}-\log\frac{\pi_\text{ref}}{\pi_\theta}-1$, added to the loss rather than to the reward as in PPO. GRPO is agnostic to the reward source: DeepSeekMath-RL used a trained reward model, while DeepSeek-R1-Zero used rule-based verifiable rewards on a base model with no SFT. Token-level form, KL-estimator analysis, the PPO comparison, hyperparameters, and known issues (Dr. GRPO, DAPO): [[GRPO]].
 
 
+## REINFORCE and Baselines
+---
 ### Reinforce Algorithm
 + Functional form of the policy: $\pi(a|s, \mathbf{\theta})$
 + Initialization of parameter $\mathbf\theta$
