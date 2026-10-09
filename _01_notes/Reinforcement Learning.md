@@ -7,7 +7,15 @@
 
 > "A Path to AI" — Yann LeCun, 2017: Unsupervised Learning (cake) → Supervised Learning (icing) → Reinforcement Learning (cherry)
 
+## RL Framework
+---
 RL is the framework where an **agent** learns to maximize cumulative **reward** through interaction with an **environment**, without explicit supervision on which actions to take.
+
++ **Agent**: learner, decision-maker
++ **Environment**: challenges to be solved
++ **State**: environment snapshot at a given time
++ **Action**: agent's choice in response to state
++ **Reward**: feedback for agent action
 
 ## Markov Decision Process (MDP)
 ---
