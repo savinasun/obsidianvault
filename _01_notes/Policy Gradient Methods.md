@@ -4,10 +4,6 @@
 **Tags**:: #rl #llm
 **Links**:: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[PPO]] · [[DPO]] · [[GRPO]] · [[RLHF]] · [[Behavior Cloning]] · [[KL Divergence]] · [[LLMs]] · [[LLaMA]] · [[CoT Prompting]]
 
-Agent
-Policy: gives the probability of taking actions in any state
-Goal: determines the policy function to achieve high reward for whatever the environment will be
-
 
 ## Proximal Policy Optimization (PPO)
 ---

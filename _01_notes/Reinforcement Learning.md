@@ -77,7 +77,7 @@ The **$\epsilon$-greedy** strategy selects a random action with probability $\ep
 
 ## Model-Free vs. Model-Based
 ---
-| | Model-Free | Model-Based |
+|| Model-Free | Model-Based |
 |---|---|---|
 | **Learns** | Policy or $Q$ directly from interactions | A world model $P(s'\mid s,a)$, $R(s,a)$ |
 | **Sample efficiency** | Lower | Higher |
@@ -95,14 +95,14 @@ See [[World Models]] for model-based RL in depth.
 ## Key Algorithms Overview
 ---
 
-| Algorithm | Type | Key Idea |
-|-----------|------|----------|
-| **Q-learning** | Off-policy, model-free | Tabular $Q$-value update: $Q(s,a) \leftarrow Q(s,a) + \alpha[r + \gamma \max_{a'}Q(s',a') - Q(s,a)]$ |
-| **SARSA** | On-policy, model-free | Updates $Q$ using the action *actually* taken next |
-| **DQN** | Off-policy, model-free | Q-learning + neural network + replay buffer |
-| **Actor-Critic** | On-policy | Separate actor $\pi_\theta$ and critic $V_\phi$ networks |
-| **PPO** | On-policy | Clipped surrogate objective; see [[PPO]] |
-| **SAC** | Off-policy | Maximum entropy RL; entropy bonus encourages exploration |
+| Algorithm        | Type                   | Key Idea                                                                                             |
+| ---------------- | ---------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Q-learning**   | Off-policy, model-free | Tabular $Q$-value update: $Q(s,a) \leftarrow Q(s,a) + \alpha[r + \gamma \max_{a'}Q(s',a') - Q(s,a)]$ |
+| **SARSA**        | On-policy, model-free  | Updates $Q$ using the action *actually* taken next                                                   |
+| **DQN**          | Off-policy, model-free | Q-learning + neural network + replay buffer                                                          |
+| **Actor-Critic** | On-policy              | Separate actor $\pi_\theta$ and critic $V_\phi$ networks                                             |
+| **PPO**          | On-policy              | Clipped surrogate objective; see [[PPO]]                                                             |
+| **SAC**          | Off-policy             | Maximum entropy RL; entropy bonus encourages exploration                                             |
 
 ## Reward Hacking
 ---

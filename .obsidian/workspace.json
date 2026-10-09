@@ -220,6 +220,7 @@
   "active": "6e14ae3b2008c72a",
   "lastOpenFiles": [
     "_01_notes/Policy Gradient Methods.md",
+    "_01_notes/Reinforcement Learning.md",
     "_01_notes/GRPO.md",
     "_01_notes/DPO.md",
     "_01_notes/PPL.md",
@@ -251,7 +252,6 @@
     "_01_notes/GPTs.md",
     "_01_notes/ELBO.md",
     "_04_images/ddpm_forward_diffusion.png",
-    "_01_notes/VAE.md",
     "_04_images/linux_cmd_cheatsheet.webp",
     "Untitled",
     "_04_images/mish_graph.png",
