@@ -2,7 +2,7 @@
 # **Deep Reinforcement Learning**
 
 **Tags**:: #rl
-**Links**:: [[Reinforcement Learning]] · [[Policy Gradient Methods]] · [[Behavior Cloning]] · [[World Models]]
+**Links**:: [[Reinforcement Learning]] · [[Policy Gradient Methods]] · [[PPO]] · [[Behavior Cloning]] · [[World Models]]
 
 
 Deep RL combines the RL framework with deep neural networks as function approximators for policies and value functions — enabling RL to operate on raw observations (images, sensor data) at scale.
@@ -62,7 +62,7 @@ $$
 - $\hat{A}_t$: generalized advantage estimate (GAE)
 - $\epsilon \approx 0.2$: clip range
 
-Benefits: stable, simple to tune, works with continuous and discrete actions. See [[Policy Gradient Methods]] for the full PPO derivation and comparison with GRPO/DPO.
+Benefits: stable, simple to tune, works with continuous and discrete actions. See [[PPO]] for the full PPO derivation and its use in LLM post-training, and [[Policy Gradient Methods]] for the comparison with [[GRPO]] and [[DPO]].
 
 ## Off-Policy: SAC (Soft Actor-Critic)
 ---

@@ -2,7 +2,7 @@
 # **Reinforcement Learning from Human Feedback (RLHF)**
 
 **Tags**:: #rl #llm
-**Links**:: [[Policy Gradient Methods]] · [[Reinforcement Learning]] · [[Behavior Cloning]] · [[LLMs]] · [[Elo Score]]
+**Links**:: [[Policy Gradient Methods]] · [[PPO]] · [[DPO]] · [[GRPO]] · [[Reinforcement Learning]] · [[Behavior Cloning]] · [[LLMs]] · [[Elo Score]]
 
 
 **RLHF** is the technique used to align language models with human intent by incorporating human preference judgments into the training loop. It is the method behind InstructGPT, ChatGPT, Claude, and most modern instruction-following LLMs.
@@ -35,7 +35,7 @@ The reward model is typically initialized from the SFT model with the final toke
 Bradley-Terry is the same paired-comparison model that underlies the [[Elo Score]] — the reward model effectively learns a per-response Elo rating (an analogy made explicitly by Christiano et al., 2017).
 
 ### Stage 3: RL Fine-Tuning with PPO
-Use [[Policy Gradient Methods#Proximal Policy Optimization (PPO)|PPO]] to maximize expected reward while staying close to the SFT model:
+Use [[PPO]] to maximize expected reward while staying close to the SFT model:
 $$
 \mathcal{L}_\text{RL}(\theta) = \mathbb{E}_{x \sim \mathcal{D},\, y \sim \pi_\theta(\cdot \mid x)}\left[r_\phi(x, y) - \beta \log\frac{\pi_\theta(y\mid x)}{\pi_\text{SFT}(y\mid x)}\right]
 $$
@@ -78,13 +78,15 @@ $$
 
 **Limitations**: sensitive to the reference model quality; can be brittle if the preference data distribution doesn't cover the policy's output distribution well.
 
+See [[DPO]] for the full derivation, the gradient, and adoption in Zephyr and Llama 3.
+
 ## GRPO (Group Relative Policy Optimization)
 ---
 Used in [DeepSeek-R1](https://arxiv.org/abs/2501.12948) and other reasoning models. Rather than a separate reward model, GRPO uses **verifiable rewards** (e.g., math answer correctness) and groups $G$ responses to the same prompt:
 $$
 \hat{A}_i = \frac{r_i - \text{mean}(r_{1:G})}{\text{std}(r_{1:G})}
 $$
-This normalizes advantages within the group, removing the need for a critic network. See [[Policy Gradient Methods]] for the full GRPO loss.
+This normalizes advantages within the group, removing the need for a critic network. See [[GRPO]] for the full GRPO loss (GRPO itself is agnostic to the reward source: DeepSeekMath used a trained reward model, while DeepSeek-R1-Zero used rule-based verifiable rewards) and [[Policy Gradient Methods]] for the comparison with PPO and DPO.
 
 ## Comparison
 

@@ -78,6 +78,7 @@ However, initialization still matters for:
 - **Convergence speed** in early training (before the optimizer has adapted)
 - **Attention logits**: large initial attention weights → uniform or near-zero softmax → poor gradient signal
 - **Residual scale**: with many residual connections, the effective depth at initialization affects the initial variance
+- **Zero-initialized residual branches**: setting the *last* affine of each residual branch to zero — the final BatchNorm $\gamma$ in a ResNet block ([Goyal et al., 2017](https://arxiv.org/abs/1706.02677)), the last conv of a diffusion U-Net block, or the gate $\alpha$ of adaLN-Zero in [[DiT]] — makes every block the identity at initialization, so the network starts shallow and deepens as training proceeds; see [[Normalization#Adaptive Layer Norm (adaLN) and adaLN-Zero]]
 
 ## Modern Practices for Transformers
 ---

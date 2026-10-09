@@ -2,7 +2,7 @@
 # **Chain-Of-Thought Prompting**
 
 **Tags**:: #llm
-**Links**:: [[FSL]] · [[LLMs]] · [[Scaling Laws]]
+**Links**:: [[FSL]] · [[LLMs]] · [[Scaling Laws]] · [[GRPO]]
 
 
 CoT Prompting = [[FSL|Few-Shot Learning]] + Reasoning
@@ -72,7 +72,7 @@ Several mechanisms have been proposed:
 ---
 Modern reasoning models like OpenAI o1 and DeepSeek-R1 internalize CoT by training the model to generate long **"thinking" traces** before producing the final answer:
 
-- **DeepSeek-R1**: uses GRPO (see [[Policy Gradient Methods]]) to reinforce reasoning traces that lead to correct answers, without human-labeled thought chains
+- **DeepSeek-R1**: uses GRPO (see [[GRPO]]) to reinforce reasoning traces that lead to correct answers, without human-labeled thought chains
 - **o1**: uses RL over verifiable tasks (math, code) to learn to think before answering
 
 This represents a shift from CoT as an inference-time trick to CoT as a **trained behavior** — the model learns *when* to think deeply and *how* to structure its reasoning.

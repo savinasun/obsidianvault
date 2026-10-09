@@ -2,7 +2,7 @@
 # **Reinforcement Learning**
 
 **Tags**:: #rl
-**Links**:: [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[Behavior Cloning]] · [[World Models]] · [[RLHF]]
+**Links**:: [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[PPO]] · [[Behavior Cloning]] · [[World Models]] · [[RLHF]]
 
 
 > "A Path to AI" — Yann LeCun, 2017: Unsupervised Learning (cake) → Supervised Learning (icing) → Reinforcement Learning (cherry)
@@ -93,7 +93,7 @@ See [[World Models]] for model-based RL in depth.
 | **SARSA** | On-policy, model-free | Updates $Q$ using the action *actually* taken next |
 | **DQN** | Off-policy, model-free | Q-learning + neural network + replay buffer |
 | **Actor-Critic** | On-policy | Separate actor $\pi_\theta$ and critic $V_\phi$ networks |
-| **PPO** | On-policy | Clipped surrogate objective; see [[Policy Gradient Methods]] |
+| **PPO** | On-policy | Clipped surrogate objective; see [[PPO]] |
 | **SAC** | Off-policy | Maximum entropy RL; entropy bonus encourages exploration |
 
 ## Reward Hacking

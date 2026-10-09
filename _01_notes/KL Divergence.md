@@ -2,7 +2,7 @@
 # **Kullback-Leibler Divergence**
 
 **Tags**:: #math #dl_theo
-**Links**:: [[Entropy]] · [[ELBO]] · [[VAE]] · [[Score-Based Generative Modeling Methods]] · [[Policy Gradient Methods]]
+**Links**:: [[Entropy]] · [[ELBO]] · [[VAE]] · [[Score-Based Generative Modeling Methods]] · [[Policy Gradient Methods]] · [[PPO]] · [[GRPO]]
 
 
 **KL divergence** (**relative entropy**) measures how much one probability distribution $q$ differs from a reference distribution $p$. It is fundamental to variational inference, generative models, and policy optimization.
@@ -99,7 +99,7 @@ TRPO explicitly constrains the KL divergence between old and new policies:
 $$
 \mathbb{E}_s[D_\text{KL}(\pi_\text{old}(\cdot|s) \| \pi_\theta(\cdot|s))] \le \delta
 $$
-PPO approximates this constraint with a clipped objective. See [[Policy Gradient Methods]].
+[[PPO]] approximates this constraint with a clipped objective; RLHF and [[GRPO]] additionally penalize the KL to a frozen reference model. See [[Policy Gradient Methods]].
 
 ### Knowledge Distillation
 The student model is trained to minimize $D_\text{KL}(p_\text{teacher} \| p_\text{student})$ — forward KL, so the student covers all modes of the teacher's soft predictions.

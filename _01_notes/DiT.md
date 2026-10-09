@@ -2,7 +2,7 @@
 # **Diffusion Transformer (DiT)**
 
 **Tags**:: #generative #dl_arch #diffusion
-**Links**:: [[DDPM]] · [[LDM]] · [[ViT]] · [[VAE]] · [[RAE]] · [[FID]] · [[Attention]] · [[Layer Normalization]] · [[FiLM]] · [[ImageNet]]
+**Links**:: [[DDPM]] · [[LDM]] · [[ViT]] · [[VAE]] · [[RAE]] · [[FID]] · [[Attention]] · [[Normalization]] · [[Layer Normalization]] · [[FiLM]] · [[ImageNet]]
 
 
 **DiT** ([Peebles & Xie, 2023](https://arxiv.org/abs/2212.09748)) replaces the U-Net backbone in latent diffusion models with a Vision Transformer, demonstrating that Gflops — not parameter count alone — determine generation quality, and that transformers scale more predictably than U-Nets.
@@ -28,7 +28,7 @@ Patch size $p$ is the dominant compute knob:
 - Smaller patches → more tokens → better FID (at higher cost)
 
 ### Conditioning: adaLN-Zero
-DiT conditions on the denoising timestep $t$ and class label $y$ (for class-conditional generation) — an instance of [[FiLM]]-style feature-wise modulation. Four strategies were evaluated; **adaLN-Zero** won:
+DiT conditions on the denoising timestep $t$ and class label $y$ (for class-conditional generation) — an instance of [[FiLM]]-style feature-wise modulation. Four strategies were evaluated; **adaLN-Zero** won. The mechanism itself (lineage from AdaGN, exact parameterization, initialization details, parameter cost and PixArt-α's adaLN-single) is treated in full in [[Normalization#Adaptive Layer Norm (adaLN) and adaLN-Zero|Normalization]]; the summary here is what the DiT paper needs:
 
 $$
 h = \text{LayerNorm}(x), \quad h' = (1 + \gamma) \odot h + \beta
@@ -37,9 +37,9 @@ $$
 \text{out} = x + \alpha \odot \text{Attn}(h')  \quad \text{(and similarly for FFN)}
 $$
 
-where $(\gamma, \beta, \alpha)$ are predicted by a small MLP from $\text{emb}(t) + \text{emb}(y)$.
+where $(\gamma, \beta, \alpha)$ — six $d$-vectors per block, one scale/shift/gate triple for attention and one for the FFN — are predicted by a SiLU → linear ($d \to 6d$) head from $c = \text{emb}(t) + \text{emb}(y)$.
 
-The **Zero** suffix means $\alpha$ is initialized to zero — each DiT block starts as an identity function. This stabilizes training at initialization, analogous to zero-init in ResNets.
+The **Zero** suffix means $\alpha$ is initialized to zero — each DiT block starts as an identity function (the official code zero-initializes the entire $d \to 6d$ linear layer, so $\gamma = \beta = 0$ as well). This stabilizes training at initialization, analogous to zero-initializing the last BatchNorm $\gamma$ of each ResNet block ([Goyal et al., 2017](https://arxiv.org/abs/1706.02677)).
 
 The other three strategies tested (for reference):
 
@@ -48,7 +48,7 @@ The other three strategies tested (for reference):
 | **In-context** | Append $t, y$ as extra tokens | Simplest; dilutes attention |
 | **Cross-attention** | Attend over $[t, y]$ sequence | Works but adds params |
 | **adaLN** | Scale/shift after LayerNorm (no gate $\alpha$) | Good but worse than adaLN-Zero |
-| **adaLN-Zero** ✓ | Scale/shift/gate, zero-init $\alpha$ | Best FID across all scales |
+| **adaLN-Zero** ✓ | Scale/shift/gate, zero-init $\alpha$ | Best FID across all scales; same 118.6 Gflops as adaLN for DiT-XL/2 |
 
 ### Unembedding
 The final token sequence is projected back to patch predictions: $\hat\epsilon \in \mathbb{R}^{I \times I \times C}$ and $\hat\Sigma \in \mathbb{R}^{I \times I \times C}$ (the learned noise covariance diagonal, following iDDPM).
@@ -111,4 +111,5 @@ DiT became the standard backbone for large-scale image generation after 2023:
 - [[VAE]] — provides the latent space DiT operates in; [[RAE]] is a superior alternative tokenizer
 - [[RAE]] — uses DiT with three adaptations for high-dimensional representation latents; achieves 1.51 FID vs. DiT's 2.27
 - [[FID]] — primary evaluation metric; DiT-XL/2 sets state-of-the-art at 2.27 on ImageNet 256×256
-- [[Layer Normalization]] — adaLN-Zero modulates LayerNorm outputs with predicted scale/shift/gate
+- [[Normalization]] — the adaLN / adaLN-Zero section holds the full mechanism: block equations, identity initialization, the four-way ablation with Gflops, the $6d^2$-per-block parameter cost and adaLN-single
+- [[Layer Normalization]] — adaLN-Zero modulates LayerNorm outputs (affine disabled) with predicted scale/shift/gate

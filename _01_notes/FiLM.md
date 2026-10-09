@@ -39,7 +39,7 @@ FiLM is the normalization-free generalization of a family of "conditional normal
 | Conditional BatchNorm | batch stats | language embedding (MLP) | VQA ([de Vries et al. 2017](https://arxiv.org/abs/1707.00683)) |
 | AdaIN | instance stats | *statistics* of a style image (no learned generator) | style transfer ([Huang & Belongie 2017](https://arxiv.org/abs/1703.06868)) |
 | AdaGN | group stats | timestep + class embedding | diffusion ([ADM, Dhariwal & Nichol 2021](https://arxiv.org/abs/2105.05233)) |
-| adaLN / adaLN-Zero | layer stats | timestep + class embedding | [[DiT]] ([Peebles & Xie 2023](https://arxiv.org/abs/2212.09748)) |
+| adaLN / adaLN-Zero | layer stats | timestep + class embedding | [[DiT]] ([Peebles & Xie 2023](https://arxiv.org/abs/2212.09748)); full treatment in [[Normalization#Adaptive Layer Norm (adaLN) and adaLN-Zero|Normalization]] |
 | **FiLM** | **none required** | any conditioning network | [Perez et al. 2018](https://arxiv.org/abs/1709.07871) |
 
 The FiLM paper's key observation: the benefit does **not** depend on normalization — modulation works applied directly to activations. Pairing it with a normalizer whose own affine is disabled (as in the CLEVR model, ADM, and DiT) is convenient because normalization hands FiLM a standardized input, making $\gamma, \beta$'s job scale-free.
@@ -48,7 +48,7 @@ The FiLM paper's key observation: the benefit does **not** depend on normalizati
 ---
 **Class-conditional GANs.** BigGAN ([Brock et al. 2019](https://arxiv.org/abs/1809.11096)) conditions its generator through class-conditional BatchNorm at every resolution. StyleGAN ([Karras et al. 2019](https://arxiv.org/abs/1812.04948)) is FiLM-as-architecture: the mapped latent $w$ drives AdaIN at every layer, so *all* generator conditioning flows through feature-wise modulation.
 
-**Diffusion models.** The original [[DDPM]] U-Net injects the timestep embedding *additively* into each residual block — shift-only FiLM. ADM upgraded this to **AdaGN**, $\text{AdaGN}(h, z) = \gamma(z) \odot \text{GroupNorm}(h) + \beta(z)$, and found it clearly better. [[DiT]] carried the same idea to Transformers as **adaLN-Zero**, adding a third predicted coefficient — a residual-branch gate $\alpha$ initialized to zero so every block starts as the identity — which beat both cross-attention and in-context conditioning on FID at lower FLOPs (see the [[DiT]] note for the four-way comparison).
+**Diffusion models.** The original [[DDPM]] U-Net injects the timestep embedding *additively* into each residual block — shift-only FiLM. ADM upgraded this to **AdaGN**, $\text{AdaGN}(h, z) = \gamma(z) \odot \text{GroupNorm}(h) + \beta(z)$, and found it clearly better. [[DiT]] carried the same idea to Transformers as **adaLN-Zero**, adding a third predicted coefficient — a residual-branch gate $\alpha$ initialized to zero so every block starts as the identity — which beat both cross-attention and in-context conditioning on FID at lower FLOPs (block equations, initialization and the four-way comparison with Gflops are in [[Normalization#Adaptive Layer Norm (adaLN) and adaLN-Zero|Normalization]]; PixArt-α's cheaper adaLN-single is discussed there too).
 
 **Identity initialization** is the recurring design rule: parameterize the scale as $1 + \Delta\gamma$ with $\Delta\gamma$ (and $\beta$, and any gate) initialized to zero, so the conditioned network begins as the unconditioned one. RT-1 and DiT both rely on it — essential when bolting FiLM onto a *pretrained* backbone without wrecking its features.
 
