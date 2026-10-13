@@ -2,7 +2,7 @@
 # **World Models**
 
 **Tags**:: #rl
-**Links**:: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[DDPM]] · [[Behavior Cloning]] · [[JEPA]]
+**Links**:: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[DDPM]] · [[Behavior Cloning]] · [[JEPA]] · [[Robot Kinematics]]
 
 
 A **world model** is a learned model of the environment dynamics: given the current state and action, it predicts the next state and reward. Model-based RL uses world models to **plan** or **generate synthetic experience** rather than requiring all learning to come from real environment interactions — dramatically improving sample efficiency.

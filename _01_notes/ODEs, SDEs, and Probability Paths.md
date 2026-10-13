@@ -2,7 +2,7 @@
 # **ODEs, SDEs, and Probability Paths**
 
 **Tags**:: #math #dl_theo #generative
-**Links**:: [[Flow Matching]] · [[Score Matching]] · [[DDPM]] · [[Generative Modeling]] · [[Divergence Theorem]] · [[CTMC]] · [[Discrete Flow Matching]] · [[MCMC]] · [[ELBO]]
+**Links**:: [[Flow Matching]] · [[Score Matching]] · [[DDPM]] · [[Generative Modeling]] · [[Divergence Theorem]] · [[CTMC]] · [[Discrete Flow Matching]] · [[MCMC]] · [[ELBO]] · [[Robot Kinematics]]
 
 
 The mathematical machinery behind flow- and diffusion-based generative models: vector fields and the ODEs/flows they generate, well-posedness (Picard–Lindelöf), numerical solvers, SDEs, probability paths, conditional and marginal vector fields, and the continuity / Fokker–Planck equations that tie dynamics to distributions. Follows the **[MIT 6.S184](https://diffusion.csail.mit.edu/2026/index.html) lecture notes** ([Holderrieth & Erives](https://diffusion.csail.mit.edu/2026/docs/lecture_notes.pdf)) and the **"Flow Matching Guide and Code"** ([Lipman et al., 2024, arXiv 2412.06264](https://arxiv.org/abs/2412.06264)); this is the background section of [[Flow Matching]], split out as a standalone reference.

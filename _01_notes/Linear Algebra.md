@@ -2,7 +2,7 @@
 # **Linear Algebra**
 
 **Tags**:: #math
-**Links**:: [[SVD]] · [[Spectral Analysis]]
+**Links**:: [[SVD]] · [[Spectral Analysis]] · [[Robot Kinematics]]
 
 ![[linear_algebra_01.png]]
 

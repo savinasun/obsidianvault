@@ -6,7 +6,7 @@ A living index organized by research direction.
 
 Pure mathematical machinery — information theory, linear algebra, probability, and dimensionality reduction — that underpins all of deep learning.
 
-Key notes: [[Linear Algebra]] · [[SVD]] · [[Spectral Analysis]] · [[Divergence Theorem]] · [[ODEs, SDEs, and Probability Paths]] · [[Entropy]] · [[KL Divergence]] · [[ELBO]] · [[MCMC]] · [[CTMC]] · [[Manifold Hypothesis]] · [[t-SNE]] · [[UMAP]] · [[Hamming Loss]] · [[Elo Score]]
+Key notes: [[Linear Algebra]] · [[SVD]] · [[Spectral Analysis]] · [[Robot Kinematics]] · [[Divergence Theorem]] · [[ODEs, SDEs, and Probability Paths]] · [[Entropy]] · [[KL Divergence]] · [[ELBO]] · [[MCMC]] · [[CTMC]] · [[Manifold Hypothesis]] · [[t-SNE]] · [[UMAP]] · [[Hamming Loss]] · [[Elo Score]]
 
 ```dataview
 table tags as "Tags"
@@ -81,7 +81,7 @@ limit 10
 
 Policy optimization, imitation learning, model-based RL, and the path toward autonomous embodied agents.
 
-Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[PPO]] · [[DPO]] · [[GRPO]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]] · [[VLA]] · [[Discrete Flow Matching]]
+Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[PPO]] · [[DPO]] · [[GRPO]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]] · [[VLA]] · [[Robot Kinematics]] · [[Discrete Flow Matching]]
 
 ```dataview
 table tags as "Tags"

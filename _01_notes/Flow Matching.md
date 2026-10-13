@@ -2,7 +2,7 @@
 # **Flow Matching**
 
 **Tags**:: #generative #dl_theo #diffusion
-**Links**:: [[Generative Modeling]] · [[ODEs, SDEs, and Probability Paths]] · [[DDPM]] · [[Score Matching]] · [[Score-Based Generative Modeling Methods]] · [[Divergence Theorem]] · [[LDM]] · [[DiT]] · [[VAE]] · [[ELBO]] · [[MCMC]] · [[FID]] · [[RAE]] · [[VLA]]
+**Links**:: [[Generative Modeling]] · [[ODEs, SDEs, and Probability Paths]] · [[DDPM]] · [[Score Matching]] · [[Score-Based Generative Modeling Methods]] · [[Divergence Theorem]] · [[LDM]] · [[DiT]] · [[VAE]] · [[ELBO]] · [[MCMC]] · [[FID]] · [[RAE]] · [[VLA]] · [[Robot Kinematics]]
 
 
 **Flow Matching (FM)** is a *simulation-free* framework for training generative models: pick a probability path $p_t$ interpolating a source distribution (noise) $p_\text{init}$ into the data distribution $p_\text{data}$, train a neural velocity field to generate that path by simple regression, and sample by ODE integration. Introduced concurrently by [Lipman et al., 2022](https://arxiv.org/abs/2210.02747) (Flow Matching), [Liu et al., 2022](https://arxiv.org/abs/2209.03003) (Rectified Flow), and [Albergo & Vanden-Eijnden, 2022](https://arxiv.org/abs/2209.15571) (stochastic interpolants), it now powers Stable Diffusion 3 ([Esser et al., 2024](https://arxiv.org/abs/2403.03206)), Movie Gen (video), Voicebox/Audiobox (speech/audio), SE(3) FM (protein backbones), and π0 (robot policies — [[VLA]]).
