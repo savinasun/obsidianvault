@@ -48,6 +48,20 @@ They are 3- and 6-dimensional Lie groups: $R^\top R = I$ imposes 6 constraints o
 
 The last row matters for learning: Zhou et al. prove that any representation of 3D rotations in $\le 4$ real dimensions is *discontinuous* (so Euler angles and quaternions both have regions a network cannot regress smoothly), while 5D and 6D representations are continuous. This is the case for outputting 6D rotations from learned pose regressors.
 
+**Roll, pitch, yaw.** The most common Euler-angle convention (aerospace and ROS REP-103: $x$ forward, $y$ left, $z$ up) names the rotations about the three body axes — **roll** $\phi$ about $x$, **pitch** $\vartheta$ about $y$, **yaw** $\psi$ about $z$ — and composes them as
+
+$$
+R = R_z(\psi)\,R_y(\vartheta)\,R_x(\phi),
+$$
+
+read either as *intrinsic* z–y–x (yaw, then pitch about the new $y$, then roll about the new $x$) or as *extrinsic* rotations about fixed axes in the order $x$, $y$, $z$. Other fields order the axes differently, so always state the convention. Pitch is written $\vartheta$ here to avoid the clash with the joint angle $\theta$.
+
+![[roll_pitch_yaw.svg|500]]
+
+*Roll, pitch, yaw in a right-handed frame; each arc is the positive (right-hand-rule) rotation about its axis.*
+
+**Gimbal lock** is visible in this composition: at $\vartheta = \pm 90^\circ$ the roll and yaw axes coincide, and $R$ depends only on $\psi - \phi$ (at $+90^\circ$) or $\psi + \phi$ (at $-90^\circ$). One degree of freedom is lost, and nearby orientations require large, discontinuous changes in $(\phi, \psi)$.
+
 ## Screws and the Exponential Map
 ---
 **Exponential coordinates.** Every rotation is a rotation by $\theta$ about a unit axis $\hat\omega$; the matrix exponential gives **Rodrigues' formula**

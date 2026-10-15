@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" width="720" height="560" font-family="Helvetica, Arial, sans-serif">
+<rect width="720" height="560" fill="#ffffff"/>
+<text x="360.0" y="38" font-size="22" font-weight="bold" text-anchor="middle" fill="#222">Roll, Pitch, Yaw</text>
+<text x="360.0" y="60" font-size="13" text-anchor="middle" fill="#555">right-handed frame; each arc is a positive (right-hand-rule) rotation about its axis</text>
+<line x1="357.4" y1="288.1" x2="317.8" y2="320.1" stroke="#888" stroke-width="1.5"/>
+<line x1="357.4" y1="288.1" x2="402.2" y2="285.5" stroke="#888" stroke-width="1.5"/>
+<line x1="357.4" y1="288.1" x2="357.4" y2="262.5" stroke="#888" stroke-width="1.5"/>
+<line x1="357.4" y1="262.5" x2="317.8" y2="294.5" stroke="#888" stroke-width="1.5"/>
+<line x1="357.4" y1="262.5" x2="402.2" y2="259.9" stroke="#888" stroke-width="1.5"/>
+<line x1="402.2" y1="285.5" x2="362.6" y2="317.5" stroke="#888" stroke-width="1.5"/>
+<line x1="402.2" y1="285.5" x2="402.2" y2="259.9" stroke="#888" stroke-width="1.5"/>
+<line x1="402.2" y1="259.9" x2="362.6" y2="291.9" stroke="#888" stroke-width="1.5"/>
+<line x1="317.8" y1="320.1" x2="362.6" y2="317.5" stroke="#888" stroke-width="1.5"/>
+<line x1="317.8" y1="320.1" x2="317.8" y2="294.5" stroke="#888" stroke-width="1.5"/>
+<line x1="317.8" y1="294.5" x2="362.6" y2="291.9" stroke="#888" stroke-width="1.5"/>
+<line x1="362.6" y1="317.5" x2="362.6" y2="291.9" stroke="#888" stroke-width="1.5"/>
+<line x1="360.0" y1="290.0" x2="242.9" y2="384.4" stroke="#d62728" stroke-width="3"/>
+<polygon points="242.9,384.4 249.6,372.1 256.4,380.5" fill="#d62728"/>
+<text x="218.9" y="398.4" font-size="22" font-style="italic" font-weight="bold" fill="#d62728">x</text>
+<line x1="360.0" y1="290.0" x2="548.8" y2="278.7" stroke="#2ca02c" stroke-width="3"/>
+<polygon points="548.8,278.7 536.3,284.9 535.6,274.0" fill="#2ca02c"/>
+<text x="560.8" y="284.7" font-size="22" font-style="italic" font-weight="bold" fill="#2ca02c">y</text>
+<line x1="360.0" y1="290.0" x2="360.0" y2="101.2" stroke="#1f77b4" stroke-width="3"/>
+<polygon points="360.0,101.2 365.5,114.1 354.5,114.1" fill="#1f77b4"/>
+<text x="370.0" y="99.2" font-size="22" font-style="italic" font-weight="bold" fill="#1f77b4">z</text>
+<path d="M 347.8,349.4 L 349.1,346.8 L 350.3,344.3 L 351.2,341.6 L 352.1,338.9 L 352.7,336.2 L 353.2,333.4 L 353.5,330.7 L 353.6,327.9 L 353.5,325.2 L 353.3,322.4 L 352.9,319.7 L 352.3,317.0 L 351.6,314.4 L 350.6,311.9 L 349.6,309.4 L 348.3,307.0 L 346.9,304.7 L 345.3,302.5 L 343.7,300.4 L 341.8,298.5 L 339.9,296.6 L 337.8,294.9 L 335.6,293.4 L 333.3,292.0 L 330.9,290.7 L 328.4,289.7 L 325.9,288.7 L 323.3,288.0 L 320.6,287.4 L 317.9,287.0 L 315.2,286.8 L 312.4,286.7 L 309.6,286.9 L 306.9,287.2 L 304.1,287.6 L 301.4,288.3 L 298.7,289.1 L 296.1,290.1 L 293.5,291.2 L 291.0,292.6 L 288.6,294.0 L 286.2,295.6 L 284.0,297.4 L 281.9,299.3 L 279.9,301.3 L 278.0,303.4 L 276.2,305.7 L 274.6,308.0 L 273.1,310.4 L 271.8,312.9 L 270.6,315.5 L 269.6,318.1 L 268.8,320.8 L 268.1,323.6 L 267.7,326.3 L 267.3,329.1 L 267.2,331.8 L 267.2,334.6 L 267.5,337.3 L 267.9,340.1" fill="none" stroke="#d62728" stroke-width="3" stroke-dasharray="0"/>
+<polygon points="267.9,340.1 261.9,328.5 272.0,327.7" fill="#d62728"/>
+<path d="M 474.1,230.5 L 472.0,230.4 L 469.9,230.6 L 467.7,231.2 L 465.4,232.1 L 463.1,233.3 L 460.8,234.9 L 458.4,236.7 L 456.1,238.8 L 453.8,241.2 L 451.5,243.9 L 449.3,246.8 L 447.1,250.0 L 445.0,253.3 L 443.0,256.9 L 441.1,260.6 L 439.3,264.4 L 437.6,268.4 L 436.1,272.5 L 434.7,276.6 L 433.4,280.8 L 432.3,285.0 L 431.4,289.3 L 430.7,293.4 L 430.1,297.5 L 429.7,301.6 L 429.5,305.5 L 429.5,309.3 L 429.6,312.9 L 429.9,316.4 L 430.5,319.7 L 431.1,322.7 L 432.0,325.5 L 433.0,328.0 L 434.2,330.3 L 435.6,332.3 L 437.1,334.0 L 438.7,335.4 L 440.5,336.5 L 442.3,337.2 L 444.3,337.6 L 446.4,337.7 L 448.5,337.5 L 450.7,336.9 L 453.0,336.0 L 455.3,334.8 L 457.6,333.2 L 460.0,331.4 L 462.3,329.3 L 464.6,326.9 L 466.9,324.2 L 469.1,321.3 L 471.3,318.1 L 473.4,314.8 L 475.4,311.2 L 477.3,307.5 L 479.1,303.7 L 480.8,299.7 L 482.3,295.6 L 483.7,291.5 L 485.0,287.3" fill="none" stroke="#2ca02c" stroke-width="3" stroke-dasharray="0"/>
+<polygon points="485.0,287.3 485.9,300.2 476.4,297.0" fill="#2ca02c"/>
+<path d="M 310.2,213.0 L 312.5,213.7 L 315.0,214.2 L 317.8,214.6 L 320.9,214.9 L 324.2,215.0 L 327.8,214.9 L 331.5,214.7 L 335.4,214.4 L 339.5,213.9 L 343.7,213.2 L 348.0,212.5 L 352.3,211.6 L 356.8,210.5 L 361.2,209.4 L 365.6,208.1 L 370.0,206.7 L 374.3,205.2 L 378.6,203.7 L 382.7,202.0 L 386.7,200.3 L 390.5,198.5 L 394.1,196.7 L 397.6,194.9 L 400.8,193.0 L 403.7,191.1 L 406.4,189.2 L 408.8,187.3 L 410.8,185.4 L 412.6,183.6 L 414.1,181.8 L 415.2,180.1 L 416.0,178.4 L 416.4,176.8 L 416.5,175.3 L 416.2,173.9 L 415.6,172.6 L 414.6,171.4 L 413.3,170.3 L 411.7,169.4 L 409.8,168.6 L 407.5,167.9 L 405.0,167.4 L 402.2,167.0 L 399.1,166.7 L 395.8,166.6 L 392.2,166.7 L 388.5,166.9 L 384.6,167.2 L 380.5,167.7 L 376.3,168.4 L 372.0,169.1 L 367.7,170.0 L 363.2,171.1 L 358.8,172.2 L 354.4,173.5 L 350.0,174.9 L 345.7,176.4 L 341.4,177.9 L 337.3,179.6 L 333.3,181.3" fill="none" stroke="#1f77b4" stroke-width="3" stroke-dasharray="0"/>
+<polygon points="333.3,181.3 342.6,172.2 346.3,181.6" fill="#1f77b4"/>
+<rect x="60" y="452" width="14" height="14" rx="3" fill="#d62728"/><text x="82" y="465" font-size="17" font-weight="bold" fill="#d62728">roll  φ</text><text x="82" y="486" font-size="13" fill="#444">rotation about x (forward)</text>
+<rect x="280" y="452" width="14" height="14" rx="3" fill="#2ca02c"/><text x="302" y="465" font-size="17" font-weight="bold" fill="#2ca02c">pitch  ϑ</text><text x="302" y="486" font-size="13" fill="#444">rotation about y</text>
+<rect x="480" y="452" width="14" height="14" rx="3" fill="#1f77b4"/><text x="502" y="465" font-size="17" font-weight="bold" fill="#1f77b4">yaw  ψ</text><text x="502" y="486" font-size="13" fill="#444">rotation about z (up)</text>
+<text x="360.0" y="530" font-size="15" text-anchor="middle" fill="#333">intrinsic z-y-x composition:  R = R<tspan baseline-shift="sub" font-size="11">z</tspan>(ψ) R<tspan baseline-shift="sub" font-size="11">y</tspan>(ϑ) R<tspan baseline-shift="sub" font-size="11">x</tspan>(φ)</text>
+</svg>
