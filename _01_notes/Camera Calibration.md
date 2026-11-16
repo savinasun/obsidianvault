@@ -2,7 +2,7 @@
 # **Camera Models and Calibration**
 
 **Tags**:: #vision #math #rl
-**Links**:: [[Robot Kinematics]] · [[Linear Algebra]] · [[SVD]] · [[VLA]] · [[Behavior Cloning]] · [[World Models]] · [[LDM]]
+**Links**:: [[Robot Kinematics]] · [[Hand-Eye Calibration]] · [[Linear Algebra]] · [[SVD]] · [[VLA]] · [[Behavior Cloning]] · [[World Models]] · [[LDM]]
 
 
 A **camera model** is the function that sends a 3D point to a pixel; **camera calibration** estimates its parameters. They split into <span style="color:rgb(255, 255, 0)">intrinsics</span> — focal lengths, principal point, skew and lens distortion, fixed by the sensor and lens — and <span style="color:rgb(255, 255, 0)">extrinsics</span> — the camera's pose $(R, t)$ in a world frame. Every metric use of images needs both: back-projecting depth into point clouds, stereo and triangulation, SfM/NeRF/3DGS, registering a camera to a robot, and any 3D-aware policy. Landmarks: the photogrammetric Direct Linear Transform ([Abdel-Aziz & Karara, 1971](https://doi.org/10.14358/PERS.81.2.103)), Tsai's two-stage method ([Tsai, 1987](https://doi.org/10.1109/JRA.1987.1087109)), Zhang's planar-checkerboard method ([Zhang, 2000](https://doi.org/10.1109/34.888718)) — the recipe OpenCV's `calibrateCamera` still follows — the Brown–Conrady distortion model ([Conrady, 1919](https://doi.org/10.1093/mnras/79.5.384); Brown, 1966), and the Kannala–Brandt fisheye model ([Kannala & Brandt, 2006](https://doi.org/10.1109/TPAMI.2006.153)).
@@ -254,35 +254,25 @@ $$
 Z = \frac{f_x\,b}{d}, \qquad \delta Z \approx \frac{Z^2}{f_x\,b}\,\delta d .
 $$
 
-A relative error in $f_x$ or $b$ becomes the same relative error in every depth, and matching noise grows quadratically with distance. Multi-camera robots (head plus wrist cameras) chain every camera's extrinsics through a common frame — usually the robot base, which is what hand–eye calibration provides.
+A relative error in $f_x$ or $b$ becomes the same relative error in every depth, and matching noise grows quadratically with distance. Multi-camera robots (head plus wrist cameras) chain every camera's extrinsics through a common frame — usually the robot base, which is what [[Hand-Eye Calibration]] provides.
 
 ## Hand–Eye Calibration
 ---
-A robot needs its cameras' poses in *robot* coordinates. In the **eye-in-hand** setup (wrist camera) the unknown is $X = T_{gc}$, the camera's pose in the gripper frame; in the **eye-to-hand** setup (static camera) it is $X = T_{bc}$, the camera's pose in the base frame.
-
-![[hand_eye_calibration.svg|650]]
-
-*Eye-in-hand. At every robot pose, forward kinematics gives $T_{bg}$ and PnP on a fixed target gives $T_{ct}$. The loop through the unknown $X$ closes on the fixed but unknown $T_{bt}$; eliminating $T_{bt}$ between two poses gives $AX = XB$.*
-
-**Derivation.** The target does not move, so for every station $i$, $T_{bg}^{(i)}\,X\,T_{ct}^{(i)} = T_{bt}$. Equating two stations $i, j$:
+A robot needs its cameras' poses in *robot* coordinates: $X = T_{gc}$, the camera's pose in the gripper frame, for a wrist camera (**eye-in-hand**), or $X = T_{bc}$, its pose in the base frame, for a static one (**eye-to-hand**). At several robot stations, record the gripper pose $T_{bg}$ (forward kinematics) and the target pose $T_{ct}$ (PnP, above). Eliminating the unknown target pose between stations $i, j$ gives
 
 $$
 \underbrace{\big(T_{bg}^{(j)}\big)^{-1}T_{bg}^{(i)}}_{A\ \text{(gripper motion, from FK)}}\; X \;=\; X\; \underbrace{T_{ct}^{(j)}\big(T_{ct}^{(i)}\big)^{-1}}_{B\ \text{(camera motion, from PnP)}},
 \qquad
-R_A R_X = R_X R_B, \quad (R_A - I)\,t_X = R_X t_B - t_A .
+R_A R_X = R_X R_B, \quad (R_A - I)\,t_X = R_X t_B - t_A ,
 $$
 
-For eye-to-hand, pass the inverted FK poses $T_{gb}$ instead (OpenCV `calibrateHandEye` docs). The $AX = XB$ formulation is due to [Shiu & Ahmad (1989)](https://doi.org/10.1109/70.88014) and [Tsai & Lenz (1989)](https://doi.org/10.1109/70.34770).
+which needs at least two motions with non-parallel rotation axes (≥ 3 stations).
 
-**Rotation via the Lie algebra** ([Park & Martin, 1994](https://doi.org/10.1109/70.326576)). Since $R_A = R_X R_B R_X^\top$, the two rotations are conjugate: they have the **same angle**, and their axes are related by $R_X$. With exponential coordinates $\alpha = \log(R_A)^\vee$, $\beta = \log(R_B)^\vee$ this reads $\alpha = R_X\beta$, and over many motion pairs it is an orthogonal Procrustes problem with a closed-form solution:
+![[hand_eye_calibration.svg|650]]
 
-$$
-R_X = (M^\top M)^{-1/2} M^\top, \qquad M = \sum_i \beta_i\,\alpha_i^\top ;
-$$
+*Eye-in-hand. The loop through the unknown $X$ closes on the fixed but unknown target pose $T_{bt}$; eliminating it between two stations gives $AX = XB$.*
 
-$t_X$ then follows by stacking the translation equations into one linear least-squares problem. <span style="color:rgb(0, 176, 240)">The equal-angle property is a free sanity check: if $\|\alpha_i\| \neq \|\beta_i\|$ beyond noise, robot and camera timestamps are out of sync or a pose is wrong.</span>
-
-**Observability.** One motion leaves rotation about its own axis undetermined, so at least **two motions with non-parallel rotation axes** (≥ 3 poses) are required, and in practice many more (OpenCV docs). A small rotation has a poorly defined axis, so stations should differ by large, well-spread rotations. OpenCV implements separable solvers (Tsai–Lenz, Park–Martin, Horaud–Dornaika) and simultaneous ones (Andreff et al.; the dual-quaternion method of [Daniilidis, 1999](https://doi.org/10.1177/02783649922066213)); the **robot-world/hand-eye** variant also solves for the unknown base-to-target transform (`cv2.calibrateRobotWorldHandEye`).
+The full treatment is in [[Hand-Eye Calibration]]: the eye-to-hand case, screw invariants and observability, the Tsai–Lenz / Park–Martin / Horaud–Dornaika / Andreff / Daniilidis solvers, robot-world calibration ($AX = YB$), accuracy guidelines, and markerless / learned alternatives.
 
 ## Camera Models in Learning Systems
 ---
@@ -294,7 +284,7 @@ $t_X$ then follows by stacking the translation equations into one linear least-s
 
 **Robot learning.**
 - *Augmentation must update $K$.* Resizing by a factor $\sigma$ scales $f_x, f_y, c_x, c_y$ by $\sigma$ (up to the half-pixel convention); cropping at offset $(x_0, y_0)$ shifts $c_x \to c_x - x_0$, $c_y \to c_y - y_0$; distortion coefficients do not change. A horizontal flip mirrors the geometry, which no rotation undoes, so 3D labels and actions must be mirrored too.
-- *3D policies inherit calibration error.* Point-cloud policies back-project depth through $K$ and $T_{wc}$, so an extrinsic error becomes a rigid, systematic offset between perceived and commanded positions. Hand–eye accuracy has to match the task's tolerance.
+- *3D policies inherit calibration error.* Point-cloud policies back-project depth through $K$ and $T_{wc}$, so an extrinsic error becomes a rigid, systematic offset between perceived and commanded positions. [[Hand-Eye Calibration|Hand–eye]] accuracy has to match the task's tolerance.
 - *2D policies absorb the camera.* An image-based [[VLA]] or [[Behavior Cloning]] policy trained on fixed mounts learns the calibration implicitly, so moving a camera is a distribution shift. The remedies are to condition on the camera (e.g. ray maps), randomize camera poses and intrinsics in simulation, or keep mounts fixed.
 - *Sim-to-real.* Simulated cameras are ideal pinholes unless configured otherwise; matching or randomizing the real $K$ and distortion removes one easily avoided source of gap.
 
@@ -356,6 +346,7 @@ R_gc, t_gc = cv2.calibrateHandEye(R_bg, t_bg, R_ct, t_ct, method=cv2.CALIB_HAND_
 - [[Behavior Cloning]] — demonstrations are recorded through fixed cameras; crop/resize augmentations must keep $K$ consistent, and moving a camera is an observation-distribution shift.
 - [[World Models]] — geometrically consistent action- or camera-conditioned video prediction needs a camera model; Plücker ray maps are how camera motion is fed to video generators.
 - [[LDM]] — CameraCtrl adds per-pixel Plücker camera conditioning to latent video diffusion models (AnimateDiff, Stable Video Diffusion).
+- [[Hand-Eye Calibration]] — registers each camera to the robot from PnP poses and forward kinematics ($AX = XB$); split out of this note's hand–eye section, which remains as a digest.
 
 ## References
 ---
@@ -371,10 +362,7 @@ R_gc, t_gc = cv2.calibrateHandEye(R_bg, t_bg, R_ct, t_ct, method=cv2.CALIB_HAND_
 - [Mei & Rives, 2007 — Single View Point Omnidirectional Camera Calibration from Planar Grids, ICRA](https://doi.org/10.1109/ROBOT.2007.364084)
 - [Usenko et al., 2018 — The Double Sphere Camera Model](https://arxiv.org/abs/1807.08957)
 - [Hartley, 1997 — In Defense of the Eight-Point Algorithm, *IEEE TPAMI* 19(6)](https://doi.org/10.1109/34.601246)
-- [Shiu & Ahmad, 1989 — Calibration of Wrist-Mounted Robotic Sensors by Solving Homogeneous Transform Equations of the Form AX = XB, *IEEE Trans. Robotics and Automation* 5(1)](https://doi.org/10.1109/70.88014)
-- [Tsai & Lenz, 1989 — A New Technique for Fully Autonomous and Efficient 3D Robotics Hand/Eye Calibration, *IEEE Trans. Robotics and Automation* 5(3)](https://doi.org/10.1109/70.34770)
-- [Park & Martin, 1994 — Robot Sensor Calibration: Solving AX = XB on the Euclidean Group, *IEEE Trans. Robotics and Automation* 10(5)](https://doi.org/10.1109/70.326576)
-- [Daniilidis, 1999 — Hand-Eye Calibration Using Dual Quaternions, *IJRR* 18(3)](https://doi.org/10.1177/02783649922066213)
+- Hand–eye calibration references (Shiu & Ahmad, Tsai & Lenz, Park & Martin, Horaud & Dornaika, Andreff et al., Daniilidis) moved to [[Hand-Eye Calibration]]
 - [OpenCV `calib3d` documentation (4.x)](https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html) — pinhole and distortion model, `calibrateCamera`, `calibrateHandEye` · [`fisheye` module](https://docs.opencv.org/4.x/db/d58/group__calib3d__fisheye.html)
 - [COLMAP output format](https://colmap.github.io/format.html) · [ROS REP-103](https://www.ros.org/reps/rep-0103.html) · [nerfstudio data conventions](https://docs.nerf.studio/quickstart/data_conventions.html)
 - [Sitzmann et al., 2021 — Light Field Networks](https://arxiv.org/abs/2106.02634) · [He et al., 2024 — CameraCtrl](https://arxiv.org/abs/2404.02101)

@@ -219,6 +219,7 @@
   },
   "active": "d4f9504ce3db86b5",
   "lastOpenFiles": [
+    "_01_notes/Hand-Eye Calibration.md",
     "_04_images/hand_eye_noise_sensitivity.png",
     "_04_images/hand_eye_axxb_square.svg",
     "_04_images/hand_eye_eye_to_hand.svg",
@@ -253,7 +254,6 @@
     "_04_images/resnet_block.png",
     "_04_images/resnet18_architecture.png",
     "_01_notes/U-Net.md",
-    "_04_images/yolo.png",
     "_01_notes/AdamW.md",
     "Untitled",
     "_01_notes/CTMC.md.tmp.47154.c4409373ac1f",

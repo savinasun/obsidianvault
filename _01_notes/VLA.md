@@ -76,7 +76,7 @@ A recurring pattern (π0, GR00T N1, Helix): a large **System 2** VLM runs slowly
 
 ## Training Recipe
 ---
-1. **Pre-training**: large cross-embodiment mixture — [Open X-Embodiment](https://arxiv.org/abs/2310.08864), [DROID](https://arxiv.org/abs/2403.12945) (76k trajectories, 564 scenes), proprietary teleoperation. GR00T's **data pyramid**: web data + human video (base) → simulation + synthetic augmentation (middle) → real robot teleop (peak, scarcest).
+1. **Pre-training**: large cross-embodiment mixture — [Open X-Embodiment](https://arxiv.org/abs/2310.08864), [DROID](https://arxiv.org/abs/2403.12945) (76k trajectories, 564 scenes; per-scene camera extrinsics, re-audited post hoc — see [[Hand-Eye Calibration]]), proprietary teleoperation. GR00T's **data pyramid**: web data + human video (base) → simulation + synthetic augmentation (middle) → real robot teleop (peak, scarcest).
 2. **Co-training with web data**: retain VLM abilities by mixing vision-language batches with robot batches (RT-2's co-fine-tuning; π0.5 adds subtask prediction and verbal-instruction data). Without it, action fine-tuning catastrophically forgets semantics.
 3. **Post-training**: fine-tune on curated, task- or robot-specific demonstrations for dexterous skills. LoRA fine-tuning makes 7B-scale VLAs adaptable on a single consumer GPU (OpenVLA).
 4. **RL fine-tuning** (frontier): improving beyond the demonstrator with online interaction or preference signals — the robotics analogue of [[RLHF]] post-training; still much less mature than the BC stage.

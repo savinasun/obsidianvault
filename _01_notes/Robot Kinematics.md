@@ -2,7 +2,7 @@
 # **Robot Kinematics**
 
 **Tags**:: #math #rl
-**Links**:: [[Linear Algebra]] · [[SVD]] · [[VLA]] · [[Behavior Cloning]] · [[Flow Matching]] · [[ODEs, SDEs, and Probability Paths]] · [[World Models]] · [[Camera Calibration]]
+**Links**:: [[Linear Algebra]] · [[SVD]] · [[VLA]] · [[Behavior Cloning]] · [[Flow Matching]] · [[ODEs, SDEs, and Probability Paths]] · [[World Models]] · [[Camera Calibration]] · [[Hand-Eye Calibration]]
 
 
 **Robot kinematics** is the geometry of motion for articulated bodies, with forces and masses deliberately ignored: it maps <span style="color:rgb(255, 255, 0)">joint variables</span> to the pose of every <span style="color:rgb(255, 255, 0)">link</span> (**forward kinematics**, FK), <span style="color:rgb(255, 255, 0)">joint velocities</span> to <span style="color:rgb(255, 255, 0)">link velocities</span> (**velocity kinematics**, via the **Jacobian**), and desired poses back to joint variables (**inverse kinematics**, IK). It is the interface between what a learned policy emits (end-effector targets, joint targets) and what the hardware executes, and it fixes the geometry — $SO(3)$, $SE(3)$ — in which poses, actions, and proprioception live. 
@@ -70,7 +70,7 @@ $$
 e^{[\hat\omega]\theta} = I + \sin\theta\,[\hat\omega] + (1-\cos\theta)\,[\hat\omega]^2 \in SO(3).
 $$
 
-**Screw axis.** *Chasles' theorem*: every rigid-body displacement is a rotation about an axis combined with a translation along it — a screw motion. A **screw axis** is $\mathcal{S} = (\omega, v)$ with either $\|\omega\| = 1$ and $v = -\omega \times q + h\omega$ (axis through point $q$, **pitch** $h$) or $\omega = 0,\ \|v\| = 1$ (pure translation). Its matrix form $[\mathcal{S}] = \begin{bmatrix}[\omega] & v \\ 0 & 0\end{bmatrix} \in se(3)$ exponentiates to a pose (for $\|\omega\|=1$):
+**Screw axis.** *Chasles' theorem*: every rigid-body displacement is a rotation about an axis combined with a translation along it — a screw motion. (Hand–eye calibration rests on this: the two motions in $AX = XB$ are one screw seen in two frames, with equal angle and slide — see [[Hand-Eye Calibration]].) A **screw axis** is $\mathcal{S} = (\omega, v)$ with either $\|\omega\| = 1$ and $v = -\omega \times q + h\omega$ (axis through point $q$, **pitch** $h$) or $\omega = 0,\ \|v\| = 1$ (pure translation). Its matrix form $[\mathcal{S}] = \begin{bmatrix}[\omega] & v \\ 0 & 0\end{bmatrix} \in se(3)$ exponentiates to a pose (for $\|\omega\|=1$):
 
 $$
 e^{[\mathcal{S}]\theta} = \begin{bmatrix} e^{[\omega]\theta} & \big(I\theta + (1-\cos\theta)[\omega] + (\theta - \sin\theta)[\omega]^2\big)v \\ 0 & 1 \end{bmatrix}.
@@ -234,7 +234,8 @@ This is the kinematic content of the "action representation" axis in [[VLA]] and
 - [[ODEs, SDEs, and Probability Paths]] — $e^{[\mathcal{S}]\theta}$ is the flow of a constant-twist linear ODE on $SE(3)$; the vector-field/flow vocabulary carries over to Lie groups.
 - [[Flow Matching]] — Riemannian FM on $SE(3)$ and tori for pose and trajectory generation; the manifold viewpoint of $SO(3)$/$SE(3)$ is shared.
 - [[World Models]] — action-conditioned predictors take kinematic actions as input; the choice of action space affects what must be learned vs. what a controller handles.
-- [[Camera Calibration]] — camera extrinsics and poses are $SE(3)$ transforms in the same $T_{ab}$ algebra; hand–eye calibration solves $AX = XB$ with $A$ built from forward kinematics.
+- [[Camera Calibration]] — camera extrinsics and poses are $SE(3)$ transforms in the same $T_{ab}$ algebra.
+- [[Hand-Eye Calibration]] — solves $AX = XB$ with $A$ built from forward kinematics; the screw invariants of $A, B$ and Park–Martin's log-map solution use the $SE(3)$ machinery of this note, and only relative kinematic accuracy matters.
 
 ## References
 ---
