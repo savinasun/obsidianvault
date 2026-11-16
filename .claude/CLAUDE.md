@@ -35,7 +35,12 @@ One-paragraph intro: bolded term, what it is, why it matters, landmark citations
 as [Author et al., YYYY](https://arxiv.org/abs/XXXX.XXXXX). Then a line naming the
 primary source(s) the note follows.
 
-**Notation** paragraph if the note is math-heavy (see Notation below).
+**Notation.** One sentence on whose symbols the note uses (math-heavy notes only;
+see Notation below).
+
+| Symbol | Meaning | Source equivalents · clashes |
+|---|---|---|
+| $K$ | intrinsic matrix (5 dof) | Zhang: $A$; CS231A: "camera matrix" |
 
 ## Section Title
 ---
@@ -62,7 +67,9 @@ Content…
 
 ### Notation conventions
 
-Generative-modeling notes (Flow Matching, Score Matching, CTMC, DDPM-adjacent, VAE…) use **MIT 6.S184 notation throughout**: source $p_\text{init}$, data $p_\text{data}$; data point $z$, noise $\epsilon$; schedulers $(\alpha_t, \beta_t)$; target fields $u_t^\text{target}(x)$, $u_t^\text{target}(x|z)$; network $u_t^\theta$; rate matrix $Q_t(y|x)$ with columns summing to zero; **FM time runs noise → data** ($t{=}0$ noise, $t{=}1$ data — the reverse of DDPM time). When a note follows a source with different symbols (the FM guide's $p,q$/$x_1$/$(\alpha_t,\sigma_t)$), add a translation sentence rather than switching notation. Flag clashes explicitly (e.g. $z$ = latent in VAE vs. $z$ = data point in FM).
+**Notation table (every math-heavy note).** Put the notation right after the intro: a bold `**Notation.**` lead-in sentence saying whose symbols the note uses, a blank line, then a three-column table `| Symbol | Meaning | Source equivalents · clashes |`. Use one row per symbol, or per tightly coupled group (e.g. $f_x, f_y$), in order of first use. The Meaning cell may carry the defining formula. The last column translates the symbols of each followed source (course notes, papers, library docs) and flags clashes with other vault notes (e.g. $\theta$ = joint angle in Robot Kinematics); put `—` when there is nothing to add. Never put a literal `|` in a cell, not even inside math, because it splits the column: use `\mid`, `\vert` or `\Vert`. Precedent: Camera Calibration. Older notes keep their notation paragraphs until converted on request.
+
+Generative-modeling notes (Flow Matching, Score Matching, CTMC, DDPM-adjacent, VAE…) use **MIT 6.S184 notation throughout**: source $p_\text{init}$, data $p_\text{data}$; data point $z$, noise $\epsilon$; schedulers $(\alpha_t, \beta_t)$; target fields $u_t^\text{target}(x)$, $u_t^\text{target}(x|z)$; network $u_t^\theta$; rate matrix $Q_t(y|x)$ with columns summing to zero; **FM time runs noise → data** ($t{=}0$ noise, $t{=}1$ data — the reverse of DDPM time). When a note follows a source with different symbols (the FM guide's $p,q$/$x_1$/$(\alpha_t,\sigma_t)$), put the translation in the notation table's last column rather than switching notation. Flag clashes explicitly (e.g. $z$ = latent in VAE vs. $z$ = data point in FM).
 
 ### Cross-linking (required for every new note)
 

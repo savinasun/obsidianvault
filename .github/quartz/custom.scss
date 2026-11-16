@@ -1,0 +1,18 @@
+@use "./base.scss";
+
+// Styles for the published notes site; copied to quartz/styles/custom.scss by the publish workflow.
+
+// Key-term spans are pure yellow, which reads well on Obsidian's dark theme but not on white:
+// amber by default (light theme, or before the theme script runs), a softer yellow in dark mode.
+span[style*="rgb(255, 255, 0)"] {
+  color: #a16207 !important;
+}
+:root[saved-theme="dark"] span[style*="rgb(255, 255, 0)"] {
+  color: #fde047 !important;
+}
+
+// Long display equations scroll instead of overflowing the page.
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}

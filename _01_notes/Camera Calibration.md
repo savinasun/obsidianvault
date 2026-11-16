@@ -9,7 +9,27 @@ A **camera model** is the function that sends a 3D point to a pixel; **camera ca
 
 The note follows two computer-vision courses: Stanford **CS231A** ([Hata & Savarese, *Course Notes 1: Camera Models*](https://web.stanford.edu/class/cs231a/course_notes/01-camera-models.pdf)) for the pinhole → $K$ → $[R \mid t]$ → DLT progression, and Cyrill Stachniss's Bonn photogrammetry lectures ([*Camera Extrinsics and Intrinsics*](https://www.ipb.uni-bonn.de/html/teaching/msr2-2020/sse2-12-camera-params.pdf), [*Camera Calibration: Direct Linear Transform*](https://www.ipb.uni-bonn.de/html/teaching/msr2-2020/sse2-13-DLT.pdf)) for parameter counting and degenerate configurations. Hartley & Zisserman's *Multiple View Geometry* (2nd ed., 2004, Ch. 6–7) is the reference text, Zhang's tech report ([MSR-TR-98-71](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr98-71.pdf)) covers planar calibration, and the OpenCV `calib3d` documentation fixes the conventions used in practice.
 
-**Notation.** Bold $\mathbf X$ is a 3D point, $\mathbf X_w$ / $\mathbf X_c$ its world / camera coordinates, $(X, Y, Z)$ its camera-frame components; $(u, v)$ is a pixel; a tilde marks homogeneous coordinates, $\tilde{\mathbf x} = (u, v, 1)^\top$, $\tilde{\mathbf X} = (\mathbf X, 1)$. $(x, y) = (X/Z, Y/Z)$ are **normalized image coordinates**, $(x_d, y_d)$ their distorted version. Intrinsic matrix $K$ with entries $(f_x, f_y, c_x, c_y, s)$; extrinsics $(R, t)$; projection matrix $P = K[R \mid t]$. Frames follow [[Robot Kinematics]]: $T_{ab}$ is the pose of frame $b$ in frame $a$, so $\mathbf X_a = T_{ab}\mathbf X_b$ and $T_{ab}T_{bc} = T_{ac}$; the extrinsics are $T_{cw}$ and the camera pose is $T_{wc}$; translation is $t$ (H&Z/OpenCV) where that note writes $p$. Source dictionary: CS231A writes $M = K[R\ T]$ with focal lengths $(\alpha, \beta)$ and skew as an axis angle $\theta$; Zhang writes $A$ for $K$, $(u_0, v_0)$ for the principal point and $\gamma$ for skew; the Bonn slides use camera constant $c$, scale difference $m$, shear $s$ and principal point $(x_H, y_H)$. Clashes: $P$ is a matrix, not a probability; $\theta$ in the fisheye section is an incidence angle, not a joint angle; in $AX = XB$, $X$ is an unknown transform, not a point.
+**Notation.** H&Z/OpenCV symbols throughout; the last column translates the course and paper sources and flags clashes with other notes.
+
+| Symbol | Meaning | Source equivalents · clashes |
+|---|---|---|
+| $\mathbf X$; $\mathbf X_w$, $\mathbf X_c$ | 3D point; its world / camera coordinates | Zhang: $M$. Bold, unlike the transform $X$ in $AX = XB$ |
+| $(X, Y, Z)$ | camera-frame components of $\mathbf X$; $Z$ is depth along the optical axis | — |
+| $(u, v)$ | pixel coordinates, origin at the top-left | Zhang: $m = [u, v]^\top$ |
+| $\tilde{\mathbf x} = (u, v, 1)^\top$, $\tilde{\mathbf X} = (\mathbf X, 1)$ | homogeneous coordinates (tilde = append a 1) | Zhang: $\tilde m$, $\tilde M$ |
+| $(x, y) = (X/Z,\ Y/Z)$ | **normalized image coordinates**, i.e. the ray direction $K^{-1}\tilde{\mathbf x}$ | OpenCV: $(x', y')$ |
+| $(x_d, y_d)$ | distorted normalized coordinates | OpenCV: $(x'', y'')$; Zhang: $(\breve x, \breve y)$ |
+| $K$ | intrinsic matrix (5 dof) | CS231A: $K$, "camera matrix"; Zhang: $A$ |
+| $f_x, f_y$ | focal lengths in pixels | CS231A, Zhang: $\alpha, \beta$; Bonn: camera constant $c$ with scale difference $m$ |
+| $(c_x, c_y)$ | principal point | Zhang: $(u_0, v_0)$; Bonn: $(x_H, y_H)$ |
+| $s$ | skew | CS231A: axis angle $\theta$, $s = -\alpha\cot\theta$; Zhang: $\gamma$; Bonn: shear $s$ |
+| $(R, t) = T_{cw}$ | extrinsics, world → camera: $\mathbf X_c = R\,\mathbf X_w + t$ | CS231A: $(R, T)$; [[Robot Kinematics]] writes $p$ for translation |
+| $T_{wc} = T_{cw}^{-1}$ | camera pose, camera → world; center $C = -R^\top t$ | NeRF/nerfstudio `transform_matrix` (in OpenGL axes) |
+| $T_{ab}$ | pose of frame $b$ in frame $a$: $\mathbf X_a = T_{ab}\mathbf X_b$, $T_{ab}T_{bc} = T_{ac}$ | same convention as [[Robot Kinematics]] |
+| $P = K[R \mid t]$ | $3\times4$ projection matrix (11 dof) | CS231A: $M$. A matrix, not a probability |
+| $\lambda$; $\mu$ | projective scale ($\lambda = Z_c$, or a homography's scale); unknown scale of $B$ in Zhang's method | Zhang writes $\lambda$ for both |
+| $\theta$ | skew axis angle in CS231A's $K$; incidence angle from the optical axis in the fisheye section | never a joint angle (cf. [[Robot Kinematics]]) |
+| $X$ in $AX = XB$ | unknown hand–eye transform | not a point (points are bold) |
 
 ## From 3D Points to Pixels
 ---

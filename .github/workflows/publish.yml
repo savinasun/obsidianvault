@@ -1,0 +1,81 @@
+# Publishes the knowledge notes (MOC, _01_notes/, and the images they embed) as a Quartz site
+# on GitHub Pages: https://savinasun.github.io/obsidianvault/
+# Runs on every push that touches published content (obsidian-git's "vault backup" pushes).
+# Setup and details: .github/quartz/README.md
+name: Publish notes site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "_00_maps_of_contents/**"
+      - "_01_notes/**"
+      - "_04_images/**"
+      - ".github/quartz/**"
+      - ".github/workflows/publish.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a newer push replaces any run still waiting in the queue.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      QUARTZ_BASE_URL: savinasun.github.io/obsidianvault
+    steps:
+      - name: Check out the vault (full history, for page dates)
+        uses: actions/checkout@v4
+        with:
+          path: vault
+          fetch-depth: 0
+
+      - name: Check out Quartz v4.5.2
+        uses: actions/checkout@v4
+        with:
+          repository: jackyzha0/quartz
+          ref: v4.5.2
+          path: quartz
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: quartz/package-lock.json
+
+      - name: Install Quartz
+        working-directory: quartz
+        run: npm ci
+
+      - name: Apply site config
+        run: |
+          cp vault/.github/quartz/quartz.config.ts vault/.github/quartz/quartz.layout.ts quartz/
+          cp vault/.github/quartz/custom.scss quartz/quartz/styles/custom.scss
+
+      - name: Assemble site content (allowlist only)
+        run: python3 vault/.github/quartz/prepare_content.py vault quartz/content
+
+      - name: Build site
+        working-directory: quartz
+        run: npx quartz build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: quartz/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
