@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 600" width="920" height="600" font-family="Helvetica, Arial, sans-serif">
+<rect width="920" height="600" fill="#ffffff"/>
+<text x="460.0" y="36.0" font-size="22" fill="#222" text-anchor="middle" font-style="normal" font-weight="bold">Hand–Eye Calibration (eye-to-hand)</text>
+<text x="460.0" y="58.0" font-size="13" fill="#555" text-anchor="middle" font-style="normal" font-weight="normal">a static camera watches a target carried by the gripper; solve for the camera-in-base transform X</text>
+<line x1="60.0" y1="500.0" x2="870.0" y2="500.0" stroke="#bbb" stroke-width="3" opacity="1.0" stroke-linecap="butt"/>
+<rect x="150.0" y="450.0" width="90.0" height="50.0" rx="4" fill="#d9d9d9" stroke="#999" stroke-width="1.5"/>
+<line x1="195.0" y1="450.0" x2="195.0" y2="340.0" stroke="#8c8c8c" stroke-width="16" opacity="1.0" stroke-linecap="round"/>
+<line x1="195.0" y1="340.0" x2="330.0" y2="240.0" stroke="#8c8c8c" stroke-width="16" opacity="1.0" stroke-linecap="round"/>
+<line x1="330.0" y1="240.0" x2="470.0" y2="262.0" stroke="#8c8c8c" stroke-width="16" opacity="1.0" stroke-linecap="round"/>
+<line x1="470.0" y1="262.0" x2="515.0" y2="315.0" stroke="#8c8c8c" stroke-width="16" opacity="1.0" stroke-linecap="round"/>
+<circle cx="195.0" cy="340.0" r="9" fill="#5a5a5a"/>
+<circle cx="330.0" cy="240.0" r="9" fill="#5a5a5a"/>
+<circle cx="470.0" cy="262.0" r="9" fill="#5a5a5a"/>
+<line x1="515.0" y1="315.0" x2="508.0" y2="333.0" stroke="#5a5a5a" stroke-width="6" opacity="1.0" stroke-linecap="round"/>
+<line x1="492.0" y1="336.0" x2="524.0" y2="330.0" stroke="#5a5a5a" stroke-width="6" opacity="1.0" stroke-linecap="round"/>
+<line x1="492.0" y1="336.0" x2="490.0" y2="352.0" stroke="#5a5a5a" stroke-width="5" opacity="1.0" stroke-linecap="round"/>
+<line x1="524.0" y1="330.0" x2="528.0" y2="346.0" stroke="#5a5a5a" stroke-width="5" opacity="1.0" stroke-linecap="round"/>
+<polygon points="468.0,356.0 494.0,352.0 499.0,368.0 473.0,372.0" fill="#222" fill-opacity="1.0" stroke="#222" stroke-width="0.8"/>
+<polygon points="473.0,372.0 499.0,368.0 504.0,384.0 478.0,388.0" fill="#fff" fill-opacity="1.0" stroke="#222" stroke-width="0.8"/>
+<polygon points="478.0,388.0 504.0,384.0 509.0,400.0 483.0,404.0" fill="#222" fill-opacity="1.0" stroke="#222" stroke-width="0.8"/>
+<polygon points="494.0,352.0 520.0,348.0 525.0,364.0 499.0,368.0" fill="#fff" fill-opacity="1.0" stroke="#222" stroke-width="0.8"/>
+<polygon points="499.0,368.0 525.0,364.0 530.0,380.0 504.0,384.0" fill="#222" fill-opacity="1.0" stroke="#222" stroke-width="0.8"/>
+<polygon points="504.0,384.0 530.0,380.0 535.0,396.0 509.0,400.0" fill="#fff" fill-opacity="1.0" stroke="#222" stroke-width="0.8"/>
+<polygon points="520.0,348.0 546.0,344.0 551.0,360.0 525.0,364.0" fill="#222" fill-opacity="1.0" stroke="#222" stroke-width="0.8"/>
+<polygon points="525.0,364.0 551.0,360.0 556.0,376.0 530.0,380.0" fill="#fff" fill-opacity="1.0" stroke="#222" stroke-width="0.8"/>
+<polygon points="530.0,380.0 556.0,376.0 561.0,392.0 535.0,396.0" fill="#222" fill-opacity="1.0" stroke="#222" stroke-width="0.8"/>
+<polygon points="546.0,344.0 572.0,340.0 577.0,356.0 551.0,360.0" fill="#fff" fill-opacity="1.0" stroke="#222" stroke-width="0.8"/>
+<polygon points="551.0,360.0 577.0,356.0 582.0,372.0 556.0,376.0" fill="#222" fill-opacity="1.0" stroke="#222" stroke-width="0.8"/>
+<polygon points="556.0,376.0 582.0,372.0 587.0,388.0 561.0,392.0" fill="#fff" fill-opacity="1.0" stroke="#222" stroke-width="0.8"/>
+<line x1="870.0" y1="500.0" x2="870.0" y2="196.0" stroke="#9a9a9a" stroke-width="6" opacity="1.0" stroke-linecap="round"/>
+<rect x="828.0" y="160.0" width="56.0" height="32.0" rx="4" fill="#4d4d4d" stroke="none" stroke-width="1"/>
+<polygon points="834.0,192.0 852.0,192.0 846.0,206.0 828.0,206.0" fill="#4d4d4d" fill-opacity="1.0" stroke="none" stroke-width="1.0"/>
+<polygon points="836.0,204.0 466.0,352.0 590.0,412.0" fill="#9ecae1" fill-opacity="0.22" stroke="none" stroke-width="1"/>
+<line x1="836.0" y1="204.0" x2="466.0" y2="352.0" stroke="#6baed6" stroke-width="1.2" stroke-dasharray="5,4" opacity="1.0" stroke-linecap="butt"/>
+<line x1="836.0" y1="204.0" x2="590.0" y2="412.0" stroke="#6baed6" stroke-width="1.2" stroke-dasharray="5,4" opacity="1.0" stroke-linecap="butt"/>
+<line x1="175.0" y1="470.0" x2="194.8" y2="470.0" stroke="#d62728" stroke-width="2.2" opacity="1.0" stroke-linecap="butt"/>
+<polygon points="199.0,470.0 192.6,472.7 192.6,467.3" fill="#d62728"/>
+<line x1="175.0" y1="470.0" x2="175.0" y2="450.2" stroke="#1f77b4" stroke-width="2.2" opacity="1.0" stroke-linecap="butt"/>
+<polygon points="175.0,446.0 177.7,452.4 172.3,452.4" fill="#1f77b4"/>
+<line x1="175.0" y1="470.0" x2="164.0" y2="478.3" stroke="#2ca02c" stroke-width="2.2" opacity="1.0" stroke-linecap="butt"/>
+<polygon points="160.6,480.8 164.1,474.8 167.4,479.1" fill="#2ca02c"/>
+<line x1="468.0" y1="300.0" x2="487.8" y2="300.0" stroke="#d62728" stroke-width="2.2" opacity="1.0" stroke-linecap="butt"/>
+<polygon points="492.0,300.0 485.6,302.7 485.6,297.3" fill="#d62728"/>
+<line x1="468.0" y1="300.0" x2="468.0" y2="280.2" stroke="#1f77b4" stroke-width="2.2" opacity="1.0" stroke-linecap="butt"/>
+<polygon points="468.0,276.0 470.7,282.4 465.3,282.4" fill="#1f77b4"/>
+<line x1="468.0" y1="300.0" x2="457.0" y2="308.3" stroke="#2ca02c" stroke-width="2.2" opacity="1.0" stroke-linecap="butt"/>
+<polygon points="453.6,310.8 457.1,304.8 460.4,309.1" fill="#2ca02c"/>
+<line x1="534.0" y1="382.0" x2="549.8" y2="382.0" stroke="#d62728" stroke-width="2.2" opacity="1.0" stroke-linecap="butt"/>
+<polygon points="554.0,382.0 547.6,384.7 547.6,379.3" fill="#d62728"/>
+<line x1="534.0" y1="382.0" x2="534.0" y2="366.2" stroke="#1f77b4" stroke-width="2.2" opacity="1.0" stroke-linecap="butt"/>
+<polygon points="534.0,362.0 536.7,368.4 531.3,368.4" fill="#1f77b4"/>
+<line x1="534.0" y1="382.0" x2="525.4" y2="388.5" stroke="#2ca02c" stroke-width="2.2" opacity="1.0" stroke-linecap="butt"/>
+<polygon points="522.0,391.0 525.5,385.0 528.8,389.3" fill="#2ca02c"/>
+<line x1="800.0" y1="150.0" x2="817.8" y2="150.0" stroke="#d62728" stroke-width="2.2" opacity="1.0" stroke-linecap="butt"/>
+<polygon points="822.0,150.0 815.6,152.7 815.6,147.3" fill="#d62728"/>
+<line x1="800.0" y1="150.0" x2="800.0" y2="132.2" stroke="#1f77b4" stroke-width="2.2" opacity="1.0" stroke-linecap="butt"/>
+<polygon points="800.0,128.0 802.7,134.4 797.3,134.4" fill="#1f77b4"/>
+<line x1="800.0" y1="150.0" x2="790.2" y2="157.4" stroke="#2ca02c" stroke-width="2.2" opacity="1.0" stroke-linecap="butt"/>
+<polygon points="786.8,159.9 790.3,153.9 793.6,158.2" fill="#2ca02c"/>
+<text x="150.0" y="528.0" font-size="15" fill="#222" text-anchor="start" font-style="normal" font-weight="bold">{b} base</text>
+<text x="452.0" y="334.0" font-size="15" fill="#222" text-anchor="end" font-style="normal" font-weight="bold">{g} gripper</text>
+<text x="520.0" y="440.0" font-size="15" fill="#222" text-anchor="middle" font-style="normal" font-weight="bold">{t} target (on gripper)</text>
+<text x="782.0" y="132.0" font-size="15" fill="#222" text-anchor="end" font-style="normal" font-weight="bold">{c} camera</text>
+<path d="M 150.0,445.0 Q 20.0,170.0 448.1,294.0" fill="none" stroke="#2ca02c" stroke-width="2.6"/>
+<polygon points="455.0,296.0 443.1,297.4 445.7,288.4" fill="#2ca02c"/>
+<text x="60.0" y="214.0" font-size="15" fill="#2ca02c" text-anchor="start" font-style="normal" font-weight="bold">T<tspan baseline-shift="sub" font-size="11">bg</tspan>  forward kinematics</text>
+<text x="60.0" y="232.0" font-size="13" fill="#2ca02c" text-anchor="start" font-style="normal" font-weight="normal">(known, from joint encoders)</text>
+<path d="M 540.0,318.0 Q 600.0,340.0 560.9,368.5" fill="none" stroke="#777777" stroke-width="2.2" stroke-dasharray="6,4"/>
+<polygon points="556.0,372.0 561.2,363.4 565.7,369.7" fill="#777777"/>
+<text x="604.0" y="344.0" font-size="14" fill="#777777" text-anchor="start" font-style="normal" font-weight="bold">T<tspan baseline-shift="sub" font-size="11">gt</tspan>  fixed but unknown</text>
+<path d="M 846.0,212.0 Q 830.0,440.0 605.1,399.3" fill="none" stroke="#1f77b4" stroke-width="2.6"/>
+<polygon points="598.0,398.0 609.7,395.4 608.0,404.6" fill="#1f77b4"/>
+<text x="640.0" y="446.0" font-size="15" fill="#1f77b4" text-anchor="start" font-style="normal" font-weight="bold">T<tspan baseline-shift="sub" font-size="11">ct</tspan>  PnP on target</text>
+<text x="640.0" y="465.0" font-size="13" fill="#1f77b4" text-anchor="start" font-style="normal" font-weight="normal">(known, per image)</text>
+<path d="M 236.0,448.0 Q 520.0,70.0 817.1,165.8" fill="none" stroke="#d62728" stroke-width="3.2"/>
+<polygon points="824.0,168.0 812.0,169.1 814.9,160.2" fill="#d62728"/>
+<text x="560.0" y="128.0" font-size="16" fill="#d62728" text-anchor="middle" font-style="normal" font-weight="bold">X = T<tspan baseline-shift="sub" font-size="11">bc</tspan>  (unknown)</text>
+<rect x="60.0" y="80.0" width="380.0" height="104.0" rx="6" fill="#f7f7f7" stroke="#ddd" stroke-width="1"/>
+<text x="76.0" y="106.0" font-size="15" fill="#222" text-anchor="start" font-style="normal" font-weight="normal">every pose i:  X T<tspan baseline-shift="sub" font-size="11">ct</tspan><tspan baseline-shift="super" font-size="11">(i)</tspan> = T<tspan baseline-shift="sub" font-size="11">bg</tspan><tspan baseline-shift="super" font-size="11">(i)</tspan> T<tspan baseline-shift="sub" font-size="11">gt</tspan></text>
+<text x="76.0" y="134.0" font-size="15" fill="#222" text-anchor="start" font-style="normal" font-weight="normal">A = T<tspan baseline-shift="sub" font-size="11">bg</tspan><tspan baseline-shift="super" font-size="11">(j)</tspan> (T<tspan baseline-shift="sub" font-size="11">bg</tspan><tspan baseline-shift="super" font-size="11">(i)</tspan>)<tspan baseline-shift="super" font-size="11">−1</tspan>,   B = T<tspan baseline-shift="sub" font-size="11">ct</tspan><tspan baseline-shift="super" font-size="11">(j)</tspan> (T<tspan baseline-shift="sub" font-size="11">ct</tspan><tspan baseline-shift="super" font-size="11">(i)</tspan>)<tspan baseline-shift="super" font-size="11">−1</tspan></text>
+<text x="76.0" y="166.0" font-size="18" fill="#6a51a3" text-anchor="start" font-style="normal" font-weight="bold">⇒  A X = X B</text>
+</svg>
