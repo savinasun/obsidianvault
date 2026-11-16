@@ -2,7 +2,7 @@
 # **Robot Kinematics**
 
 **Tags**:: #math #rl
-**Links**:: [[Linear Algebra]] · [[SVD]] · [[VLA]] · [[Behavior Cloning]] · [[Flow Matching]] · [[ODEs, SDEs, and Probability Paths]] · [[World Models]]
+**Links**:: [[Linear Algebra]] · [[SVD]] · [[VLA]] · [[Behavior Cloning]] · [[Flow Matching]] · [[ODEs, SDEs, and Probability Paths]] · [[World Models]] · [[Camera Calibration]]
 
 
 **Robot kinematics** is the geometry of motion for articulated bodies, with forces and masses deliberately ignored: it maps <span style="color:rgb(255, 255, 0)">joint variables</span> to the pose of every <span style="color:rgb(255, 255, 0)">link</span> (**forward kinematics**, FK), <span style="color:rgb(255, 255, 0)">joint velocities</span> to <span style="color:rgb(255, 255, 0)">link velocities</span> (**velocity kinematics**, via the **Jacobian**), and desired poses back to joint variables (**inverse kinematics**, IK). It is the interface between what a learned policy emits (end-effector targets, joint targets) and what the hardware executes, and it fixes the geometry — $SO(3)$, $SE(3)$ — in which poses, actions, and proprioception live. 
@@ -161,7 +161,7 @@ $$
 \delta\theta = J^\top (JJ^\top + \lambda^2 I)^{-1}\mathcal{V}.
 $$
 
-In SVD terms each mode's gain $1/\sigma_i$ becomes $\sigma_i/(\sigma_i^2 + \lambda^2)$, so it is bounded by $1/(2\lambda)$ instead of blowing up as $\sigma_i \to 0$. This is the Levenberg–Marquardt damping idea from nonlinear least squares applied to the pose residual — trading tracking accuracy near singularities for bounded joint velocity.
+In SVD terms each mode's gain $1/\sigma_i$ becomes $\sigma_i/(\sigma_i^2 + \lambda^2)$, so it is bounded by $1/(2\lambda)$ instead of blowing up as $\sigma_i \to 0$. This is the Levenberg–Marquardt damping idea from nonlinear least squares applied to the pose residual — trading tracking accuracy near singularities for bounded joint velocity. The same Levenberg–Marquardt solver refines camera intrinsics and poses against reprojection error in [[Camera Calibration]].
 
 **Redundancy resolution.** For $n > 6$, the general solution of $J\dot\theta = \mathcal{V}$ is
 
@@ -234,6 +234,7 @@ This is the kinematic content of the "action representation" axis in [[VLA]] and
 - [[ODEs, SDEs, and Probability Paths]] — $e^{[\mathcal{S}]\theta}$ is the flow of a constant-twist linear ODE on $SE(3)$; the vector-field/flow vocabulary carries over to Lie groups.
 - [[Flow Matching]] — Riemannian FM on $SE(3)$ and tori for pose and trajectory generation; the manifold viewpoint of $SO(3)$/$SE(3)$ is shared.
 - [[World Models]] — action-conditioned predictors take kinematic actions as input; the choice of action space affects what must be learned vs. what a controller handles.
+- [[Camera Calibration]] — camera extrinsics and poses are $SE(3)$ transforms in the same $T_{ab}$ algebra; hand–eye calibration solves $AX = XB$ with $A$ built from forward kinematics.
 
 ## References
 ---

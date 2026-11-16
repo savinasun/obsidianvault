@@ -2,7 +2,7 @@
 # **Vision-Language-Action Models (VLA)**
 
 **Tags**:: #rl #vision #llm #architecture
-**Links**:: [[VLM]] · [[LLaVA]] · [[Behavior Cloning]] · [[Flow Matching]] · [[DiT]] · [[World Models]] · [[Deep Reinforcement Learning]] · [[RLHF]] · [[Robot Kinematics]]
+**Links**:: [[VLM]] · [[LLaVA]] · [[Behavior Cloning]] · [[Flow Matching]] · [[DiT]] · [[World Models]] · [[Deep Reinforcement Learning]] · [[RLHF]] · [[Robot Kinematics]] · [[Camera Calibration]]
 
 
 A **Vision-Language-Action model (VLA)** is a robot policy built by adapting a pretrained [[VLM]] to output **actions**, conditioned on camera observations and a natural-language instruction. The term was coined by **RT-2** ([Brohan et al., 2023](https://arxiv.org/abs/2307.15818)). Mechanically, a VLA is [[Behavior Cloning]] at foundation-model scale: supervised learning on demonstration trajectories, with the VLM backbone contributing web-scale semantic priors that pure from-scratch imitation lacks.
@@ -17,7 +17,7 @@ A **Vision-Language-Action model (VLA)** is a robot policy built by adapting a p
 ## Problem Setup
 ---
 Learn $\pi_\theta(A_t \mid o_t, \ell)$ where:
-- $o_t$ = one or more camera images $I_t^1, \dots, I_t^k$ + proprioceptive state $q_t$
+- $o_t$ = one or more camera images $I_t^1, \dots, I_t^k$ (each camera with its own intrinsics and extrinsics — see [[Camera Calibration]]) + proprioceptive state $q_t$
 - $\ell$ = language instruction
 - $A_t = [a_t, a_{t+1}, \dots, a_{t+H-1}]$ = an **action chunk** of $H$ future actions (joint targets, end-effector deltas, gripper commands — see [[Robot Kinematics]] for the joint-space vs. task-space distinction)
 

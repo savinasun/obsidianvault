@@ -2,7 +2,7 @@
 # **Singular Value Decomposition**
 
 **Tags**:: #math #dl_theo
-**Links**:: [[Linear Algebra]] · [[Spectral Analysis]] · [[Robot Kinematics]]
+**Links**:: [[Linear Algebra]] · [[Spectral Analysis]] · [[Robot Kinematics]] · [[Camera Calibration]]
 
 ## Definition
 ---
@@ -53,3 +53,4 @@ Proof. Based on [[Linear Algebra#Min-Max Theorem|min-max theorem]].
 4. Data compression 
 5. Approximation of A by matrices of lower rank 
 6. Computation of matrix norms
+7. Homogeneous least squares $\min_{\|x\|=1}\|Ax\|$: the right singular vector of the smallest singular value — the DLT and homography steps of [[Camera Calibration]]

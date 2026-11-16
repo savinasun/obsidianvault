@@ -2,7 +2,7 @@
 # **Linear Algebra**
 
 **Tags**:: #math
-**Links**:: [[SVD]] · [[Spectral Analysis]] · [[Robot Kinematics]]
+**Links**:: [[SVD]] · [[Spectral Analysis]] · [[Robot Kinematics]] · [[Camera Calibration]]
 
 ![[linear_algebra_01.png]]
 
@@ -220,6 +220,7 @@ May require row permutations: $PA = LU$
 ### QR Factorization
 $A = QR$, where $Q$ is orthogonal, $R$ is upper-triangular
 Used in least squares problems
+The RQ variant (upper-triangular × orthogonal) splits a camera's projection matrix into intrinsics $K$ and rotation $R$ — see [[Camera Calibration]]
 
 ### Schur Decomposition
 $A = Q T Q^\ast$, where $T$ is upper triangular, $Q$ is unitary

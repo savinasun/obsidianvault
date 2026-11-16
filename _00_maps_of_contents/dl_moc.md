@@ -51,7 +51,7 @@ limit 10
 
 Visual architectures, self-supervised objectives (contrastive, distillation, masked modeling), and vision-language alignment.
 
-Key notes: [[ViT]] · [[DINO]] · [[MAE]] · [[JEPA]] · [[CLIP]] · [[LLaVA]] · [[Cambrian]] · [[CLS Token]] · [[CNNs]] · [[Contrastive Learning]] · [[ImageNet]]
+Key notes: [[ViT]] · [[DINO]] · [[MAE]] · [[JEPA]] · [[CLIP]] · [[LLaVA]] · [[Cambrian]] · [[CLS Token]] · [[CNNs]] · [[Contrastive Learning]] · [[ImageNet]] · [[Camera Calibration]]
 
 ```dataview
 table tags as "Tags"
@@ -81,7 +81,7 @@ limit 10
 
 Policy optimization, imitation learning, model-based RL, and the path toward autonomous embodied agents.
 
-Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[PPO]] · [[DPO]] · [[GRPO]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]] · [[VLA]] · [[Robot Kinematics]] · [[Discrete Flow Matching]]
+Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[PPO]] · [[DPO]] · [[GRPO]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]] · [[VLA]] · [[Robot Kinematics]] · [[Camera Calibration]] · [[Discrete Flow Matching]]
 
 ```dataview
 table tags as "Tags"
