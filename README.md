@@ -1,2 +1,2 @@
 # obsidianvault
-syncing and backup for obsidian vaults
+syncing and backup for obsidian notes
