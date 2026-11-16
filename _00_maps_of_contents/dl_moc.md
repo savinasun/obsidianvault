@@ -51,7 +51,7 @@ limit 10
 
 Visual architectures, self-supervised objectives (contrastive, distillation, masked modeling), and vision-language alignment.
 
-Key notes: [[ViT]] · [[DINO]] · [[MAE]] · [[JEPA]] · [[CLIP]] · [[LLaVA]] · [[Cambrian]] · [[CLS Token]] · [[CNNs]] · [[Contrastive Learning]] · [[ImageNet]] · [[Camera Calibration]]
+Key notes: [[ViT]] · [[Pinhole and Perspective Projection]] · [[DINO]] · [[MAE]] · [[JEPA]] · [[CLIP]] · [[LLaVA]] · [[Cambrian]] · [[CLS Token]] · [[CNNs]] · [[Contrastive Learning]] · [[ImageNet]] · [[Camera Calibration]]
 
 ```dataview
 table tags as "Tags"
