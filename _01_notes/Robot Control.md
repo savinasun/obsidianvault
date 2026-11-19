@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Robot Control**
 
-**Tags**:: #rl #math
+**Tags**:: #robotics #math
 **Links**:: [[Robot Kinematics]] · [[VLA]] · [[Behavior Cloning]] · [[Deep Reinforcement Learning]] · [[ODEs, SDEs, and Probability Paths]] · [[Linear Algebra]] · [[World Models]]
 
 

@@ -79,14 +79,26 @@ limit 10
 
 ### RL & Embodied AI
 
-Policy optimization, imitation learning, model-based RL, and the path toward autonomous embodied agents.
+Policy optimization, imitation learning, model-based RL, and the path toward autonomous embodied agents — plus the robotics foundations they run on (kinematics, control, calibration; tagged `#robotics`).
 
 Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[PPO]] · [[DPO]] · [[GRPO]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]] · [[VLA]] · [[Robot Kinematics]] · [[Robot Control]] · [[Camera Calibration]] · [[Hand-Eye Calibration]] · [[Discrete Flow Matching]]
+
+**Reinforcement learning** (`#rl`)
 
 ```dataview
 table tags as "Tags"
 from "_01_notes"
 WHERE contains(tags, "rl")
+SORT file.name ASC
+limit 10
+```
+
+**Robotics** (`#robotics`)
+
+```dataview
+table tags as "Tags"
+from "_01_notes"
+WHERE contains(tags, "robotics")
 SORT file.name ASC
 limit 10
 ```

@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Hand–Eye Calibration**
 
-**Tags**:: #rl #math #vision
+**Tags**:: #robotics #math #vision
 **Links**:: [[Camera Calibration]] · [[Pinhole and Perspective Projection]] · [[Robot Kinematics]] · [[SVD]] · [[Linear Algebra]] · [[VLA]] · [[Behavior Cloning]]
 
 

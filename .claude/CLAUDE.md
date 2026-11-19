@@ -53,7 +53,7 @@ Content…
 
 - Every `##` section heading is immediately followed by a `---` rule.
 - File names: ASCII only (e.g. `muTransfer.md` for a note titled μP); the `# **Title**` may use Unicode.
-- Tag vocabulary (don't invent new tags casually): `#math` `#architecture` `#learning` `#llm` `#llama` `#vision` `#dl_theo` `#rl` `#generative` `#diffusion`.
+- Tag vocabulary (don't invent new tags casually): `#math` `#architecture` `#learning` `#llm` `#llama` `#vision` `#dl_theo` `#rl` `#robotics` `#generative` `#diffusion`. Use `#robotics` for robot hardware/geometry/control notes (kinematics, control, calibration) and for learning notes with substantial robot content (VLA, Behavior Cloning, World Models); reserve `#rl` for actual reinforcement/imitation learning.
 
 ### Writing style
 

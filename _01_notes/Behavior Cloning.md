@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Behavior Cloning**
 
-**Tags**:: #rl
+**Tags**:: #rl #robotics
 **Links**:: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[RLHF]] · [[VLA]] · [[Robot Kinematics]] · [[Robot Control]]
 
 

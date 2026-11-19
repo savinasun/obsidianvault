@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Robot Kinematics**
 
-**Tags**:: #math #rl
+**Tags**:: #robotics #math
 **Links**:: [[Linear Algebra]] · [[SVD]] · [[VLA]] · [[Behavior Cloning]] · [[Flow Matching]] · [[ODEs, SDEs, and Probability Paths]] · [[World Models]] · [[Camera Calibration]] · [[Hand-Eye Calibration]] · [[Robot Control]]
 
 

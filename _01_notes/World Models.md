@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **World Models**
 
-**Tags**:: #rl
+**Tags**:: #rl #robotics
 **Links**:: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[DDPM]] · [[Behavior Cloning]] · [[JEPA]] · [[Robot Kinematics]]
 
 

@@ -1,7 +1,7 @@
 ### [[dl_moc]]  
 # **Vision-Language-Action Models (VLA)**
 
-**Tags**:: #rl #vision #llm #architecture
+**Tags**:: #robotics #rl #vision #llm #architecture
 **Links**:: [[VLM]] · [[LLaVA]] · [[Behavior Cloning]] · [[Flow Matching]] · [[DiT]] · [[World Models]] · [[Deep Reinforcement Learning]] · [[RLHF]] · [[Robot Kinematics]] · [[Robot Control]] · [[Camera Calibration]]
 
 

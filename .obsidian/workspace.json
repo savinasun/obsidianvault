@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_01_notes/Camera Calibration.md",
+                "file": "_01_notes/Robot Control.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Camera Calibration"
+              "title": "Robot Control"
             }
           }
         ]
@@ -219,6 +219,10 @@
   },
   "active": "d4f9504ce3db86b5",
   "lastOpenFiles": [
+    "_00_maps_of_contents/dl_moc.md",
+    "_01_notes/Robot Control.md",
+    "_01_notes/Robot Kinematics.md",
+    "_01_notes/Camera Calibration.md",
     "_01_notes/Pinhole and Perspective Projection.md",
     "_04_images/perspective_vs_orthographic.png",
     "_04_images/pinhole_similar_triangles.svg",
@@ -226,10 +230,7 @@
     "_04_images/hand_eye_noise_sensitivity.png",
     "_04_images/hand_eye_axxb_square.svg",
     "_04_images/hand_eye_eye_to_hand.svg",
-    "_00_maps_of_contents/dl_moc.md",
     "Academic Writing.md",
-    "_01_notes/Camera Calibration.md",
-    "_01_notes/Robot Kinematics.md",
     "_01_notes/Reinforcement Learning.md",
     "_01_notes/RLHF.md",
     "_04_images/roll_pitch_yaw.svg",
@@ -254,7 +255,6 @@
     "_01_notes/ViT.md",
     "_01_notes/CNNs.md",
     "_04_images/resnet_block.png",
-    "_01_notes/U-Net.md",
     "Untitled",
     "_01_notes/CTMC.md.tmp.47154.c4409373ac1f",
     "Untitled.base",
