@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Deep Learning Notes",
+    pageTitle: "From Math to Embodied AI",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,

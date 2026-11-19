@@ -1,4 +1,4 @@
-# Deep Learning Map of Contents
+# From Math to Embodied AI — Map of Contents
 
 A living index organized by research direction. 
 
