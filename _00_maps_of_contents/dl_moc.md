@@ -81,7 +81,7 @@ limit 10
 
 Policy optimization, imitation learning, model-based RL, and the path toward autonomous embodied agents.
 
-Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[PPO]] · [[DPO]] · [[GRPO]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]] · [[VLA]] · [[Robot Kinematics]] · [[Camera Calibration]] · [[Hand-Eye Calibration]] · [[Discrete Flow Matching]]
+Key notes: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[PPO]] · [[DPO]] · [[GRPO]] · [[Behavior Cloning]] · [[RLHF]] · [[World Models]] · [[VLA]] · [[Robot Kinematics]] · [[Robot Control]] · [[Camera Calibration]] · [[Hand-Eye Calibration]] · [[Discrete Flow Matching]]
 
 ```dataview
 table tags as "Tags"

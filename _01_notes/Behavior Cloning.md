@@ -2,7 +2,7 @@
 # **Behavior Cloning**
 
 **Tags**:: #rl
-**Links**:: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[RLHF]] · [[VLA]] · [[Robot Kinematics]]
+**Links**:: [[Reinforcement Learning]] · [[Deep Reinforcement Learning]] · [[Policy Gradient Methods]] · [[RLHF]] · [[VLA]] · [[Robot Kinematics]] · [[Robot Control]]
 
 
 **Behavior Cloning (BC)** is the simplest form of imitation learning: treat expert demonstrations as supervised learning data and train a policy $\pi_\theta$ to mimic observed actions.

@@ -2,7 +2,7 @@
 # **Robot Kinematics**
 
 **Tags**:: #math #rl
-**Links**:: [[Linear Algebra]] · [[SVD]] · [[VLA]] · [[Behavior Cloning]] · [[Flow Matching]] · [[ODEs, SDEs, and Probability Paths]] · [[World Models]] · [[Camera Calibration]] · [[Hand-Eye Calibration]]
+**Links**:: [[Linear Algebra]] · [[SVD]] · [[VLA]] · [[Behavior Cloning]] · [[Flow Matching]] · [[ODEs, SDEs, and Probability Paths]] · [[World Models]] · [[Camera Calibration]] · [[Hand-Eye Calibration]] · [[Robot Control]]
 
 
 **Robot kinematics** is the geometry of motion for articulated bodies, with forces and masses deliberately ignored: it maps <span style="color:rgb(255, 255, 0)">joint variables</span> to the pose of every <span style="color:rgb(255, 255, 0)">link</span> (**forward kinematics**, FK), <span style="color:rgb(255, 255, 0)">joint velocities</span> to <span style="color:rgb(255, 255, 0)">link velocities</span> (**velocity kinematics**, via the **Jacobian**), and desired poses back to joint variables (**inverse kinematics**, IK). It is the interface between what a learned policy emits (end-effector targets, joint targets) and what the hardware executes, and it fixes the geometry — $SO(3)$, $SE(3)$ — in which poses, actions, and proprioception live. 
@@ -223,7 +223,7 @@ This is the kinematic content of the "action representation" axis in [[VLA]] and
 
 **Differentiable FK.** $T(\theta)$ is a composition of matrix exponentials, so gradients flow through it: pose-space or keypoint-space losses can supervise joint-space networks, and IK can be unrolled as a differentiable layer.
 
-**What kinematics leaves out.** It assumes the commanded motion is achieved. Forces, inertia, friction, contact, and actuator limits belong to *dynamics* ($M(\theta)\ddot\theta + c(\theta,\dot\theta) + g(\theta) = \tau + J^\top F$); kinematics supplies the $J$ in that equation.
+**What kinematics leaves out.** It assumes the commanded motion is achieved. Forces, inertia, friction, contact, and actuator limits belong to *dynamics* ($M(\theta)\ddot\theta + c(\theta,\dot\theta) + g(\theta) = \tau + J^\top F$); kinematics supplies the $J$ in that equation. How joint torques are chosen to make the commanded motion (or force) actually happen is the subject of [[Robot Control]].
 
 ## Relationship to Other Notes
 ---
@@ -235,6 +235,7 @@ This is the kinematic content of the "action representation" axis in [[VLA]] and
 - [[Flow Matching]] — Riemannian FM on $SE(3)$ and tori for pose and trajectory generation; the manifold viewpoint of $SO(3)$/$SE(3)$ is shared.
 - [[World Models]] — action-conditioned predictors take kinematic actions as input; the choice of action space affects what must be learned vs. what a controller handles.
 - [[Camera Calibration]] — camera extrinsics and poses are $SE(3)$ transforms in the same $T_{ab}$ algebra.
+- [[Robot Control]] — the controllers (PD, computed torque, operational-space, force and impedance control) that track the joint or end-effector setpoints defined here; they reuse $J_b$, the error twist $\log(X^{-1}X_d)$ and statics $\tau = J^\top F$.
 - [[Hand-Eye Calibration]] — solves $AX = XB$ with $A$ built from forward kinematics; the screw invariants of $A, B$ and Park–Martin's log-map solution use the $SE(3)$ machinery of this note, and only relative kinematic accuracy matters.
 
 ## References

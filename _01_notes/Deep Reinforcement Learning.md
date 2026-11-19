@@ -2,7 +2,7 @@
 # **Deep Reinforcement Learning**
 
 **Tags**:: #rl
-**Links**:: [[Reinforcement Learning]] · [[Policy Gradient Methods]] · [[PPO]] · [[Behavior Cloning]] · [[World Models]]
+**Links**:: [[Reinforcement Learning]] · [[Policy Gradient Methods]] · [[PPO]] · [[Behavior Cloning]] · [[World Models]] · [[Robot Control]]
 
 
 Deep RL combines the RL framework with deep neural networks as function approximators for policies and value functions — enabling RL to operate on raw observations (images, sensor data) at scale.
