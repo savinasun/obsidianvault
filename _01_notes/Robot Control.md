@@ -50,6 +50,20 @@ The note follows the Northwestern **Modern Robotics** course and book:
 
 *The control stack. A learned policy or planner produces setpoints at tens of Hz. The robot controller (the subject of this note) turns them into joint torques at hundreds of Hz to a few kHz. The motor amplifier closes its own current loop even faster (MR §11.8 gives 10 kHz inner / 1 kHz outer as a typical example). Sensors close the loop.*
 
+<span style="color:rgb(255, 255, 0)"><b>Open-loop vs. closed-loop control.</b></span> The two basic ways to compute a command differ in one thing: whether the controller looks at what the robot is actually doing.
+- **Open-loop control** (also called **feedforward** control) computes the command from the plan alone, and possibly a model of the robot. It never reads sensors. Example: command the planned joint velocity, $\dot\theta = \dot\theta_d(t)$. MR calls this "a feedforward or open-loop controller, since no feedback (sensor data) is needed" (§11.3.1.1, Eq. 11.11).
+- **Closed-loop control** (also called **feedback** control) measures the actual state with sensors, compares it with the desired state, and computes the command from the difference, the error $\theta_e = \theta_d - \theta$. Example: P control, $\dot\theta = K_p\theta_e$ (Eq. 11.12). The sensor reading feeds back into the command, which closes a loop (the arrow back to the controller in the figure above). MR §11.1: "Feedback is used in nearly all robot systems."
+
+| Aspect | Open-loop (feedforward) | Closed-loop (feedback) |
+|---|---|---|
+| Uses sensor data | no | yes |
+| Command depends on | the plan $\theta_d(t)$ (and a model $\tilde M, \tilde h$) | the error $\theta_e = \theta_d - \theta$ |
+| When it acts | right away, before any error appears | only after an error has appeared |
+| Model errors, pushes, friction | not corrected: errors pile up | corrected as they show up |
+| Main risk | drifts away from the plan | lags behind; too-high gains oscillate or go unstable |
+
+In plain words: open-loop is walking with your eyes closed using a memorized route; closed-loop is walking while watching where you are. Practical robot controllers **combine both**: the feedforward term does most of the work, and feedback cleans up what the model got wrong. "All practical controllers use feedback, as no model of robot and environment dynamics will be perfect" (MR §11.4.1.3). This note's main controllers are such combinations: feedforward + PI velocity control (Eq. 11.15) and computed torque (Eq. 11.35). The computed-torque figure below compares all three.
+
 **Four kinds of goals.** The right controller depends on the task (MR Ch. 11 intro):
 - **Motion control:** follow a path, e.g. move a spray-paint gun along a trajectory.
 - **Force control:** push with a set force, e.g. hold a polishing wheel against a part.
@@ -101,7 +115,7 @@ The 2% settling time is about $4\mathfrak t$, with $\mathfrak t = 1/(\zeta\omega
 ---
 **When the input is a velocity.** Sometimes you can command joint *velocities* directly: stepper motors (velocity = pulse frequency) or motor amplifiers in "velocity mode" (§11.3). Then the robot's dynamics can be ignored and $\dot\theta$ is the control.
 
-**Feedforward only.** Command $\dot\theta = \dot\theta_d(t)$ from the plan (Eq. 11.11). No sensors are needed, but small errors pile up and nothing removes them.
+**Feedforward only (open-loop).** Command $\dot\theta = \dot\theta_d(t)$ from the plan (Eq. 11.11). No sensors are needed, but small errors pile up and nothing removes them.
 
 **P control.** $\dot\theta = K_p\theta_e$ (Eq. 11.12): the gain acts like a virtual spring pulling the joint toward the target. For a fixed target ("setpoint control") the error dynamics is $\dot\theta_e + K_p\theta_e = 0$: first order, time constant $1/K_p$, settling time $4/K_p$. But if the target moves at constant speed $\dot\theta_d = c$, the error settles at $c/K_p$, not zero. The joint always lags behind. Raising $K_p$ shrinks the lag, but real joints have speed limits, and a large gain can go unstable in a digital controller (the error changes a lot within one servo cycle).
 
